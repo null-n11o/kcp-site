@@ -69,8 +69,13 @@ featured: false
 
 ## Task Workflow
 
+各タスク開始時: `git checkout -b <branch-name>` で feature ブランチを作成。
 各タスク完了時: `superpowers:task-completion-report` スキルに従い、
 レビュー通過後に commit → push → `gh pr create`。
+PR 作成後、ユーザーに「セッションを新しく開始してください」と伝えてから終了する。
+
+**ブランチ命名規則:** `feat/<kebab-case-description>`
+例: `feat/project-scaffolding`、`feat/hero-section`、`feat/blog-post-card`
 
 ## Phase 1 Scope
 
