@@ -71,7 +71,9 @@ featured: false
 
 各タスク開始時: `git checkout -b <branch-name>` で feature ブランチを作成。
 各タスク完了時: `superpowers:task-completion-report` スキルに従い、
-レビュー通過後に commit → push → `gh pr create`。
+レビュー通過後に以下の順で実行する:
+1. プランファイル（`docs/superpowers/plans/*.md`）の完了ステップを `- [ ]` → `- [x]` に更新してコミット
+2. commit → push → `gh pr create`
 PR 作成後、ユーザーに「セッションを新しく開始してください」と伝えてから終了する。
 
 **ブランチ命名規則:** `feat/<kebab-case-description>`
