@@ -92,7 +92,7 @@
 - Create: `tsconfig.json`
 - Create: `.gitignore`
 
-- [ ] **Step 1: Create package.json**
+- [x] **Step 1: Create package.json**
 
 ```json
 {
@@ -123,7 +123,7 @@
 }
 ```
 
-- [ ] **Step 2: Create astro.config.mjs**
+- [x] **Step 2: Create astro.config.mjs**
 
 ```js
 import { defineConfig } from 'astro/config';
@@ -149,7 +149,7 @@ export default defineConfig({
 });
 ```
 
-- [ ] **Step 3: Create tailwind.config.mjs**
+- [x] **Step 3: Create tailwind.config.mjs**
 
 ```js
 import defaultTheme from 'tailwindcss/defaultTheme';
@@ -211,7 +211,7 @@ export default {
 };
 ```
 
-- [ ] **Step 4: Create tsconfig.json**
+- [x] **Step 4: Create tsconfig.json**
 
 ```json
 {
@@ -226,7 +226,7 @@ export default {
 }
 ```
 
-- [ ] **Step 5: Create .gitignore**
+- [x] **Step 5: Create .gitignore**
 
 ```
 node_modules/
@@ -239,7 +239,7 @@ dist/
 *.log
 ```
 
-- [ ] **Step 6: Install dependencies**
+- [x] **Step 6: Install dependencies**
 
 ```bash
 npm install
@@ -247,7 +247,7 @@ npm install
 
 Expected: `node_modules/` created, no errors.
 
-- [ ] **Step 7: Verify Astro CLI works**
+- [x] **Step 7: Verify Astro CLI works**
 
 ```bash
 npx astro --version
@@ -263,7 +263,7 @@ Expected: prints Astro version number (4.x)
 - Create: `vitest.config.ts`
 - Create: `src/__mocks__/astro-content.ts`
 
-- [ ] **Step 1: Create src/__mocks__/astro-content.ts**
+- [x] **Step 1: Create src/__mocks__/astro-content.ts**
 
 `astro:content` is a virtual module that only exists inside Astro's build pipeline. Vitest runs in plain Node and cannot resolve it. We need a stub so utility tests can import `blog.ts` without errors.
 
@@ -295,7 +295,7 @@ export const z = {
 };
 ```
 
-- [ ] **Step 2: Create vitest.config.ts**
+- [x] **Step 2: Create vitest.config.ts**
 
 ```ts
 import { defineConfig } from 'vitest/config';
@@ -316,7 +316,7 @@ export default defineConfig({
 });
 ```
 
-- [ ] **Step 3: Run empty test suite to verify setup**
+- [x] **Step 3: Run empty test suite to verify setup**
 
 ```bash
 npm test
@@ -332,7 +332,7 @@ Expected: "No test files found, exiting with code 0" or similar — no errors.
 - Create: `src/utils/date.ts`
 - Create: `src/utils/date.test.ts`
 
-- [ ] **Step 1: Write failing tests**
+- [x] **Step 1: Write failing tests**
 
 Create `src/utils/date.test.ts`:
 
@@ -358,7 +358,7 @@ describe('formatDateJa', () => {
 });
 ```
 
-- [ ] **Step 2: Run tests to verify they fail**
+- [x] **Step 2: Run tests to verify they fail**
 
 ```bash
 npm test
@@ -366,7 +366,7 @@ npm test
 
 Expected: FAIL — "Cannot find module './date'"
 
-- [ ] **Step 3: Implement date.ts**
+- [x] **Step 3: Implement date.ts**
 
 Create `src/utils/date.ts`:
 
@@ -379,7 +379,7 @@ export function formatDateJa(date: Date): string {
 }
 ```
 
-- [ ] **Step 4: Run tests to verify they pass**
+- [x] **Step 4: Run tests to verify they pass**
 
 ```bash
 npm test
@@ -387,7 +387,7 @@ npm test
 
 Expected: 3 tests PASS
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git init && git add -A && git commit -m "feat: project scaffolding + date utility with tests"
@@ -401,7 +401,7 @@ git init && git add -A && git commit -m "feat: project scaffolding + date utilit
 - Create: `src/utils/blog.ts`
 - Create: `src/utils/blog.test.ts`
 
-- [ ] **Step 1: Write failing tests**
+- [x] **Step 1: Write failing tests**
 
 Create `src/utils/blog.test.ts`:
 
@@ -454,7 +454,7 @@ describe('getPostsByTag', () => {
 });
 ```
 
-- [ ] **Step 2: Run tests to verify they fail**
+- [x] **Step 2: Run tests to verify they fail**
 
 ```bash
 npm test
@@ -462,7 +462,7 @@ npm test
 
 Expected: FAIL — "Cannot find module './blog'"
 
-- [ ] **Step 3: Implement blog.ts**
+- [x] **Step 3: Implement blog.ts**
 
 Create `src/utils/blog.ts`:
 
@@ -494,7 +494,7 @@ export function getReadingTimeMin(body: string): number {
 }
 ```
 
-- [ ] **Step 4: Run tests to verify they pass**
+- [x] **Step 4: Run tests to verify they pass**
 
 ```bash
 npm test
@@ -502,7 +502,7 @@ npm test
 
 Expected: 6 tests PASS (3 date tests + 3 blog tests)
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add -A && git commit -m "feat: blog utility functions with tests"
