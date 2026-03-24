@@ -4,13 +4,17 @@ import sitemap from '@astrojs/sitemap';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
+import cloudflare from "@astrojs/cloudflare";
+
 export default defineConfig({
   site: 'https://kcp.co.jp',
-  output: 'static',
+  output: "hybrid",
+
   integrations: [
     tailwind({ applyBaseStyles: false }),
     sitemap(),
   ],
+
   markdown: {
     shikiConfig: {
       theme: 'github-dark',
@@ -21,7 +25,10 @@ export default defineConfig({
       [rehypeAutolinkHeadings, { behavior: 'wrap' }],
     ],
   },
+
   build: {
     format: 'directory',
   },
+
+  adapter: cloudflare()
 });
