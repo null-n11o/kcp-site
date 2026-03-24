@@ -1,0 +1,27 @@
+---
+export interface Props {
+  tag: string;
+  active?: boolean;
+  size?: 'sm' | 'md';
+  href?: string;
+}
+
+const { tag, active = false, size = 'sm', href } = Astro.props;
+
+const base = 'inline-flex items-center rounded-full font-medium transition-colors duration-200';
+const sizes = {
+  sm: 'px-2.5 py-0.5 text-xs',
+  md: 'px-3 py-1 text-sm',
+};
+const states = active
+  ? 'bg-accent text-white'
+  : 'bg-accent/10 text-accent hover:bg-accent/20';
+
+const classes = `${base} ${sizes[size]} ${states}`;
+---
+
+{href ? (
+  <a href={href} class={classes}>{tag}</a>
+) : (
+  <span class={classes}>{tag}</span>
+)}
