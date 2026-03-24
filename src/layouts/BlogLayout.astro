@@ -1,0 +1,17 @@
+---
+import PageLayout from './PageLayout.astro';
+import type { CollectionEntry } from 'astro:content';
+import '@/styles/prose.css';
+
+export interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { title, description, pubDate, ogImage } = post.data;
+const ogImageUrl = ogImage ?? '/og-default.svg';
+---
+
+<PageLayout title={title} description={description} ogImage={ogImageUrl}>
+  <slot />
+</PageLayout>
