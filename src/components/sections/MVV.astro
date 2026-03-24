@@ -1,0 +1,64 @@
+---
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+import FadeIn from '@/components/ui/FadeIn.astro';
+
+const values = [
+  {
+    title: 'シンプル・小さく・速く',
+    description: '複雑さと大きく動くのはコスト。全ての業務を一つずつシンプルに小さくとらえ、それでいて速くこなしていく。',
+  },
+  {
+    title: '複利で積み上げる',
+    description: '一回の仕事で終わらせない。積み重ねが次の価値を生む。',
+  },
+  {
+    title: '常に進化する',
+    description: '経験に頼らず、現状の軌道を注視し、勝っているときでも新たな手を打つ。',
+  },
+];
+---
+
+<section id="mvv" class="py-section" style="background-color: #0a0a0a;">
+  <div class="section-wrapper">
+    <FadeIn>
+      <SectionHeading title="Mission / Vision / Values" />
+    </FadeIn>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+      <!-- Mission -->
+      <FadeIn delay={100}>
+        <div class="p-8 rounded-2xl border border-accent/30 bg-base-200">
+          <p class="text-xs font-medium text-accent tracking-widest uppercase mb-4">Mission</p>
+          <p class="text-2xl font-bold text-text-primary leading-relaxed">
+            AI時代に必要な業務を引き受け、お客様が本業に集中できる環境を提供する。
+          </p>
+        </div>
+      </FadeIn>
+
+      <!-- Vision -->
+      <FadeIn delay={200}>
+        <div class="p-8 rounded-2xl border border-border bg-base-100">
+          <p class="text-xs font-medium text-accent tracking-widest uppercase mb-4">Vision</p>
+          <p class="text-xl font-semibold text-text-primary leading-relaxed">
+            AIエージェントを駆使した高効率・低コストの代行業で、世界市場に通用するBPO企業を築く。
+          </p>
+        </div>
+      </FadeIn>
+    </div>
+
+    <!-- Values -->
+    <FadeIn delay={100}>
+      <p class="text-xs font-medium text-accent tracking-widest uppercase mb-8">Values</p>
+    </FadeIn>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {values.map((value, i) => (
+        <FadeIn delay={i * 100 + 200}>
+          <div class="flex flex-col gap-3 p-6 rounded-xl border-l-2 border-accent bg-base-100 pl-6">
+            <h3 class="text-base font-bold text-text-primary">{value.title}</h3>
+            <p class="text-text-secondary text-sm leading-relaxed">{value.description}</p>
+          </div>
+        </FadeIn>
+      ))}
+    </div>
+  </div>
+</section>

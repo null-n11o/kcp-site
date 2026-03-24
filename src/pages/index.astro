@@ -1,8 +1,20 @@
 ---
 import PageLayout from '@/layouts/PageLayout.astro';
 import Hero from '@/components/sections/Hero.astro';
+import Service from '@/components/sections/Service.astro';
+import MVV from '@/components/sections/MVV.astro';
+import Strength from '@/components/sections/Strength.astro';
+// import BlogPreview from '@/components/sections/BlogPreview.astro';
+import Company from '@/components/sections/Company.astro';
+import Contact from '@/components/sections/Contact.astro';
 ---
 
 <PageLayout title="ホーム">
   <Hero />
+  <Service />
+  <MVV />
+  <Strength />
+  {/* BlogPreview will be added in Task 15 */}
+  <Company />
+  <Contact />
 </PageLayout>
