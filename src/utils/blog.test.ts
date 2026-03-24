@@ -19,16 +19,17 @@ const makeMockPost = (slug: string, tags: string[], draft = false) => ({
   render: async () => ({ Content: () => null, headings: [], remarkPluginFrontmatter: {} }),
 });
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const posts = [
   makeMockPost('post-a', ['AI', '業務効率化']),
   makeMockPost('post-b', ['AI', 'Claude']),
   makeMockPost('post-c', ['ビジネス']),
   makeMockPost('post-d-draft', ['AI'], true),
-];
+] as any;
 
 describe('getAllTags', () => {
   it('returns unique tags sorted alphabetically', () => {
-    const tags = getAllTags(posts.filter(p => !p.data.draft));
+    const tags = getAllTags(posts.filter((p: any) => !p.data.draft));
     expect(tags).toEqual(['AI', 'Claude', 'ビジネス', '業務効率化']);
   });
 });

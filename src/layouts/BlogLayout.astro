@@ -8,7 +8,7 @@ export interface Props {
 }
 
 const { post } = Astro.props;
-const { title, description, pubDate, ogImage } = post.data;
+const { title, description, ogImage } = post.data;
 const ogImageUrl = ogImage ?? '/og-default.svg';
 ---
 
