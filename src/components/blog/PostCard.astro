@@ -1,0 +1,43 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import TagBadge from './TagBadge.astro';
+import { formatDateJa } from '@/utils/date';
+import { getReadingTimeMin } from '@/utils/blog';
+
+export interface Props {
+  post: CollectionEntry<'blog'>;
+  compact?: boolean;
+}
+
+const { post, compact = false } = Astro.props;
+const { title, description, pubDate, tags } = post.data;
+const readMin = getReadingTimeMin(post.body);
+---
+
+<article class={`group flex flex-col gap-4 p-6 rounded-xl border border-border bg-base-100 hover:border-accent/40 transition-all duration-300 ${compact ? '' : 'hover:-translate-y-1'}`}>
+  <!-- Tags -->
+  <div class="flex flex-wrap gap-2">
+    {tags.slice(0, 3).map(tag => (
+      <TagBadge tag={tag} href={`/blog/tags/${tag}/`} />
+    ))}
+  </div>
+
+  <!-- Title -->
+  <h2 class={`font-bold text-text-primary group-hover:text-accent transition-colors ${compact ? 'text-base' : 'text-xl'}`}>
+    <a href={`/blog/${post.slug}/`} class="stretched-link">
+      {title}
+    </a>
+  </h2>
+
+  <!-- Description -->
+  {!compact && (
+    <p class="text-text-secondary text-sm leading-relaxed line-clamp-3">{description}</p>
+  )}
+
+  <!-- Meta -->
+  <div class="flex items-center gap-3 text-xs text-text-muted mt-auto">
+    <time datetime={pubDate.toISOString()}>{formatDateJa(pubDate)}</time>
+    <span>·</span>
+    <span>約{readMin}分</span>
+  </div>
+</article>

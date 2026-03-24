@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '@/layouts/PageLayout.astro';
+import { getAllTags, getSortedPosts, getPostsByTag } from '@/utils/blog';
+
+const allPosts = await getCollection('blog');
+const posts = getSortedPosts(allPosts);
+const tags = getAllTags(posts);
+---
+
+<PageLayout title="タグ一覧">
+  <div class="section-wrapper pt-24 pb-16">
+    <h1 class="text-4xl font-bold text-text-primary mb-10">タグ一覧</h1>
+    <div class="flex flex-wrap gap-3">
+      {tags.map(tag => {
+        const count = getPostsByTag(posts, tag).length;
+        return (
+          <a
+            href={`/blog/tags/${tag}/`}
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-base-100 hover:border-accent/50 text-text-secondary hover:text-accent transition-colors"
+          >
+            <span class="text-sm font-medium">{tag}</span>
+            <span class="text-xs text-text-muted">({count})</span>
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</PageLayout>

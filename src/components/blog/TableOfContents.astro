@@ -1,0 +1,47 @@
+---
+export interface Props {
+  headings: { depth: number; slug: string; text: string }[];
+}
+
+const { headings } = Astro.props;
+const toc = headings.filter(h => h.depth === 2 || h.depth === 3);
+---
+
+{toc.length > 0 && (
+  <nav class="sticky top-24 p-4 rounded-xl border border-border bg-base-100 text-sm" aria-label="目次">
+    <p class="text-xs font-medium text-text-muted uppercase tracking-widest mb-3">目次</p>
+    <ul class="flex flex-col gap-1">
+      {toc.map(heading => (
+        <li class={heading.depth === 3 ? 'pl-4' : ''}>
+          <a
+            href={`#${heading.slug}`}
+            class="toc-link block py-1 text-text-secondary hover:text-accent transition-colors truncate"
+            data-toc-heading={heading.slug}
+          >
+            {heading.text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+)}
+
+<script>
+  const links = document.querySelectorAll('.toc-link');
+  const headingEls = document.querySelectorAll('article h2[id], article h3[id]');
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          links.forEach(link => link.classList.remove('text-accent', 'font-medium'));
+          const active = document.querySelector(`.toc-link[data-toc-heading="${entry.target.id}"]`);
+          active?.classList.add('text-accent', 'font-medium');
+        }
+      });
+    },
+    { rootMargin: '-80px 0px -60% 0px' }
+  );
+
+  headingEls.forEach(el => observer.observe(el));
+</script>

@@ -516,7 +516,7 @@ git add -A && git commit -m "feat: blog utility functions with tests"
 - Create: `src/styles/global.css`
 - Create: `src/styles/prose.css`
 
-- [ ] **Step 1: Create global.css**
+- [x] **Step 1: Create global.css**
 
 ```css
 @tailwind base;
@@ -568,7 +568,7 @@ git add -A && git commit -m "feat: blog utility functions with tests"
 }
 ```
 
-- [ ] **Step 2: Create prose.css**
+- [x] **Step 2: Create prose.css**
 
 ```css
 .prose {
@@ -892,7 +892,7 @@ git add -A && git commit -m "feat: base layouts, header, footer"
 - Create: `src/components/ui/SectionHeading.astro`
 - Create: `src/components/ui/FadeIn.astro`
 
-- [ ] **Step 1: Create Button.astro**
+- [x] **Step 1: Create Button.astro**
 
 ```astro
 ---
@@ -936,7 +936,7 @@ const classes = `${base} ${variants[variant]} ${className}`;
 )}
 ```
 
-- [ ] **Step 2: Create SectionHeading.astro**
+- [x] **Step 2: Create SectionHeading.astro**
 
 ```astro
 ---
@@ -963,7 +963,7 @@ const alignClass = align === 'center' ? 'text-center items-center' : 'text-left 
 </div>
 ```
 
-- [ ] **Step 3: Create FadeIn.astro**
+- [x] **Step 3: Create FadeIn.astro**
 
 ```astro
 ---
@@ -998,7 +998,7 @@ const { delay = 0, class: className = '' } = Astro.props;
 </script>
 ```
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add -A && git commit -m "feat: UI primitive components (Button, SectionHeading, FadeIn)"
@@ -1011,7 +1011,7 @@ git add -A && git commit -m "feat: UI primitive components (Button, SectionHeadi
 **Files:**
 - Create: `src/components/sections/Hero.astro`
 
-- [ ] **Step 1: Create Hero.astro**
+- [x] **Step 1: Create Hero.astro**
 
 ```astro
 ---
@@ -1068,7 +1068,7 @@ import Button from '@/components/ui/Button.astro';
 </section>
 ```
 
-- [ ] **Step 2: Add Hero to index.astro**
+- [x] **Step 2: Add Hero to index.astro**
 
 Update `src/pages/index.astro`:
 
@@ -1083,7 +1083,7 @@ import Hero from '@/components/sections/Hero.astro';
 </PageLayout>
 ```
 
-- [ ] **Step 3: Verify in browser**
+- [x] **Step 3: Verify in browser**
 
 ```bash
 npm run dev
@@ -1091,7 +1091,7 @@ npm run dev
 
 Expected: Full-screen dark hero with gradient, headline text, two CTA buttons, scroll indicator.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add -A && git commit -m "feat: Hero section"
@@ -1104,7 +1104,7 @@ git add -A && git commit -m "feat: Hero section"
 **Files:**
 - Create: `src/components/sections/Service.astro`
 
-- [ ] **Step 1: Create Service.astro**
+- [x] **Step 1: Create Service.astro**
 
 ```astro
 ---
@@ -1159,7 +1159,7 @@ const services = [
 </section>
 ```
 
-- [ ] **Step 2: Add to index.astro**
+- [x] **Step 2: Add to index.astro**
 
 ```astro
 ---
@@ -1174,7 +1174,7 @@ import Service from '@/components/sections/Service.astro';
 </PageLayout>
 ```
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add -A && git commit -m "feat: Service section"
@@ -1187,7 +1187,7 @@ git add -A && git commit -m "feat: Service section"
 **Files:**
 - Create: `src/components/sections/MVV.astro`
 
-- [ ] **Step 1: Create MVV.astro**
+- [x] **Step 1: Create MVV.astro**
 
 ```astro
 ---
@@ -1256,7 +1256,7 @@ const values = [
 </section>
 ```
 
-- [ ] **Step 2: Add MVV to index.astro**
+- [x] **Step 2: Add MVV to index.astro**
 
 Update `src/pages/index.astro`:
 
@@ -1275,7 +1275,7 @@ import MVV from '@/components/sections/MVV.astro';
 </PageLayout>
 ```
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add -A && git commit -m "feat: MVV section"
@@ -1290,7 +1290,7 @@ git add -A && git commit -m "feat: MVV section"
 - Create: `src/components/sections/Company.astro`
 - Create: `src/components/sections/Contact.astro`
 
-- [ ] **Step 1: Create Strength.astro**
+- [x] **Step 1: Create Strength.astro**
 
 ```astro
 ---
@@ -1342,7 +1342,7 @@ const strengths = [
 </section>
 ```
 
-- [ ] **Step 2: Create Company.astro**
+- [x] **Step 2: Create Company.astro**
 
 ```astro
 ---
@@ -1387,7 +1387,7 @@ const companyInfo = [
 </section>
 ```
 
-- [ ] **Step 3: Create Contact.astro**
+- [x] **Step 3: Create Contact.astro**
 
 ```astro
 ---
@@ -1424,7 +1424,7 @@ const GOOGLE_FORM_URL = 'https://forms.google.com/';
 </section>
 ```
 
-- [ ] **Step 4: Update index.astro with all sections**
+- [x] **Step 4: Update index.astro with all sections**
 
 ```astro
 ---
@@ -1451,7 +1451,7 @@ import Contact from '@/components/sections/Contact.astro';
 
 (Note: BlogPreview will be created in Task 15. For now, comment it out.)
 
-- [ ] **Step 5: Verify full landing page in browser, commit**
+- [x] **Step 5: Verify full landing page in browser, commit**
 
 ```bash
 npm run dev
@@ -1472,7 +1472,7 @@ git add -A && git commit -m "feat: Strength, Company, Contact sections + complet
 - Create: `src/content/blog/welcome-to-kcp.md`
 - Create: `src/content/blog/ai-jidai-no-gyomu-daiko.md`
 
-- [ ] **Step 1: Create src/content/config.ts**
+- [x] **Step 1: Create src/content/config.ts**
 
 ```ts
 import { defineCollection, z } from 'astro:content';
@@ -1497,7 +1497,7 @@ export const collections = {
 };
 ```
 
-- [ ] **Step 2: Create welcome-to-kcp.md**
+- [x] **Step 2: Create welcome-to-kcp.md**
 
 ```markdown
 ---
@@ -1531,7 +1531,7 @@ author: "中野健太朗"
 まずは小さく始め、複利で成果を積み上げていきます。ご興味のある方は、お気軽にお問い合わせください。
 ```
 
-- [ ] **Step 3: Create ai-jidai-no-gyomu-daiko.md**
+- [x] **Step 3: Create ai-jidai-no-gyomu-daiko.md**
 
 ```markdown
 ---
@@ -1569,7 +1569,7 @@ Claude CodeやGPT-4などのAIエージェントは、以下のような業務�
 AI時代の業務代行は、単なる「人件費削減」ではなく「質の向上」を目指すものです。ご興味のある方はお気軽にご相談ください。
 ```
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add -A && git commit -m "feat: Content Collections schema + sample blog posts"
@@ -1583,7 +1583,7 @@ git add -A && git commit -m "feat: Content Collections schema + sample blog post
 - Create: `src/components/blog/PostCard.astro`
 - Create: `src/components/blog/TagBadge.astro`
 
-- [ ] **Step 1: Create TagBadge.astro**
+- [x] **Step 1: Create TagBadge.astro**
 
 ```astro
 ---
@@ -1615,7 +1615,7 @@ const classes = `${base} ${sizes[size]} ${states}`;
 )}
 ```
 
-- [ ] **Step 2: Create PostCard.astro**
+- [x] **Step 2: Create PostCard.astro**
 
 ```astro
 ---
@@ -1663,7 +1663,7 @@ const readMin = getReadingTimeMin(post.body);
 </article>
 ```
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add -A && git commit -m "feat: PostCard and TagBadge blog components"
@@ -1678,7 +1678,7 @@ git add -A && git commit -m "feat: PostCard and TagBadge blog components"
 - Create: `src/components/sections/BlogPreview.astro`
 - Create: `src/components/blog/TagFilter.astro`
 
-- [ ] **Step 1: Create TagFilter.astro**
+- [x] **Step 1: Create TagFilter.astro**
 
 ```astro
 ---
@@ -1712,7 +1712,7 @@ const { tags, activeTag } = Astro.props;
 </nav>
 ```
 
-- [ ] **Step 2: Create src/pages/blog/index.astro**
+- [x] **Step 2: Create src/pages/blog/index.astro**
 
 ```astro
 ---
@@ -1750,7 +1750,7 @@ const tags = getAllTags(posts);
 </PageLayout>
 ```
 
-- [ ] **Step 3: Create BlogPreview.astro**
+- [x] **Step 3: Create BlogPreview.astro**
 
 ```astro
 ---
@@ -1790,11 +1790,11 @@ const featuredPosts = getSortedPosts(allPosts).slice(0, 3);
 )}
 ```
 
-- [ ] **Step 4: Uncomment BlogPreview in index.astro**
+- [x] **Step 4: Uncomment BlogPreview in index.astro**
 
 Update `src/pages/index.astro` to include `import BlogPreview from '@/components/sections/BlogPreview.astro';` and add `<BlogPreview />` between Strength and Company sections.
 
-- [ ] **Step 5: Verify /blog/ page and blog preview on landing page**
+- [x] **Step 5: Verify /blog/ page and blog preview on landing page**
 
 ```bash
 npm run dev
@@ -1802,7 +1802,7 @@ npm run dev
 
 Expected: /blog/ shows 2 post cards. Landing page shows blog preview section.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add -A && git commit -m "feat: blog listing page + BlogPreview section on landing"
@@ -1818,7 +1818,7 @@ git add -A && git commit -m "feat: blog listing page + BlogPreview section on la
 - Create: `src/components/blog/TableOfContents.astro`
 - Create: `src/pages/blog/[slug].astro`
 
-- [ ] **Step 1: Create BlogLayout.astro**
+- [x] **Step 1: Create BlogLayout.astro**
 
 ```astro
 ---
@@ -1840,7 +1840,7 @@ const ogImageUrl = ogImage ?? '/og-default.svg';
 </PageLayout>
 ```
 
-- [ ] **Step 2: Create BlogHero.astro**
+- [x] **Step 2: Create BlogHero.astro**
 
 ```astro
 ---
@@ -1879,7 +1879,7 @@ const readMin = getReadingTimeMin(post.body);
 </div>
 ```
 
-- [ ] **Step 3: Create TableOfContents.astro**
+- [x] **Step 3: Create TableOfContents.astro**
 
 ```astro
 ---
@@ -1931,7 +1931,7 @@ const toc = headings.filter(h => h.depth === 2 || h.depth === 3);
 </script>
 ```
 
-- [ ] **Step 4: Create src/pages/blog/[slug].astro**
+- [x] **Step 4: Create src/pages/blog/[slug].astro**
 
 ```astro
 ---
@@ -1976,7 +1976,7 @@ const { Content, headings } = await post.render();
 </BlogLayout>
 ```
 
-- [ ] **Step 5: Add rehype-slug for heading anchors**
+- [x] **Step 5: Add rehype-slug for heading anchors**
 
 ```bash
 npm install rehype-slug rehype-autolink-headings
@@ -2014,7 +2014,7 @@ export default defineConfig({
 });
 ```
 
-- [ ] **Step 6: Verify article page renders correctly**
+- [x] **Step 6: Verify article page renders correctly**
 
 ```bash
 npm run dev
@@ -2024,7 +2024,7 @@ Navigate to http://localhost:4321/blog/welcome-to-kcp/
 
 Expected: Article page with hero (title, date, tags, reading time), rendered markdown content, sidebar ToC (desktop only), "back to blog" button.
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add -A && git commit -m "feat: blog article page with ToC sidebar"
@@ -2038,7 +2038,7 @@ git add -A && git commit -m "feat: blog article page with ToC sidebar"
 - Create: `src/pages/blog/tags/index.astro`
 - Create: `src/pages/blog/tags/[tag].astro`
 
-- [ ] **Step 1: Create tags/index.astro**
+- [x] **Step 1: Create tags/index.astro**
 
 ```astro
 ---
@@ -2072,7 +2072,7 @@ const tags = getAllTags(posts);
 </PageLayout>
 ```
 
-- [ ] **Step 2: Create tags/[tag].astro**
+- [x] **Step 2: Create tags/[tag].astro**
 
 ```astro
 ---
@@ -2111,7 +2111,7 @@ const { tag, posts } = Astro.props;
 </PageLayout>
 ```
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add -A && git commit -m "feat: tag index and tag-filtered blog pages"
@@ -2127,7 +2127,7 @@ git add -A && git commit -m "feat: tag index and tag-filtered blog pages"
 - Create: `public/og-default.svg` (placeholder SVG; replace with 1200x630 PNG before production launch)
 - Create: `src/pages/404.astro`
 
-- [ ] **Step 1: Create rss.xml.ts**
+- [x] **Step 1: Create rss.xml.ts**
 
 ```ts
 import rss from '@astrojs/rss';
@@ -2154,7 +2154,7 @@ export async function GET(context: APIContext) {
 }
 ```
 
-- [ ] **Step 2: Create public/robots.txt**
+- [x] **Step 2: Create public/robots.txt**
 
 ```
 User-agent: *
@@ -2163,7 +2163,7 @@ Allow: /
 Sitemap: https://kcp.co.jp/sitemap-index.xml
 ```
 
-- [ ] **Step 3: Create 404.astro**
+- [x] **Step 3: Create 404.astro**
 
 ```astro
 ---
@@ -2180,7 +2180,7 @@ import PageLayout from '@/layouts/PageLayout.astro';
 </PageLayout>
 ```
 
-- [ ] **Step 4: Create public/og-default.svg placeholder**
+- [x] **Step 4: Create public/og-default.svg placeholder**
 
 BaseLayout uses `/og-default.svg` as its default OGP image. Create a placeholder SVG (replace with a real 1200x630 PNG before launch — rename to `og-default.png` and update `BaseLayout.astro` default accordingly). Create `public/og-default.svg`:
 
@@ -2202,7 +2202,7 @@ BaseLayout uses `/og-default.svg` as its default OGP image. Create a placeholder
 
 Note: OGP requires PNG. Replace `public/og-default.svg` with a proper 1200x630 PNG before launch.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add -A && git commit -m "feat: RSS feed, robots.txt, 404 page"
@@ -2212,7 +2212,7 @@ git add -A && git commit -m "feat: RSS feed, robots.txt, 404 page"
 
 ## Task 19: Build Verification
 
-- [ ] **Step 1: Run full test suite**
+- [x] **Step 1: Run full test suite**
 
 ```bash
 npm test
@@ -2220,7 +2220,7 @@ npm test
 
 Expected: All tests PASS (date utils + blog utils)
 
-- [ ] **Step 2: Run Astro type check**
+- [x] **Step 2: Run Astro type check**
 
 ```bash
 npx astro check
@@ -2228,7 +2228,7 @@ npx astro check
 
 Expected: 0 errors, 0 warnings (or only warnings about optional fields)
 
-- [ ] **Step 3: Run production build**
+- [x] **Step 3: Run production build**
 
 ```bash
 npm run build
@@ -2236,7 +2236,7 @@ npm run build
 
 Expected: Build completes with 0 errors. Output in `dist/`.
 
-- [ ] **Step 4: Verify build output**
+- [x] **Step 4: Verify build output**
 
 ```bash
 ls dist/
@@ -2252,7 +2252,7 @@ Expected:
 - `dist/rss.xml` exists
 - `dist/sitemap-index.xml` exists
 
-- [ ] **Step 5: Preview production build**
+- [x] **Step 5: Preview production build**
 
 ```bash
 npm run preview
@@ -2260,14 +2260,14 @@ npm run preview
 
 Navigate to http://localhost:4321 and verify all pages load correctly.
 
-- [ ] **Step 6: Check mobile layout**
+- [x] **Step 6: Check mobile layout**
 
 Open Chrome DevTools → Device Toolbar. Test at 375px (iPhone), 768px (iPad), 1024px (desktop). Verify:
 - Mobile menu (hamburger) opens/closes
 - Sections are readable on mobile
 - Blog cards stack to single column on mobile
 
-- [ ] **Step 7: Final commit**
+- [x] **Step 7: Final commit**
 
 ```bash
 git add -A && git commit -m "feat: complete KCP corporate site Phase 1"
