@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '@/layouts/PageLayout.astro';
+import PostCard from '@/components/blog/PostCard.astro';
+import TagFilter from '@/components/blog/TagFilter.astro';
+import { getSortedPosts, getAllTags } from '@/utils/blog';
+
+const allPosts = await getCollection('blog');
+const posts = getSortedPosts(allPosts);
+const tags = getAllTags(posts);
+---
+
+<PageLayout
+  title="ブログ"
+  description="AI活用・業務効率化・デジタルトランスフォーメーションに関する記事を発信しています。"
+>
+  <div class="section-wrapper pt-24 pb-16">
+    <h1 class="text-4xl font-bold text-text-primary mb-4">Blog</h1>
+    <p class="text-text-secondary mb-10">AI活用・業務効率化に関する記事を発信しています。</p>
+
+    <TagFilter tags={tags} />
+
+    {posts.length === 0 ? (
+      <p class="text-text-muted text-center py-16">記事がありません。</p>
+    ) : (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {posts.map(post => (
+          <PostCard post={post} />
+        ))}
+      </div>
+    )}
+  </div>
+</PageLayout>
