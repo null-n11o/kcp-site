@@ -10,6 +10,38 @@
 
 ---
 
+## Cloudflare デプロイについて（2026-03-24 追記）
+
+Cloudflare の UI が刷新され、Pages と Workers が統合された。現在のダッシュボードでは Git 連携も "Create a Worker" フローで行われ、デプロイコマンドは `npx wrangler deploy` になる。
+
+これは **Cloudflare Workers Assets**（静的ファイルを Workers でホストする新方式）であり、静的サイトのホスティングとして正常に機能する。
+
+そのため `wrangler.toml` をプロジェクトルートに追加済み:
+
+```toml
+name = "kcp-site"
+compatibility_date = "2024-09-23"
+
+[assets]
+directory = "./dist"
+```
+
+`[assets] directory` で `npm run build` の出力先 `dist/` を指定している。これにより `npx wrangler deploy` 実行時に静的ファイル一式がデプロイされる。
+
+### デプロイ手順
+
+`main` ブランチへのプッシュで自動デプロイされる（1〜2分）。
+
+```bash
+git add .
+git commit -m "コミットメッセージ"
+git push
+```
+
+PR をマージした場合も同様に自動トリガーされる。手動操作は不要。
+
+---
+
 ## File Map
 
 ### Config / Root
