@@ -624,7 +624,7 @@ git add -A && git commit -m "feat: blog utility functions with tests"
 - Create: `src/layouts/BaseLayout.astro`
 - Create: `src/layouts/PageLayout.astro`
 
-- [ ] **Step 1: Create BaseLayout.astro**
+- [x] **Step 1: Create BaseLayout.astro**
 
 ```astro
 ---
@@ -686,7 +686,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 </html>
 ```
 
-- [ ] **Step 2: Create PageLayout.astro**
+- [x] **Step 2: Create PageLayout.astro**
 
 ```astro
 ---
@@ -722,7 +722,7 @@ const props = Astro.props;
 - Create: `src/components/layout/Header.astro` (includes inlined mobile menu markup and `<script>` block)
 - Create: `src/components/layout/Footer.astro`
 
-- [ ] **Step 1: Create Header.astro**
+- [x] **Step 1: Create Header.astro**
 
 ```astro
 ---
@@ -830,7 +830,7 @@ const navLinks = [
 </script>
 ```
 
-- [ ] **Step 2: Create Footer.astro**
+- [x] **Step 2: Create Footer.astro**
 
 ```astro
 ---
@@ -844,7 +844,7 @@ const year = new Date().getFullYear();
 </footer>
 ```
 
-- [ ] **Step 3: Create minimal src/pages/index.astro to test layout**
+- [x] **Step 3: Create minimal src/pages/index.astro to test layout**
 
 ```astro
 ---
@@ -858,7 +858,7 @@ import PageLayout from '@/layouts/PageLayout.astro';
 </PageLayout>
 ```
 
-- [ ] **Step 4: Create placeholder favicon.svg**
+- [x] **Step 4: Create placeholder favicon.svg**
 
 ```svg
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
@@ -869,7 +869,7 @@ import PageLayout from '@/layouts/PageLayout.astro';
 
 Save as `public/favicon.svg`.
 
-- [ ] **Step 5: Run dev server and visually verify header + footer**
+- [x] **Step 5: Run dev server and visually verify header + footer**
 
 ```bash
 npm run dev
@@ -877,7 +877,7 @@ npm run dev
 
 Expected: Site opens at http://localhost:4321. Header visible with KCP logo and nav links. Footer with copyright. No console errors.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add -A && git commit -m "feat: base layouts, header, footer"
