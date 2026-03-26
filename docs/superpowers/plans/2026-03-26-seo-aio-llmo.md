@@ -1,6 +1,6 @@
 # SEO / AIO / LLMO 技術対策 Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Astro SSG + Cloudflare Pages で構築された KCP コーポレートサイトに SEO / AIO / LLMO の技術的対策を網羅実装する。
 
@@ -45,7 +45,7 @@
 - Modify: `public/robots.txt`
 - Create: `public/llms.txt`
 
-- [ ] **Step 1: robots.txt を AI クローラー明示 Allow に更新**
+- [x] **Step 1: robots.txt を AI クローラー明示 Allow に更新**
 
 `public/robots.txt` の内容を以下に置き換える:
 
@@ -74,7 +74,7 @@ Allow: /
 Sitemap: https://kcp.co.jp/sitemap-index.xml
 ```
 
-- [ ] **Step 2: llms.txt を新規作成**
+- [x] **Step 2: llms.txt を新規作成**
 
 `public/llms.txt` を作成:
 
@@ -106,7 +106,7 @@ Sitemap: https://kcp.co.jp/sitemap-index.xml
 - [全記事テキスト](https://kcp.co.jp/llms-full.txt)
 ```
 
-- [ ] **Step 3: コミット**
+- [x] **Step 3: コミット**
 
 ```bash
 git add public/robots.txt public/llms.txt
@@ -121,7 +121,7 @@ git commit -m "feat: add AI crawler permissions and llms.txt"
 - Create: `src/utils/schema.ts`
 - Create: `src/utils/schema.test.ts`
 
-- [ ] **Step 1: テストを先に書く**
+- [x] **Step 1: テストを先に書く**
 
 `src/utils/schema.test.ts`:
 
@@ -255,7 +255,7 @@ describe('getAuthorSlug', () => {
 });
 ```
 
-- [ ] **Step 2: テストが失敗することを確認**
+- [x] **Step 2: テストが失敗することを確認**
 
 ```bash
 npx vitest run src/utils/schema.test.ts
@@ -263,7 +263,7 @@ npx vitest run src/utils/schema.test.ts
 
 期待: FAIL（`./schema` が存在しないため）
 
-- [ ] **Step 3: schema.ts を実装**
+- [x] **Step 3: schema.ts を実装**
 
 `src/utils/schema.ts`:
 
@@ -395,7 +395,7 @@ export function getAuthorSlug(authorName: string): string {
 }
 ```
 
-- [ ] **Step 4: テストが通ることを確認**
+- [x] **Step 4: テストが通ることを確認**
 
 ```bash
 npx vitest run src/utils/schema.test.ts
@@ -403,7 +403,7 @@ npx vitest run src/utils/schema.test.ts
 
 期待: PASS（全テスト）
 
-- [ ] **Step 5: コミット**
+- [x] **Step 5: コミット**
 
 ```bash
 git add src/utils/schema.ts src/utils/schema.test.ts
@@ -418,7 +418,7 @@ git commit -m "feat: add JSON-LD schema builder utilities"
 - Create: `src/utils/llms.ts`
 - Create: `src/utils/llms.test.ts`
 
-- [ ] **Step 1: テストを先に書く**
+- [x] **Step 1: テストを先に書く**
 
 `src/utils/llms.test.ts`:
 
@@ -475,7 +475,7 @@ describe('generateLlmsFullContent', () => {
 });
 ```
 
-- [ ] **Step 2: テストが失敗することを確認**
+- [x] **Step 2: テストが失敗することを確認**
 
 ```bash
 npx vitest run src/utils/llms.test.ts
@@ -483,7 +483,7 @@ npx vitest run src/utils/llms.test.ts
 
 期待: FAIL（`./llms` が存在しないため）
 
-- [ ] **Step 3: llms.ts を実装**
+- [x] **Step 3: llms.ts を実装**
 
 `src/utils/llms.ts`:
 
@@ -527,7 +527,7 @@ export function generateLlmsFullContent(posts: LlmsPost[]): string {
 }
 ```
 
-- [ ] **Step 4: テストが通ることを確認**
+- [x] **Step 4: テストが通ることを確認**
 
 ```bash
 npx vitest run src/utils/llms.test.ts
@@ -535,7 +535,7 @@ npx vitest run src/utils/llms.test.ts
 
 期待: PASS（全テスト）
 
-- [ ] **Step 5: 全テストが通ることを確認**
+- [x] **Step 5: 全テストが通ることを確認**
 
 ```bash
 npm run test
@@ -543,7 +543,7 @@ npm run test
 
 期待: PASS（全テスト）
 
-- [ ] **Step 6: コミット**
+- [x] **Step 6: コミット**
 
 ```bash
 git add src/utils/llms.ts src/utils/llms.test.ts
@@ -557,7 +557,7 @@ git commit -m "feat: add llms-full.txt content generator utility"
 **Files:**
 - Modify: `src/content/config.ts`
 
-- [ ] **Step 1: authors コレクション追加・blog に faq フィールド追加**
+- [x] **Step 1: authors コレクション追加・blog に faq フィールド追加**
 
 `src/content/config.ts` を以下に置き換える:
 
@@ -603,7 +603,7 @@ export const collections = {
 };
 ```
 
-- [ ] **Step 2: ビルドが通ることを確認**
+- [x] **Step 2: ビルドが通ることを確認**
 
 ```bash
 npm run build
@@ -611,7 +611,7 @@ npm run build
 
 期待: エラーなし（まだ authors コンテンツが存在しないため警告が出る可能性があるが、エラーではない）
 
-- [ ] **Step 3: コミット**
+- [x] **Step 3: コミット**
 
 ```bash
 git add src/content/config.ts
@@ -626,7 +626,7 @@ git commit -m "feat: add authors collection and faq field to blog schema"
 - Create: `src/components/seo/JsonLd.astro`
 - Create: `src/pages/llms-full.txt.ts`
 
-- [ ] **Step 1: JsonLd.astro を作成**
+- [x] **Step 1: JsonLd.astro を作成**
 
 `src/components/seo/JsonLd.astro`:
 
@@ -642,7 +642,7 @@ const { schema } = Astro.props;
 <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 ```
 
-- [ ] **Step 2: llms-full.txt.ts を作成**
+- [x] **Step 2: llms-full.txt.ts を作成**
 
 `src/pages/llms-full.txt.ts`:
 
@@ -664,7 +664,7 @@ export async function GET(): Promise<Response> {
 }
 ```
 
-- [ ] **Step 3: ビルドが通ることを確認**
+- [x] **Step 3: ビルドが通ることを確認**
 
 ```bash
 npm run build
@@ -672,13 +672,13 @@ npm run build
 
 期待: エラーなし
 
-- [ ] **Step 4: dist/llms-full.txt が生成されていることを確認**
+- [x] **Step 4: dist/llms-full.txt が生成されていることを確認**
 
 ```bash
 ls dist/llms-full.txt
 ```
 
-- [ ] **Step 5: コミット**
+- [x] **Step 5: コミット**
 
 ```bash
 git add src/components/seo/JsonLd.astro src/pages/llms-full.txt.ts
@@ -693,7 +693,7 @@ git commit -m "feat: add JsonLd component and llms-full.txt endpoint"
 - Modify: `src/layouts/BaseLayout.astro`
 - Modify: `src/layouts/PageLayout.astro`
 
-- [ ] **Step 1: BaseLayout.astro を更新**
+- [x] **Step 1: BaseLayout.astro を更新**
 
 `src/layouts/BaseLayout.astro` を以下に置き換える:
 
@@ -813,7 +813,7 @@ const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0
 </html>
 ```
 
-- [ ] **Step 2: PageLayout.astro を更新**
+- [x] **Step 2: PageLayout.astro を更新**
 
 `src/layouts/PageLayout.astro` を以下に置き換える:
 
@@ -850,7 +850,7 @@ const props = Astro.props;
 </BaseLayout>
 ```
 
-- [ ] **Step 3: ビルドが通ることを確認**
+- [x] **Step 3: ビルドが通ることを確認**
 
 ```bash
 npm run build
@@ -858,7 +858,7 @@ npm run build
 
 期待: エラーなし
 
-- [ ] **Step 4: コミット**
+- [x] **Step 4: コミット**
 
 ```bash
 git add src/layouts/BaseLayout.astro src/layouts/PageLayout.astro
@@ -873,7 +873,7 @@ git commit -m "feat: extend BaseLayout/PageLayout with article OGP and JSON-LD s
 - Modify: `src/layouts/BlogLayout.astro`
 - Modify: `src/pages/blog/[slug].astro`
 
-- [ ] **Step 1: BlogLayout.astro を更新**
+- [x] **Step 1: BlogLayout.astro を更新**
 
 `src/layouts/BlogLayout.astro` を以下に置き換える:
 
@@ -924,7 +924,7 @@ const faqSchema = faq && faq.length > 0 ? buildFaqPageSchema(faq) : null;
 
 **注意:** `{faqSchema && <JsonLd schema={faqSchema} />}` は `<body>` 内に出力されるが、`<script type="application/ld+json">` は body 内でも有効（Google は body 内の JSON-LD も認識する）。
 
-- [ ] **Step 2: [slug].astro に FAQ UI セクションを追加**
+- [x] **Step 2: [slug].astro に FAQ UI セクションを追加**
 
 `src/pages/blog/[slug].astro` の `<article>` 内、`<div class="mt-12 pt-8 ...">` の直前に以下を追加:
 
@@ -949,7 +949,7 @@ const faqSchema = faq && faq.length > 0 ? buildFaqPageSchema(faq) : null;
 )}
 ```
 
-- [ ] **Step 3: ビルドが通ることを確認**
+- [x] **Step 3: ビルドが通ることを確認**
 
 ```bash
 npm run build
@@ -957,7 +957,7 @@ npm run build
 
 期待: エラーなし
 
-- [ ] **Step 4: コミット**
+- [x] **Step 4: コミット**
 
 ```bash
 git add src/layouts/BlogLayout.astro src/pages/blog/[slug].astro
@@ -973,7 +973,7 @@ git commit -m "feat: add article OGP meta, FAQ JSON-LD, and FAQ UI to blog posts
 - Modify: `src/pages/blog/tags/index.astro`
 - Modify: `src/pages/blog/tags/[tag].astro`
 
-- [ ] **Step 1: blog/index.astro に breadcrumbs を追加**
+- [x] **Step 1: blog/index.astro に breadcrumbs を追加**
 
 `src/pages/blog/index.astro` の `<PageLayout` タグを更新:
 
@@ -988,7 +988,7 @@ git commit -m "feat: add article OGP meta, FAQ JSON-LD, and FAQ UI to blog posts
 >
 ```
 
-- [ ] **Step 2: blog/tags/index.astro に breadcrumbs を追加**
+- [x] **Step 2: blog/tags/index.astro に breadcrumbs を追加**
 
 `src/pages/blog/tags/index.astro` の `<PageLayout` タグを更新:
 
@@ -1003,7 +1003,7 @@ git commit -m "feat: add article OGP meta, FAQ JSON-LD, and FAQ UI to blog posts
 >
 ```
 
-- [ ] **Step 3: blog/tags/[tag].astro に breadcrumbs を追加**
+- [x] **Step 3: blog/tags/[tag].astro に breadcrumbs を追加**
 
 `src/pages/blog/tags/[tag].astro` の `<PageLayout` タグを更新:
 
@@ -1020,7 +1020,7 @@ git commit -m "feat: add article OGP meta, FAQ JSON-LD, and FAQ UI to blog posts
 >
 ```
 
-- [ ] **Step 4: ビルドが通ることを確認**
+- [x] **Step 4: ビルドが通ることを確認**
 
 ```bash
 npm run build
@@ -1028,7 +1028,7 @@ npm run build
 
 期待: エラーなし
 
-- [ ] **Step 5: コミット**
+- [x] **Step 5: コミット**
 
 ```bash
 git add src/pages/blog/index.astro src/pages/blog/tags/index.astro src/pages/blog/tags/[tag].astro
@@ -1043,7 +1043,7 @@ git commit -m "feat: add BreadcrumbList JSON-LD to blog and tag pages"
 - Create: `src/content/authors/nakanokentaro.md`
 - Create: `src/pages/author/[slug].astro`
 
-- [ ] **Step 1: 著者データファイルを作成**
+- [x] **Step 1: 著者データファイルを作成**
 
 `src/content/authors/nakanokentaro.md`:
 
@@ -1059,7 +1059,7 @@ github: ""
 
 （avatar は後で実際の写真が用意できたら `./nakanokentaro.jpg` を同ディレクトリに配置して frontmatter に追加）
 
-- [ ] **Step 2: author/[slug].astro を作成**
+- [x] **Step 2: author/[slug].astro を作成**
 
 `src/pages/author/[slug].astro`:
 
@@ -1182,7 +1182,7 @@ const breadcrumbSchema = buildBreadcrumbSchema(breadcrumbs);
 </PageLayout>
 ```
 
-- [ ] **Step 3: ビルドが通ることを確認**
+- [x] **Step 3: ビルドが通ることを確認**
 
 ```bash
 npm run build
@@ -1190,7 +1190,7 @@ npm run build
 
 期待: エラーなし。`dist/author/nakanokentaro/index.html` が生成される。
 
-- [ ] **Step 4: コミット**
+- [x] **Step 4: コミット**
 
 ```bash
 git add src/content/authors/nakanokentaro.md src/pages/author/[slug].astro
@@ -1205,7 +1205,7 @@ git commit -m "feat: add author profile page at /author/[slug]/"
 - Modify: `src/components/sections/MVV.astro`
 - Modify: `src/components/layout/Header.astro`
 
-- [ ] **Step 1: MVV.astro のセクション id を変更**
+- [x] **Step 1: MVV.astro のセクション id を変更**
 
 `src/components/sections/MVV.astro` の `<section id="mvv"` を `<section id="about"` に変更:
 
@@ -1213,7 +1213,7 @@ git commit -m "feat: add author profile page at /author/[slug]/"
 <section id="about" class="py-section" style="background-color: #0a0a0a;">
 ```
 
-- [ ] **Step 2: Header.astro のナビリンクを変更**
+- [x] **Step 2: Header.astro のナビリンクを変更**
 
 `src/components/layout/Header.astro` の `navLinks` 配列を更新:
 
@@ -1228,7 +1228,7 @@ const navLinks = [
 ];
 ```
 
-- [ ] **Step 3: ビルドが通ることを確認**
+- [x] **Step 3: ビルドが通ることを確認**
 
 ```bash
 npm run build
@@ -1236,7 +1236,7 @@ npm run build
 
 期待: エラーなし
 
-- [ ] **Step 4: コミット**
+- [x] **Step 4: コミット**
 
 ```bash
 git add src/components/sections/MVV.astro src/components/layout/Header.astro
@@ -1250,7 +1250,7 @@ git commit -m "feat: rename MVV section anchor to #about for E-E-A-T"
 **Files:**
 - Modify: `CLAUDE.md`
 
-- [ ] **Step 1: 画像最適化規約を Key Patterns セクションに追記**
+- [x] **Step 1: 画像最適化規約を Key Patterns セクションに追記**
 
 `CLAUDE.md` の `## Key Patterns` セクションに以下を追加:
 
@@ -1258,7 +1258,7 @@ git commit -m "feat: rename MVV section anchor to #about for E-E-A-T"
 **画像最適化:** Astroコンポーネント内では `<img>` タグを直接使わず、必ず `<Image>` (`astro:assets`) を使用する。`alt` 属性は必須（空文字不可）。ファーストビュー画像には `loading="eager" fetchpriority="high"` を指定。Markdownブログ記事内のローカル画像（`./image.png` 形式の相対パス）は Astro が自動的に WebP 変換・srcset 生成する（追加設定不要）。
 ```
 
-- [ ] **Step 2: コミット**
+- [x] **Step 2: コミット**
 
 ```bash
 git add CLAUDE.md
@@ -1269,7 +1269,7 @@ git commit -m "docs: add image optimization conventions to CLAUDE.md"
 
 ## 最終確認
 
-- [ ] **全テストが通ることを確認**
+- [x] **全テストが通ることを確認**
 
 ```bash
 npm run test
@@ -1277,7 +1277,7 @@ npm run test
 
 期待: PASS（全テスト）
 
-- [ ] **本番ビルドが通ることを確認**
+- [x] **本番ビルドが通ることを確認**
 
 ```bash
 npm run build
@@ -1285,7 +1285,7 @@ npm run build
 
 期待: エラーなし
 
-- [ ] **生成物の確認**
+- [x] **生成物の確認**
 
 ```bash
 ls dist/llms-full.txt dist/llms.txt dist/robots.txt dist/author/nakanokentaro/index.html
