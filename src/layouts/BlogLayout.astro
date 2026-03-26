@@ -1,5 +1,7 @@
 ---
 import PageLayout from './PageLayout.astro';
+import JsonLd from '@/components/seo/JsonLd.astro';
+import { buildFaqPageSchema, getAuthorSlug } from '@/utils/schema';
 import type { CollectionEntry } from 'astro:content';
 import '@/styles/prose.css';
 
@@ -8,10 +10,33 @@ export interface Props {
 }
 
 const { post } = Astro.props;
-const { title, description, ogImage } = post.data;
+const { title, description, ogImage, pubDate, author, tags, faq } = post.data;
 const ogImageUrl = ogImage ?? '/og-default.svg';
+
+const site = Astro.site!.toString().replace(/\/$/, '');
+const authorSlug = getAuthorSlug(author);
+const authorUrl = `${site}/author/${authorSlug}/`;
+
+const breadcrumbs = [
+  { name: 'ホーム', url: `${site}/` },
+  { name: 'ブログ', url: `${site}/blog/` },
+  { name: title, url: `${site}/blog/${post.slug}/` },
+];
+
+const faqSchema = faq && faq.length > 0 ? buildFaqPageSchema(faq) : null;
 ---
 
-<PageLayout title={title} description={description} ogImage={ogImageUrl}>
+<PageLayout
+  title={title}
+  description={description}
+  ogImage={ogImageUrl}
+  type="article"
+  publishedTime={pubDate}
+  author={author}
+  authorUrl={authorUrl}
+  tags={tags}
+  breadcrumbs={breadcrumbs}
+>
+  {faqSchema && <JsonLd schema={faqSchema} />}
   <slot />
 </PageLayout>

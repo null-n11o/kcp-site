@@ -18,7 +18,16 @@ export async function getStaticPaths() {
 const { tag, posts } = Astro.props;
 ---
 
-<PageLayout title={`${tag} の記事`} description={`${tag} タグが付いた記事一覧`}>
+<PageLayout
+  title={`${tag} の記事`}
+  description={`${tag} タグが付いた記事一覧`}
+  breadcrumbs={[
+    { name: 'ホーム', url: 'https://kcp.co.jp/' },
+    { name: 'ブログ', url: 'https://kcp.co.jp/blog/' },
+    { name: 'タグ一覧', url: 'https://kcp.co.jp/blog/tags/' },
+    { name: tag, url: `https://kcp.co.jp/blog/tags/${tag}/` },
+  ]}
+>
   <div class="section-wrapper pt-24 pb-16">
     <div class="flex items-center gap-3 mb-10">
       <a href="/blog/tags/" class="text-text-muted hover:text-text-secondary transition-colors text-sm">タグ一覧</a>

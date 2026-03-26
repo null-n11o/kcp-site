@@ -32,6 +32,8 @@ npx vitest run src/utils/blog.test.ts
 
 **ブログ記事の draft 管理:** フロントマターの `draft: true` で非公開管理。`getSortedPosts()` がビルド時にフィルタリングする。
 
+**画像最適化:** Astroコンポーネント内では `<img>` タグを直接使わず、必ず `<Image>` (`astro:assets`) を使用する。`alt` 属性は必須（空文字不可）。ファーストビュー画像には `loading="eager" fetchpriority="high"` を指定。Markdownブログ記事内のローカル画像（`./image.png` 形式の相対パス）は Astro が自動的に WebP 変換・srcset 生成する（追加設定不要）。
+
 **スクロールアニメーション:** `FadeIn.astro` の `<script>` ブロックに Intersection Observer をインライン実装。外部 JS バンドルなし。
 
 **モバイルメニュー:** `Header.astro` の `<script>` ブロックにインライン実装。外部 JS ファイルなし。

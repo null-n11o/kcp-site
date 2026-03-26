@@ -8,7 +8,14 @@ const posts = getSortedPosts(allPosts);
 const tags = getAllTags(posts);
 ---
 
-<PageLayout title="タグ一覧">
+<PageLayout
+  title="タグ一覧"
+  breadcrumbs={[
+    { name: 'ホーム', url: 'https://kcp.co.jp/' },
+    { name: 'ブログ', url: 'https://kcp.co.jp/blog/' },
+    { name: 'タグ一覧', url: 'https://kcp.co.jp/blog/tags/' },
+  ]}
+>
   <div class="section-wrapper pt-24 pb-16">
     <h1 class="text-4xl font-bold text-text-primary mb-10">タグ一覧</h1>
     <div class="flex flex-wrap gap-3">

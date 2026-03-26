@@ -13,6 +13,10 @@ const tags = getAllTags(posts);
 <PageLayout
   title="ブログ"
   description="AI活用・業務効率化・デジタルトランスフォーメーションに関する記事を発信しています。"
+  breadcrumbs={[
+    { name: 'ホーム', url: 'https://kcp.co.jp/' },
+    { name: 'ブログ', url: 'https://kcp.co.jp/blog/' },
+  ]}
 >
   <div class="section-wrapper pt-24 pb-16">
     <h1 class="text-4xl font-bold text-text-primary mb-4">Blog</h1>
