@@ -75,7 +75,16 @@ Sitemap: https://kcp.co.jp/sitemap-index.xml
 - [全記事テキスト](https://kcp.co.jp/llms-full.txt)
 ```
 
-**llms-full.txt** (`src/pages/llms-full.txt.ts`) — Astroエンドポイント。ビルド時に全ブログ記事（draft除外）のタイトル・URL・本文テキストを連結して自動生成。記事追加時に自動更新される。
+**llms-full.txt** (`src/pages/llms-full.txt.ts`) — Astro**静的エンドポイント**（`output: 'static'` に対応した `GET()` 関数）。ビルド時に全ブログ記事（draft除外）のタイトル・URL・descriptionを連結して静的ファイルとして生成。記事追加時に自動更新される。
+
+```typescript
+export async function GET() {
+  // getCollection('blog') で記事一覧を取得し text/plain で返す
+  return new Response(content, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+}
+```
+
+**メンテナンス注意:** `llms.txt`（静的ファイル）に著者ページURLを手書きしているため、著者を追加した際は `llms.txt` も合わせて更新すること。
 
 ### 2.3 JSON-LD 構造化データ
 
@@ -146,7 +155,7 @@ tags?: string[];
 <link rel="author" href="https://kcp.co.jp/author/nakanokentaro/" />
 ```
 
-`BlogLayout.astro` から `post.data` の各フィールドを展開してBaseLayoutに渡す。
+**レイアウト委譲チェーン:** `BlogLayout` → `PageLayout` → `BaseLayout` の順に委譲している。OGP Props の展開は `BlogLayout.astro` で行い、`PageLayout` を経由して `BaseLayout` に渡す。`BlogLayout` が直接 `BaseLayout` を呼ぶ構造にはしない（Header/Footerが消えるため）。
 
 ### 2.5 著者ページ（/author/[slug]/）
 
@@ -165,7 +174,27 @@ github: ""
 ---
 ```
 
-`src/content/config.ts` に authorsコレクションのZodスキーマを追加。avatarは`image()`ヘルパーを使用（Astroの画像最適化対象）。
+`src/content/config.ts` に authorsコレクションのZodスキーマを追加:
+
+```typescript
+import { defineCollection, z, reference, image } from 'astro:content';
+
+const authors = defineCollection({
+  type: 'content',
+  schema: ({ image }) => z.object({
+    name: z.string(),
+    role: z.string(),
+    bio: z.string(),
+    avatar: image().optional(),
+    twitter: z.string().url().optional().or(z.literal('')),
+    github: z.string().url().optional().or(z.literal('')),
+  }),
+});
+```
+
+`image()` はAstroの画像最適化対象（`<Image>` コンポーネントで使用可）。avatarが未設定の場合はプレースホルダーSVGを表示する。
+
+**著者ページのcanonical:** `<link rel="canonical">` はBaseLayoutが `Astro.url.pathname` から自動生成するため、著者ページに特別な対応は不要。
 
 **`src/pages/author/[slug].astro`** のページ構成:
 - 著者写真（`<Image>` コンポーネント、`loading="eager"`）
@@ -176,7 +205,7 @@ github: ""
 
 ### 2.6 MVV セクションのアンカー変更
 
-E-E-A-T観点から `/about/` の代替として `#about` アンカーをトップページに設置。
+E-E-A-T観点から `/about/` の代替として `#about` アンカーをトップページに設置する。`/about/` という独立ページを作らずとも、`https://kcp.co.jp/#about` というURLを検索エンジンに示すことで「会社概要コンテンツの所在」をセマンティックに伝えられる。
 
 変更箇所:
 1. `src/components/sections/MVV.astro` — セクションの `id` を `mvv` → `about` に変更
@@ -204,11 +233,37 @@ faq:
 **`src/pages/blog/[slug].astro`** での処理:
 - `post.data.faq` が存在する場合のみFAQセクションをレンダリング
 - FAQPage JSON-LDをページに追加
-- FAQの表示スタイル: `<details>/<summary>` による折りたたみUIまたは通常展開表示
+- FAQの表示スタイル: `<details>/<summary>` による折りたたみUI
+
+**FAQPage JSON-LD 完全例:**
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "AIエージェントとは何ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AIエージェントとは、AIが自律的にタスクを実行するシステムです。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "導入コストはどれくらいですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ご要望に応じてご提案します。まずはお問い合わせください。"
+      }
+    }
+  ]
+}
+```
 
 ### 2.8 画像最適化規約
 
-**Markdownブログ記事内のローカル画像**: Astro 4.x のContent Collectionsでは `![alt](./image.png)` と記述するだけで自動的にWebP変換・srcset生成が行われる。追加設定不要。
+**Markdownブログ記事内のローカル画像**: Astro 3.3以降（4.x含む）のContent Collectionsでは、`src/content/blog/` 配下に画像を置き `![alt](./image.png)` と相対パスで参照するだけで自動的にWebP変換・srcset生成が行われる。`experimental` フラグや追加設定は不要。外部URL（`https://...`）画像は最適化対象外。
 
 **Astroコンポーネント内の画像規約**（CLAUDE.mdに追記）:
 - `<img>` タグを直接使わず、必ず `<Image>` (`astro:assets`) を使用
