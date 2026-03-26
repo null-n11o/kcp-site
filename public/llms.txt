@@ -1,0 +1,25 @@
+# 株式会社KCP
+
+> AI時代のBPO企業。AIエージェントを活用した業務代行（BPO）・SNS運用代行・Web開発・AI活用研修・メディア運営を提供する。
+
+## 会社情報
+- 会社名: 株式会社KCP
+- 代表者: 中野 健太朗
+- 設立: 2026年4月（予定）
+- 所在地: 東京都世田谷区
+
+## サービス
+- SNS運用代行（AI自動化活用）
+- Web・アプリ受託開発
+- AI活用研修（企業向け）
+- メディア運営（AI・業務効率化ブログ）
+
+## サイト構成
+- [トップページ](https://kcp.co.jp/): 会社概要・サービス紹介・MVV
+- [ブログ](https://kcp.co.jp/blog/): AI活用・業務効率化に関する記事
+- [著者プロフィール](https://kcp.co.jp/author/nakanokentaro/): 中野 健太朗のプロフィール
+- [RSS](https://kcp.co.jp/rss.xml): 記事フィード
+- [サイトマップ](https://kcp.co.jp/sitemap-index.xml)
+
+## Optional
+- [全記事テキスト](https://kcp.co.jp/llms-full.txt)
