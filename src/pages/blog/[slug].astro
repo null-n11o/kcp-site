@@ -26,6 +26,24 @@ const { Content, headings } = await post.render();
         <div class="prose prose-lg max-w-none">
           <Content />
         </div>
+        {post.data.faq && post.data.faq.length > 0 && (
+          <div class="mt-12 pt-8 border-t border-border">
+            <h2 class="text-xl font-bold text-text-primary mb-6">よくある質問</h2>
+            <div class="space-y-4">
+              {post.data.faq.map(item => (
+                <details class="group border border-border rounded-xl bg-base-100 overflow-hidden">
+                  <summary class="flex items-center justify-between px-6 py-4 cursor-pointer text-text-primary font-medium hover:text-accent transition-colors list-none">
+                    <span>{item.question}</span>
+                    <span class="text-accent text-lg group-open:rotate-45 transition-transform">+</span>
+                  </summary>
+                  <div class="px-6 pb-4 text-text-secondary leading-relaxed">
+                    {item.answer}
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        )}
         <div class="mt-12 pt-8 border-t border-border">
           <Button href="/blog/" variant="ghost">← ブログ一覧へ戻る</Button>
         </div>
