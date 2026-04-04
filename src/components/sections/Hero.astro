@@ -1,5 +1,29 @@
 ---
 import Button from '@/components/ui/Button.astro';
+
+export interface Props {
+  eyebrow: string;
+  headlinePre: string;
+  headlineAccent: string;
+  headlinePost: string;
+  subtext: string;
+  primaryCta: string;
+  secondaryCta: string;
+  contactHref?: string;
+  serviceHref?: string;
+}
+
+const {
+  eyebrow,
+  headlinePre,
+  headlineAccent,
+  headlinePost,
+  subtext,
+  primaryCta,
+  secondaryCta,
+  contactHref = '#contact',
+  serviceHref = '#service',
+} = Astro.props;
 ---
 
 <section
@@ -17,29 +41,32 @@ import Button from '@/components/ui/Button.astro';
     <!-- Eyebrow label -->
     <div class="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-accent/30 bg-accent/10">
       <span class="h-1.5 w-1.5 rounded-full bg-accent animate-pulse"></span>
-      <span class="text-xs font-medium text-accent tracking-widest uppercase">株式会社KCP</span>
+      <span class="text-xs font-medium text-accent tracking-widest uppercase">{eyebrow}</span>
     </div>
 
     <!-- Headline -->
     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-text-primary mb-6">
-      AI時代に必要な業務を引き受け、<br class="hidden sm:block" />
-      <span class="text-accent">お客様が本業に集中できる</span><br class="hidden sm:block" />
-      環境を提供する。
+      {headlinePre && (
+        <span>{headlinePre}<br class="hidden sm:block" /></span>
+      )}
+      <span class="text-accent">{headlineAccent}</span>
+      {headlinePost && (
+        <><br class="hidden sm:block" />{headlinePost}</>
+      )}
     </h1>
 
     <!-- Subtext -->
     <p class="text-text-secondary text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-      BPO・AI研修・SNS運用代行・開発ディレクション・メディア運営を通じて、
-      企業の生産性向上を支援します。
+      {subtext}
     </p>
 
     <!-- CTAs -->
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <Button href="#contact" variant="primary">
-        お問い合わせ
+      <Button href={contactHref} variant="primary">
+        {primaryCta}
       </Button>
-      <Button href="#service" variant="outline">
-        サービスを見る
+      <Button href={serviceHref} variant="outline">
+        {secondaryCta}
       </Button>
     </div>
   </div>

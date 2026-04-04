@@ -1,0 +1,29 @@
+---
+export interface Props {
+  locale: 'ja' | 'en';
+  label: string;
+}
+
+const { locale, label } = Astro.props;
+
+// Compute the alternate locale URL from the current path
+const currentPath = Astro.url.pathname;
+
+let alternatePath: string;
+if (locale === 'ja') {
+  // Currently on Japanese page → link to English version
+  alternatePath = '/en' + (currentPath === '/' ? '/' : currentPath);
+} else {
+  // Currently on English page → link to Japanese version
+  alternatePath = currentPath.replace(/^\/en/, '') || '/';
+}
+---
+
+<a
+  href={alternatePath}
+  class="flex items-center gap-1.5 text-sm font-medium text-text-secondary hover:text-text-primary transition-colors px-2 py-1 rounded border border-border/50 hover:border-accent/50"
+  aria-label={`Switch to ${locale === 'ja' ? 'English' : '日本語'}`}
+>
+  <span class="text-xs">🌐</span>
+  <span>{label}</span>
+</a>

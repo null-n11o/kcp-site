@@ -1,9 +1,17 @@
 ---
+import type { Translations } from '@/i18n/types';
+
+export interface Props {
+  locale: 'ja' | 'en';
+  t: Translations;
+}
+
+const { t } = Astro.props;
 const year = new Date().getFullYear();
 ---
 
 <footer class="border-t border-border/50 py-8">
   <div class="section-wrapper text-center text-sm text-text-muted">
-    © {year} 株式会社KCP. All Rights Reserved.
+    © {year} {t.footer.companyName}. {t.footer.rights}
   </div>
 </footer>

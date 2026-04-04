@@ -1,42 +1,28 @@
 ---
 import SectionHeading from '@/components/ui/SectionHeading.astro';
 import FadeIn from '@/components/ui/FadeIn.astro';
+import type { ServiceItem } from '@/i18n/types';
 
-const services = [
-  {
-    icon: '📱',
-    title: 'SNS運用代行',
-    description: 'AI自動投稿・分析を活用した効率的なSNS運用で、ブランドの存在感を高めます。',
-  },
-  {
-    icon: '💻',
-    title: 'Web・アプリ開発',
-    description: 'Webサイト・アプリ開発を行います。PM・ディレクション代行のみの対応も可能です。',
-  },
-  {
-    icon: '🤖',
-    title: 'AI活用研修',
-    description: '企業向けAIツール導入・活用支援。現場に合ったAI活用で業務効率を向上します。',
-  },
-  {
-    icon: '📝',
-    title: 'メディア運営',
-    description: '業務効率化のためのAI・デジタルツール活用などについてのブログを運営しています。',
-  },
-];
+export interface Props {
+  heading: string;
+  subtitle: string;
+  items: ServiceItem[];
+}
+
+const { heading, subtitle, items } = Astro.props;
 ---
 
 <section id="service" class="py-section" style="background-color: #0f0f0f;">
   <div class="section-wrapper">
     <FadeIn>
       <SectionHeading
-        title="Service"
-        subtitle="AIの力を活かした業務代行で、お客様のコアビジネスに集中できる環境を作ります。"
+        title={heading}
+        subtitle={subtitle}
       />
     </FadeIn>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      {services.map((service, i) => (
+      {items.map((service, i) => (
         <FadeIn delay={i * 100}>
           <div class="flex flex-col gap-4 p-6 rounded-xl border border-border bg-base-100 hover:border-accent/50 transition-colors duration-300 h-full">
             <div class="text-4xl">{service.icon}</div>

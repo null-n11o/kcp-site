@@ -10,6 +10,14 @@ export default defineConfig({
   site: 'https://kcp.co.jp',
   output: "hybrid",
 
+  i18n: {
+    defaultLocale: 'ja',
+    locales: ['ja', 'en'],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
+
   integrations: [
     tailwind({ applyBaseStyles: false }),
     sitemap(),
