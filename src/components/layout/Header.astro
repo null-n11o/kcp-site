@@ -1,11 +1,23 @@
 ---
+import LangSwitch from './LangSwitch.astro';
+import type { Translations } from '@/i18n/types';
+
+export interface Props {
+  locale: 'ja' | 'en';
+  t: Translations;
+}
+
+const { locale, t } = Astro.props;
+
+const base = locale === 'en' ? '/en' : '';
+
 const navLinks = [
-  { href: '/#service', label: 'Service' },
-  { href: '/#about', label: 'About' },
-  { href: '/#strength', label: 'Strength' },
-  { href: '/blog/', label: 'Blog' },
-  { href: '/#company', label: 'Company' },
-  { href: '/#contact', label: 'Contact' },
+  { href: `${base}/#service`, label: t.nav.service },
+  { href: `${base}/#about`, label: t.nav.about },
+  { href: `${base}/#strength`, label: t.nav.strength },
+  { href: `${base}/blog/`, label: t.nav.blog },
+  { href: `${base}/#company`, label: t.nav.company },
+  { href: `${base}/#contact`, label: t.nav.contact },
 ];
 ---
 
@@ -16,12 +28,12 @@ const navLinks = [
   <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
       <!-- Logo -->
-      <a href="/" class="text-xl font-bold tracking-widest text-accent hover:text-accent-light transition-colors">
+      <a href={base + '/'} class="text-xl font-bold tracking-widest text-accent hover:text-accent-light transition-colors">
         KCP
       </a>
 
       <!-- Desktop nav -->
-      <nav class="hidden md:flex items-center gap-8" aria-label="メインナビゲーション">
+      <nav class="hidden md:flex items-center gap-8" aria-label={locale === 'ja' ? 'メインナビゲーション' : 'Main navigation'}>
         {navLinks.map(link => (
           <a
             href={link.href}
@@ -30,13 +42,14 @@ const navLinks = [
             {link.label}
           </a>
         ))}
+        <LangSwitch locale={locale} label={t.langSwitch.label} />
       </nav>
 
       <!-- Mobile menu button -->
       <button
         id="mobile-menu-button"
         class="md:hidden p-2 text-text-secondary hover:text-text-primary transition-colors"
-        aria-label="メニューを開く"
+        aria-label={locale === 'ja' ? 'メニューを開く' : 'Open menu'}
         aria-expanded="false"
       >
         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -53,12 +66,12 @@ const navLinks = [
   class="fixed inset-0 z-40 hidden flex-col items-center justify-center gap-8 bg-base"
   role="dialog"
   aria-modal="true"
-  aria-label="モバイルナビゲーション"
+  aria-label={locale === 'ja' ? 'モバイルナビゲーション' : 'Mobile navigation'}
 >
   <button
     id="mobile-menu-close"
     class="absolute top-4 right-4 p-2 text-text-secondary hover:text-text-primary transition-colors"
-    aria-label="メニューを閉じる"
+    aria-label={locale === 'ja' ? 'メニューを閉じる' : 'Close menu'}
   >
     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -73,6 +86,7 @@ const navLinks = [
         {link.label}
       </a>
     ))}
+    <LangSwitch locale={locale} label={t.langSwitch.label} />
   </nav>
 </div>
 

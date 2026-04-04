@@ -1,37 +1,28 @@
 ---
 import SectionHeading from '@/components/ui/SectionHeading.astro';
 import FadeIn from '@/components/ui/FadeIn.astro';
+import type { StrengthItem } from '@/i18n/types';
 
-const strengths = [
-  {
-    number: '01',
-    title: 'AIエージェント活用',
-    description: 'Claude Code等を駆使した高効率・低コストの業務代行。AIの力を最大限に活かして、従来の何倍もの速度で高品質な成果を提供します。',
-  },
-  {
-    number: '02',
-    title: '技術とビジネスの橋渡し',
-    description: '非技術者出身ならではのAI活用や技術の活用術、わかりやすい説明が可能です。難しい技術も、現場で使える言葉でお伝えします。',
-  },
-  {
-    number: '03',
-    title: '英語対応・海外知見',
-    description: '海外のコネクションを活かし、翻訳や海外マーケティング支援の対応も可能です。グローバル視点でビジネスをサポートします。',
-  },
-];
+export interface Props {
+  heading: string;
+  subtitle: string;
+  items: StrengthItem[];
+}
+
+const { heading, subtitle, items } = Astro.props;
 ---
 
 <section id="strength" class="py-section" style="background-color: #0f0f0f;">
   <div class="section-wrapper">
     <FadeIn>
       <SectionHeading
-        title="Strength"
-        subtitle="KCPが選ばれる3つの理由"
+        title={heading}
+        subtitle={subtitle}
       />
     </FadeIn>
 
     <div class="flex flex-col gap-8">
-      {strengths.map((item, i) => (
+      {items.map((item, i) => (
         <FadeIn delay={i * 100}>
           <div class="flex gap-6 p-6 rounded-xl border border-border bg-base-100 hover:border-accent/30 transition-colors duration-300">
             <span class="text-4xl font-bold text-accent/30 font-mono shrink-0 leading-none mt-1">{item.number}</span>

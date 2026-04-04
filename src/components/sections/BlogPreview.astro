@@ -1,33 +1,40 @@
 ---
-import { getCollection } from 'astro:content';
 import SectionHeading from '@/components/ui/SectionHeading.astro';
 import PostCard from '@/components/blog/PostCard.astro';
 import Button from '@/components/ui/Button.astro';
 import FadeIn from '@/components/ui/FadeIn.astro';
-import { getSortedPosts } from '@/utils/blog';
+import type { CollectionEntry } from 'astro:content';
 
-const allPosts = await getCollection('blog');
-const featuredPosts = getSortedPosts(allPosts).slice(0, 3);
+export interface Props {
+  posts: (CollectionEntry<'blog'> | CollectionEntry<'blog_en'>)[];
+  heading: string;
+  subtitle: string;
+  viewAllLabel: string;
+  blogHref: string;
+  locale?: 'ja' | 'en';
+}
+
+const { posts, heading, subtitle, viewAllLabel, blogHref, locale = 'ja' } = Astro.props;
 ---
 
-{featuredPosts.length > 0 && (
+{posts.length > 0 && (
   <section id="blog" class="py-section" style="background-color: #0a0a0a;">
     <div class="section-wrapper">
       <FadeIn>
-        <SectionHeading title="Blog" subtitle="AI活用・業務効率化に関する最新記事" />
+        <SectionHeading title={heading} subtitle={subtitle} />
       </FadeIn>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
-        {featuredPosts.map((post, i) => (
+        {posts.map((post, i) => (
           <FadeIn delay={i * 100}>
-            <PostCard post={post} />
+            <PostCard post={post} locale={locale} />
           </FadeIn>
         ))}
       </div>
 
       <FadeIn delay={200}>
         <div class="text-center">
-          <Button href="/blog/" variant="outline">記事一覧を見る</Button>
+          <Button href={blogHref} variant="outline">{viewAllLabel}</Button>
         </div>
       </FadeIn>
     </div>

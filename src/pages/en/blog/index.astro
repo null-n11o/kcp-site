@@ -1,0 +1,40 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '@/layouts/PageLayout.astro';
+import PostCard from '@/components/blog/PostCard.astro';
+import { getSortedPosts } from '@/utils/blog';
+import { useTranslations } from '@/i18n/index';
+
+const t = useTranslations('en');
+
+const allPosts = await getCollection('blog_en');
+const posts = getSortedPosts(allPosts);
+---
+
+<PageLayout
+  title={t.blog.pageTitle}
+  description={t.blog.pageDescription}
+  breadcrumbs={[
+    { name: t.breadcrumb.home, url: 'https://kcp.co.jp/en/' },
+    { name: t.breadcrumb.blog, url: 'https://kcp.co.jp/en/blog/' },
+  ]}
+  alternates={[
+    { hreflang: 'ja', url: 'https://kcp.co.jp/blog/' },
+    { hreflang: 'en', url: 'https://kcp.co.jp/en/blog/' },
+  ]}
+>
+  <div class="section-wrapper pt-24 pb-16">
+    <h1 class="text-4xl font-bold text-text-primary mb-4">Blog</h1>
+    <p class="text-text-secondary mb-10">{t.blog.pageSubtitle}</p>
+
+    {posts.length === 0 ? (
+      <p class="text-text-muted text-center py-16">{t.blog.noPostsMessage}</p>
+    ) : (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {posts.map(post => (
+          <PostCard post={post} locale="en" />
+        ))}
+      </div>
+    )}
+  </div>
+</PageLayout>

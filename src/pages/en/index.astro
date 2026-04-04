@@ -11,14 +11,15 @@ import Contact from '@/components/sections/Contact.astro';
 import { useTranslations } from '@/i18n/index';
 import { getSortedPosts } from '@/utils/blog';
 
-const t = useTranslations('ja');
+const t = useTranslations('en');
 
-const allPosts = await getCollection('blog');
+const allPosts = await getCollection('blog_en');
 const featuredPosts = getSortedPosts(allPosts).slice(0, 3);
 ---
 
 <PageLayout
-  title="ホーム"
+  title="Home"
+  description="We handle the work businesses need in the AI era, so you can focus on your core business. KCP Co., Ltd. corporate site."
   alternates={[
     { hreflang: 'ja', url: 'https://kcp.co.jp/' },
     { hreflang: 'en', url: 'https://kcp.co.jp/en/' },
@@ -33,6 +34,8 @@ const featuredPosts = getSortedPosts(allPosts).slice(0, 3);
     subtext={t.hero.subtext}
     primaryCta={t.hero.primaryCta}
     secondaryCta={t.hero.secondaryCta}
+    contactHref="/en/#contact"
+    serviceHref="/en/#service"
   />
   <Service
     heading={t.service.heading}
@@ -57,7 +60,8 @@ const featuredPosts = getSortedPosts(allPosts).slice(0, 3);
     heading={t.blog.sectionHeading}
     subtitle={t.blog.sectionSubtitle}
     viewAllLabel={t.blog.viewAll}
-    blogHref="/blog/"
+    blogHref="/en/blog/"
+    locale="en"
   />
   <Company
     heading={t.company.heading}

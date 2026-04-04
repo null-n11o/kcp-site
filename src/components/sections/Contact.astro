@@ -2,25 +2,38 @@
 import Button from '@/components/ui/Button.astro';
 import FadeIn from '@/components/ui/FadeIn.astro';
 
-// Replace with actual Google Form URL
+export interface Props {
+  label: string;
+  heading: string;
+  subtext: string;
+  btnLabel: string;
+}
+
+const { label, heading, subtext, btnLabel } = Astro.props;
+
 const GOOGLE_FORM_URL = 'https://forms.google.com/';
+const subtextLines = subtext.split('\n');
 ---
 
 <section id="contact" class="py-section" style="background-color: #0f0f0f;">
   <div class="section-wrapper">
     <FadeIn>
       <div class="max-w-2xl mx-auto text-center">
-        <p class="text-xs font-medium text-accent tracking-widest uppercase mb-4">Contact</p>
+        <p class="text-xs font-medium text-accent tracking-widest uppercase mb-4">{label}</p>
         <h2 class="text-3xl sm:text-4xl font-bold text-text-primary mb-4">
-          お問い合わせ
+          {heading}
         </h2>
         <p class="text-text-secondary text-lg mb-10 leading-relaxed">
-          まずはお気軽にご相談ください。<br />
-          ご要望をお聞きした上で、最適なプランをご提案します。
+          {subtextLines.map((line, i) => (
+            <>
+              {line}
+              {i < subtextLines.length - 1 && <br />}
+            </>
+          ))}
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <Button href={GOOGLE_FORM_URL} variant="primary" target="_blank">
-            お問い合わせフォーム
+            {btnLabel}
             <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
             </svg>

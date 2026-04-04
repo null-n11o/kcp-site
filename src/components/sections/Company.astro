@@ -1,28 +1,28 @@
 ---
 import SectionHeading from '@/components/ui/SectionHeading.astro';
 import FadeIn from '@/components/ui/FadeIn.astro';
+import type { CompanyInfoRow } from '@/i18n/types';
 
-const companyInfo = [
-  { label: '会社名', value: '株式会社KCP' },
-  { label: '代表者', value: '中野 健太朗' },
-  { label: '設立', value: '2026年4月（予定）' },
-  { label: '所在地', value: '東京都世田谷区（バーチャルオフィス）' },
-  { label: '事業内容', value: 'BPO・AI研修・SNS運用代行・開発ディレクション・メディア運営' },
-  { label: '資本金', value: '100万円' },
-];
+export interface Props {
+  heading: string;
+  subtitle: string;
+  info: CompanyInfoRow[];
+}
+
+const { heading, subtitle, info } = Astro.props;
 ---
 
 <section id="company" class="py-section" style="background-color: #0a0a0a;">
   <div class="section-wrapper">
     <FadeIn>
-      <SectionHeading title="Company" subtitle="会社概要" />
+      <SectionHeading title={heading} subtitle={subtitle} />
     </FadeIn>
 
     <FadeIn delay={100}>
       <div class="overflow-hidden rounded-xl border border-border">
         <table class="w-full">
           <tbody>
-            {companyInfo.map((row, i) => (
+            {info.map((row, i) => (
               <tr class={i % 2 === 0 ? 'bg-base-100' : 'bg-base'}>
                 <th class="px-6 py-4 text-left text-sm font-medium text-text-secondary w-40 shrink-0 border-r border-border">
                   {row.label}

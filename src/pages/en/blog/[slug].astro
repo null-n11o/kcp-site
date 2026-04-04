@@ -1,0 +1,115 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '@/layouts/PageLayout.astro';
+import TableOfContents from '@/components/blog/TableOfContents.astro';
+import TagBadge from '@/components/blog/TagBadge.astro';
+import Button from '@/components/ui/Button.astro';
+import JsonLd from '@/components/seo/JsonLd.astro';
+import { buildFaqPageSchema, buildBreadcrumbSchema } from '@/utils/schema';
+import { formatDate } from '@/utils/date';
+import { getReadingTimeMin } from '@/utils/blog';
+import { useTranslations } from '@/i18n/index';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog_en', ({ data }) => !data.draft);
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content, headings } = await post.render();
+const { title, description, ogImage, pubDate, updatedDate, author, tags, faq } = post.data;
+const ogImageUrl = ogImage ?? '/og-default.svg';
+const readMin = getReadingTimeMin(post.body);
+
+const t = useTranslations('en');
+
+const site = Astro.site!.toString().replace(/\/$/, '');
+const breadcrumbs = [
+  { name: t.breadcrumb.home, url: `${site}/en/` },
+  { name: t.breadcrumb.blog, url: `${site}/en/blog/` },
+  { name: title, url: `${site}/en/blog/${post.slug}/` },
+];
+
+const faqSchema = faq && faq.length > 0 ? buildFaqPageSchema(faq) : null;
+const breadcrumbSchema = buildBreadcrumbSchema(breadcrumbs);
+---
+
+<PageLayout
+  title={title}
+  description={description}
+  ogImage={ogImageUrl}
+  type="article"
+  publishedTime={pubDate}
+  author={author}
+  tags={tags}
+  breadcrumbs={breadcrumbs}
+  alternates={[
+    { hreflang: 'en', url: `${site}/en/blog/${post.slug}/` },
+  ]}
+>
+  {faqSchema && <JsonLd schema={faqSchema} />}
+  <JsonLd schema={breadcrumbSchema} />
+
+  <div class="section-wrapper pt-24 pb-16">
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-12 items-start">
+      <!-- Article -->
+      <article>
+        <!-- Hero -->
+        <div class="mb-10">
+          <div class="flex flex-wrap gap-2 mb-4">
+            {tags.map(tag => <TagBadge tag={tag} href={`/en/blog/tags/${tag}/`} size="md" />)}
+          </div>
+          <h1 class="text-3xl sm:text-4xl font-bold text-text-primary leading-tight mb-6">{title}</h1>
+          <div class="flex flex-wrap items-center gap-4 text-sm text-text-muted pb-6 border-b border-border">
+            <span>{author}</span>
+            <span>·</span>
+            <time datetime={pubDate.toISOString()}>{formatDate(pubDate, 'en')}</time>
+            {updatedDate && (
+              <>
+                <span>·</span>
+                <span>Updated: <time datetime={updatedDate.toISOString()}>{formatDate(updatedDate, 'en')}</time></span>
+              </>
+            )}
+            <span>·</span>
+            <span>{readMin} min read</span>
+          </div>
+        </div>
+
+        <div class="prose prose-lg max-w-none">
+          <Content />
+        </div>
+
+        {faq && faq.length > 0 && (
+          <div class="mt-12 pt-8 border-t border-border">
+            <h2 class="text-xl font-bold text-text-primary mb-6">FAQ</h2>
+            <div class="space-y-4">
+              {faq.map(item => (
+                <details class="group border border-border rounded-xl bg-base-100 overflow-hidden">
+                  <summary class="flex items-center justify-between px-6 py-4 cursor-pointer text-text-primary font-medium hover:text-accent transition-colors list-none">
+                    <span>{item.question}</span>
+                    <span class="text-accent text-lg group-open:rotate-45 transition-transform">+</span>
+                  </summary>
+                  <div class="px-6 pb-4 text-text-secondary leading-relaxed">
+                    {item.answer}
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <div class="mt-12 pt-8 border-t border-border">
+          <Button href="/en/blog/" variant="ghost">{t.common.backToBlog}</Button>
+        </div>
+      </article>
+
+      <!-- Sidebar -->
+      <aside class="hidden lg:block">
+        <TableOfContents headings={headings} />
+      </aside>
+    </div>
+  </div>
+</PageLayout>
