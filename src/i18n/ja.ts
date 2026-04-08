@@ -18,63 +18,71 @@ export const ja: Translations = {
   },
   hero: {
     eyebrow: '株式会社KCP',
-    headlinePre: 'AI時代に必要な業務を引き受け、',
-    headlineAccent: 'お客様が本業に集中できる',
-    headlinePost: '環境を提供する。',
+    headlinePre: '様々な視点から、',
+    headlineAccent: '共に変化を起こす',
+    headlinePost: 'パートナー。',
     subtext:
-      'BPO・AI研修・SNS運用代行・開発ディレクション・メディア運営を通じて、企業の生産性向上を支援します。',
+      'SNS運用代行・CS代行・受託開発ディレクション・AI研修を通じて、人と組織が本当にやるべきことに集中できる環境をつくります。',
     primaryCta: 'お問い合わせ',
     secondaryCta: 'サービスを見る',
   },
   service: {
     heading: 'Service',
-    subtitle: 'AIの力を活かした業務代行で、お客様のコアビジネスに集中できる環境を作ります。',
+    subtitle: 'AIの力を活かした業務代行で、人と組織が本当にやるべきことに集中できる環境をつくります。',
     items: [
       {
         icon: '📱',
         title: 'SNS運用代行',
-        description: 'AI自動投稿・分析を活用した効率的なSNS運用で、ブランドの存在感を高めます。',
+        description: 'クライアントのSNSアカウントの企画・投稿・分析を一括代行します。',
       },
       {
-        icon: '💻',
-        title: 'Web・アプリ開発',
-        description:
-          'Webサイト・アプリ開発を行います。PM・ディレクション代行のみの対応も可能です。',
+        icon: '💬',
+        title: 'CS代行',
+        description: 'AIが9割・人間が1割の体制で顧客対応を代行。コストを抑えながら高品質な対応を実現します。',
+      },
+      {
+        icon: '🖥️',
+        title: '受託開発ディレクション',
+        description: '開発プロジェクトのディレクション・PM業務を代行。技術とビジネスを繋ぐ視点で進行を支援します。',
       },
       {
         icon: '🤖',
-        title: 'AI活用研修',
-        description:
-          '企業向けAIツール導入・活用支援。現場に合ったAI活用で業務効率を向上します。',
-      },
-      {
-        icon: '📝',
-        title: 'メディア運営',
-        description:
-          '業務効率化のためのAI・デジタルツール活用などについてのブログを運営しています。',
+        title: 'AI研修',
+        description: '企業向けAI活用トレーニングの設計・実施。現場に合ったAI導入で業務効率を向上します。',
       },
     ],
   },
   mvv: {
     missionLabel: 'Mission',
-    mission: 'AI時代に必要な業務を引き受け、お客様が本業に集中できる環境を提供する。',
+    mission: '人と組織が本当にやるべきことに集中できる環境をつくる。',
     visionLabel: 'Vision',
-    vision:
-      'AIエージェントを駆使した高効率・低コストの代行業で、世界市場に通用するBPO企業を築く。',
+    vision: '日本と世界、レガシーとモダンを繋ぎ、新しい価値を生む会社になる。',
     valuesLabel: 'Values',
     values: [
       {
-        title: 'シンプル・小さく・速く',
+        title: '本質は不変、実行は最新',
         description:
-          '複雑さと大きく動くのはコスト。全ての業務を一つずつシンプルに小さくとらえ、それでいて速くこなしていく。',
+          '常識・専門性・国境・時代。様々な対象を異なる視点で捉え、変わらない本質を軸に手段は常に最新かつ最善を選ぶ。',
       },
       {
-        title: '複利で積み上げる',
-        description: '一回の仕事で終わらせない。積み重ねが次の価値を生む。',
+        title: '人間には人間にしかできない仕事を',
+        description:
+          'AIに任せられることはAIに任せる。その上で人間は人間にしかない泥臭さと温かさで価値を生む。',
       },
       {
-        title: '常に進化する',
-        description: '経験に頼らず、現状の軌道を注視し、勝っているときでも新たな手を打つ。',
+        title: '全てを長期的視点で積み上げる',
+        description:
+          'スキルも事業も信頼も全ては複利で積み上がる。流行りや感情に左右されずに投資先を見極め、長期的な関係として築いていく。',
+      },
+      {
+        title: '勝っても攻めるパラノイア',
+        description:
+          '進化を止めた瞬間に衰退が始まる。良い時でも常に危機に備え、新たな機会を探り、リスクを取って攻め続ける。',
+      },
+      {
+        title: '失敗の度、強くなる反脆弱性',
+        description:
+          '一つ一つの失敗が次の挑戦の糧になる。悪い時こそ成長の機会と捉え、逆境を歓迎する。',
       },
     ],
   },
@@ -116,11 +124,13 @@ export const ja: Translations = {
     subtitle: '会社概要',
     info: [
       { label: '会社名', value: '株式会社KCP' },
+      { label: '英語名称', value: 'KCP Inc.' },
+      { label: 'ブランド名', value: 'Kinesis Cross Partners' },
       { label: '代表者', value: '中野 健太朗' },
-      { label: '設立', value: '2026年4月（予定）' },
+      { label: '設立', value: '2026年（予定）' },
       { label: '所在地', value: '東京都世田谷区（バーチャルオフィス）' },
-      { label: '事業内容', value: 'BPO・AI研修・SNS運用代行・開発ディレクション・メディア運営' },
-      { label: '資本金', value: '100万円' },
+      { label: '事業内容', value: 'SNS運用代行・CS代行・受託開発ディレクション・AI研修' },
+      { label: '資本金', value: '設立時に更新予定' },
     ],
   },
   contact: {

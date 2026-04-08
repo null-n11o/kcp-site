@@ -13,72 +13,82 @@ export const en: Translations = {
     label: '日本語',
   },
   footer: {
-    companyName: 'KCP Co., Ltd.',
+    companyName: 'KCP Inc.',
     rights: 'All Rights Reserved.',
   },
   hero: {
-    eyebrow: 'KCP Co., Ltd.',
-    headlinePre: 'We handle the work you need in the AI era,',
-    headlineAccent: 'so you can focus on your core business.',
+    eyebrow: 'KCP Inc.',
+    headlinePre: 'Your partner in driving change,',
+    headlineAccent: 'through diverse perspectives.',
     headlinePost: '',
     subtext:
-      'Through BPO, AI training, social media management, development direction, and media operations, we help companies boost productivity.',
+      'Through social media management, customer support, development direction, and AI training, we free people and organizations to focus on what truly matters.',
     primaryCta: 'Contact Us',
     secondaryCta: 'Our Services',
   },
   service: {
     heading: 'Service',
     subtitle:
-      'We leverage the power of AI to handle your operations, so you can focus on your core business.',
+      'We leverage the power of AI to handle your operations, freeing people and organizations to focus on what truly matters.',
     items: [
       {
         icon: '📱',
         title: 'Social Media Management',
         description:
-          'Efficient social media operations using AI-powered automation and analytics to grow your brand presence.',
+          'End-to-end management of your social media accounts: planning, posting, and analytics.',
       },
       {
-        icon: '💻',
-        title: 'Web & App Development',
+        icon: '💬',
+        title: 'Customer Support (CS)',
         description:
-          'Website and app development services. PM and direction-only engagements are also available.',
+          'AI-powered customer support with a 90/10 AI-to-human ratio — high quality at lower cost.',
+      },
+      {
+        icon: '🖥️',
+        title: 'Development Direction',
+        description:
+          'Project direction and PM services for development projects. We bridge technology and business to keep projects on track.',
       },
       {
         icon: '🤖',
-        title: 'AI Training & Adoption',
+        title: 'AI Training',
         description:
-          'AI tool introduction and utilization support for businesses. We improve operational efficiency with AI tailored to your workplace.',
-      },
-      {
-        icon: '📝',
-        title: 'Media Operations',
-        description:
-          'We run a blog covering AI and digital tools for business efficiency improvement.',
+          'Designing and delivering AI utilization training for businesses. Tailored to your workplace for real efficiency gains.',
       },
     ],
   },
   mvv: {
     missionLabel: 'Mission',
-    mission:
-      'We handle the work businesses need in the AI era, so our clients can focus on their core business.',
+    mission: 'We free people and organizations to focus on what truly matters.',
     visionLabel: 'Vision',
     vision:
-      'Build a BPO company that competes in the global market through highly efficient, low-cost operations powered by AI agents.',
+      'To become a company that bridges Japan and the world, legacy and modern, creating new value.',
     valuesLabel: 'Values',
     values: [
       {
-        title: 'Simple, Small, Fast',
+        title: 'Timeless Principles, Modern Execution',
         description:
-          'Complexity and large moves cost. We break every task into simple, small pieces and execute them fast.',
+          'We hold multiple lenses and anchor every decision in what never changes, always choosing the best means to act on it.',
       },
       {
-        title: 'Compound Progress',
-        description: "Don't end at one job. Each effort compounds into the next.",
+        title: 'Irreplaceably Human',
+        description:
+          'We let AI do what AI does best, then bring grit and warmth where only humans can.',
       },
       {
-        title: 'Always Evolving',
+        title: 'Everything Compounds',
         description:
-          "Don't rely on past experience. Watch the current trajectory and make new moves — even when winning.",
+          'Skills, Business, Trust. We choose where to invest wisely and build for the long term. Never one-time transactions.',
+      },
+      {
+        title: 'Paranoid In Winning',
+        description:
+          'The moment we stop evolving, decline begins. We sense danger and opportunity even in good times, take calculated risks, and never settle.',
+      },
+      {
+        title: 'Antifragile In Failure',
+        description:
+          'Every failure fuels the next challenge. We see hard times as opportunities for growth and welcome adversity.',
       },
     ],
   },
@@ -120,15 +130,17 @@ export const en: Translations = {
     heading: 'Company',
     subtitle: 'About Us',
     info: [
-      { label: 'Company', value: 'KCP Co., Ltd.' },
+      { label: 'Company (JP)', value: '株式会社KCP' },
+      { label: 'Company (EN)', value: 'KCP Inc.' },
+      { label: 'Brand', value: 'Kinesis Cross Partners' },
       { label: 'CEO', value: 'Kentaro Nakano' },
-      { label: 'Founded', value: 'April 2026 (planned)' },
+      { label: 'Founded', value: '2026 (planned)' },
       { label: 'Location', value: 'Setagaya, Tokyo (Virtual Office)' },
       {
         label: 'Business',
-        value: 'BPO, AI Training, Social Media Management, Development Direction, Media Operations',
+        value: 'Social Media Management, Customer Support, Development Direction, AI Training',
       },
-      { label: 'Capital', value: '¥1,000,000' },
+      { label: 'Capital', value: 'To be updated at founding' },
     ],
   },
   contact: {
