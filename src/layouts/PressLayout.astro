@@ -8,7 +8,7 @@ export interface Props {
 }
 
 const { release } = Astro.props;
-const { title, description, pubDate, category } = release.data;
+const { title, description, pubDate } = release.data;
 
 const site = Astro.site!.toString().replace(/\/$/, '');
 
