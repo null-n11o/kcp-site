@@ -50,8 +50,20 @@ const blogEnCollection = defineCollection({
   }),
 });
 
+const pressCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string().max(100),
+    description: z.string().max(200),
+    pubDate: z.coerce.date(),
+    category: z.string(),
+    draft: z.boolean().default(false),
+  }),
+});
+
 export const collections = {
   blog: blogCollection,
   blog_en: blogEnCollection,
   authors: authorsCollection,
+  press: pressCollection,
 };
