@@ -1,0 +1,31 @@
+---
+import PageLayout from './PageLayout.astro';
+import type { CollectionEntry } from 'astro:content';
+import '@/styles/prose.css';
+
+export interface Props {
+  release: CollectionEntry<'press'>;
+}
+
+const { release } = Astro.props;
+const { title, description, pubDate } = release.data;
+
+const site = Astro.site!.toString().replace(/\/$/, '');
+
+const breadcrumbs = [
+  { name: 'ホーム', url: `${site}/` },
+  { name: 'プレスリリース', url: `${site}/press/` },
+  { name: title, url: `${site}/press/${release.slug}/` },
+];
+---
+
+<PageLayout
+  title={title}
+  description={description}
+  ogImage="/og-default.svg"
+  type="article"
+  publishedTime={pubDate}
+  breadcrumbs={breadcrumbs}
+>
+  <slot />
+</PageLayout>
