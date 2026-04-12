@@ -10,7 +10,7 @@ const { release } = Astro.props;
 const { title, description, pubDate, category } = release.data;
 ---
 
-<article class="group flex flex-col gap-4 p-6 rounded-xl border border-border bg-base-100 hover:border-accent/40 transition-all duration-300 hover:-translate-y-1">
+<article class="relative group flex flex-col gap-4 p-6 rounded-xl border border-border bg-base-100 hover:border-accent/40 transition-all duration-300 hover:-translate-y-1">
   <!-- Category badge -->
   <div>
     <span class="inline-block px-3 py-1 text-xs font-medium rounded-full bg-accent/10 text-accent border border-accent/20">
