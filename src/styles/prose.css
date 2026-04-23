@@ -31,6 +31,7 @@
 .prose a {
   text-decoration-color: #1a3a5c;
   transition: text-decoration-color 0.2s;
+  text-decoration: unset;
 }
 .prose a:hover {
   text-decoration-color: #4a9eff;
