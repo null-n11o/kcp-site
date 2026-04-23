@@ -7,12 +7,15 @@ const { headings } = Astro.props;
 const toc = headings.filter(h => h.depth === 2 || h.depth === 3);
 
 let h2Count = 0;
+let h3Count = 0;
 const items = toc.map(h => {
   if (h.depth === 2) {
     h2Count++;
+    h3Count = 0;
     return { ...h, number: h2Count, isH3: false };
   }
-  return { ...h, number: null, isH3: true };
+  h3Count++;
+  return { ...h, number: h3Count, isH3: true };
 });
 ---
 
@@ -22,11 +25,7 @@ const items = toc.map(h => {
     <ul class="flex flex-col gap-1 list-none">
       {items.map(item => (
         <li class={`flex items-baseline gap-2 ${item.isH3 ? 'pl-5' : ''}`}>
-          {item.isH3 ? (
-            <span class="text-text-muted text-sm shrink-0">○</span>
-          ) : (
-            <span class="text-accent font-medium text-sm shrink-0 min-w-[1.25rem]">{item.number}.</span>
-          )}
+          <span class={`font-medium text-sm shrink-0 min-w-[1.25rem] ${item.isH3 ? 'text-text-muted' : 'text-accent'}`}>{item.number}.</span>
           <a
             href={`#${item.slug}`}
             class="toc-link py-0.5 text-text-secondary hover:text-accent transition-colors"
