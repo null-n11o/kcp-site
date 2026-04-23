@@ -9,6 +9,7 @@ import { buildFaqPageSchema, buildBreadcrumbSchema } from '@/utils/schema';
 import { formatDate } from '@/utils/date';
 import { getReadingTimeMin } from '@/utils/blog';
 import { useTranslations } from '@/i18n/index';
+import '@/styles/prose.css';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog_en', ({ data }) => !data.draft);
