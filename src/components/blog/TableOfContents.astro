@@ -5,20 +5,34 @@ export interface Props {
 
 const { headings } = Astro.props;
 const toc = headings.filter(h => h.depth === 2 || h.depth === 3);
+
+let h2Count = 0;
+const items = toc.map(h => {
+  if (h.depth === 2) {
+    h2Count++;
+    return { ...h, number: h2Count, isH3: false };
+  }
+  return { ...h, number: null, isH3: true };
+});
 ---
 
-{toc.length > 0 && (
-  <nav class="sticky top-24 p-4 rounded-xl border border-border bg-base-100 text-sm" aria-label="目次">
-    <p class="text-xs font-medium text-text-muted uppercase tracking-widest mb-3">目次</p>
-    <ul class="flex flex-col gap-1">
-      {toc.map(heading => (
-        <li class={heading.depth === 3 ? 'pl-4' : ''}>
+{items.length > 0 && (
+  <nav class="mb-10 p-6 rounded-xl border border-border bg-base-100" aria-label="目次">
+    <h2 class="text-xl font-bold text-text-primary mb-4">目次</h2>
+    <ul class="flex flex-col gap-1 list-none">
+      {items.map(item => (
+        <li class={`flex items-baseline gap-2 ${item.isH3 ? 'pl-5' : ''}`}>
+          {item.isH3 ? (
+            <span class="text-text-muted text-sm shrink-0">○</span>
+          ) : (
+            <span class="text-accent font-medium text-sm shrink-0 min-w-[1.25rem]">{item.number}.</span>
+          )}
           <a
-            href={`#${heading.slug}`}
-            class="toc-link block py-1 text-text-secondary hover:text-accent transition-colors truncate"
-            data-toc-heading={heading.slug}
+            href={`#${item.slug}`}
+            class="toc-link py-0.5 text-text-secondary hover:text-accent transition-colors"
+            data-toc-heading={item.slug}
           >
-            {heading.text}
+            {item.text}
           </a>
         </li>
       ))}
