@@ -42,3 +42,10 @@
 .prose h4 {
   scroll-margin-top: 5rem;
 }
+
+/* rehypeAutolinkHeadings (behavior:'wrap') wraps heading text in <a>.
+   Without this, the link color (#4a9eff) overrides the heading color (#f0f0f0). */
+.prose :is(h2, h3, h4) > a {
+  color: inherit;
+  text-decoration: none;
+}
