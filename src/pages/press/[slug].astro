@@ -1,8 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
-import PressLayout from '@/layouts/PressLayout.astro';
+import PageLayout from '@/layouts/PageLayout.astro';
 import Button from '@/components/ui/Button.astro';
+import { buildBreadcrumbSchema } from '@/utils/schema';
+import JsonLd from '@/components/seo/JsonLd.astro';
 import { formatDateJa } from '@/utils/date';
+import '@/styles/prose.css';
 
 export async function getStaticPaths() {
   const releases = await getCollection('press', ({ data }) => !data.draft);
@@ -14,10 +17,28 @@ export async function getStaticPaths() {
 
 const { release } = Astro.props;
 const { Content } = await release.render();
-const { title, pubDate, category } = release.data;
+const { title, description, pubDate, category } = release.data;
+
+const site = Astro.site!.toString().replace(/\/$/, '');
+
+const breadcrumbs = [
+  { name: 'ホーム', url: `${site}/` },
+  { name: 'プレスリリース', url: `${site}/press/` },
+  { name: title, url: `${site}/press/${release.slug}/` },
+];
+
+const breadcrumbSchema = buildBreadcrumbSchema(breadcrumbs);
 ---
 
-<PressLayout release={release}>
+<PageLayout
+  title={title}
+  description={description}
+  ogImage="/og-default.svg"
+  type="article"
+  publishedTime={pubDate}
+  breadcrumbs={breadcrumbs}
+>
+  <JsonLd schema={breadcrumbSchema} />
   <div class="section-wrapper pt-24 pb-16">
     <article class="max-w-3xl mx-auto">
       <!-- Header -->
@@ -44,4 +65,4 @@ const { title, pubDate, category } = release.data;
       </div>
     </article>
   </div>
-</PressLayout>
+</PageLayout>
