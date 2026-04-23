@@ -55,62 +55,56 @@ const breadcrumbSchema = buildBreadcrumbSchema(breadcrumbs);
   <JsonLd schema={breadcrumbSchema} />
 
   <div class="section-wrapper pt-24 pb-16">
-    <div class="grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-12 items-start">
-      <!-- Article -->
-      <article>
-        <!-- Hero -->
-        <div class="mb-10">
-          <div class="flex flex-wrap gap-2 mb-4">
-            {tags.map(tag => <TagBadge tag={tag} href={`/en/blog/tags/${tag}/`} size="md" />)}
-          </div>
-          <h1 class="text-3xl sm:text-4xl font-bold text-text-primary leading-tight mb-6">{title}</h1>
-          <div class="flex flex-wrap items-center gap-4 text-sm text-text-muted pb-6 border-b border-border">
-            <span>{author}</span>
-            <span>·</span>
-            <time datetime={pubDate.toISOString()}>{formatDate(pubDate, 'en')}</time>
-            {updatedDate && (
-              <>
-                <span>·</span>
-                <span>Updated: <time datetime={updatedDate.toISOString()}>{formatDate(updatedDate, 'en')}</time></span>
-              </>
-            )}
-            <span>·</span>
-            <span>{readMin} min read</span>
-          </div>
+    <article class="max-w-3xl mx-auto">
+      <!-- Hero -->
+      <div class="mb-10">
+        <h1 class="text-3xl sm:text-4xl font-bold text-text-primary leading-tight mb-4">{title}</h1>
+        <div class="flex flex-wrap items-center gap-3 text-sm text-text-muted mb-4">
+          <span>by {author}</span>
+          <span>•</span>
+          <time datetime={pubDate.toISOString()}>{formatDate(pubDate, 'en')}</time>
+          {updatedDate && (
+            <>
+              <span>•</span>
+              <span>Updated: <time datetime={updatedDate.toISOString()}>{formatDate(updatedDate, 'en')}</time></span>
+            </>
+          )}
+          <span>•</span>
+          <span>{readMin} min read</span>
         </div>
-
-        <div class="prose prose-lg max-w-none">
-          <Content />
+        <div class="flex flex-wrap gap-2 pb-6 border-b border-border">
+          {tags.map(tag => <TagBadge tag={tag} href={`/en/blog/tags/${tag}/`} size="md" />)}
         </div>
+      </div>
 
-        {faq && faq.length > 0 && (
-          <div class="mt-12 pt-8 border-t border-border">
-            <h2 class="text-xl font-bold text-text-primary mb-6">FAQ</h2>
-            <div class="space-y-4">
-              {faq.map(item => (
-                <details class="group border border-border rounded-xl bg-base-100 overflow-hidden">
-                  <summary class="flex items-center justify-between px-6 py-4 cursor-pointer text-text-primary font-medium hover:text-accent transition-colors list-none">
-                    <span>{item.question}</span>
-                    <span class="text-accent text-lg group-open:rotate-45 transition-transform">+</span>
-                  </summary>
-                  <div class="px-6 pb-4 text-text-secondary leading-relaxed">
-                    {item.answer}
-                  </div>
-                </details>
-              ))}
-            </div>
-          </div>
-        )}
+      <TableOfContents headings={headings} />
 
+      <div class="prose prose-lg max-w-none">
+        <Content />
+      </div>
+
+      {faq && faq.length > 0 && (
         <div class="mt-12 pt-8 border-t border-border">
-          <Button href="/en/blog/" variant="ghost">{t.common.backToBlog}</Button>
+          <h2 class="text-xl font-bold text-text-primary mb-6">FAQ</h2>
+          <div class="space-y-4">
+            {faq.map(item => (
+              <details class="group border border-border rounded-xl bg-base-100 overflow-hidden">
+                <summary class="flex items-center justify-between px-6 py-4 cursor-pointer text-text-primary font-medium hover:text-accent transition-colors list-none">
+                  <span>{item.question}</span>
+                  <span class="text-accent text-lg group-open:rotate-45 transition-transform">+</span>
+                </summary>
+                <div class="px-6 pb-4 text-text-secondary leading-relaxed">
+                  {item.answer}
+                </div>
+              </details>
+            ))}
+          </div>
         </div>
-      </article>
+      )}
 
-      <!-- Sidebar -->
-      <aside class="hidden lg:block">
-        <TableOfContents headings={headings} />
-      </aside>
-    </div>
+      <div class="mt-12 pt-8 border-t border-border">
+        <Button href="/en/blog/" variant="ghost">{t.common.backToBlog}</Button>
+      </div>
+    </article>
   </div>
 </PageLayout>

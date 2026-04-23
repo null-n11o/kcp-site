@@ -14,21 +14,21 @@ const readMin = getReadingTimeMin(post.body);
 ---
 
 <div class="mb-10">
-  <div class="flex flex-wrap gap-2 mb-4">
-    {tags.map(tag => <TagBadge tag={tag} href={`/blog/tags/${tag}/`} size="md" />)}
-  </div>
-  <h1 class="text-3xl sm:text-4xl font-bold text-text-primary leading-tight mb-6">{title}</h1>
-  <div class="flex flex-wrap items-center gap-4 text-sm text-text-muted pb-6 border-b border-border">
-    <span>{author}</span>
-    <span>·</span>
+  <h1 class="text-3xl sm:text-4xl font-bold text-text-primary leading-tight mb-4">{title}</h1>
+  <div class="flex flex-wrap items-center gap-3 text-sm text-text-muted mb-4">
+    <span>by {author}</span>
+    <span>•</span>
     <time datetime={pubDate.toISOString()}>{formatDateJa(pubDate)}</time>
     {updatedDate && (
       <>
-        <span>·</span>
+        <span>•</span>
         <span>更新: <time datetime={updatedDate.toISOString()}>{formatDateJa(updatedDate)}</time></span>
       </>
     )}
-    <span>·</span>
-    <span>約{readMin}分で読めます</span>
+    <span>•</span>
+    <span>{readMin} min read</span>
+  </div>
+  <div class="flex flex-wrap gap-2 pb-6 border-b border-border">
+    {tags.map(tag => <TagBadge tag={tag} href={`/blog/tags/${tag}/`} size="md" />)}
   </div>
 </div>
