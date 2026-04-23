@@ -4,6 +4,7 @@ import BlogLayout from '@/layouts/BlogLayout.astro';
 import BlogHero from '@/components/blog/BlogHero.astro';
 import TableOfContents from '@/components/blog/TableOfContents.astro';
 import Button from '@/components/ui/Button.astro';
+import '@/styles/prose.css';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
