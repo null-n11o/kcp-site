@@ -1,9 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
-import BlogLayout from '@/layouts/BlogLayout.astro';
+import PageLayout from '@/layouts/PageLayout.astro';
 import BlogHero from '@/components/blog/BlogHero.astro';
 import TableOfContents from '@/components/blog/TableOfContents.astro';
 import Button from '@/components/ui/Button.astro';
+import JsonLd from '@/components/seo/JsonLd.astro';
+import { buildFaqPageSchema, buildBreadcrumbSchema, getAuthorSlug } from '@/utils/schema';
 import '@/styles/prose.css';
 
 export async function getStaticPaths() {
@@ -16,9 +18,36 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content, headings } = await post.render();
+const { title, description, ogImage, pubDate, author, tags, faq } = post.data;
+const ogImageUrl = ogImage ?? '/og-default.svg';
+
+const site = Astro.site!.toString().replace(/\/$/, '');
+const authorSlug = getAuthorSlug(author);
+const authorUrl = `${site}/author/${authorSlug}/`;
+
+const breadcrumbs = [
+  { name: 'ホーム', url: `${site}/` },
+  { name: 'ブログ', url: `${site}/blog/` },
+  { name: title, url: `${site}/blog/${post.slug}/` },
+];
+
+const faqSchema = faq && faq.length > 0 ? buildFaqPageSchema(faq) : null;
+const breadcrumbSchema = buildBreadcrumbSchema(breadcrumbs);
 ---
 
-<BlogLayout post={post}>
+<PageLayout
+  title={title}
+  description={description}
+  ogImage={ogImageUrl}
+  type="article"
+  publishedTime={pubDate}
+  author={author}
+  authorUrl={authorUrl}
+  tags={tags}
+  breadcrumbs={breadcrumbs}
+>
+  {faqSchema && <JsonLd schema={faqSchema} />}
+  <JsonLd schema={breadcrumbSchema} />
   <div class="section-wrapper pt-24 pb-16">
     <div class="grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-12 items-start">
       <!-- Article -->
@@ -27,11 +56,11 @@ const { Content, headings } = await post.render();
         <div class="prose prose-lg max-w-none">
           <Content />
         </div>
-        {post.data.faq && post.data.faq.length > 0 && (
+        {faq && faq.length > 0 && (
           <div class="mt-12 pt-8 border-t border-border">
             <h2 class="text-xl font-bold text-text-primary mb-6">よくある質問</h2>
             <div class="space-y-4">
-              {post.data.faq.map(item => (
+              {faq.map(item => (
                 <details class="group border border-border rounded-xl bg-base-100 overflow-hidden">
                   <summary class="flex items-center justify-between px-6 py-4 cursor-pointer text-text-primary font-medium hover:text-accent transition-colors list-none">
                     <span>{item.question}</span>
@@ -56,4 +85,4 @@ const { Content, headings } = await post.render();
       </aside>
     </div>
   </div>
-</BlogLayout>
+</PageLayout>
