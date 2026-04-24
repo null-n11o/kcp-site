@@ -102,6 +102,7 @@ export function buildExternalCard(url: string, ogp: OgpData): string {
   <div class="text-xs text-text-muted">${escapeHtml(hostname)}</div>
 </a>`;
 }
+
 export function readInternalPostData(slug: string, contentDir?: string): InternalPostData | null {
   const dir = contentDir ?? path.join(process.cwd(), 'src/content/blog');
   const filePath = path.join(dir, `${slug}.md`);
