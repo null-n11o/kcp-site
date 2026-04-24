@@ -49,3 +49,10 @@
   color: inherit;
   text-decoration: none;
 }
+
+/* 画像を水平方向に中央揃えし、上下の余白を設ける */
+.prose p > img,
+.prose img {
+  display: block;
+  margin: 2.5rem auto;
+}
