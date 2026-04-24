@@ -260,3 +260,75 @@ describe('getOgp', () => {
     fs.unlinkSync(tmpPath);
   });
 });
+
+describe('remarkLinkCard plugin (integration)', () => {
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it('leaves paragraphs with non-standalone URLs unchanged', async () => {
+    const plugin = remarkLinkCard();
+    const tree: Root = {
+      type: 'root',
+      children: [{
+        type: 'paragraph',
+        children: [
+          { type: 'text', value: 'Check out ' },
+          { type: 'link', url: 'https://example.com', children: [{ type: 'text', value: 'this link' }] },
+        ],
+      }],
+    } as Root;
+
+    await plugin(tree);
+    expect(tree.children[0].type).toBe('paragraph');
+  });
+
+  it('transforms external bare URL to HTML node', async () => {
+    const tmpPath = path.join(os.tmpdir(), `ogp-cache-test-${Date.now()}.json`);
+    vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce({
+      text: async () => '<meta property="og:title" content="Ext Title">',
+    } as Response);
+
+    const plugin = remarkLinkCard({ cachePath: tmpPath });
+    const tree: Root = {
+      type: 'root',
+      children: [makeParagraphWithBareUrl('https://example.com') as any],
+    } as Root;
+
+    await plugin(tree);
+    expect(tree.children[0].type).toBe('html');
+    expect((tree.children[0] as any).value).toContain('参考資料');
+    expect((tree.children[0] as any).value).toContain('Ext Title');
+    if (fs.existsSync(tmpPath)) fs.unlinkSync(tmpPath);
+  });
+
+  it('transforms internal blog URL to HTML node with frontmatter', async () => {
+    const plugin = remarkLinkCard();
+    const tree: Root = {
+      type: 'root',
+      children: [makeParagraphWithBareUrl('https://kcp.co.jp/blog/ai-jidai-no-gyomu-daiko') as any],
+    } as Root;
+
+    await plugin(tree);
+    expect(tree.children[0].type).toBe('html');
+    expect((tree.children[0] as any).value).toContain('株式会社KCP Blog');
+  });
+
+  it('transforms internal blog URL with missing slug to external card fallback', async () => {
+    const tmpPath = path.join(os.tmpdir(), `ogp-cache-test-${Date.now()}.json`);
+    vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce({
+      text: async () => '',
+    } as Response);
+
+    const plugin = remarkLinkCard({ cachePath: tmpPath });
+    const tree: Root = {
+      type: 'root',
+      children: [makeParagraphWithBareUrl('https://kcp.co.jp/blog/does-not-exist') as any],
+    } as Root;
+
+    await plugin(tree);
+    expect(tree.children[0].type).toBe('html');
+    expect((tree.children[0] as any).value).toContain('参考資料');
+    if (fs.existsSync(tmpPath)) fs.unlinkSync(tmpPath);
+  });
+});

@@ -160,6 +160,40 @@ export async function getOgp(
   return data;
 }
 
-export default function remarkLinkCard(_options: RemarkLinkCardOptions = {}) {
-  return async function (_tree: Root): Promise<void> {};
+export default function remarkLinkCard(options: RemarkLinkCardOptions = {}) {
+  const cachePath = options.cachePath ?? path.join(process.cwd(), 'src/data/ogp-cache.json');
+  const contentDir = options.contentDir ?? path.join(process.cwd(), 'src/content/blog');
+
+  return async function (tree: Root): Promise<void> {
+    const targets: Array<{ node: Paragraph; index: number; parent: any }> = [];
+
+    visit(tree, 'paragraph', (node: Paragraph, index, parent) => {
+      if (isStandaloneUrl(node)) {
+        targets.push({ node, index: index!, parent });
+      }
+    });
+
+    // 逆順で処理してインデックスのずれを防ぐ
+    for (const { node, index, parent } of targets.reverse()) {
+      const link = node.children[0] as Link;
+      const url = link.url;
+      let html: string;
+
+      if (isInternalBlogUrl(url)) {
+        const slug = extractSlug(url);
+        const data = readInternalPostData(slug, contentDir);
+        if (data) {
+          html = buildInternalCard(data, slug);
+        } else {
+          const ogp = await getOgp(url, cachePath);
+          html = buildExternalCard(url, ogp);
+        }
+      } else {
+        const ogp = await getOgp(url, cachePath);
+        html = buildExternalCard(url, ogp);
+      }
+
+      parent.children.splice(index, 1, { type: 'html', value: html });
+    }
+  };
 }
