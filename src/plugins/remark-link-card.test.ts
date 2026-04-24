@@ -91,3 +91,84 @@ describe('extractSlug', () => {
     expect(extractSlug('https://kcp.co.jp/blog/my-article')).toBe('my-article');
   });
 });
+
+describe('buildInternalCard', () => {
+  const sampleData: import('./remark-link-card.ts').InternalPostData = {
+    title: 'テスト記事',
+    description: '説明文です',
+    pubDate: new Date('2026-04-24T00:00:00.000Z'),
+    tags: ['AI', 'Business'],
+    body: 'あ'.repeat(1000),
+  };
+
+  it('contains label, title, description', () => {
+    const html = buildInternalCard(sampleData, 'test-slug');
+    expect(html).toContain('株式会社KCP Blog');
+    expect(html).toContain('テスト記事');
+    expect(html).toContain('説明文です');
+  });
+
+  it('links to /blog/slug/', () => {
+    const html = buildInternalCard(sampleData, 'test-slug');
+    expect(html).toContain('href="/blog/test-slug/"');
+  });
+
+  it('shows up to 3 tags and omits 4th', () => {
+    const data = { ...sampleData, tags: ['A', 'B', 'C', 'D'] };
+    const html = buildInternalCard(data, 'slug');
+    expect(html).toContain('>A<');
+    expect(html).toContain('>B<');
+    expect(html).toContain('>C<');
+    expect(html).not.toContain('>D<');
+  });
+
+  it('escapes HTML special chars in title', () => {
+    const data = { ...sampleData, title: '<script>alert(1)</script>' };
+    const html = buildInternalCard(data, 'slug');
+    expect(html).not.toContain('<script>');
+    expect(html).toContain('&lt;script&gt;');
+  });
+
+  it('shows reading time', () => {
+    const html = buildInternalCard(sampleData, 'slug');
+    expect(html).toMatch(/約\d+分/);
+  });
+});
+
+describe('buildExternalCard', () => {
+  const ogp: import('./remark-link-card.ts').OgpData = {
+    title: 'Example Article',
+    description: 'Some description',
+    fetchedAt: '2026-04-24T00:00:00.000Z',
+  };
+
+  it('contains label, title, description, domain', () => {
+    const html = buildExternalCard('https://example.com/article', ogp);
+    expect(html).toContain('参考資料');
+    expect(html).toContain('Example Article');
+    expect(html).toContain('Some description');
+    expect(html).toContain('example.com');
+  });
+
+  it('uses URL as title when og:title is empty', () => {
+    const html = buildExternalCard('https://example.com/article', { ...ogp, title: '' });
+    expect(html).toContain('https://example.com/article');
+  });
+
+  it('omits description element when og:description is empty', () => {
+    const html = buildExternalCard('https://example.com', { ...ogp, description: '' });
+    expect(html).not.toContain('line-clamp-2');
+  });
+
+  it('opens in new tab with rel noopener', () => {
+    const html = buildExternalCard('https://example.com', ogp);
+    expect(html).toContain('target="_blank"');
+    expect(html).toContain('rel="noopener noreferrer"');
+  });
+
+  it('escapes HTML special chars in title', () => {
+    const html = buildExternalCard('https://example.com', { ...ogp, title: '<b>bold</b>' });
+    expect(html).not.toContain('<b>');
+    expect(html).toContain('&lt;b&gt;');
+  });
+});
