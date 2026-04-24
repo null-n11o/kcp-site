@@ -27,9 +27,30 @@ export interface RemarkLinkCardOptions {
 
 // --- Exports (implemented in later tasks) ---
 
-export function isStandaloneUrl(_node: Paragraph): boolean { return false; }
-export function isInternalBlogUrl(_url: string): boolean { return false; }
-export function extractSlug(_url: string): string { return ''; }
+export function isStandaloneUrl(node: Paragraph): boolean {
+  if (node.children.length !== 1) return false;
+  const child = node.children[0];
+  if (child.type !== 'link') return false;
+  const link = child as Link;
+  if (link.children.length !== 1) return false;
+  const text = link.children[0];
+  if (text.type !== 'text') return false;
+  return (text as Text).value === link.url;
+}
+
+export function isInternalBlogUrl(url: string): boolean {
+  try {
+    const parsed = new URL(url);
+    return parsed.hostname === 'kcp.co.jp' && parsed.pathname.startsWith('/blog/');
+  } catch {
+    return false;
+  }
+}
+
+export function extractSlug(url: string): string {
+  const parts = new URL(url).pathname.split('/').filter(Boolean);
+  return parts[1] ?? '';
+}
 export function buildInternalCard(_data: InternalPostData, _slug: string): string { return ''; }
 export function buildExternalCard(_url: string, _ogp: OgpData): string { return ''; }
 export function readInternalPostData(_slug: string, _contentDir?: string): InternalPostData | null { return null; }
