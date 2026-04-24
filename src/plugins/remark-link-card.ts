@@ -51,6 +51,7 @@ export function extractSlug(url: string): string {
   const parts = new URL(url).pathname.split('/').filter(Boolean);
   return parts[1] ?? '';
 }
+
 function escapeHtml(str: string): string {
   return str
     .replace(/&/g, '&amp;')
