@@ -102,7 +102,19 @@ export function buildExternalCard(url: string, ogp: OgpData): string {
   <div class="text-xs text-text-muted">${escapeHtml(hostname)}</div>
 </a>`;
 }
-export function readInternalPostData(_slug: string, _contentDir?: string): InternalPostData | null { return null; }
+export function readInternalPostData(slug: string, contentDir?: string): InternalPostData | null {
+  const dir = contentDir ?? path.join(process.cwd(), 'src/content/blog');
+  const filePath = path.join(dir, `${slug}.md`);
+  if (!fs.existsSync(filePath)) return null;
+  const { data, content } = matter(fs.readFileSync(filePath, 'utf-8'));
+  return {
+    title: data.title ?? '',
+    description: data.description ?? '',
+    pubDate: data.pubDate instanceof Date ? data.pubDate : new Date(data.pubDate),
+    tags: Array.isArray(data.tags) ? data.tags : [],
+    body: content,
+  };
+}
 export function readOgpCache(_cachePath: string): Record<string, OgpData> { return {}; }
 export function writeOgpCache(_cachePath: string, _cache: Record<string, OgpData>): void {}
 export async function fetchOgpData(_url: string): Promise<OgpData> { return { title: '', description: '', fetchedAt: '' }; }

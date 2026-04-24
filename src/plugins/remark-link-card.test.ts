@@ -172,3 +172,22 @@ describe('buildExternalCard', () => {
     expect(html).toContain('&lt;b&gt;');
   });
 });
+
+describe('readInternalPostData', () => {
+  const contentDir = path.join(process.cwd(), 'src/content/blog');
+
+  it('returns post data for existing slug', () => {
+    const data = readInternalPostData('ai-jidai-no-gyomu-daiko', contentDir);
+    expect(data).not.toBeNull();
+    expect(typeof data!.title).toBe('string');
+    expect(data!.title.length).toBeGreaterThan(0);
+    expect(data!.pubDate).toBeInstanceOf(Date);
+    expect(Array.isArray(data!.tags)).toBe(true);
+    expect(typeof data!.body).toBe('string');
+  });
+
+  it('returns null for non-existent slug', () => {
+    const data = readInternalPostData('does-not-exist-xyz', contentDir);
+    expect(data).toBeNull();
+  });
+});
