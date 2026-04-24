@@ -116,10 +116,49 @@ export function readInternalPostData(slug: string, contentDir?: string): Interna
     body: content,
   };
 }
-export function readOgpCache(_cachePath: string): Record<string, OgpData> { return {}; }
-export function writeOgpCache(_cachePath: string, _cache: Record<string, OgpData>): void {}
-export async function fetchOgpData(_url: string): Promise<OgpData> { return { title: '', description: '', fetchedAt: '' }; }
-export async function getOgp(_url: string, _cachePath?: string): Promise<OgpData> { return { title: '', description: '', fetchedAt: '' }; }
+
+export function readOgpCache(cachePath: string): Record<string, OgpData> {
+  if (!fs.existsSync(cachePath)) return {};
+  try {
+    return JSON.parse(fs.readFileSync(cachePath, 'utf-8'));
+  } catch {
+    return {};
+  }
+}
+
+export function writeOgpCache(cachePath: string, cache: Record<string, OgpData>): void {
+  fs.writeFileSync(cachePath, JSON.stringify(cache, null, 2) + '\n');
+}
+
+export async function fetchOgpData(url: string): Promise<OgpData> {
+  try {
+    const res = await fetch(url, { signal: AbortSignal.timeout(5000) });
+    const html = await res.text();
+    const title =
+      html.match(/<meta[^>]+property="og:title"[^>]+content="([^"]*)"[^>]*>/i)?.[1] ??
+      html.match(/<meta[^>]+content="([^"]*)"[^>]+property="og:title"[^>]*>/i)?.[1] ??
+      '';
+    const description =
+      html.match(/<meta[^>]+property="og:description"[^>]+content="([^"]*)"[^>]*>/i)?.[1] ??
+      html.match(/<meta[^>]+content="([^"]*)"[^>]+property="og:description"[^>]*>/i)?.[1] ??
+      '';
+    return { title, description, fetchedAt: new Date().toISOString() };
+  } catch {
+    return { title: '', description: '', fetchedAt: new Date().toISOString() };
+  }
+}
+
+export async function getOgp(
+  url: string,
+  cachePath: string = path.join(process.cwd(), 'src/data/ogp-cache.json')
+): Promise<OgpData> {
+  const cache = readOgpCache(cachePath);
+  if (cache[url]) return cache[url];
+  const data = await fetchOgpData(url);
+  cache[url] = data;
+  writeOgpCache(cachePath, cache);
+  return data;
+}
 
 export default function remarkLinkCard(_options: RemarkLinkCardOptions = {}) {
   return async function (_tree: Root): Promise<void> {};

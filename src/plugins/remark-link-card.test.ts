@@ -191,3 +191,72 @@ describe('readInternalPostData', () => {
     expect(data).toBeNull();
   });
 });
+
+describe('readOgpCache / writeOgpCache', () => {
+  it('returns empty object when file does not exist', () => {
+    const result = readOgpCache('/nonexistent/path/ogp-cache.json');
+    expect(result).toEqual({});
+  });
+
+  it('round-trips data correctly', () => {
+    const tmpPath = path.join(os.tmpdir(), `ogp-cache-test-${Date.now()}.json`);
+    const data: Record<string, import('./remark-link-card.ts').OgpData> = {
+      'https://example.com': { title: 'Test', description: 'Desc', fetchedAt: '2026-04-24T00:00:00.000Z' },
+    };
+    writeOgpCache(tmpPath, data);
+    expect(readOgpCache(tmpPath)).toEqual(data);
+    fs.unlinkSync(tmpPath);
+  });
+});
+
+describe('getOgp', () => {
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it('returns cached data without calling fetch', async () => {
+    const tmpPath = path.join(os.tmpdir(), `ogp-cache-test-${Date.now()}.json`);
+    const cached: import('./remark-link-card.ts').OgpData = {
+      title: 'Cached Title',
+      description: 'Cached Desc',
+      fetchedAt: '2026-04-24T00:00:00.000Z',
+    };
+    writeOgpCache(tmpPath, { 'https://example.com': cached });
+
+    const fetchSpy = vi.spyOn(globalThis, 'fetch');
+    const result = await getOgp('https://example.com', tmpPath);
+    expect(result).toEqual(cached);
+    expect(fetchSpy).not.toHaveBeenCalled();
+    fs.unlinkSync(tmpPath);
+  });
+
+  it('fetches OGP and writes to cache on cache miss', async () => {
+    const tmpPath = path.join(os.tmpdir(), `ogp-cache-test-${Date.now()}.json`);
+    vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce({
+      text: async () =>
+        '<meta property="og:title" content="Fetched Title"><meta property="og:description" content="Fetched Desc">',
+    } as Response);
+
+    const result = await getOgp('https://example.com/new', tmpPath);
+    expect(result.title).toBe('Fetched Title');
+    expect(result.description).toBe('Fetched Desc');
+
+    const cache = readOgpCache(tmpPath);
+    expect(cache['https://example.com/new']).toBeDefined();
+    expect(cache['https://example.com/new'].title).toBe('Fetched Title');
+    fs.unlinkSync(tmpPath);
+  });
+
+  it('returns empty strings and caches on fetch failure', async () => {
+    const tmpPath = path.join(os.tmpdir(), `ogp-cache-test-${Date.now()}.json`);
+    vi.spyOn(globalThis, 'fetch').mockRejectedValueOnce(new Error('Network error'));
+
+    const result = await getOgp('https://failing.example.com', tmpPath);
+    expect(result.title).toBe('');
+    expect(result.description).toBe('');
+
+    const cache = readOgpCache(tmpPath);
+    expect(cache['https://failing.example.com']).toBeDefined();
+    fs.unlinkSync(tmpPath);
+  });
+});
