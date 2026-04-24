@@ -3,6 +3,7 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import remarkLinkCard from './src/plugins/remark-link-card.ts';
 
 import cloudflare from "@astrojs/cloudflare";
 
@@ -28,6 +29,7 @@ export default defineConfig({
       theme: 'github-dark',
       wrap: true,
     },
+    remarkPlugins: [remarkLinkCard],
     rehypePlugins: [
       rehypeSlug,
       [rehypeAutolinkHeadings, { behavior: 'wrap' }],
