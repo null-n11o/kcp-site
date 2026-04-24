@@ -2,7 +2,7 @@
 title: "AI時代の業務代行とは何か"
 description: "AIエージェントを活用した新しい業務代行のあり方について解説します。"
 pubDate: 2026-04-10
-tags: ["AGI / ASI", "Elon Musk"]
+tags: ["AGI・ASI", "Elon Musk"]
 featured: true
 author: "Kentaro Nakano"
 category: "経営日報"
