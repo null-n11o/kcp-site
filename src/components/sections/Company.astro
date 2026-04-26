@@ -9,22 +9,22 @@ export interface Props {
   info: CompanyInfoRow[];
 }
 
-const { heading, subtitle, info } = Astro.props;
+const { heading, info } = Astro.props;
 ---
 
-<section id="company" class="py-section" style="background-color: #0a0a0a;">
+<section id="company" class="py-section" style="background-color: #0e0e0e;">
   <div class="section-wrapper">
     <FadeIn>
-      <SectionHeading title={heading} subtitle={subtitle} />
+      <SectionHeading sectionNumber="06" sectionLabel={heading} />
     </FadeIn>
 
     <FadeIn delay={100}>
-      <div class="overflow-hidden rounded-xl border border-border">
+      <div class="border border-[#2a2a3e] overflow-hidden">
         <table class="w-full">
           <tbody>
             {info.map((row, i) => (
-              <tr class={i % 2 === 0 ? 'bg-base-100' : 'bg-base'}>
-                <th class="px-6 py-4 text-left text-sm font-medium text-text-secondary w-40 shrink-0 border-r border-border">
+              <tr class={i % 2 === 0 ? 'bg-[#0e0e0e]' : 'bg-[#141414]'}>
+                <th class="px-6 py-4 text-left text-xs font-medium text-text-secondary w-40 shrink-0 border-r border-[#2a2a3e] uppercase tracking-wider">
                   {row.label}
                 </th>
                 <td class="px-6 py-4 text-sm text-text-primary">
