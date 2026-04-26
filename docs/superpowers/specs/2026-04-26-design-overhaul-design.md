@@ -216,9 +216,17 @@ Let's Work Together.                  ← font-black, 大見出し
 
 ---
 
-## 6. 変更しないもの
+## 6. コンテンツ変更（例外）
 
-- コンテンツ（i18n テキスト一切変更なし）
+- **Hero 見出しを英語化する（ja.ts のみ）**
+  - `headlinePre` / `headlineAccent` / `headlinePost` を英語コピーに変更
+  - 例: `"We Make Business Simple."` 相当のコピー
+  - `subtext`（日本語説明文）は変更しない
+  - en.ts は元々英語なので変更不要
+
+## 7. 変更しないもの
+
+- コンテンツ（Hero見出し以外の i18n テキスト）
 - FadeIn アニメーション（IntersectionObserver ロジック維持）
 - ToC・ブログレイアウト（`BlogLayout.astro`、`BlogHero.astro`）
 - モバイルメニューのロジック
