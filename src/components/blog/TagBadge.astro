@@ -8,14 +8,14 @@ export interface Props {
 
 const { tag, active = false, size = 'sm', href } = Astro.props;
 
-const base = 'inline-flex items-center rounded-full font-medium transition-colors duration-200';
+const base = 'inline-flex items-center font-medium transition-colors duration-200';
 const sizes = {
-  sm: 'px-2.5 py-0.5 text-xs',
+  sm: 'px-2 py-0.5 text-xs',
   md: 'px-3 py-1 text-sm',
 };
 const states = active
   ? 'bg-accent text-white'
-  : 'border border-accent/60 text-accent bg-transparent hover:bg-accent/10';
+  : 'border border-accent/40 text-accent bg-transparent hover:bg-accent/10';
 
 const classes = `${base} ${sizes[size]} ${states}`;
 ---
