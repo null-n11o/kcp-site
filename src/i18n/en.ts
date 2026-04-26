@@ -18,11 +18,11 @@ export const en: Translations = {
   },
   hero: {
     eyebrow: 'KCP Inc.',
-    headlinePre: 'Your partner in driving change,',
-    headlineAccent: 'through diverse perspectives.',
+    headlinePre: 'We free people and organizations to focus on',
+    headlineAccent: 'what truly matters.',
     headlinePost: '',
     subtext:
-      'Through social media management, customer support, development direction, and AI training, we free people and organizations to focus on what truly matters.',
+      'Through social media management, customer support, development direction, and AI training, we partner with you to drive change.',
     primaryCta: 'Contact Us',
     secondaryCta: 'Our Services',
   },

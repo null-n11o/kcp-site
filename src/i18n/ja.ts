@@ -18,17 +18,17 @@ export const ja: Translations = {
   },
   hero: {
     eyebrow: '株式会社KCP',
-    headlinePre: '様々な視点から、',
-    headlineAccent: '共に変化を起こす',
-    headlinePost: 'パートナー。',
+    headlinePre: '人と組織が',
+    headlineAccent: '本当にやるべきこと',
+    headlinePost: 'に集中できる環境をつくる。',
     subtext:
-      'SNS運用代行・CS代行・受託開発ディレクション・AI研修を通じて、人と組織が本当にやるべきことに集中できる環境をつくります。',
+      'SNS運用代行・CS代行・受託開発ディレクション・AI導入支援を通じて、共に変化を起こすパートナーとして伴奏いたします。',
     primaryCta: 'お問い合わせ',
     secondaryCta: 'サービスを見る',
   },
   service: {
     heading: 'Service',
-    subtitle: 'AIの力を活かした業務代行で、人と組織が本当にやるべきことに集中できる環境をつくります。',
+    subtitle: 'AIと人力を使い分け、人と組織が本当にやるべきことに集中できる環境をつくります。',
     items: [
       {
         icon: '📱',
@@ -43,12 +43,12 @@ export const ja: Translations = {
       {
         icon: '🖥️',
         title: '受託開発ディレクション',
-        description: '開発プロジェクトのディレクション・PM業務を代行。技術とビジネスを繋ぐ視点で進行を支援します。',
+        description: '開発プロジェクトを支援します。技術とビジネスを繋ぐ視点でスムーズにプロジェクトを進行いたします。',
       },
       {
         icon: '🤖',
-        title: 'AI研修',
-        description: '企業向けAI活用トレーニングの設計・実施。現場に合ったAI導入で業務効率を向上します。',
+        title: 'AI導入支援',
+        description: '現場に合ったAI導入で業務効率を向上します。',
       },
     ],
   },
