@@ -37,13 +37,13 @@
 **Files:**
 - Modify: `src/styles/global.css`
 
-- [ ] **Step 1: ブランチ作成**
+- [x] **Step 1: ブランチ作成**
 
 ```bash
 git checkout -b feat/swiss-modernist-redesign
 ```
 
-- [ ] **Step 2: global.css のスクロールバー色をニュートラルに変更**
+- [x] **Step 2: global.css のスクロールバー色をニュートラルに変更**
 
 `src/styles/global.css` の `::-webkit-scrollbar-thumb` を以下に変更:
 
@@ -67,7 +67,7 @@ git checkout -b feat/swiss-modernist-redesign
 }
 ```
 
-- [ ] **Step 3: ビルド確認**
+- [x] **Step 3: ビルド確認**
 
 ```bash
 npm run build
@@ -75,7 +75,7 @@ npm run build
 
 Expected: ビルドエラーなし
 
-- [ ] **Step 4: コミット**
+- [x] **Step 4: コミット**
 
 ```bash
 git add src/styles/global.css
@@ -93,7 +93,7 @@ git commit -m "style: neutralize scrollbar colors"
 
 ### Button
 
-- [ ] **Step 1: Button.astro を以下に全書き換え**
+- [x] **Step 1: Button.astro を以下に全書き換え**
 
 ```astro
 ---
@@ -140,7 +140,7 @@ const classes = `${base} ${variants[variant]} ${className}`;
 
 ### SectionHeading
 
-- [ ] **Step 2: SectionHeading.astro を以下に全書き換え**
+- [x] **Step 2: SectionHeading.astro を以下に全書き換え**
 
 新旧両方の prop を受け付ける。`sectionNumber` + `sectionLabel` が優先、なければ旧 `title` にフォールバック。
 
@@ -165,7 +165,7 @@ const label = sectionLabel || title || '';
 
 ### TagBadge
 
-- [ ] **Step 3: TagBadge.astro の `rounded-full` を除去**
+- [x] **Step 3: TagBadge.astro の `rounded-full` を除去**
 
 `rounded-full` を含む行を変更:
 
@@ -199,7 +199,7 @@ const classes = `${base} ${sizes[size]} ${states}`;
 )}
 ```
 
-- [ ] **Step 4: ビルド確認**
+- [x] **Step 4: ビルド確認**
 
 ```bash
 npm run build
@@ -207,7 +207,7 @@ npm run build
 
 Expected: エラーなし
 
-- [ ] **Step 5: コミット**
+- [x] **Step 5: コミット**
 
 ```bash
 git add src/components/ui/Button.astro src/components/ui/SectionHeading.astro src/components/blog/TagBadge.astro
@@ -224,7 +224,7 @@ git commit -m "style: Swiss UI foundation — Button, SectionHeading, TagBadge"
 
 ### Header
 
-- [ ] **Step 1: Header.astro の `<header>` タグを変更**
+- [x] **Step 1: Header.astro の `<header>` タグを変更**
 
 ```astro
 <!-- 変更前 -->
@@ -242,7 +242,7 @@ git commit -m "style: Swiss UI foundation — Button, SectionHeading, TagBadge"
 
 ### Footer
 
-- [ ] **Step 2: Footer.astro のボーダーを変更**
+- [x] **Step 2: Footer.astro のボーダーを変更**
 
 ```astro
 <!-- 変更前 -->
@@ -252,7 +252,7 @@ git commit -m "style: Swiss UI foundation — Button, SectionHeading, TagBadge"
 <footer class="border-t border-[#2a2a3e] py-8">
 ```
 
-- [ ] **Step 3: ビルド確認**
+- [x] **Step 3: ビルド確認**
 
 ```bash
 npm run build
@@ -260,7 +260,7 @@ npm run build
 
 Expected: エラーなし
 
-- [ ] **Step 4: コミット**
+- [x] **Step 4: コミット**
 
 ```bash
 git add src/components/layout/Header.astro src/components/layout/Footer.astro
@@ -277,7 +277,7 @@ git commit -m "style: remove backdrop-blur, unify border colors"
 
 ### ja.ts — Hero コピーを英語に
 
-- [ ] **Step 1: ja.ts の `hero` ブロックを変更**
+- [x] **Step 1: ja.ts の `hero` ブロックを変更**
 
 ```ts
 // 変更前
@@ -307,7 +307,7 @@ hero: {
 
 ### Hero.astro — フルワイドビッグタイポレイアウト
 
-- [ ] **Step 2: Hero.astro を以下に全書き換え**
+- [x] **Step 2: Hero.astro を以下に全書き換え**
 
 ```astro
 ---
@@ -373,7 +373,7 @@ const {
 </section>
 ```
 
-- [ ] **Step 3: 開発サーバーで Hero を目視確認**
+- [x] **Step 3: 開発サーバーで Hero を目視確認**
 
 ```bash
 npm run dev
@@ -385,7 +385,7 @@ npm run dev
 - "We Make / Business / Simple." が超大フォントで3行
 - ルール下にサブテキスト左・ボタン右
 
-- [ ] **Step 4: ビルド確認**
+- [x] **Step 4: ビルド確認**
 
 ```bash
 npm run build
@@ -393,7 +393,7 @@ npm run build
 
 Expected: エラーなし
 
-- [ ] **Step 5: コミット**
+- [x] **Step 5: コミット**
 
 ```bash
 git add src/components/sections/Hero.astro src/i18n/ja.ts
@@ -407,7 +407,7 @@ git commit -m "feat: Swiss hero layout + English headline"
 **Files:**
 - Modify: `src/components/sections/Service.astro`
 
-- [ ] **Step 1: Service.astro を以下に全書き換え**
+- [x] **Step 1: Service.astro を以下に全書き換え**
 
 ```astro
 ---
@@ -457,14 +457,14 @@ const { heading, items } = Astro.props;
 </section>
 ```
 
-- [ ] **Step 2: 開発サーバーで目視確認**
+- [x] **Step 2: 開発サーバーで目視確認**
 
 `http://localhost:4321/#service` で以下を確認:
 - "02 — Service" ラベル + ボーダー区切り
 - 4行テーブル（番号・タイトル・説明）
 - emoji アイコンなし、カードなし
 
-- [ ] **Step 3: ビルド確認 + コミット**
+- [x] **Step 3: ビルド確認 + コミット**
 
 ```bash
 npm run build
@@ -479,7 +479,7 @@ git commit -m "feat: Service section — table row layout"
 **Files:**
 - Modify: `src/components/sections/MVV.astro`
 
-- [ ] **Step 1: MVV.astro を以下に全書き換え**
+- [x] **Step 1: MVV.astro を以下に全書き換え**
 
 ```astro
 ---
@@ -549,7 +549,7 @@ const { missionLabel, mission, visionLabel, vision, valuesLabel, values } = Astr
 </section>
 ```
 
-- [ ] **Step 2: 目視確認 + ビルド + コミット**
+- [x] **Step 2: 目視確認 + ビルド + コミット**
 
 `http://localhost:4321/#about` で確認:
 - Mission が左青ボーダー付き大テキスト
@@ -569,7 +569,7 @@ git commit -m "feat: MVV section — quote + values list layout"
 **Files:**
 - Modify: `src/components/sections/Strength.astro`
 
-- [ ] **Step 1: Strength.astro を以下に全書き換え**
+- [x] **Step 1: Strength.astro を以下に全書き換え**
 
 ```astro
 ---
@@ -619,7 +619,7 @@ const { heading, items } = Astro.props;
 </section>
 ```
 
-- [ ] **Step 2: 目視確認 + ビルド + コミット**
+- [x] **Step 2: 目視確認 + ビルド + コミット**
 
 `http://localhost:4321/#strength` で確認: Service と同じテーブル言語で3行
 
@@ -639,7 +639,7 @@ git commit -m "feat: Strength section — table row layout"
 
 ### PostCard — row variant 追加
 
-- [ ] **Step 1: PostCard.astro を以下に全書き換え**
+- [x] **Step 1: PostCard.astro を以下に全書き換え**
 
 ```astro
 ---
@@ -710,7 +710,7 @@ const dateStr = formatDate(pubDate, locale);
 
 ### BlogPreview — row variant 使用 + カスタムヘッダー
 
-- [ ] **Step 2: BlogPreview.astro を以下に全書き換え**
+- [x] **Step 2: BlogPreview.astro を以下に全書き換え**
 
 BlogPreview は右側に「すべて見る →」リンクが必要なためカスタムヘッダーを使う（SectionHeading は使わない）。
 
@@ -761,7 +761,7 @@ const { posts, heading, viewAllLabel, blogHref, locale = 'ja' } = Astro.props;
 )}
 ```
 
-- [ ] **Step 3: 目視確認 + ビルド + コミット**
+- [x] **Step 3: 目視確認 + ビルド + コミット**
 
 `http://localhost:4321/#blog` で確認:
 - "05 — Blog" ラベル左、"記事一覧を見る →" 右
@@ -785,7 +785,7 @@ git commit -m "feat: PostCard row variant + BlogPreview editorial list"
 
 ### Company
 
-- [ ] **Step 1: Company.astro を以下に全書き換え**
+- [x] **Step 1: Company.astro を以下に全書き換え**
 
 ```astro
 ---
@@ -832,7 +832,7 @@ const { heading, info } = Astro.props;
 
 ### Contact
 
-- [ ] **Step 2: Contact.astro を以下に全書き換え**
+- [x] **Step 2: Contact.astro を以下に全書き換え**
 
 ```astro
 ---
@@ -886,7 +886,7 @@ const subtextLines = subtext.split('\n');
 </section>
 ```
 
-- [ ] **Step 3: 全ページ目視確認**
+- [x] **Step 3: 全ページ目視確認**
 
 ```bash
 npm run dev
@@ -902,7 +902,7 @@ npm run dev
 - 全セクションに番号ラベルがついているか
 - モバイルサイズ（375px）でレイアウトが崩れていないか
 
-- [ ] **Step 4: ビルド確認 + コミット**
+- [x] **Step 4: ビルド確認 + コミット**
 
 ```bash
 npm run build
@@ -914,7 +914,7 @@ git commit -m "feat: Company + Contact sections — Swiss layout"
 
 ## Task 10: テスト実行 + 最終確認
 
-- [ ] **Step 1: ユニットテスト実行（ユーティリティ関数が壊れていないか確認）**
+- [x] **Step 1: ユニットテスト実行（ユーティリティ関数が壊れていないか確認）**
 
 ```bash
 npm run test
@@ -922,7 +922,7 @@ npm run test
 
 Expected: All tests pass（今回の変更でユーティリティ関数は未変更なので全パスするはず）
 
-- [ ] **Step 2: 本番ビルド確認**
+- [x] **Step 2: 本番ビルド確認**
 
 ```bash
 npm run build && npm run preview
@@ -930,7 +930,7 @@ npm run build && npm run preview
 
 `http://localhost:4321` でプレビューを確認。
 
-- [ ] **Step 3: 最終コミット（必要な場合）**
+- [x] **Step 3: 最終コミット（必要な場合）**
 
 未コミットの変更があれば:
 

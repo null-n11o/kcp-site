@@ -8,41 +8,57 @@ export interface Props {
   post: CollectionEntry<'blog'> | CollectionEntry<'blog_en'>;
   compact?: boolean;
   locale?: 'ja' | 'en';
+  variant?: 'card' | 'row';
 }
 
-const { post, compact = false, locale = 'ja' } = Astro.props;
+const { post, compact = false, locale = 'ja', variant = 'card' } = Astro.props;
 const { title, description, pubDate, tags } = post.data;
 const readMin = getReadingTimeMin(post.body);
 
 const blogBase = locale === 'en' ? '/en/blog' : '/blog';
 const tagBase = locale === 'en' ? '/en/blog/tags' : '/blog/tags';
 const readingTimeLabel = locale === 'en' ? `${readMin} min read` : `約${readMin}分`;
+const dateStr = formatDate(pubDate, locale);
 ---
 
-<article class={`relative group flex flex-col gap-4 p-6 rounded-xl border border-border bg-base-100 hover:border-accent/40 transition-all duration-300 ${compact ? '' : 'hover:-translate-y-1'}`}>
-  <!-- Tags -->
-  <div class="flex flex-wrap gap-2">
-    {tags.slice(0, 3).map(tag => (
-      <TagBadge tag={tag} href={`${tagBase}/${tag}/`} />
-    ))}
-  </div>
-
-  <!-- Title -->
-  <h2 class={`font-bold text-text-primary group-hover:text-accent transition-colors ${compact ? 'text-base' : 'text-xl'}`}>
-    <a href={`${blogBase}/${post.slug}/`} class="stretched-link">
-      {title}
-    </a>
-  </h2>
-
-  <!-- Description -->
-  {!compact && (
-    <p class="text-text-secondary text-sm leading-relaxed line-clamp-3">{description}</p>
-  )}
-
-  <!-- Meta -->
-  <div class="flex items-center gap-3 text-xs text-text-muted mt-auto">
-    <time datetime={pubDate.toISOString()}>{formatDate(pubDate, locale)}</time>
-    <span>·</span>
-    <span>{readingTimeLabel}</span>
-  </div>
-</article>
+{variant === 'row' ? (
+  <article class="relative grid grid-cols-[5rem_1fr_auto] gap-x-6 items-baseline py-4 border-b border-[#1e1e2e]">
+    <time class="font-mono text-xs text-text-muted" datetime={pubDate.toISOString()}>
+      {dateStr}
+    </time>
+    <div class="min-w-0">
+      <h2 class="font-bold text-text-primary text-sm leading-snug mb-1">
+        <a href={`${blogBase}/${post.slug}/`} class="stretched-link hover:text-accent transition-colors">
+          {title}
+        </a>
+      </h2>
+      <p class="text-text-secondary text-xs leading-relaxed line-clamp-1">{description}</p>
+    </div>
+    <div class="flex flex-wrap gap-1 justify-end">
+      {tags.slice(0, 1).map(tag => (
+        <TagBadge tag={tag} href={`${tagBase}/${tag}/`} />
+      ))}
+    </div>
+  </article>
+) : (
+  <article class={`relative group flex flex-col gap-4 p-6 border border-[#2a2a3e] bg-base-100 hover:border-accent/40 transition-all duration-300`}>
+    <div class="flex flex-wrap gap-2">
+      {tags.slice(0, 3).map(tag => (
+        <TagBadge tag={tag} href={`${tagBase}/${tag}/`} />
+      ))}
+    </div>
+    <h2 class={`font-bold text-text-primary group-hover:text-accent transition-colors ${compact ? 'text-base' : 'text-xl'}`}>
+      <a href={`${blogBase}/${post.slug}/`} class="stretched-link">
+        {title}
+      </a>
+    </h2>
+    {!compact && (
+      <p class="text-text-secondary text-sm leading-relaxed line-clamp-3">{description}</p>
+    )}
+    <div class="flex items-center gap-3 text-xs text-text-muted mt-auto">
+      <time datetime={pubDate.toISOString()}>{dateStr}</time>
+      <span>·</span>
+      <span>{readingTimeLabel}</span>
+    </div>
+  </article>
+)}

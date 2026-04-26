@@ -1,7 +1,5 @@
 ---
-import SectionHeading from '@/components/ui/SectionHeading.astro';
 import PostCard from '@/components/blog/PostCard.astro';
-import Button from '@/components/ui/Button.astro';
 import FadeIn from '@/components/ui/FadeIn.astro';
 import type { CollectionEntry } from 'astro:content';
 
@@ -14,29 +12,33 @@ export interface Props {
   locale?: 'ja' | 'en';
 }
 
-const { posts, heading, subtitle, viewAllLabel, blogHref, locale = 'ja' } = Astro.props;
+const { posts, heading, viewAllLabel, blogHref, locale = 'ja' } = Astro.props;
 ---
 
 {posts.length > 0 && (
   <section id="blog" class="py-section" style="background-color: #0a0a0a;">
     <div class="section-wrapper">
       <FadeIn>
-        <SectionHeading title={heading} subtitle={subtitle} />
+        <div class="flex items-baseline justify-between border-b border-[#2a2a3e] pb-3 mb-10">
+          <p class="text-xs font-mono font-medium text-accent tracking-[0.15em] uppercase">
+            05 — {heading}
+          </p>
+          <a
+            href={blogHref}
+            class="text-xs font-mono text-accent tracking-[0.1em] uppercase hover:text-accent-light transition-colors"
+          >
+            {viewAllLabel} →
+          </a>
+        </div>
       </FadeIn>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+      <div class="flex flex-col">
         {posts.map((post, i) => (
-          <FadeIn delay={i * 100}>
-            <PostCard post={post} locale={locale} />
+          <FadeIn delay={i * 80}>
+            <PostCard post={post} locale={locale} variant="row" />
           </FadeIn>
         ))}
       </div>
-
-      <FadeIn delay={200}>
-        <div class="text-center">
-          <Button href={blogHref} variant="outline">{viewAllLabel}</Button>
-        </div>
-      </FadeIn>
     </div>
   </section>
 )}

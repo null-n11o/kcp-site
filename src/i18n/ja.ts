@@ -17,10 +17,10 @@ export const ja: Translations = {
     rights: 'All Rights Reserved.',
   },
   hero: {
-    eyebrow: '株式会社KCP',
-    headlinePre: '人と組織が',
-    headlineAccent: '本当にやるべきこと',
-    headlinePost: 'に集中できる環境をつくる。',
+    eyebrow: 'Corporation',
+    headlinePre: 'We Make',
+    headlineAccent: 'Business',
+    headlinePost: 'Simple.',
     subtext:
       'SNS運用代行・CS代行・受託開発ディレクション・AI導入支援を通じて、共に変化を起こすパートナーとして伴奏いたします。',
     primaryCta: 'お問い合わせ',
