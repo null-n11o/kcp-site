@@ -27,7 +27,7 @@
 **Files:**
 - Modify: `src/i18n/types.ts`
 
-- [ ] **Step 1: types.ts を編集する**
+- [x] **Step 1: types.ts を編集する**
 
 `src/i18n/types.ts` の `ServiceItem` を以下に変更:
 
@@ -40,7 +40,7 @@ export interface ServiceItem {
 }
 ```
 
-- [ ] **Step 2: TypeScript エラーがないか確認する**
+- [x] **Step 2: TypeScript エラーがないか確認する**
 
 ```bash
 npx tsc --noEmit
@@ -48,7 +48,7 @@ npx tsc --noEmit
 
 Expected: エラーなし（`href` はオプショナルなので既存コードへの影響なし）
 
-- [ ] **Step 3: コミット**
+- [x] **Step 3: コミット**
 
 ```bash
 git add src/i18n/types.ts
@@ -63,7 +63,7 @@ git commit -m "feat: add optional href to ServiceItem type"
 - Modify: `src/i18n/ja.ts`
 - Modify: `src/i18n/en.ts`
 
-- [ ] **Step 1: ja.ts の SNS 運用代行アイテムに href を追加する**
+- [x] **Step 1: ja.ts の SNS 運用代行アイテムに href を追加する**
 
 `src/i18n/ja.ts` の `service.items[0]`（SNS運用代行）を以下に変更:
 
@@ -76,7 +76,7 @@ git commit -m "feat: add optional href to ServiceItem type"
 },
 ```
 
-- [ ] **Step 2: en.ts の Social Media Management アイテムに href を追加する**
+- [x] **Step 2: en.ts の Social Media Management アイテムに href を追加する**
 
 `src/i18n/en.ts` の `service.items[0]`（Social Media Management）を以下に変更:
 
@@ -90,7 +90,7 @@ git commit -m "feat: add optional href to ServiceItem type"
 },
 ```
 
-- [ ] **Step 3: TypeScript エラーがないか確認する**
+- [x] **Step 3: TypeScript エラーがないか確認する**
 
 ```bash
 npx tsc --noEmit
@@ -98,7 +98,7 @@ npx tsc --noEmit
 
 Expected: エラーなし
 
-- [ ] **Step 4: コミット**
+- [x] **Step 4: コミット**
 
 ```bash
 git add src/i18n/ja.ts src/i18n/en.ts
@@ -112,7 +112,7 @@ git commit -m "feat: add /services/sns/ href to SNS service i18n items"
 **Files:**
 - Modify: `src/components/sections/Service.astro`
 
-- [ ] **Step 1: Service.astro を編集する**
+- [x] **Step 1: Service.astro を編集する**
 
 `src/components/sections/Service.astro` の `<div class="flex-1 min-w-0">` ブロック全体を以下に置き換える:
 
@@ -139,7 +139,7 @@ git commit -m "feat: add /services/sns/ href to SNS service i18n items"
 </div>
 ```
 
-- [ ] **Step 2: 開発サーバーで確認する**
+- [x] **Step 2: 開発サーバーで確認する**
 
 ```bash
 npm run dev
@@ -147,7 +147,7 @@ npm run dev
 
 ブラウザで `http://localhost:4321/` を開き、Service セクションの「SNS運用代行」行の説明文の下に「詳しく見る →」（青色リンク）が表示されることを確認する。他の3つのサービス行にはリンクが表示されないことも確認する。
 
-- [ ] **Step 3: コミット**
+- [x] **Step 3: コミット**
 
 ```bash
 git add src/components/sections/Service.astro
@@ -568,7 +568,7 @@ const igReelsRows: TableRow[] = [
 </script>
 ```
 
-- [ ] **Step 2: ビルドエラーがないか確認する**
+- [x] **Step 2: ビルドエラーがないか確認する**
 
 ```bash
 npx tsc --noEmit
@@ -576,7 +576,7 @@ npx tsc --noEmit
 
 Expected: エラーなし
 
-- [ ] **Step 3: 開発サーバーで動作確認する**
+- [x] **Step 3: 開発サーバーで動作確認する**
 
 ```bash
 npm run dev
@@ -594,7 +594,7 @@ npm run dev
 8. CTA: 「お問い合わせ」ボタンが表示され、クリックで Google Forms が新しいタブで開く
 9. ホームページ (`http://localhost:4321/`) に戻り、Service セクションの「SNS運用代行」行に「詳しく見る →」が表示されている
 
-- [ ] **Step 4: 本番ビルドを確認する**
+- [x] **Step 4: 本番ビルドを確認する**
 
 ```bash
 npm run build
@@ -602,7 +602,7 @@ npm run build
 
 Expected: エラーなし、`dist/services/sns/index.html` が生成される
 
-- [ ] **Step 5: コミット**
+- [x] **Step 5: コミット**
 
 ```bash
 git add src/pages/services/sns.astro
@@ -613,7 +613,7 @@ git commit -m "feat: add SNS service page with 3-tab layout"
 
 ## 完了条件
 
-- [ ] `http://localhost:4321/services/sns/` でページが表示される
-- [ ] 3タブが正常に切り替わる
-- [ ] ホームの Service セクションに「詳しく見る →」リンクが表示される
-- [ ] `npm run build` がエラーなし完了する
+- [x] `http://localhost:4321/services/sns/` でページが表示される
+- [x] 3タブが正常に切り替わる
+- [x] ホームの Service セクションに「詳しく見る →」リンクが表示される
+- [x] `npm run build` がエラーなし完了する
