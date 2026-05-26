@@ -36,6 +36,7 @@ export const en: Translations = {
         title: 'Social Media Management',
         description:
           'End-to-end management of your social media accounts: planning, posting, and analytics.',
+        href: '/services/sns/',
       },
       {
         icon: '💬',
