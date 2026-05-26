@@ -34,6 +34,7 @@ export const ja: Translations = {
         icon: '📱',
         title: 'SNS運用代行',
         description: 'クライアントのSNSアカウントの企画・投稿・分析を一括代行します。',
+        href: '/services/sns/',
       },
       {
         icon: '💬',

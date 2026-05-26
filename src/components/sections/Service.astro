@@ -31,9 +31,19 @@ const { heading, items } = Astro.props;
                   <p class="font-bold text-text-primary text-sm mb-1 sm:mb-0">
                     {service.title}
                   </p>
-                  <p class="text-text-secondary text-sm leading-relaxed">
-                    {service.description}
-                  </p>
+                  <div>
+                    <p class="text-text-secondary text-sm leading-relaxed">
+                      {service.description}
+                    </p>
+                    {service.href && (
+                      <a
+                        href={service.href}
+                        class="inline-block mt-2 text-xs text-accent hover:underline"
+                      >
+                        詳しく見る →
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
