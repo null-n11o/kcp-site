@@ -50,6 +50,7 @@ export const ja: Translations = {
         icon: '🤖',
         title: 'AI導入支援',
         description: '現場に合ったAI導入で業務効率を向上します。',
+        href: '/services/ai-training/',
       },
     ],
   },
