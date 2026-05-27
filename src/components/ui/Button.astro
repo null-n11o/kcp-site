@@ -6,6 +6,7 @@ export interface Props {
   class?: string;
   disabled?: boolean;
   target?: string;
+  rel?: string;
 }
 
 const {
@@ -15,7 +16,11 @@ const {
   class: className = '',
   disabled = false,
   target,
+  rel,
 } = Astro.props;
+
+// Auto-add noopener noreferrer when target is set
+const linkRel = target && !rel ? 'noopener noreferrer' : rel;
 
 const base =
   'inline-flex items-center justify-center gap-2 px-6 py-3 font-medium text-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white';
@@ -30,7 +35,7 @@ const classes = `${base} ${variants[variant]} ${className}`;
 ---
 
 {href ? (
-  <a href={href} class={classes} target={target}>
+  <a href={href} class={classes} target={target} rel={linkRel}>
     <slot />
   </a>
 ) : (
