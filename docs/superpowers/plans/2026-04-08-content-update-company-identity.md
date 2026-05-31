@@ -129,12 +129,11 @@ company: {
   info: [
     { label: '会社名', value: '株式会社KCP' },
     { label: '英語名称', value: 'KCP Inc.' },
-    { label: 'ブランド名', value: 'Kinesis Cross Partners' },
     { label: '代表者', value: '中野 健太朗' },
-    { label: '設立', value: '2026年（予定）' },
-    { label: '所在地', value: '東京都世田谷区（バーチャルオフィス）' },
-    { label: '事業内容', value: 'SNS運用代行・CS代行・受託開発ディレクション・AI研修' },
-    { label: '資本金', value: '設立時に更新予定' },
+    { label: '設立', value: '2026年6月' },
+    { label: '所在地', value: '東京都新宿区西新宿3丁目3番13号西新宿水間ビル2F' },
+    { label: '事業内容', value: 'AI導入支援・研修・SNS運用代行・受託開発・海外企業支援' },
+    { label: '資本金', value: '100万円' },
   ],
 },
 ```

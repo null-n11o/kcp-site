@@ -126,13 +126,11 @@ export const ja: Translations = {
     subtitle: '会社概要',
     info: [
       { label: '会社名', value: '株式会社KCP' },
-      { label: '英語名称', value: 'KCP Inc.' },
-      { label: 'ブランド名', value: 'Kinesis Cross Partners' },
       { label: '代表者', value: '中野 健太朗' },
-      { label: '設立', value: '2026年（予定）' },
+      { label: '設立', value: '2026年4月（予定）' },
       { label: '所在地', value: '東京都世田谷区（バーチャルオフィス）' },
-      { label: '事業内容', value: 'SNS運用代行・CS代行・受託開発ディレクション・AI研修' },
-      { label: '資本金', value: '設立時に更新予定' },
+      { label: '事業内容', value: 'BPO・AI研修・SNS運用代行・開発ディレクション・メディア運営' },
+      { label: '資本金', value: '100万円' },
     ],
   },
   contact: {
