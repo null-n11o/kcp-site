@@ -38,8 +38,8 @@ export const ja: Translations = {
       },
       {
         icon: '💬',
-        title: 'CS代行',
-        description: 'AIが9割・人間が1割の体制で顧客対応を代行。コストを抑えながら高品質な対応を実現します。',
+        title: '海外企業支援',
+        description: '海外企業の日本市場参入を支援します。',
       },
       {
         icon: '🖥️',
