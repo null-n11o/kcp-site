@@ -127,9 +127,9 @@ export const ja: Translations = {
     info: [
       { label: '会社名', value: '株式会社KCP' },
       { label: '代表者', value: '中野 健太朗' },
-      { label: '設立', value: '2026年4月（予定）' },
-      { label: '所在地', value: '東京都世田谷区（バーチャルオフィス）' },
-      { label: '事業内容', value: 'BPO・AI研修・SNS運用代行・開発ディレクション・メディア運営' },
+      { label: '設立', value: '2026年6月' },
+      { label: '所在地', value: '東京都新宿区西新宿3丁目3番13号西新宿水間ビル2F' },
+      { label: '事業内容', value: 'AI導入支援・研修・SNS運用代行・受託開発・海外企業支援・メディア運営' },
       { label: '資本金', value: '100万円' },
     ],
   },
