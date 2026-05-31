@@ -22,7 +22,7 @@ export const ja: Translations = {
     headlineAccent: 'Business',
     headlinePost: 'Simple.',
     subtext:
-      'SNS運用代行・CS代行・受託開発ディレクション・AI導入支援を通じて、共に変化を起こすパートナーとして伴奏いたします。',
+      'SNS運用代行・受託開発・AI導入支援を通じて、共に変化を起こすパートナーとして伴奏いたします。',
     primaryCta: 'お問い合わせ',
     secondaryCta: 'サービスを見る',
   },
@@ -43,7 +43,7 @@ export const ja: Translations = {
       },
       {
         icon: '🖥️',
-        title: '受託開発ディレクション',
+        title: '受託開発',
         description: '開発プロジェクトを支援します。技術とビジネスを繋ぐ視点でスムーズにプロジェクトを進行いたします。',
       },
       {

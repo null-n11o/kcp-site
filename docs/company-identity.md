@@ -109,8 +109,7 @@ Every failure becomes feed for next challenges. We think bad times as opportunit
 | サービス | 概要 |
 | --- | --- |
 | SNS運用代行 | クライアントのSNSアカウントの企画・投稿・分析を一括代行 |
-| CS代行 | AIが9割・人間が1割の体制で顧客対応を代行 |
-| 受託開発ディレクション | 開発プロジェクトのディレクション・PM業務を代行 |
+| 受託開発 | 開発プロジェクトのディレクション・PM業務を代行 |
 | AI研修 | 企業向けAI活用トレーニングの設計・実施 |
 
 ---
