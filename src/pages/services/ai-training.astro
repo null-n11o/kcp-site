@@ -1,0 +1,181 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import FadeIn from '@/components/ui/FadeIn.astro';
+import Button from '@/components/ui/Button.astro';
+
+const FORM_URL =
+  'https://docs.google.com/forms/d/e/1FAIpQLSd2ycZEAgr4DpONjfTUOgKXUJ7cZTN5rNKaXy5WdyitG4Wqqg/viewform?usp=dialog';
+
+const steps = [
+  {
+    number: '01',
+    title: 'AI研修（助成金活用）',
+    description:
+      '助成金を活用することで、格安で実践的なAI研修を実施します。社内のAI人材育成はもちろん、業務改善を一緒に考えるきっかけになればと思います。',
+    deliverable: '社内AI人材の育成・信頼構築',
+  },
+  {
+    number: '02',
+    title: 'AI顧問＋導入支援',
+    description:
+      '研修後は「AI担当」として参画。人月単価でのAI顧問契約に加え、具体的な業務のAI化まで手を動かして実行します。',
+    deliverable: '実務のAI化・実行体制の構築',
+  },
+  {
+    number: '03',
+    title: '周辺業務代行（オプション）',
+    description:
+      'AI化と並行して、リソースが不足しがちなSNS運用やカスタマーサポート（CS）などの周辺業務についても、丸ごと代行することが可能です。',
+    deliverable: 'SNS代行・CS代行など',
+  },
+];
+
+const curriculum = [
+  {
+    category: '基礎編',
+    topics: [
+      'AIとは何か・ビジネスへの影響（経営者向け概論）',
+      'ChatGPT / Claudeの基本的な使い方',
+      'プロンプトエンジニアリング入門',
+      'AIツール選定の考え方',
+    ],
+  },
+  {
+    category: '業務活用編',
+    topics: [
+      '文書作成・要約・翻訳へのAI活用',
+      '営業・マーケティングへのAI活用',
+      'カスタマーサポートへのAI活用',
+      '社内ナレッジ管理へのAI活用',
+    ],
+  },
+  {
+    category: '実装・自動化編',
+    topics: [
+      'n8nを使った業務自動化入門',
+      'APIの基本と活用方法',
+      'AIエージェントの設計・運用',
+      'Claude Codeを使った簡易ツール開発',
+    ],
+  },
+  {
+    category: 'AI経営編',
+    topics: [
+      'AIネイティブな組織・業務設計',
+      'AI導入のROI計測・評価方法',
+      '社内AI推進担当者の育て方',
+    ],
+  },
+];
+---
+
+<PageLayout
+  title="AI導入・研修支援 | KCP"
+  description="業務に合わせたカスタマイズ型AI研修で、御社の人材をAI人材に。現状診断から研修実施・定着支援まで一貫して支援します。"
+>
+  <!-- ヒーロー -->
+  <section style="background-color: #0e0e0e;">
+    <div class="section-wrapper">
+      <FadeIn>
+        <p class="font-mono text-xs font-medium text-accent tracking-[0.15em] uppercase mb-4">
+          SERVICE
+        </p>
+        <h1 class="text-5xl sm:text-7xl font-black leading-none tracking-tight text-white mb-6">
+          AI導入・研修支援
+        </h1>
+        <p class="text-text-secondary text-sm leading-relaxed max-w-xl">
+          業務に合わせたカスタマイズ型AI研修で、御社の人材をAI人材に。現状診断から研修実施・定着支援まで一貫して支援します。
+        </p>
+      </FadeIn>
+    </div>
+  </section>
+
+  <!-- 進め方 -->
+  <section style="background-color: #111;">
+    <div class="section-wrapper">
+      <FadeIn>
+        <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-8">
+          HOW IT WORKS
+        </p>
+      </FadeIn>
+      <div class="flex flex-col">
+        {steps.map((step, i) => (
+          <FadeIn delay={i * 80}>
+            <div class="py-6 border-b border-[#1e1e2e]">
+              <div class="flex gap-5 items-start">
+                <span class="font-mono font-black text-accent/40 text-sm w-6 shrink-0 pt-px">
+                  {step.number}
+                </span>
+                <div class="flex-1 min-w-0 sm:grid sm:grid-cols-[10rem_1fr] sm:gap-8">
+                  <p class="font-bold text-text-primary text-sm mb-2 sm:mb-0">{step.title}</p>
+                  <div>
+                    <p class="text-text-secondary text-sm leading-relaxed mb-2">
+                      {step.description}
+                    </p>
+                    <p class="font-mono text-xs text-text-muted">成果物: {step.deliverable}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- カリキュラム例 -->
+  <section style="background-color: #0e0e0e;">
+    <div class="section-wrapper">
+      <FadeIn>
+        <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-2">
+          CURRICULUM
+        </p>
+        <p class="text-text-secondary text-sm mb-8">
+          顧客ニーズに応じて組み合わせてカスタマイズします。
+        </p>
+      </FadeIn>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {curriculum.map((cat, i) => (
+          <FadeIn delay={i * 60}>
+            <div class="border border-[#1e1e2e] rounded-sm p-6" style="background-color: #111;">
+              <p class="font-mono text-xs text-accent tracking-widest mb-4">{cat.category}</p>
+              <ul class="space-y-2">
+                {cat.topics.map((topic) => (
+                  <li class="text-xs text-text-secondary leading-relaxed flex gap-2">
+                    <span class="text-accent/40 shrink-0">—</span>
+                    {topic}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </FadeIn>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background-color: #0a0a0a;">
+    <div class="section-wrapper">
+      <FadeIn>
+        <div class="border-t-2 border-white pt-8 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6">
+          <div>
+            <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-2">
+              Contact
+            </p>
+            <p class="text-white text-sm leading-relaxed">
+              まずはお気軽にご相談ください。<br />
+              料金・スケジュール・カリキュラムの詳細はヒアリングの上ご提案します。
+            </p>
+          </div>
+          <Button href={FORM_URL} variant="primary" target="_blank">
+            お問い合わせ
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </Button>
+        </div>
+      </FadeIn>
+    </div>
+  </section>
+</PageLayout>

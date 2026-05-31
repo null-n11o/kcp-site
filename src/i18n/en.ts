@@ -55,6 +55,7 @@ export const en: Translations = {
         title: 'AI Training',
         description:
           'Designing and delivering AI utilization training for businesses. Tailored to your workplace for real efficiency gains.',
+        href: '/services/ai-training/',
       },
     ],
   },
