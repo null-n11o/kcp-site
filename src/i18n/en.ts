@@ -22,7 +22,7 @@ export const en: Translations = {
     headlineAccent: 'what truly matters.',
     headlinePost: '',
     subtext:
-      'Through social media management, customer support, development direction, and AI training, we partner with you to drive change.',
+      'Through social media management, contract development, and AI implementation support, we partner with you to drive change.',
     primaryCta: 'Contact Us',
     secondaryCta: 'Our Services',
   },
@@ -36,26 +36,27 @@ export const en: Translations = {
         title: 'Social Media Management',
         description:
           'End-to-end management of your social media accounts: planning, posting, and analytics.',
-        href: '/services/sns/',
+        href: '/en/services/sns/',
       },
       {
         icon: '💬',
-        title: 'Customer Support (CS)',
+        title: 'Global Business Support',
         description:
-          'AI-powered customer support with a 90/10 AI-to-human ratio — high quality at lower cost.',
+          'We support overseas companies entering the Japanese market.',
+        href: '/en/services/japan-entry/',
       },
       {
         icon: '🖥️',
-        title: 'Development Direction',
+        title: 'Contract Development',
         description:
-          'Project direction and PM services for development projects. We bridge technology and business to keep projects on track.',
+          'We support development projects. Bridging technology and business to keep projects on track.',
       },
       {
         icon: '🤖',
         title: 'AI Training',
         description:
           'Designing and delivering AI utilization training for businesses. Tailored to your workplace for real efficiency gains.',
-        href: '/services/ai-training/',
+        href: '/en/services/ai-training/',
       },
     ],
   },
@@ -132,17 +133,19 @@ export const en: Translations = {
     heading: 'Company',
     subtitle: 'About Us',
     info: [
-      { label: 'Company (JP)', value: '株式会社KCP' },
-      { label: 'Company (EN)', value: 'KCP Inc.' },
-      { label: 'Brand', value: 'Kinesis Cross Partners' },
+      { label: 'Company', value: 'KCP Inc.' },
       { label: 'CEO', value: 'Kentaro Nakano' },
-      { label: 'Founded', value: '2026 (planned)' },
-      { label: 'Location', value: 'Setagaya, Tokyo (Virtual Office)' },
+      { label: 'Founded', value: 'June 2026' },
+      {
+        label: 'Location',
+        value: 'Nishi-Shinjuku 3-3-13, Shinjuku-ku, Tokyo, Nishishinjuku Mizuma Bldg. 2F',
+      },
       {
         label: 'Business',
-        value: 'Social Media Management, Customer Support, Development Direction, AI Training',
+        value:
+          'AI Implementation Support & Training, Social Media Management, Contract Development, Global Business Support, Media Operations',
       },
-      { label: 'Capital', value: 'To be updated at founding' },
+      { label: 'Capital', value: 'JPY 1,000,000' },
     ],
   },
   contact: {
