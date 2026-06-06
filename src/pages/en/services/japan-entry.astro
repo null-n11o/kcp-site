@@ -1,0 +1,326 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import FadeIn from '@/components/ui/FadeIn.astro';
+import Button from '@/components/ui/Button.astro';
+
+const FORM_URL =
+  'https://docs.google.com/forms/d/e/1FAIpQLSePXpwGVPXIXCo_iFSOqErpHHKX8-8NzlKlttg5N2jypOuP2Q/viewform?usp=publish-editor';
+
+const problems = [
+  {
+    title: 'No network.',
+    description:
+      "You don't know who to talk to, and Japanese companies don't respond to cold emails.",
+  },
+  {
+    title: 'No context.',
+    description:
+      'Business norms, communication styles, and decision-making processes are unlike anywhere else.',
+  },
+  {
+    title: 'No one on the ground.',
+    description:
+      'You need someone who can move in Japanese — not just translate, but represent you.',
+  },
+];
+
+const whatWeDo = [
+  'Identifying and introducing qualified Japanese business partners and customers',
+  'Representing you in meetings, negotiations, and ongoing communications',
+  'Setting up your legal and operational presence in Japan (company registration, permits, banking)',
+  'Managing your Japanese social media and customer-facing communications',
+  'Translating not just language, but business culture — so you never misread a situation',
+];
+
+const whoWeWorkWith = [
+  {
+    title: 'Startups and SMEs',
+    description:
+      'Companies that have proven traction in their home market and are ready to expand into Japan.',
+  },
+  {
+    title: 'Founders and entrepreneurs',
+    description:
+      'Those who want to move fast without building an in-house Japan team.',
+  },
+  {
+    title: 'Companies seeking a trusted local operator',
+    description:
+      'Not a passive advisory relationship — a partner who executes on your behalf.',
+  },
+];
+
+const scopeRows = [
+  {
+    area: 'Business Development',
+    handles:
+      'Partner and customer introductions, meeting facilitation, relationship management',
+  },
+  {
+    area: 'Market Intelligence',
+    handles: 'Competitive landscape, pricing norms, regulatory requirements',
+  },
+  {
+    area: 'Operations Setup',
+    handles:
+      'Company incorporation, registered address, bank account, permits',
+  },
+  {
+    area: 'Communications',
+    handles: 'SNS management, customer support, Japanese-language correspondence',
+  },
+  {
+    area: 'Strategic Advisory',
+    handles:
+      'Ongoing guidance on market positioning and Japanese business culture',
+  },
+];
+
+const whyKcp = [
+  {
+    title: 'We execute, not just advise.',
+    description:
+      'Our background is in operations and implementation. When we take on a task, it gets done — not delegated to a junior or filed in a report.',
+  },
+  {
+    title: 'We stay small by design.',
+    description:
+      'We work with a maximum of 2–3 clients at a time. When you work with KCP, you work with the principal directly.',
+  },
+  {
+    title: 'Fully English-capable.',
+    description:
+      'All communications, negotiations, and deliverables are conducted in English. You will never need an interpreter to work with us.',
+  },
+  {
+    title: 'We are builders ourselves.',
+    description:
+      'KCP operates its own BPO and digital infrastructure in Japan. We know how to build and run a business here — not from theory, but from practice.',
+  },
+];
+---
+
+<PageLayout
+  title="Japan Entry Support | KCP"
+  description="KCP acts as your dedicated local representative in Japan — handling business development, operations setup, communications, and strategic advisory on a monthly retainer."
+>
+  <!-- Hero -->
+  <section style="background-color: #0e0e0e;">
+    <div class="section-wrapper">
+      <FadeIn>
+        <p class="font-mono text-xs font-medium text-accent tracking-[0.15em] uppercase mb-4">
+          SERVICE
+        </p>
+        <h1 class="text-5xl sm:text-7xl font-black leading-none tracking-tight text-white mb-6">
+          Japan Entry<br />Support
+        </h1>
+        <p class="text-text-secondary text-sm leading-relaxed max-w-xl">
+          Japan is the world's third-largest economy — and one of the hardest markets to crack without
+          local footing. KCP acts as your dedicated local representative: someone who speaks the
+          language, understands the market, and executes on your behalf.
+        </p>
+      </FadeIn>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section style="background-color: #111;">
+    <div class="section-wrapper">
+      <FadeIn>
+        <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-8">PROBLEM</p>
+        <p class="text-text-secondary text-sm leading-relaxed max-w-xl mb-10">
+          Most foreign companies stall at the same three barriers when entering Japan:
+        </p>
+      </FadeIn>
+      <div class="flex flex-col">
+        {problems.map((problem, i) => (
+          <FadeIn delay={i * 60}>
+            <div class="flex gap-5 items-start py-5 border-b border-[#1e1e2e]">
+              <span class="font-mono font-black text-accent/40 text-sm w-6 shrink-0 pt-px">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <div>
+                <p class="text-white font-bold text-sm mb-1">{problem.title}</p>
+                <p class="text-text-secondary text-sm leading-relaxed">{problem.description}</p>
+              </div>
+            </div>
+          </FadeIn>
+        ))}
+      </div>
+      <FadeIn delay={200}>
+        <p class="text-text-secondary text-sm leading-relaxed mt-8 max-w-xl">
+          Hiring a full-time local employee is expensive and slow. Consultants hand you a report and
+          disappear. You need a partner who stays in the room.
+        </p>
+      </FadeIn>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section style="background-color: #0e0e0e;">
+    <div class="section-wrapper">
+      <FadeIn>
+        <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-8">
+          WHAT WE DO
+        </p>
+        <p class="text-text-secondary text-sm leading-relaxed max-w-xl mb-10">
+          KCP's Japan Entry Support is a fully hands-on engagement — not a one-time consultation.
+          We act as your <span class="text-white font-semibold">dedicated local representative in Japan</span>.
+          The scope adapts to what your business actually needs.
+        </p>
+        <div class="flex flex-col">
+          {whatWeDo.map((item, i) => (
+            <div class="flex gap-4 items-start py-4 border-b border-[#1e1e2e]">
+              <span class="text-accent shrink-0 font-bold text-sm pt-px">—</span>
+              <p class="text-text-secondary text-sm leading-relaxed">{item}</p>
+            </div>
+          ))}
+        </div>
+        <p class="text-text-secondary text-xs leading-relaxed mt-6">
+          We conduct all client engagements in <span class="text-white font-semibold">English</span>,
+          ensuring nothing is lost in translation between you and the Japanese market.
+        </p>
+      </FadeIn>
+    </div>
+  </section>
+
+  <!-- WHO WE WORK WITH -->
+  <section style="background-color: #111;">
+    <div class="section-wrapper">
+      <FadeIn>
+        <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-8">
+          WHO WE WORK WITH
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {whoWeWorkWith.map((item, i) => (
+            <div class="border border-[#1e1e2e] rounded-sm p-6" style="background-color: #0e0e0e;">
+              <span class="font-mono font-black text-accent/40 text-xs">{String(i + 1).padStart(2, '0')}</span>
+              <p class="font-bold text-white text-sm mt-3 mb-3">{item.title}</p>
+              <p class="text-text-secondary text-xs leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+        <p class="text-text-secondary text-xs leading-relaxed mt-6">
+          We work with a limited number of clients at any given time to ensure the quality of
+          engagement is never diluted.
+        </p>
+      </FadeIn>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section style="background-color: #0e0e0e;">
+    <div class="section-wrapper">
+      <FadeIn>
+        <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-8">
+          HOW IT WORKS
+        </p>
+        <p class="text-text-secondary text-sm leading-relaxed max-w-xl mb-8">
+          Every engagement begins with a scoping conversation to understand your goals, timeline, and
+          current state. From there, we define a monthly retainer scope that reflects what you
+          actually need — nothing more, nothing less.
+        </p>
+        <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-4">SCOPE</p>
+        <div class="border border-[#1e1e2e] rounded-sm overflow-hidden">
+          <div
+            class="grid grid-cols-[1fr_2fr] text-xs text-text-muted font-mono py-2 px-4"
+            style="background-color: #111;"
+          >
+            <span>Area</span>
+            <span>What We Handle</span>
+          </div>
+          {scopeRows.map((row, i) => (
+            <div
+              class={`grid grid-cols-[1fr_2fr] text-xs py-4 px-4 border-t border-[#1e1e2e]${i % 2 === 1 ? ' bg-[#0a0a0a]' : ''}`}
+            >
+              <span class="text-white font-semibold pr-4">{row.area}</span>
+              <span class="text-text-secondary leading-relaxed">{row.handles}</span>
+            </div>
+          ))}
+        </div>
+        <p class="text-text-secondary text-xs leading-relaxed mt-6">
+          Engagements are structured as monthly retainers. Performance fees apply separately for
+          deals closed through our introductions.
+        </p>
+      </FadeIn>
+    </div>
+  </section>
+
+  <!-- WHY KCP -->
+  <section style="background-color: #111;">
+    <div class="section-wrapper">
+      <FadeIn>
+        <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-8">WHY KCP</p>
+      </FadeIn>
+      <div class="flex flex-col">
+        {whyKcp.map((item, i) => (
+          <FadeIn delay={i * 60}>
+            <div class="py-6 border-b border-[#1e1e2e]">
+              <div class="flex gap-5 items-start">
+                <span class="font-mono font-black text-accent/40 text-sm w-6 shrink-0 pt-px">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <div>
+                  <p class="font-bold text-white text-sm mb-2">{item.title}</p>
+                  <p class="text-text-secondary text-sm leading-relaxed">{item.description}</p>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- THE BIGGER PICTURE -->
+  <section style="background-color: #0e0e0e;">
+    <div class="section-wrapper">
+      <FadeIn>
+        <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-8">
+          THE BIGGER PICTURE
+        </p>
+        <p class="text-text-secondary text-sm leading-relaxed max-w-2xl mb-4">
+          Japan entry isn't a one-quarter project. The companies that succeed here are the ones
+          willing to invest in relationships over time.
+        </p>
+        <p class="text-text-secondary text-sm leading-relaxed max-w-2xl">
+          We are a long-term partner, not a vendor. Our goal is to become embedded enough in your
+          Japan operations that you don't need us to tell you what to do — you already know, because
+          we've built it together.
+        </p>
+      </FadeIn>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background-color: #0a0a0a;">
+    <div class="section-wrapper">
+      <FadeIn>
+        <div
+          class="border-t-2 border-white pt-8 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6"
+        >
+          <div>
+            <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-2">
+              Contact
+            </p>
+            <p class="text-white text-sm leading-relaxed">
+              Ready to explore entering Japan?<br />
+              Let's start with a conversation about your goals.
+            </p>
+          </div>
+          <Button href={FORM_URL} variant="primary" target="_blank">
+            Get in Touch
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+              />
+            </svg>
+          </Button>
+        </div>
+      </FadeIn>
+    </div>
+  </section>
+</PageLayout>
