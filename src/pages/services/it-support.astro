@@ -31,6 +31,18 @@ const features = [
       '月に何をどれだけ依頼したかがチケット単位で明確になります。「何に払っているかわからない」という不透明さがなく、依頼内容と消費チケット数を常に把握できます。',
   },
 ];
+
+const ticketGuide = [
+  { task: 'チャット相談（15分以内）', tickets: '0（無料）' },
+  { task: 'WebMTG相談（1時間）', tickets: '1' },
+  { task: 'X・Threads投稿1本 / Instagram リール・TikTok動画（1分）', tickets: '1' },
+  { task: '文字改修など軽微なシステム改修・設定変更', tickets: '1' },
+  { task: 'LP・資料・PDF作成（シンプルなもの）', tickets: '2' },
+  { task: 'LP・資料・PDF作成（複数ページ・デザイン込み）', tickets: '3' },
+  { task: 'AI・自動化対応', tickets: '3（要件に合わせて変動）' },
+  { task: 'AI導入支援・設定代行', tickets: '要件に合わせて事前にお見積り' },
+  { task: '新規システム開発', tickets: '要件に合わせて事前にお見積り' },
+];
 ---
 
 <PageLayout
@@ -98,6 +110,77 @@ const features = [
           </FadeIn>
         ))}
       </div>
+    </div>
+  </section>
+
+  <!-- PLAN -->
+  <section style="background-color: #111;">
+    <div class="section-wrapper">
+      <FadeIn>
+        <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-8">PLAN</p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+          <div class="border border-[#1e1e2e] rounded-sm p-6" style="background-color: #0e0e0e;">
+            <p class="font-mono text-xs text-text-muted tracking-widest mb-3">LIGHT</p>
+            <p class="text-3xl font-black text-accent mb-1">¥50,000</p>
+            <p class="text-xs text-text-muted mb-5">/ 月（税別）</p>
+            <div class="border-t border-[#1e1e2e] pt-4 space-y-1">
+              <p class="text-xs text-text-secondary">10チケット / 月</p>
+              <p class="text-xs text-text-secondary">1チケット単価 ¥5,000</p>
+            </div>
+          </div>
+          <div class="border border-accent/20 rounded-sm p-6 relative" style="background-color: #0e0e0e;">
+            <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-black text-[10px] font-bold px-3 py-0.5 rounded-full">
+              人気
+            </span>
+            <p class="font-mono text-xs text-text-muted tracking-widest mb-3">STANDARD</p>
+            <p class="text-3xl font-black text-white mb-1">¥100,000</p>
+            <p class="text-xs text-text-muted mb-5">/ 月（税別）</p>
+            <div class="border-t border-[#1e1e2e] pt-4 space-y-1">
+              <p class="text-xs text-text-secondary">25チケット / 月</p>
+              <p class="text-xs text-text-secondary">1チケット単価 ¥4,000</p>
+            </div>
+          </div>
+          <div class="border border-[#1e1e2e] rounded-sm p-6" style="background-color: #0e0e0e;">
+            <p class="font-mono text-xs text-text-muted tracking-widest mb-3">PREMIUM</p>
+            <p class="text-3xl font-black text-white mb-1">¥200,000</p>
+            <p class="text-xs text-text-muted mb-5">/ 月（税別）</p>
+            <div class="border-t border-[#1e1e2e] pt-4 space-y-1">
+              <p class="text-xs text-text-secondary">55チケット / 月</p>
+              <p class="text-xs text-text-secondary">1チケット単価 ¥3,636</p>
+            </div>
+          </div>
+        </div>
+        <div class="border border-[#1e1e2e] rounded-sm p-5 space-y-2" style="background-color: #0e0e0e;">
+          <p class="text-xs text-text-secondary">チャット対応：無制限・無料（30分以下の相談はチケット消費なし）</p>
+          <p class="text-xs text-text-secondary">契約条件：6か月更新</p>
+          <p class="text-xs text-text-secondary">未使用チケットの翌月繰り越しなし</p>
+        </div>
+      </FadeIn>
+    </div>
+  </section>
+
+  <!-- TICKET GUIDE -->
+  <section style="background-color: #0e0e0e;">
+    <div class="section-wrapper">
+      <FadeIn>
+        <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-4">TICKET GUIDE</p>
+        <p class="text-xs text-text-muted mb-6">1チケット ＝ 1時間相当のタスク</p>
+        <div class="border border-[#1e1e2e] rounded-sm overflow-hidden">
+          <div class="grid grid-cols-[1fr_9rem] text-xs text-text-muted font-mono py-2 px-4" style="background-color: #111;">
+            <span>タスク内容</span>
+            <span class="text-right">チケット数</span>
+          </div>
+          {ticketGuide.map((row, i) => (
+            <div class={`grid grid-cols-[1fr_9rem] text-xs py-3 px-4 border-t border-[#1e1e2e]${i % 2 === 1 ? ' bg-[#0a0a0a]' : ''}`}>
+              <span class="text-text-secondary">{row.task}</span>
+              <span class="font-mono text-accent text-right">{row.tickets}</span>
+            </div>
+          ))}
+        </div>
+        <p class="text-xs text-text-muted mt-3">
+          ※ タスクの複雑度・ボリュームによって変動します。都度ご相談させていただきます。
+        </p>
+      </FadeIn>
     </div>
   </section>
 </PageLayout>
