@@ -22,7 +22,7 @@ export const ja: Translations = {
     headlineAccent: 'Business',
     headlinePost: 'Simple.',
     subtext:
-      'SNS運用代行・受託開発・AI導入支援を通じて、共に変化を起こすパートナーとして伴奏いたします。',
+      '中小企業のIT・AI担当として、月額固定で実作業まで引き受けます。SNS運用・システム改修・AI導入——何でも気軽に頼める「社内のIT担当者」が、今日から持てます。',
     primaryCta: 'お問い合わせ',
     secondaryCta: 'サービスを見る',
   },
@@ -30,6 +30,13 @@ export const ja: Translations = {
     heading: 'Service',
     subtitle: 'AIと人力を使い分け、人と組織が本当にやるべきことに集中できる環境をつくります。',
     items: [
+      {
+        icon: '🧑‍💻',
+        title: '丸投げIT担当',
+        description:
+          '月額固定でKCPがあなたの会社のIT・AI担当になります。チャット相談から実作業まで一括で引き受けます。',
+        href: '/services/it-support/',
+      },
       {
         icon: '📱',
         title: 'SNS運用代行',
