@@ -1,0 +1,103 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import FadeIn from '@/components/ui/FadeIn.astro';
+import Button from '@/components/ui/Button.astro';
+
+const FORM_URL =
+  'https://docs.google.com/forms/d/e/1FAIpQLSd2ycZEAgr4DpONjfTUOgKXUJ7cZTN5rNKaXy5WdyitG4Wqqg/viewform?usp=dialog';
+
+const problems = [
+  '社内にIT・AIに詳しい人間がいない',
+  'SNS・ホームページ・システムの改修を誰に頼めばいいかわからない',
+  '複数の業者に個別発注していて管理が煩雑になっている',
+  '専任のIT担当を採用するほどの規模でも予算でもない',
+  'AIを使いたいが導入のハードルが高い',
+];
+
+const features = [
+  {
+    title: 'プロダクトではなく、人が動くサービスです',
+    description:
+      'チャットで気軽に相談でき、実際にあらゆるITやAIに関するタスクを完了させるところまでKCPが担います。「何かあれば連絡する」人間が一人いる状態を月額固定でつくります。',
+  },
+  {
+    title: 'IT・AI特化',
+    description:
+      'SNS運用・システム改修・LP制作・AI導入支援まで、IT・AIに関わる業務を横断的に対応します。技術的な業務であれば全て動ける幅広さが強みです。',
+  },
+  {
+    title: 'チケット制で稼働を可視化',
+    description:
+      '月に何をどれだけ依頼したかがチケット単位で明確になります。「何に払っているかわからない」という不透明さがなく、依頼内容と消費チケット数を常に把握できます。',
+  },
+];
+---
+
+<PageLayout
+  title="丸投げIT担当 | KCP"
+  description="月額固定でKCPがあなたの会社のIT・AI担当になります。チャット相談から実作業まで一括で引き受けます。"
+>
+  <!-- Hero -->
+  <section style="background-color: #0e0e0e;">
+    <div class="section-wrapper">
+      <FadeIn>
+        <p class="font-mono text-xs font-medium text-accent tracking-[0.15em] uppercase mb-4">
+          SERVICE
+        </p>
+        <h1 class="text-5xl sm:text-7xl font-black leading-none tracking-tight text-white mb-6">
+          丸投げIT担当
+        </h1>
+        <p class="text-text-secondary text-sm leading-relaxed max-w-xl">
+          「SNSをやりたいけど誰もできない」「AIを使いたいが何から始めればいいかわからない」——月額固定でKCPがあなたの会社のIT・AI担当になります。
+        </p>
+      </FadeIn>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section style="background-color: #111;">
+    <div class="section-wrapper">
+      <FadeIn>
+        <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-8">PROBLEM</p>
+      </FadeIn>
+      <div class="flex flex-col">
+        {problems.map((problem, i) => (
+          <FadeIn delay={i * 60}>
+            <div class="flex gap-5 items-start py-5 border-b border-[#1e1e2e]">
+              <span class="font-mono font-black text-accent/40 text-sm w-6 shrink-0 pt-px">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <p class="text-text-secondary text-sm leading-relaxed">{problem}</p>
+            </div>
+          </FadeIn>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE -->
+  <section style="background-color: #0e0e0e;">
+    <div class="section-wrapper">
+      <FadeIn>
+        <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-8">FEATURE</p>
+      </FadeIn>
+      <div class="flex flex-col">
+        {features.map((feature, i) => (
+          <FadeIn delay={i * 60}>
+            <div class="py-6 border-b border-[#1e1e2e]">
+              <div class="flex gap-5 items-start">
+                <span class="font-mono font-black text-accent/40 text-sm w-6 shrink-0 pt-px">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <div>
+                  <p class="font-bold text-text-primary text-sm mb-2">{feature.title}</p>
+                  <p class="text-text-secondary text-sm leading-relaxed">{feature.description}</p>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+        ))}
+      </div>
+    </div>
+  </section>
+</PageLayout>
