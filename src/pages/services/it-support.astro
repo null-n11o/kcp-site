@@ -91,6 +91,38 @@ const comparisonRows = [
   { axis: 'スキルの幅', employee: '個人のスキルに依存', kcp: 'IT・AI横断で対応' },
   { axis: '契約柔軟性', employee: '解雇は困難', kcp: '月次で判断可能' },
 ];
+
+const fitItems = [
+  '従業員5〜100名程度の中小・中堅企業',
+  'IT・AIの専任担当がいない、または不在になった会社',
+  'SNSやホームページの更新が後回しになっている会社',
+  'DXやAI活用に興味はあるが何から始めればいいかわからない会社',
+  '複数の業者に個別発注していて管理コストが高くなっている会社',
+  'まず小さく試してから判断したい会社',
+];
+
+const faqs = [
+  {
+    q: '未使用チケットは翌月に繰り越せますか？',
+    a: '毎月安定した稼働をお客様に確保するため、繰り越しには対応していません。月ごとにリセットされます。',
+  },
+  {
+    q: 'チケット数が足りなくなった場合はどうなりますか？',
+    a: 'その月の追加チケット購入（スポット対応）か、翌月のプランアップグレードをご提案します。',
+  },
+  {
+    q: '首都圏外でも利用できますか？',
+    a: 'チャット・リモートでの対応は全国対応可能です。交通費込みの訪問対応は首都圏（東京・神奈川・埼玉・千葉）に限ります。',
+  },
+  {
+    q: '開発そのものも対応できますか？',
+    a: '対応可能です。チケット範囲内で収まらない開発の場合は別途別サービスとしてお見積りをさせていただきます。',
+  },
+  {
+    q: '契約前に相談できますか？',
+    a: '初回相談は無料です。現状の課題・依頼したい業務・予算感をお聞きした上で、最適なプランをご提案します。',
+  },
+];
 ---
 
 <PageLayout
@@ -274,6 +306,70 @@ const comparisonRows = [
               <span class="text-accent font-medium">{row.kcp}</span>
             </div>
           ))}
+        </div>
+      </FadeIn>
+    </div>
+  </section>
+
+  <!-- FIT FOR -->
+  <section style="background-color: #111;">
+    <div class="section-wrapper">
+      <FadeIn>
+        <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-8">FIT FOR</p>
+      </FadeIn>
+      <div class="flex flex-col">
+        {fitItems.map((item, i) => (
+          <FadeIn delay={i * 60}>
+            <div class="flex gap-4 items-start py-5 border-b border-[#1e1e2e]">
+              <span class="text-accent shrink-0 font-bold text-sm pt-px">✓</span>
+              <p class="text-text-secondary text-sm leading-relaxed">{item}</p>
+            </div>
+          </FadeIn>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section style="background-color: #0e0e0e;">
+    <div class="section-wrapper">
+      <FadeIn>
+        <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-8">FAQ</p>
+        <div class="flex flex-col">
+          {faqs.map((faq) => (
+            <details class="group border-b border-[#1e1e2e]">
+              <summary class="flex items-center justify-between py-5 cursor-pointer list-none text-sm font-bold text-text-primary hover:text-white transition-colors">
+                {faq.q}
+                <span class="ml-4 shrink-0 text-accent font-mono text-lg leading-none group-open:rotate-45 transition-transform inline-block origin-center">
+                  +
+                </span>
+              </summary>
+              <p class="pb-5 text-sm text-text-secondary leading-relaxed">{faq.a}</p>
+            </details>
+          ))}
+        </div>
+      </FadeIn>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background-color: #0a0a0a;">
+    <div class="section-wrapper">
+      <FadeIn>
+        <div class="border-t-2 border-white pt-8 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6">
+          <div>
+            <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-2">Contact</p>
+            <p class="text-white text-sm leading-relaxed">
+              現状の課題をお聞きし、どのタスクをKCPに任せると効果的かをご提案します。<br />
+              初回相談は無料です。
+            </p>
+          </div>
+          <Button href={FORM_URL} variant="primary" target="_blank">
+            まずは無料相談
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </Button>
         </div>
       </FadeIn>
     </div>
