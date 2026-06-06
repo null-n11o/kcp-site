@@ -43,6 +43,54 @@ const ticketGuide = [
   { task: 'AI導入支援・設定代行', tickets: '要件に合わせて事前にお見積り' },
   { task: '新規システム開発', tickets: '要件に合わせて事前にお見積り' },
 ];
+
+const scopeItems = [
+  {
+    category: 'SNS・コンテンツ',
+    items: [
+      'SNS投稿の企画・作成・投稿代行（X・Threads・Instagram・TikTok）',
+      'SNSアカウントの運用管理・分析レポート',
+      'ブログ・オウンドメディアの記事作成',
+      'LP（ランディングページ）の構成・制作',
+    ],
+  },
+  {
+    category: 'システム・開発',
+    items: [
+      '新規システム開発',
+      '既存システムの軽微な改修・設定変更',
+      'ホームページの作成・更新・修正',
+      '業務効率化ツールの導入支援・設定（kintone・Notion・Slack 等）',
+    ],
+  },
+  {
+    category: 'AI活用',
+    items: [
+      '自社業務に合ったAIツールの選定・提案',
+      'ChatGPT・Claude 等の社内導入支援',
+      '業務自動化フローの設計・構築',
+      'AI活用に関する相談・レクチャー',
+    ],
+  },
+  {
+    category: 'その他IT全般',
+    items: [
+      'ITツール・SaaS の選定・比較',
+      '各種クラウドサービスの初期設定・管理',
+      'IT関連業者の選定・折衝のサポート',
+      'メール・チャットでの技術的な相談対応',
+    ],
+  },
+];
+
+const comparisonRows = [
+  { axis: '月額コスト', employee: '30〜50万円以上（給与＋社保）', kcp: '10万円〜' },
+  { axis: '採用コスト', employee: '50〜100万円', kcp: 'なし' },
+  { axis: '即戦力性', employee: '教育期間が必要', kcp: '即日対応可' },
+  { axis: '離職リスク', employee: 'あり', kcp: 'なし' },
+  { axis: 'スキルの幅', employee: '個人のスキルに依存', kcp: 'IT・AI横断で対応' },
+  { axis: '契約柔軟性', employee: '解雇は困難', kcp: '月次で判断可能' },
+];
 ---
 
 <PageLayout
@@ -180,6 +228,53 @@ const ticketGuide = [
         <p class="text-xs text-text-muted mt-3">
           ※ タスクの複雑度・ボリュームによって変動します。都度ご相談させていただきます。
         </p>
+      </FadeIn>
+    </div>
+  </section>
+
+  <!-- SCOPE -->
+  <section style="background-color: #111;">
+    <div class="section-wrapper">
+      <FadeIn>
+        <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-8">SCOPE</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {scopeItems.map((scope) => (
+            <div class="border border-[#1e1e2e] rounded-sm p-6" style="background-color: #0e0e0e;">
+              <p class="font-bold text-text-primary text-sm mb-4">{scope.category}</p>
+              <ul class="space-y-2">
+                {scope.items.map((item) => (
+                  <li class="flex gap-2 text-xs text-text-secondary">
+                    <span class="text-accent shrink-0">—</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </FadeIn>
+    </div>
+  </section>
+
+  <!-- COMPARISON -->
+  <section style="background-color: #0e0e0e;">
+    <div class="section-wrapper">
+      <FadeIn>
+        <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-8">COMPARISON</p>
+        <div class="border border-[#1e1e2e] rounded-sm overflow-hidden">
+          <div class="grid grid-cols-3 text-xs text-text-muted font-mono py-2 px-4" style="background-color: #111;">
+            <span>比較軸</span>
+            <span>正社員採用</span>
+            <span>丸投げIT担当</span>
+          </div>
+          {comparisonRows.map((row, i) => (
+            <div class={`grid grid-cols-3 text-xs py-3 px-4 border-t border-[#1e1e2e]${i % 2 === 1 ? ' bg-[#0a0a0a]' : ''}`}>
+              <span class="text-text-secondary font-medium">{row.axis}</span>
+              <span class="text-text-muted">{row.employee}</span>
+              <span class="text-accent font-medium">{row.kcp}</span>
+            </div>
+          ))}
+        </div>
       </FadeIn>
     </div>
   </section>
