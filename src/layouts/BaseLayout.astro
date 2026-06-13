@@ -122,6 +122,15 @@ const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0
     {siteSchema && <JsonLd schema={siteSchema} />}
     {articleSchema && <JsonLd schema={articleSchema} />}
     {breadcrumbSchema && <JsonLd schema={breadcrumbSchema} />}
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PVZ05MKNHL"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-PVZ05MKNHL');
+    </script>
   </head>
   <body>
     <slot />
