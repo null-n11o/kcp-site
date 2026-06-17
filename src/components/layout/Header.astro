@@ -5,9 +5,10 @@ import type { Translations } from '@/i18n/types';
 export interface Props {
   locale: 'ja' | 'en';
   t: Translations;
+  localeSwitchHref?: string;
 }
 
-const { locale, t } = Astro.props;
+const { locale, t, localeSwitchHref } = Astro.props;
 
 const base = locale === 'en' ? '/en' : '';
 
@@ -42,7 +43,7 @@ const navLinks = [
             {link.label}
           </a>
         ))}
-        <LangSwitch locale={locale} label={t.langSwitch.label} />
+        <LangSwitch locale={locale} label={t.langSwitch.label} localeSwitchHref={localeSwitchHref} />
       </nav>
 
       <!-- Mobile menu button -->
@@ -86,7 +87,7 @@ const navLinks = [
         {link.label}
       </a>
     ))}
-    <LangSwitch locale={locale} label={t.langSwitch.label} />
+    <LangSwitch locale={locale} label={t.langSwitch.label} localeSwitchHref={localeSwitchHref} />
   </nav>
 </div>
 

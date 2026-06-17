@@ -19,15 +19,17 @@ export interface Props {
   tags?: string[];
   breadcrumbs?: BreadcrumbItem[];
   alternates?: AlternateUrl[];
+  localeSwitchHref?: string;
 }
 
 const props = Astro.props;
 const locale = (Astro.currentLocale ?? 'ja') as 'ja' | 'en';
 const t = useTranslations(locale);
+const { localeSwitchHref } = props;
 ---
 
 <BaseLayout {...props}>
-  <Header locale={locale} t={t} />
+  <Header locale={locale} t={t} localeSwitchHref={localeSwitchHref} />
   <main>
     <slot />
   </main>
