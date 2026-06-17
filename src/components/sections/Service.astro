@@ -7,9 +7,10 @@ export interface Props {
   heading: string;
   subtitle: string;
   items: ServiceItem[];
+  detailLabel?: string;
 }
 
-const { heading, items } = Astro.props;
+const { heading, items, detailLabel = '詳しく見る →' } = Astro.props;
 ---
 
 <section id="service" class="py-section" style="background-color: #0e0e0e;">
@@ -40,7 +41,7 @@ const { heading, items } = Astro.props;
                         href={service.href}
                         class="inline-block mt-2 text-xs text-accent hover:underline"
                       >
-                        詳しく見る →
+                        {detailLabel}
                       </a>
                     )}
                   </div>
