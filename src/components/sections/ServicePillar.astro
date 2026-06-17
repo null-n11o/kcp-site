@@ -1,0 +1,61 @@
+---
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+import FadeIn from '@/components/ui/FadeIn.astro';
+
+export interface Props {
+  heading: string;
+  title: string;
+  tagline: string;
+  description: string;
+  capabilities: string[];
+  ctaLabel: string;
+  ctaHref: string;
+}
+
+const { heading, title, tagline, description, capabilities, ctaLabel, ctaHref } =
+  Astro.props;
+---
+
+<section id="service" class="py-section" style="background-color: #0e0e0e;">
+  <div class="section-wrapper">
+    <FadeIn>
+      <SectionHeading sectionNumber="02" sectionLabel={heading} />
+    </FadeIn>
+
+    <FadeIn>
+      <h3 class="text-3xl sm:text-5xl font-black tracking-tight text-white mb-3">
+        {title}
+      </h3>
+      <p class="text-accent text-sm font-medium mb-6">{tagline}</p>
+      <p class="text-text-secondary text-sm leading-relaxed max-w-2xl mb-10">
+        {description}
+      </p>
+    </FadeIn>
+
+    <FadeIn delay={80}>
+      <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-6">
+        Everything entering Japan requires, under one retainer
+      </p>
+    </FadeIn>
+    <div class="flex flex-col mb-10">
+      {capabilities.map((cap, i) => (
+        <FadeIn delay={120 + i * 60}>
+          <div class="flex gap-4 items-start py-4 border-b border-[#1e1e2e]">
+            <span class="text-accent shrink-0 font-bold text-sm pt-px">—</span>
+            <p class="text-text-secondary text-sm leading-relaxed">{cap}</p>
+          </div>
+        </FadeIn>
+      ))}
+    </div>
+
+    <FadeIn delay={120 + capabilities.length * 60}>
+      <a
+        href={ctaHref}
+        class="inline-flex items-center gap-2 text-sm font-medium text-accent hover:underline"
+      >
+        {ctaLabel}
+        <span aria-hidden="true">→</span>
+      </a>
+    </FadeIn>
+  </div>
+</section>
