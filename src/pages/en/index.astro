@@ -2,7 +2,8 @@
 import { getCollection } from 'astro:content';
 import PageLayout from '@/layouts/PageLayout.astro';
 import Hero from '@/components/sections/Hero.astro';
-import Service from '@/components/sections/Service.astro';
+import ServicePillar from '@/components/sections/ServicePillar.astro';
+import { servicePillarEn } from '@/i18n/en';
 import MVV from '@/components/sections/MVV.astro';
 import Strength from '@/components/sections/Strength.astro';
 import BlogPreview from '@/components/sections/BlogPreview.astro';
@@ -20,6 +21,7 @@ const featuredPosts = getSortedPosts(allPosts).slice(0, 3);
 <PageLayout
   title="Home"
   description="We handle the work businesses need in the AI era, so you can focus on your core business. KCP Co., Ltd. corporate site."
+  localeSwitchHref="/"
   alternates={[
     { hreflang: 'ja', url: 'https://kcp.co.jp/' },
     { hreflang: 'en', url: 'https://kcp.co.jp/en/' },
@@ -37,10 +39,14 @@ const featuredPosts = getSortedPosts(allPosts).slice(0, 3);
     contactHref="/en/#contact"
     serviceHref="/en/#service"
   />
-  <Service
+  <ServicePillar
     heading={t.service.heading}
-    subtitle={t.service.subtitle}
-    items={t.service.items}
+    title={servicePillarEn.title}
+    tagline={servicePillarEn.tagline}
+    description={servicePillarEn.description}
+    capabilities={servicePillarEn.capabilities}
+    ctaLabel={servicePillarEn.ctaLabel}
+    ctaHref={servicePillarEn.ctaHref}
   />
   <MVV
     missionLabel={t.mvv.missionLabel}
