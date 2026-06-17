@@ -28,7 +28,7 @@
 - Produces: `interface ServicePillarContent { title: string; tagline: string; description: string; capabilities: string[]; ctaLabel: string; ctaHref: string; }`（`src/i18n/types.ts` から export）
 - Produces: `export const servicePillarEn: ServicePillarContent`（`src/i18n/en.ts` から export）
 
-- [ ] **Step 1: 型を追加**
+- [x] **Step 1: 型を追加**
 
 `src/i18n/types.ts` の `ServiceItem` インターフェース定義の直後（`export interface ValueItem` の前）に追記:
 
@@ -43,7 +43,7 @@ export interface ServicePillarContent {
 }
 ```
 
-- [ ] **Step 2: en.ts の import に型を追加**
+- [x] **Step 2: en.ts の import に型を追加**
 
 `src/i18n/en.ts` の1行目を次に置き換える:
 
@@ -51,7 +51,7 @@ export interface ServicePillarContent {
 import type { Translations, ServicePillarContent } from './types';
 ```
 
-- [ ] **Step 3: EN Hero の文言を変更**
+- [x] **Step 3: EN Hero の文言を変更**
 
 `src/i18n/en.ts` の `hero` ブロックを次に置き換える:
 
@@ -68,7 +68,7 @@ import type { Translations, ServicePillarContent } from './types';
   },
 ```
 
-- [ ] **Step 4: servicePillarEn を追加**
+- [x] **Step 4: servicePillarEn を追加**
 
 `src/i18n/en.ts` の末尾、`export const en: Translations = { ... };` の閉じ括弧の**後**に追記:
 
@@ -90,12 +90,12 @@ export const servicePillarEn: ServicePillarContent = {
 };
 ```
 
-- [ ] **Step 5: ビルドで型エラーが無いことを確認**
+- [x] **Step 5: ビルドで型エラーが無いことを確認**
 
 Run: `npm run build`
 Expected: 成功（exit 0）。型エラーなし。
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src/i18n/types.ts src/i18n/en.ts
@@ -116,7 +116,7 @@ Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>"
 - Consumes: `servicePillarEn`（Task 1）, 既存 `SectionHeading.astro`, `FadeIn.astro`
 - Produces: `ServicePillar.astro` の Props `{ heading: string; title: string; tagline: string; description: string; capabilities: string[]; ctaLabel: string; ctaHref: string; }`
 
-- [ ] **Step 1: ServicePillar.astro を作成**
+- [x] **Step 1: ServicePillar.astro を作成**
 
 `src/components/sections/ServicePillar.astro` を新規作成:
 
@@ -184,7 +184,7 @@ const { heading, title, tagline, description, capabilities, ctaLabel, ctaHref } 
 </section>
 ```
 
-- [ ] **Step 2: en/index.astro の import を差し替え**
+- [x] **Step 2: en/index.astro の import を差し替え**
 
 `src/pages/en/index.astro` の import 行
 `import Service from '@/components/sections/Service.astro';`
@@ -195,7 +195,7 @@ import ServicePillar from '@/components/sections/ServicePillar.astro';
 import { servicePillarEn } from '@/i18n/en';
 ```
 
-- [ ] **Step 3: en/index.astro の Service 使用箇所を差し替え**
+- [x] **Step 3: en/index.astro の Service 使用箇所を差し替え**
 
 `src/pages/en/index.astro` の次のブロック:
 
@@ -221,19 +221,19 @@ import { servicePillarEn } from '@/i18n/en';
   />
 ```
 
-- [ ] **Step 4: ビルド確認**
+- [x] **Step 4: ビルド確認**
 
 Run: `npm run build`
 Expected: 成功（exit 0）。
 
-- [ ] **Step 5: 手動確認**
+- [x] **Step 5: 手動確認**
 
 Run: `npm run dev` で `http://localhost:4321/en/` を開く。
 Expected: Hero が "We Make Business Simple."、Service セクションが
 「Japan Entry Support」の柱＋4つの内包能力リスト＋"Learn more →"
 （リンク先 `/en/services/japan-entry/`）になっている。
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src/components/sections/ServicePillar.astro src/pages/en/index.astro
@@ -254,23 +254,23 @@ Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>"
 - Consumes: なし
 - Produces: なし（EN サービス詳細は `japan-entry.astro` のみ残る）
 
-- [ ] **Step 1: 2ファイルを削除**
+- [x] **Step 1: 2ファイルを削除**
 
 ```bash
 rm src/pages/en/services/ai-training.astro src/pages/en/services/sns.astro
 ```
 
-- [ ] **Step 2: 参照が残っていないことを確認**
+- [x] **Step 2: 参照が残っていないことを確認**
 
 Run: `grep -rn "en/services/ai-training\|en/services/sns" src/`
 Expected: 出力なし（en.ts や他ファイルからの参照が残っていない）。
 
-- [ ] **Step 3: ビルド確認**
+- [x] **Step 3: ビルド確認**
 
 Run: `npm run build`
 Expected: 成功（exit 0）。`/en/services/ai-training/` `/en/services/sns/` が dist に生成されない。
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 これらは未追跡ファイルのため、削除を反映するには明示 add する。
 
@@ -295,7 +295,7 @@ Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>"
 - Produces: `Header` Props に `localeSwitchHref?: string` 追加
 - Produces: `PageLayout` Props に `localeSwitchHref?: string` 追加
 
-- [ ] **Step 1: LangSwitch.astro を書き換え**
+- [x] **Step 1: LangSwitch.astro を書き換え**
 
 `src/components/layout/LangSwitch.astro` のフロントマター（`---` 間）を次に置き換える:
 
@@ -318,7 +318,7 @@ const alternatePath =
 
 （`<a href={alternatePath} ...>` 以下のマークアップは変更しない。）
 
-- [ ] **Step 2: Header.astro に prop を追加して伝播**
+- [x] **Step 2: Header.astro に prop を追加して伝播**
 
 `src/components/layout/Header.astro` の Props 定義を次に置き換える:
 
@@ -339,7 +339,7 @@ const { locale, t, localeSwitchHref } = Astro.props;
         <LangSwitch locale={locale} label={t.langSwitch.label} localeSwitchHref={localeSwitchHref} />
 ```
 
-- [ ] **Step 3: PageLayout.astro に prop を追加して伝播**
+- [x] **Step 3: PageLayout.astro に prop を追加して伝播**
 
 `src/layouts/PageLayout.astro` の `Props` インターフェースに1行追加:
 
@@ -360,18 +360,18 @@ const { localeSwitchHref } = props;
   <Header locale={locale} t={t} localeSwitchHref={localeSwitchHref} />
 ```
 
-- [ ] **Step 4: ビルド確認**
+- [x] **Step 4: ビルド確認**
 
 Run: `npm run build`
 Expected: 成功（exit 0）。
 
-- [ ] **Step 5: 手動確認（フォールバック）**
+- [x] **Step 5: 手動確認（フォールバック）**
 
 `npm run dev` で `http://localhost:4321/en/services/japan-entry/` を開き、
 言語切替ボタンを押す。
 Expected: 404 ではなく日本語ホーム `/` に遷移する。
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src/components/layout/LangSwitch.astro src/components/layout/Header.astro src/layouts/PageLayout.astro
@@ -395,7 +395,7 @@ Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>"
 **Interfaces:**
 - Consumes: `PageLayout` の `localeSwitchHref` prop（Task 4）
 
-- [ ] **Step 1: 各ページの PageLayout 呼び出しに localeSwitchHref を追加**
+- [x] **Step 1: 各ページの PageLayout 呼び出しに localeSwitchHref を追加**
 
 各ファイルの `<PageLayout` 開きタグの属性に次を1行追加する:
 
@@ -420,12 +420,12 @@ Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>"
 
 （ブログ個別記事は記事同士が1:1対応しないため、相手言語のブログ一覧を指定する。）
 
-- [ ] **Step 2: ビルド確認**
+- [x] **Step 2: ビルド確認**
 
 Run: `npm run build`
 Expected: 成功（exit 0）。
 
-- [ ] **Step 3: 手動確認**
+- [x] **Step 3: 手動確認**
 
 `npm run dev` で以下を確認:
 - `/`（JA home）→ 言語切替 → `/en/`
@@ -433,7 +433,7 @@ Expected: 成功（exit 0）。
 - `/blog/` → `/en/blog/`、`/en/blog/` → `/blog/`
 - 任意のブログ記事 → 相手言語のブログ一覧へ遷移（404 にならない）
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src/pages/index.astro src/pages/en/index.astro src/pages/blog/index.astro src/pages/en/blog/index.astro "src/pages/blog/[slug].astro" "src/pages/en/blog/[slug].astro"
@@ -455,7 +455,7 @@ Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>"
 EN は Service.astro を使わなくなったため実害は消えているが、日本語固定文言を
 prop 化して将来の流用に備える。JA トップは prop 省略でデフォルト動作のまま。
 
-- [ ] **Step 1: Props と分割代入を変更**
+- [x] **Step 1: Props と分割代入を変更**
 
 `src/components/sections/Service.astro` の Props 定義を次に置き換える:
 
@@ -470,17 +470,17 @@ export interface Props {
 const { heading, items, detailLabel = '詳しく見る →' } = Astro.props;
 ```
 
-- [ ] **Step 2: リンク文言を変数に差し替え**
+- [x] **Step 2: リンク文言を変数に差し替え**
 
 `src/components/sections/Service.astro` の
 `詳しく見る →`（`<a>` タグ内のテキスト）を `{detailLabel}` に置き換える。
 
-- [ ] **Step 3: ビルド確認**
+- [x] **Step 3: ビルド確認**
 
 Run: `npm run build`
 Expected: 成功（exit 0）。JA トップのサービスリンク表示は従来どおり「詳しく見る →」。
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src/components/sections/Service.astro
