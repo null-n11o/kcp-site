@@ -5,6 +5,15 @@ export interface ServiceItem {
   href?: string;
 }
 
+export interface ServicePillarContent {
+  title: string;
+  tagline: string;
+  description: string;
+  capabilities: string[];
+  ctaLabel: string;
+  ctaHref: string;
+}
+
 export interface ValueItem {
   title: string;
   description: string;

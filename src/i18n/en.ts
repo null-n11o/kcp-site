@@ -1,4 +1,4 @@
-import type { Translations } from './types';
+import type { Translations, ServicePillarContent } from './types';
 
 export const en: Translations = {
   nav: {
@@ -18,11 +18,11 @@ export const en: Translations = {
   },
   hero: {
     eyebrow: 'KCP Inc.',
-    headlinePre: 'We free people and organizations to focus on',
-    headlineAccent: 'what truly matters.',
-    headlinePost: '',
+    headlinePre: 'We Make',
+    headlineAccent: 'Business',
+    headlinePost: 'Simple.',
     subtext:
-      'Through social media management, contract development, and AI implementation support, we partner with you to drive change.',
+      "We're your dedicated local representative in Japan — handling business development, company setup, communications, and AI-powered operations under a single monthly retainer, so you can enter the Japanese market without building a team here.",
     primaryCta: 'Contact Us',
     secondaryCta: 'Our Services',
   },
@@ -36,7 +36,6 @@ export const en: Translations = {
         title: 'Social Media Management',
         description:
           'End-to-end management of your social media accounts: planning, posting, and analytics.',
-        href: '/en/services/sns/',
       },
       {
         icon: '💬',
@@ -56,7 +55,6 @@ export const en: Translations = {
         title: 'AI Training',
         description:
           'Designing and delivering AI utilization training for businesses. Tailored to your workplace for real efficiency gains.',
-        href: '/en/services/ai-training/',
       },
     ],
   },
@@ -164,4 +162,19 @@ export const en: Translations = {
     readingTime: 'min read',
     publishedOn: 'Published on',
   },
+};
+
+export const servicePillarEn: ServicePillarContent = {
+  title: 'Japan Entry Support',
+  tagline: 'Your dedicated local representative in Japan.',
+  description:
+    "Entering Japan takes more than translation. We act as your on-the-ground partner — finding customers, representing you in negotiations, and running day-to-day operations. Everything you need to break into Japan, under one retainer.",
+  capabilities: [
+    'Business Development / Sales Representation',
+    'Company Setup (registration, banking, permits)',
+    'SNS & Communications',
+    'AI & Development Support',
+  ],
+  ctaLabel: 'Learn more',
+  ctaHref: '/en/services/japan-entry/',
 };
