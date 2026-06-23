@@ -6,6 +6,7 @@ tags: ["AGI・ASI", "Elon Musk"]
 featured: true
 author: "Kentaro Nakano"
 category: "経営日報"
+public: true
 ---
 
 事務処理、翻訳、コーディング、画像生成、動画編集。

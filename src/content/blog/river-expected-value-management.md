@@ -4,7 +4,7 @@ description: "統計学者でポーカープレイヤーのネイト・シルバ
 pubDate: 2026-06-14
 author: "中野 健太朗"
 tags: ["経営", "意思決定", "リスクマネジメント"]
-draft: false
+public: true
 featured: false
 ---
 

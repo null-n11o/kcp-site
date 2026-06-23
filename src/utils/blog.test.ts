@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { getAllTags, getPostsByTag } from './blog';
 
 // Mock post type matching CollectionEntry<'blog'>
-const makeMockPost = (slug: string, tags: string[], draft = false) => ({
+const makeMockPost = (slug: string, tags: string[], isPublic = true) => ({
   id: slug,
   slug,
   body: '',
@@ -12,7 +12,7 @@ const makeMockPost = (slug: string, tags: string[], draft = false) => ({
     description: 'desc',
     pubDate: new Date('2026-01-01'),
     tags,
-    draft,
+    public: isPublic,
     author: 'テスト',
     featured: false,
   },
@@ -24,12 +24,12 @@ const posts = [
   makeMockPost('post-a', ['AI', '業務効率化']),
   makeMockPost('post-b', ['AI', 'Claude']),
   makeMockPost('post-c', ['ビジネス']),
-  makeMockPost('post-d-draft', ['AI'], true),
+  makeMockPost('post-d-draft', ['AI'], false),
 ] as any;
 
 describe('getAllTags', () => {
   it('returns unique tags sorted alphabetically', () => {
-    const tags = getAllTags(posts.filter((p: any) => !p.data.draft));
+    const tags = getAllTags(posts.filter((p: any) => p.data.public));
     expect(tags).toEqual(['AI', 'Claude', 'ビジネス', '業務効率化']);
   });
 });

@@ -12,7 +12,7 @@ import { useTranslations } from '@/i18n/index';
 import '@/styles/prose.css';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog_en', ({ data }) => !data.draft);
+  const posts = await getCollection('blog_en', ({ data }) => data.public);
   return posts.map(post => ({
     params: { slug: post.slug },
     props: { post },

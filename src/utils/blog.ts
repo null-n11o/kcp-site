@@ -4,7 +4,7 @@ type BlogPost = CollectionEntry<'blog'>;
 
 export function getSortedPosts(posts: BlogPost[]): BlogPost[] {
   return posts
-    .filter(post => !post.data.draft)
+    .filter(post => post.data.public)
     .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 }
 

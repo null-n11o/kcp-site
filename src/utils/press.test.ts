@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { getSortedPressReleases } from './press';
 
-const makePress = (slug: string, pubDate: string, draft = false) => ({
+const makePress = (slug: string, pubDate: string, isPublic = true) => ({
   id: slug,
   slug,
   body: '',
@@ -11,7 +11,7 @@ const makePress = (slug: string, pubDate: string, draft = false) => ({
     description: 'desc',
     pubDate: new Date(pubDate),
     category: 'お知らせ',
-    draft,
+    public: isPublic,
   },
   render: async () => ({ Content: () => null, headings: [], remarkPluginFrontmatter: {} }),
 });
@@ -20,7 +20,7 @@ const makePress = (slug: string, pubDate: string, draft = false) => ({
 const releases = [
   makePress('old', '2026-01-01'),
   makePress('new', '2026-04-01'),
-  makePress('draft', '2026-05-01', true),
+  makePress('draft', '2026-05-01', false),
 ] as any;
 
 describe('getSortedPressReleases', () => {
@@ -30,7 +30,7 @@ describe('getSortedPressReleases', () => {
   });
 
   it('returns empty array when all are drafts', () => {
-    const allDraft = [makePress('d', '2026-01-01', true)] as any;
+    const allDraft = [makePress('d', '2026-01-01', false)] as any;
     expect(getSortedPressReleases(allDraft)).toEqual([]);
   });
 });

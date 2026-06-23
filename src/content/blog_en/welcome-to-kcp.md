@@ -4,7 +4,7 @@ description: "Introducing KCP Co., Ltd.: a BPO company leveraging AI agents to h
 pubDate: 2026-04-04
 tags: ["AI", "BPO", "Productivity"]
 author: "Kentaro Nakano"
-draft: false
+public: true
 featured: true
 ---
 

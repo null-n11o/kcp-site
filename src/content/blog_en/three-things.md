@@ -4,7 +4,7 @@ description: "What truly increases in value as AI advances — brand, human conn
 pubDate: 2026-04-10
 tags: ["AGI", "AI Era", "Elon Musk"]
 author: "Kentaro Nakano"
-draft: false
+public: true
 featured: true
 ---
 

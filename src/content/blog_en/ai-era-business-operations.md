@@ -4,7 +4,7 @@ description: "AI agents like Claude Code can now handle complex business tasks a
 pubDate: 2026-04-04
 tags: ["AI", "Automation", "Business Efficiency"]
 author: "Kentaro Nakano"
-draft: false
+public: true
 featured: false
 ---
 
