@@ -9,7 +9,7 @@ const blogCollection = defineCollection({
     updatedDate: z.coerce.date().optional(),
     author: z.string().default('中野健太朗'),
     tags: z.array(z.string()).default([]),
-    draft: z.boolean().default(false),
+    public: z.boolean().default(true),
     featured: z.boolean().default(false),
     ogImage: z.string().optional(),
     faq: z.array(z.object({
@@ -40,7 +40,7 @@ const blogEnCollection = defineCollection({
     updatedDate: z.coerce.date().optional(),
     author: z.string().default('Kentaro Nakano'),
     tags: z.array(z.string()).default([]),
-    draft: z.boolean().default(false),
+    public: z.boolean().default(true),
     featured: z.boolean().default(false),
     ogImage: z.string().optional(),
     faq: z.array(z.object({
@@ -57,7 +57,7 @@ const pressCollection = defineCollection({
     description: z.string().max(200),
     pubDate: z.coerce.date(),
     category: z.string(),
-    draft: z.boolean().default(false),
+    public: z.boolean().default(true),
   }),
 });
 

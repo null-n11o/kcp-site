@@ -4,7 +4,7 @@ description: "CLAUDE.md・MCP・Skills・サブエージェントなど、Claude
 pubDate: 2026-06-12
 author: "中野 健太朗"
 tags: ["Claude Code", "AI活用", "業務効率化"]
-draft: true
+public: false
 featured: false
 ---
 

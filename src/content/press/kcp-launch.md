@@ -3,7 +3,7 @@ title: "株式会社KCP 設立のお知らせ"
 description: "2026年4月1日、株式会社KCPを設立しました。AI活用による業務効率化支援を事業の中核として展開してまいります。"
 pubDate: 2026-04-01
 category: "公告"
-draft: false
+public: true
 ---
 
 ## 設立のご挨拶

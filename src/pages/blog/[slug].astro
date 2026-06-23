@@ -9,7 +9,7 @@ import { buildFaqPageSchema, buildBreadcrumbSchema, getAuthorSlug } from '@/util
 import '@/styles/prose.css';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  const posts = await getCollection('blog', ({ data }) => data.public);
   return posts.map(post => ({
     params: { slug: post.slug },
     props: { post },
