@@ -43,5 +43,35 @@
     "title": "",
     "description": "",
     "fetchedAt": "2026-05-27T13:25:38.695Z"
+  },
+  "https://gigazine.net/news/20250225-anthropic-claude-3-7-sonnet/": {
+    "title": "「Claude 3.7 Sonnet」と「Claude Code」が登場、OpenAI o1やDeepSeek-R1を超える性能で「ポケモン」のジムリーダーを3人倒すことに成功",
+    "description": "Anthropicが「Claude 3.7 Sonnet」を発表しました。Anthropicによれば、Claude 3.7 Sonnetは「市場初のハイブリッド推論モデル」で、ベンチマークではOpenAIのo1やo3-mini、DeepSeek-R1を超える性能を見せたとのことです。",
+    "fetchedAt": "2026-06-25T09:32:43.450Z"
+  },
+  "https://ledge.ai/articles/anthropic_ai_agents_build_skills_paradigm": {
+    "title": "Anthropic、AIエージェント開発における”スキル”重視の新設計思想を提示──「IQ300数学の天才から経験豊富な税務専門家へ」、スキル中心アーキテクチャの全体像を解説 | Ledge.ai",
+    "description": "AI・人工知能関連のニュースやトレンドを高頻度で配信！最新ニュースやインタビュー、イベントレポートなどAIに関するさまざまな情報を独自の切り口で掲載",
+    "fetchedAt": "2026-06-25T09:32:56.924Z"
+  },
+  "https://qiita.com/K5K/items/72cc4282819ace823524": {
+    "title": "【入門記事】ClaudeCodeの中級者になりたい人は集合してください - Qiita",
+    "description": "はじめに この記事はClaudeCodeと共同で執筆しました。 ただ内容については100%投稿主の意図したものであり、隅々まで監修しております。 みなさん、ClaudeCodeを使っていますか？ (「バチバチ使いこなしているぜ！」という方は読んでも意味ないので、こ...",
+    "fetchedAt": "2026-06-25T09:33:05.736Z"
+  },
+  "https://x.com/irabukht/status/2025846968245948795": {
+    "title": "Ira Bodnar (@irabukht) on X",
+    "description": "https://t.co/wQh3RL5Fx3",
+    "fetchedAt": "2026-06-25T09:33:21.487Z"
+  },
+  "https://x.com/0xfene/status/2031563899200483482": {
+    "title": "ふぇね | 山中裕貴 (@0xfene) on X",
+    "description": "https://t.co/sQbqD9r1Pi",
+    "fetchedAt": "2026-06-25T09:34:16.202Z"
+  },
+  "https://x.com/itsolelehmann/status/2031308486815133905": {
+    "title": "Ole Lehmann (@itsolelehmann) on X",
+    "description": "i can't believe nobody caught this.\n\nAnthropic's entire growth marketing team was just ONE PERSON\n\n(for 10 months, confirmed)\n\na single non-technical person ran paid search, paid social, app stores, email marketing, and SEO for the $380B company behind claude\n\nhere's exactly how https://t.co/SJwgLP28nG",
+    "fetchedAt": "2026-06-25T09:34:41.567Z"
   }
 }
