@@ -50,7 +50,7 @@ export const ja: Translations = {
       },
       {
         icon: '🖥️',
-        title: '受託開発',
+        title: 'システム開発',
         description: '開発プロジェクトを支援します。技術とビジネスを繋ぐ視点でスムーズにプロジェクトを進行いたします。',
       },
       {
