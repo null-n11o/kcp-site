@@ -1,13 +1,33 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <rect width="1200" height="630" fill="#0a0a0a"/>
-  <rect x="0" y="0" width="1200" height="630" fill="url(#grad)"/>
   <defs>
     <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#16213e;stop-opacity:1"/>
       <stop offset="100%" style="stop-color:#0a0a0a;stop-opacity:1"/>
     </linearGradient>
+    <linearGradient id="r" x1="0%" y1="0%" x2="60%" y2="100%">
+      <stop offset="0%" stop-color="#FF4530"/>
+      <stop offset="100%" stop-color="#D81F18"/>
+    </linearGradient>
+    <linearGradient id="b" x1="100%" y1="100%" x2="40%" y2="0%">
+      <stop offset="0%" stop-color="#1E6FEA"/>
+      <stop offset="100%" stop-color="#0C4EC2"/>
+    </linearGradient>
+    <radialGradient id="s" cx="38%" cy="32%" r="75%">
+      <stop offset="0%" stop-color="#FFE05A"/>
+      <stop offset="55%" stop-color="#FFC51F"/>
+      <stop offset="100%" stop-color="#F39A0C"/>
+    </radialGradient>
   </defs>
-  <text x="600" y="280" font-family="sans-serif" font-size="96" font-weight="bold" fill="#4a9eff" text-anchor="middle">KCP</text>
-  <text x="600" y="370" font-family="sans-serif" font-size="28" fill="#a0a0b0" text-anchor="middle">株式会社KCP</text>
-  <text x="600" y="430" font-family="sans-serif" font-size="20" fill="#606070" text-anchor="middle">AI時代のBPO企業</text>
+  <rect width="1200" height="630" fill="#0a0a0a"/>
+  <rect x="0" y="0" width="1200" height="630" fill="url(#grad)"/>
+
+  <!-- ロゴマーク -->
+  <g transform="translate(600,215) scale(2.7) translate(-61,-53)">
+    <path d="M34 74 C30 46 64 36 98 56 C82 52 62 54 48 60 C44 64 40 70 34 74 Z" fill="url(#r)"/>
+    <path d="M88 46 C92 74 58 84 24 64 C40 68 60 66 74 60 C78 56 82 50 88 46 Z" fill="url(#b)"/>
+    <circle cx="62" cy="30" r="8.5" fill="url(#s)"/>
+  </g>
+
+  <text x="600" y="430" font-family="sans-serif" font-size="64" font-weight="bold" fill="#f5f5f7" text-anchor="middle">株式会社KCP</text>
+  <text x="600" y="490" font-family="sans-serif" font-size="28" fill="#9a9aa8" text-anchor="middle">AI時代のBPO企業</text>
 </svg>

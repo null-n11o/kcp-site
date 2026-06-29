@@ -1,4 +1,5 @@
 ---
+import Logo from './Logo.astro';
 import type { Translations } from '@/i18n/types';
 
 export interface Props {
@@ -12,6 +13,7 @@ const year = new Date().getFullYear();
 
 <footer class="border-t border-[#2a2a3e] py-8">
   <div class="section-wrapper flex flex-col items-center gap-4 text-sm text-text-muted">
+    <Logo class="h-8 w-auto" title="" />
     <nav class="flex gap-6" aria-label="フッターナビゲーション">
       <a href="/press/" class="hover:text-text-primary transition-colors">プレスリリース</a>
     </nav>

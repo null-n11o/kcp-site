@@ -1,5 +1,6 @@
 ---
 import LangSwitch from './LangSwitch.astro';
+import Logo from './Logo.astro';
 import type { Translations } from '@/i18n/types';
 
 export interface Props {
@@ -29,8 +30,12 @@ const navLinks = [
   <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
       <!-- Logo -->
-      <a href={base + '/'} class="text-xl font-bold tracking-widest text-accent hover:text-accent-light transition-colors">
-        KCP
+      <a
+        href={base + '/'}
+        class="inline-flex items-center transition-opacity hover:opacity-80"
+        aria-label={locale === 'ja' ? '株式会社KCP ホームへ' : 'KCP Co., Ltd. home'}
+      >
+        <Logo class="h-9 w-auto" title="" />
       </a>
 
       <!-- Desktop nav -->

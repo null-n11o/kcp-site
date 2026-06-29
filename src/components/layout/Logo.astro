@@ -1,0 +1,58 @@
+---
+/**
+ * KCP ロゴマーク（背景透過のクリーンなベクター）
+ * 上＝赤いスウッシュ / 下＝青いスウッシュ（180°回転対称）/ 上部に黄色い球。
+ * グラデーション ID は複数配置に備えてインスタンスごとにユニーク化する。
+ */
+export interface Props {
+  /** 追加クラス（サイズは height で指定するのが推奨。例: class="h-9 w-auto"） */
+  class?: string;
+  /** アクセシブルなラベル。装飾用途では title を空にして aria-hidden 扱いにできる */
+  title?: string;
+}
+
+const { class: className = 'h-9 w-auto', title = 'KCP' } = Astro.props;
+
+// 同一ページ内に複数描画してもグラデーションが衝突しないようユニーク ID を生成
+const uid = Math.random().toString(36).slice(2, 8);
+const decorative = title.length === 0;
+---
+
+<svg
+  class={className}
+  viewBox="20 18 82 70"
+  xmlns="http://www.w3.org/2000/svg"
+  role={decorative ? undefined : 'img'}
+  aria-hidden={decorative ? 'true' : undefined}
+  aria-label={decorative ? undefined : title}
+>
+  {!decorative && <title>{title}</title>}
+  <defs>
+    <linearGradient id={`kcp-red-${uid}`} x1="0%" y1="0%" x2="60%" y2="100%">
+      <stop offset="0%" stop-color="#FF4530" />
+      <stop offset="100%" stop-color="#D81F18" />
+    </linearGradient>
+    <linearGradient id={`kcp-blue-${uid}`} x1="100%" y1="100%" x2="40%" y2="0%">
+      <stop offset="0%" stop-color="#1E6FEA" />
+      <stop offset="100%" stop-color="#0C4EC2" />
+    </linearGradient>
+    <radialGradient id={`kcp-sun-${uid}`} cx="38%" cy="32%" r="75%">
+      <stop offset="0%" stop-color="#FFE05A" />
+      <stop offset="55%" stop-color="#FFC51F" />
+      <stop offset="100%" stop-color="#F39A0C" />
+    </radialGradient>
+  </defs>
+
+  <!-- 上：赤いスウッシュ（上半分の弧） -->
+  <path
+    d="M34 74 C30 46 64 36 98 56 C82 52 62 54 48 60 C44 64 40 70 34 74 Z"
+    fill={`url(#kcp-red-${uid})`}
+  />
+  <!-- 下：青いスウッシュ（赤を中心 (61,60) で180°回転） -->
+  <path
+    d="M88 46 C92 74 58 84 24 64 C40 68 60 66 74 60 C78 56 82 50 88 46 Z"
+    fill={`url(#kcp-blue-${uid})`}
+  />
+  <!-- 上部の黄色い球 -->
+  <circle cx="62" cy="30" r="8.5" fill={`url(#kcp-sun-${uid})`} />
+</svg>
