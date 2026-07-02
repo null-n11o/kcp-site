@@ -18,9 +18,9 @@ const { heading, subtitle, items } = Astro.props;
 
     <Reveal variant="stagger" class="flex flex-col">
       {items.map((item, i) => (
-        <div class="py-5 border-b border-border-subtle">
+        <div class="group relative py-5 px-4 -mx-4 border-b border-border-subtle transition-colors duration-300 hover:bg-base-100">
           <div class="flex gap-5 items-start">
-            <span class="font-mono font-black text-accent/40 text-sm w-6 shrink-0 pt-px">
+            <span class="font-mono font-black text-accent/40 text-sm w-6 shrink-0 pt-px transition-colors duration-300 group-hover:text-accent">
               {item.number}
             </span>
             <div class="flex-1 min-w-0">

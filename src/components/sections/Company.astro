@@ -21,7 +21,7 @@ const { heading, subtitle, info } = Astro.props;
         <table class="w-full">
           <tbody>
             {info.map((row, i) => (
-              <tr class={i % 2 === 0 ? 'bg-base-50' : 'bg-base-100'}>
+              <tr class={`transition-colors hover:bg-base-200/50 ${i % 2 === 0 ? 'bg-base-50' : 'bg-base-100'}`}>
                 <th class="px-6 py-4 text-left text-xs font-medium text-text-secondary w-40 shrink-0 border-r border-border uppercase tracking-wider">
                   {row.label}
                 </th>
