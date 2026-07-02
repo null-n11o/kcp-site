@@ -16,7 +16,7 @@ const { heading, title, tagline, description, capabilities, ctaLabel, ctaHref } 
   Astro.props;
 ---
 
-<section id="service" class="py-section sm:py-section-lg" style="background-color: #0e0e0e;">
+<section id="service" class="py-section sm:py-section-lg bg-base-50">
   <div class="section-wrapper">
     <FadeIn>
       <SectionHeading sectionNumber="02" sectionLabel={heading} />
@@ -40,7 +40,7 @@ const { heading, title, tagline, description, capabilities, ctaLabel, ctaHref } 
     <div class="flex flex-col mb-10">
       {capabilities.map((cap, i) => (
         <FadeIn delay={120 + i * 60}>
-          <div class="flex gap-4 items-start py-4 border-b border-[#1e1e2e]">
+          <div class="flex gap-4 items-start py-4 border-b border-border-subtle">
             <span class="text-accent shrink-0 font-bold text-sm pt-px">—</span>
             <p class="text-text-secondary text-sm leading-relaxed">{cap}</p>
           </div>

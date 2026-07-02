@@ -9,7 +9,7 @@ const { sectionNumber, sectionLabel, title } = Astro.props;
 const label = sectionLabel || title || '';
 ---
 
-<div class="flex items-baseline border-b border-[#2a2a3e] pb-3 mb-10">
+<div class="flex items-baseline border-b border-border pb-3 mb-10">
   <p class="text-xs font-mono font-medium text-accent tracking-[0.15em] uppercase">
     {sectionNumber ? `${sectionNumber} — ` : ''}{label}
   </p>

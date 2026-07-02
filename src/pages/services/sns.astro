@@ -57,7 +57,7 @@ const igReelsRows: TableRow[] = [
   title="SNS運用代行 | KCP"
   description="X・Threads・Instagramのアカウント企画・投稿・分析を一括代行。AIと人間のハイブリッド体制で高品質なコンテンツを安定提供します。"
 >
-  <section class="py-section sm:py-section-lg" style="background-color: #0e0e0e;">
+  <section class="py-section sm:py-section-lg bg-base-50">
     <div class="section-wrapper">
 
       <!-- ヒーロー -->
@@ -75,7 +75,7 @@ const igReelsRows: TableRow[] = [
 
       <!-- タブボタン -->
       <FadeIn delay={80}>
-        <div class="mt-12 flex overflow-x-auto border-b border-[#1e1e2e]">
+        <div class="mt-12 flex overflow-x-auto border-b border-border-subtle">
           <button data-tab-btn="x" class="tab-btn tab-active shrink-0 px-5 py-3 text-sm font-bold">
             X / Threads
           </button>
@@ -95,35 +95,35 @@ const igReelsRows: TableRow[] = [
         <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-5">PLAN</p>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
 
-          <div class="border border-[#1e1e2e] rounded-sm p-6" style="background-color: #111;">
+          <div class="border border-border-subtle rounded-sm p-6 bg-base-100">
             <p class="font-mono text-xs text-text-muted tracking-widest mb-3">TRIAL</p>
             <p class="text-3xl font-black text-accent mb-1">¥30,000</p>
             <p class="text-xs text-text-muted mb-5">/ 月（税別）</p>
-            <div class="border-t border-[#1e1e2e] pt-4 space-y-1">
+            <div class="border-t border-border-subtle pt-4 space-y-1">
               <p class="text-xs text-text-secondary">投稿 10件/月</p>
               <p class="text-xs text-text-secondary">1ヶ月限定・翌月 Basic へ自動移行</p>
               <p class="text-xs text-text-secondary">チャットサポート</p>
             </div>
           </div>
 
-          <div class="border border-accent/20 rounded-sm p-6 relative" style="background-color: #111;">
+          <div class="border border-accent/20 rounded-sm p-6 relative bg-base-100">
             <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-black text-[10px] font-bold px-3 py-0.5 rounded-full">
               人気
             </span>
             <p class="font-mono text-xs text-text-muted tracking-widest mb-3">BASIC</p>
             <p class="text-3xl font-black text-white mb-1">¥50,000</p>
             <p class="text-xs text-text-muted mb-5">/ 月（税別）</p>
-            <div class="border-t border-[#1e1e2e] pt-4 space-y-1">
+            <div class="border-t border-border-subtle pt-4 space-y-1">
               <p class="text-xs text-text-secondary">投稿 10件/月</p>
               <p class="text-xs text-text-secondary">チャットサポート</p>
             </div>
           </div>
 
-          <div class="border border-[#1e1e2e] rounded-sm p-6" style="background-color: #111;">
+          <div class="border border-border-subtle rounded-sm p-6 bg-base-100">
             <p class="font-mono text-xs text-text-muted tracking-widest mb-3">PLUS</p>
             <p class="text-3xl font-black text-white mb-1">¥100,000</p>
             <p class="text-xs text-text-muted mb-5">/ 月（税別）</p>
-            <div class="border-t border-[#1e1e2e] pt-4 space-y-1">
+            <div class="border-t border-border-subtle pt-4 space-y-1">
               <p class="text-xs text-text-secondary">投稿 20件/月</p>
               <p class="text-xs text-text-secondary">分析レポート（改善提案含む）</p>
               <p class="text-xs text-text-secondary">定例MTG 月1回</p>
@@ -134,15 +134,15 @@ const igReelsRows: TableRow[] = [
 
         <!-- 提供範囲テーブル -->
         <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-4">提供範囲</p>
-        <div class="border border-[#1e1e2e] rounded-sm overflow-hidden mb-12">
-          <div class="grid grid-cols-[1fr_4rem_4rem_4rem] text-xs text-text-muted font-mono py-2 px-4" style="background-color: #111;">
+        <div class="border border-border-subtle rounded-sm overflow-hidden mb-12">
+          <div class="grid grid-cols-[1fr_4rem_4rem_4rem] text-xs text-text-muted font-mono py-2 px-4 bg-base-100">
             <span></span>
             <span class="text-center">Trial</span>
             <span class="text-center">Basic</span>
             <span class="text-center">Plus</span>
           </div>
           {xRows.map((row, i) => (
-            <div class={`grid grid-cols-[1fr_4rem_4rem_4rem] text-xs py-3 px-4 border-t border-[#1e1e2e]${i % 2 === 1 ? ' bg-[#0a0a0a]' : ''}`}>
+            <div class={`grid grid-cols-[1fr_4rem_4rem_4rem] text-xs py-3 px-4 border-t border-border-subtle${i % 2 === 1 ? ' bg-base' : ''}`}>
               <span class="text-text-secondary">{row.label}</span>
               <span class={cellClass(row.trial)}>{cellContent(row.trial)}</span>
               <span class={cellClass(row.basic)}>{cellContent(row.basic)}</span>
@@ -153,7 +153,7 @@ const igReelsRows: TableRow[] = [
 
         <!-- オプション -->
         <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-4">OPTION</p>
-        <div class="border border-[#1e1e2e] rounded-sm" style="background-color: #111;">
+        <div class="border border-border-subtle rounded-sm bg-base-100">
           <div class="flex items-center justify-between px-5 py-4">
             <span class="text-sm text-text-secondary">競合調査・戦略企画</span>
             <span class="font-mono text-sm font-bold text-accent">¥30,000 / 回</span>
@@ -168,11 +168,11 @@ const igReelsRows: TableRow[] = [
         <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-5">PLAN</p>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
 
-          <div class="border border-[#1e1e2e] rounded-sm p-6" style="background-color: #111;">
+          <div class="border border-border-subtle rounded-sm p-6 bg-base-100">
             <p class="font-mono text-xs text-text-muted tracking-widest mb-3">TRIAL</p>
             <p class="text-3xl font-black text-accent mb-1">¥30,000</p>
             <p class="text-xs text-text-muted mb-5">/ 月（税別）</p>
-            <div class="border-t border-[#1e1e2e] pt-4 space-y-1">
+            <div class="border-t border-border-subtle pt-4 space-y-1">
               <p class="text-xs text-text-secondary">フィード 4件/月</p>
               <p class="text-xs text-text-secondary">リールズ 2件/月</p>
               <p class="text-xs text-text-secondary">ストーリーズ 8件/月</p>
@@ -181,14 +181,14 @@ const igReelsRows: TableRow[] = [
             </div>
           </div>
 
-          <div class="border border-accent/20 rounded-sm p-6 relative" style="background-color: #111;">
+          <div class="border border-accent/20 rounded-sm p-6 relative bg-base-100">
             <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-black text-[10px] font-bold px-3 py-0.5 rounded-full">
               人気
             </span>
             <p class="font-mono text-xs text-text-muted tracking-widest mb-3">BASIC</p>
             <p class="text-3xl font-black text-white mb-1">¥50,000</p>
             <p class="text-xs text-text-muted mb-5">/ 月（税別）</p>
-            <div class="border-t border-[#1e1e2e] pt-4 space-y-1">
+            <div class="border-t border-border-subtle pt-4 space-y-1">
               <p class="text-xs text-text-secondary">フィード 6件/月</p>
               <p class="text-xs text-text-secondary">リールズ 2件/月</p>
               <p class="text-xs text-text-secondary">ストーリーズ 12件/月</p>
@@ -196,11 +196,11 @@ const igReelsRows: TableRow[] = [
             </div>
           </div>
 
-          <div class="border border-[#1e1e2e] rounded-sm p-6" style="background-color: #111;">
+          <div class="border border-border-subtle rounded-sm p-6 bg-base-100">
             <p class="font-mono text-xs text-text-muted tracking-widest mb-3">PLUS</p>
             <p class="text-3xl font-black text-white mb-1">¥100,000</p>
             <p class="text-xs text-text-muted mb-5">/ 月（税別）</p>
-            <div class="border-t border-[#1e1e2e] pt-4 space-y-1">
+            <div class="border-t border-border-subtle pt-4 space-y-1">
               <p class="text-xs text-text-secondary">フィード 12件/月</p>
               <p class="text-xs text-text-secondary">リールズ 6件/月</p>
               <p class="text-xs text-text-secondary">ストーリーズ 12件/月</p>
@@ -213,15 +213,15 @@ const igReelsRows: TableRow[] = [
 
         <!-- 提供範囲テーブル -->
         <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-4">提供範囲</p>
-        <div class="border border-[#1e1e2e] rounded-sm overflow-hidden mb-12">
-          <div class="grid grid-cols-[1fr_4rem_4rem_4rem] text-xs text-text-muted font-mono py-2 px-4" style="background-color: #111;">
+        <div class="border border-border-subtle rounded-sm overflow-hidden mb-12">
+          <div class="grid grid-cols-[1fr_4rem_4rem_4rem] text-xs text-text-muted font-mono py-2 px-4 bg-base-100">
             <span></span>
             <span class="text-center">Trial</span>
             <span class="text-center">Basic</span>
             <span class="text-center">Plus</span>
           </div>
           {igStandardRows.map((row, i) => (
-            <div class={`grid grid-cols-[1fr_4rem_4rem_4rem] text-xs py-3 px-4 border-t border-[#1e1e2e]${i % 2 === 1 ? ' bg-[#0a0a0a]' : ''}`}>
+            <div class={`grid grid-cols-[1fr_4rem_4rem_4rem] text-xs py-3 px-4 border-t border-border-subtle${i % 2 === 1 ? ' bg-base' : ''}`}>
               <span class="text-text-secondary">{row.label}</span>
               <span class={cellClass(row.trial)}>{cellContent(row.trial)}</span>
               <span class={cellClass(row.basic)}>{cellContent(row.basic)}</span>
@@ -232,7 +232,7 @@ const igReelsRows: TableRow[] = [
 
         <!-- オプション -->
         <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-4">OPTION</p>
-        <div class="border border-[#1e1e2e] rounded-sm divide-y divide-[#1e1e2e]" style="background-color: #111;">
+        <div class="border border-border-subtle rounded-sm divide-y divide-border-subtle bg-base-100">
           <div class="flex items-center justify-between px-5 py-4">
             <span class="text-sm text-text-secondary">競合調査・戦略企画</span>
             <span class="font-mono text-sm font-bold text-accent">¥30,000 / 回</span>
@@ -254,11 +254,11 @@ const igReelsRows: TableRow[] = [
         <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-5">PLAN</p>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
 
-          <div class="border border-[#1e1e2e] rounded-sm p-6" style="background-color: #111;">
+          <div class="border border-border-subtle rounded-sm p-6 bg-base-100">
             <p class="font-mono text-xs text-text-muted tracking-widest mb-3">TRIAL</p>
             <p class="text-3xl font-black text-accent mb-1">¥50,000</p>
             <p class="text-xs text-text-muted mb-5">/ 月（税別）</p>
-            <div class="border-t border-[#1e1e2e] pt-4 space-y-1">
+            <div class="border-t border-border-subtle pt-4 space-y-1">
               <p class="text-xs text-text-secondary">リールズ 8件/月</p>
               <p class="text-xs text-text-secondary">ストーリーズ 8件/月</p>
               <p class="text-xs text-text-secondary">1ヶ月限定・翌月 Basic へ自動移行</p>
@@ -266,25 +266,25 @@ const igReelsRows: TableRow[] = [
             </div>
           </div>
 
-          <div class="border border-accent/20 rounded-sm p-6 relative" style="background-color: #111;">
+          <div class="border border-accent/20 rounded-sm p-6 relative bg-base-100">
             <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-black text-[10px] font-bold px-3 py-0.5 rounded-full">
               人気
             </span>
             <p class="font-mono text-xs text-text-muted tracking-widest mb-3">BASIC</p>
             <p class="text-3xl font-black text-white mb-1">¥70,000</p>
             <p class="text-xs text-text-muted mb-5">/ 月（税別）</p>
-            <div class="border-t border-[#1e1e2e] pt-4 space-y-1">
+            <div class="border-t border-border-subtle pt-4 space-y-1">
               <p class="text-xs text-text-secondary">リールズ 12件/月</p>
               <p class="text-xs text-text-secondary">ストーリーズ 12件/月</p>
               <p class="text-xs text-text-secondary">チャットサポート</p>
             </div>
           </div>
 
-          <div class="border border-[#1e1e2e] rounded-sm p-6" style="background-color: #111;">
+          <div class="border border-border-subtle rounded-sm p-6 bg-base-100">
             <p class="font-mono text-xs text-text-muted tracking-widest mb-3">PLUS</p>
             <p class="text-3xl font-black text-white mb-1">¥120,000</p>
             <p class="text-xs text-text-muted mb-5">/ 月（税別）</p>
-            <div class="border-t border-[#1e1e2e] pt-4 space-y-1">
+            <div class="border-t border-border-subtle pt-4 space-y-1">
               <p class="text-xs text-text-secondary">リールズ 20件/月</p>
               <p class="text-xs text-text-secondary">ストーリーズ 12件/月</p>
               <p class="text-xs text-text-secondary">分析レポート（改善提案含む）</p>
@@ -296,15 +296,15 @@ const igReelsRows: TableRow[] = [
 
         <!-- 提供範囲テーブル -->
         <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-4">提供範囲</p>
-        <div class="border border-[#1e1e2e] rounded-sm overflow-hidden mb-12">
-          <div class="grid grid-cols-[1fr_4rem_4rem_4rem] text-xs text-text-muted font-mono py-2 px-4" style="background-color: #111;">
+        <div class="border border-border-subtle rounded-sm overflow-hidden mb-12">
+          <div class="grid grid-cols-[1fr_4rem_4rem_4rem] text-xs text-text-muted font-mono py-2 px-4 bg-base-100">
             <span></span>
             <span class="text-center">Trial</span>
             <span class="text-center">Basic</span>
             <span class="text-center">Plus</span>
           </div>
           {igReelsRows.map((row, i) => (
-            <div class={`grid grid-cols-[1fr_4rem_4rem_4rem] text-xs py-3 px-4 border-t border-[#1e1e2e]${i % 2 === 1 ? ' bg-[#0a0a0a]' : ''}`}>
+            <div class={`grid grid-cols-[1fr_4rem_4rem_4rem] text-xs py-3 px-4 border-t border-border-subtle${i % 2 === 1 ? ' bg-base' : ''}`}>
               <span class="text-text-secondary">{row.label}</span>
               <span class={cellClass(row.trial)}>{cellContent(row.trial)}</span>
               <span class={cellClass(row.basic)}>{cellContent(row.basic)}</span>
@@ -315,7 +315,7 @@ const igReelsRows: TableRow[] = [
 
         <!-- オプション -->
         <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-4">OPTION</p>
-        <div class="border border-[#1e1e2e] rounded-sm divide-y divide-[#1e1e2e]" style="background-color: #111;">
+        <div class="border border-border-subtle rounded-sm divide-y divide-border-subtle bg-base-100">
           <div class="flex items-center justify-between px-5 py-4">
             <span class="text-sm text-text-secondary">競合調査・戦略企画</span>
             <span class="font-mono text-sm font-bold text-accent">¥30,000 / 回</span>
@@ -334,7 +334,7 @@ const igReelsRows: TableRow[] = [
   </section>
 
   <!-- 運用体制 -->
-  <section class="py-section sm:py-section-lg" style="background-color: #111;">
+  <section class="py-section sm:py-section-lg bg-base-100">
     <div class="section-wrapper">
       <FadeIn>
         <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-4">運用体制</p>
@@ -346,7 +346,7 @@ const igReelsRows: TableRow[] = [
   </section>
 
   <!-- CTA -->
-  <section class="py-section sm:py-section-lg" style="background-color: #0a0a0a;">
+  <section class="py-section sm:py-section-lg bg-base">
     <div class="section-wrapper">
       <FadeIn>
         <div class="border-t-2 border-white pt-8 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6">

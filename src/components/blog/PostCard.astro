@@ -22,7 +22,7 @@ const dateStr = formatDate(pubDate, locale);
 ---
 
 {variant === 'row' ? (
-  <article class="relative grid grid-cols-[5rem_1fr_auto] gap-x-6 items-baseline py-4 border-b border-[#1e1e2e]">
+  <article class="relative grid grid-cols-[5rem_1fr_auto] gap-x-6 items-baseline py-4 border-b border-border-subtle">
     <time class="font-mono text-xs text-text-muted" datetime={pubDate.toISOString()}>
       {dateStr}
     </time>
@@ -41,7 +41,7 @@ const dateStr = formatDate(pubDate, locale);
     </div>
   </article>
 ) : (
-  <article class={`relative group flex flex-col gap-4 p-6 border border-[#2a2a3e] bg-base-100 hover:border-accent/40 transition-all duration-300`}>
+  <article class={`relative group flex flex-col gap-4 p-6 border border-border bg-base-100 hover:border-accent/40 transition-all duration-300`}>
     <div class="flex flex-wrap gap-2">
       {tags.slice(0, 3).map(tag => (
         <TagBadge tag={tag} href={`${tagBase}/${tag}/`} />
