@@ -1,6 +1,6 @@
 ---
 import PageLayout from '@/layouts/PageLayout.astro';
-import FadeIn from '@/components/ui/FadeIn.astro';
+import Reveal from '@/components/ui/Reveal.astro';
 import Button from '@/components/ui/Button.astro';
 
 const FORM_URL =
@@ -107,7 +107,7 @@ const whyKcp = [
   <!-- Hero -->
   <section class="py-section sm:py-section-lg bg-base-50">
     <div class="section-wrapper">
-      <FadeIn>
+      <Reveal>
         <p class="font-mono text-xs font-medium text-accent tracking-[0.15em] uppercase mb-4">
           SERVICE
         </p>
@@ -119,22 +119,22 @@ const whyKcp = [
           local footing. KCP acts as your dedicated local representative: someone who speaks the
           language, understands the market, and executes on your behalf.
         </p>
-      </FadeIn>
+      </Reveal>
     </div>
   </section>
 
   <!-- PROBLEM -->
   <section class="py-section sm:py-section-lg bg-base-100">
     <div class="section-wrapper">
-      <FadeIn>
+      <Reveal>
         <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-8">PROBLEM</p>
         <p class="text-text-secondary text-sm leading-relaxed max-w-xl mb-10">
           Most foreign companies stall at the same three barriers when entering Japan:
         </p>
-      </FadeIn>
+      </Reveal>
       <div class="flex flex-col">
         {problems.map((problem, i) => (
-          <FadeIn delay={i * 60}>
+          <Reveal delay={i * 60}>
             <div class="flex gap-5 items-start py-5 border-b border-border-subtle">
               <span class="font-mono font-black text-accent/40 text-sm w-6 shrink-0 pt-px">
                 {String(i + 1).padStart(2, '0')}
@@ -144,22 +144,22 @@ const whyKcp = [
                 <p class="text-text-secondary text-sm leading-relaxed">{problem.description}</p>
               </div>
             </div>
-          </FadeIn>
+          </Reveal>
         ))}
       </div>
-      <FadeIn delay={200}>
+      <Reveal delay={200}>
         <p class="text-text-secondary text-sm leading-relaxed mt-8 max-w-xl">
           Hiring a full-time local employee is expensive and slow. Consultants hand you a report and
           disappear. You need a partner who stays in the room.
         </p>
-      </FadeIn>
+      </Reveal>
     </div>
   </section>
 
   <!-- WHAT WE DO -->
   <section class="py-section sm:py-section-lg bg-base-50">
     <div class="section-wrapper">
-      <FadeIn>
+      <Reveal>
         <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-8">
           WHAT WE DO
         </p>
@@ -180,14 +180,14 @@ const whyKcp = [
           We conduct all client engagements in <span class="text-white font-semibold">English</span>,
           ensuring nothing is lost in translation between you and the Japanese market.
         </p>
-      </FadeIn>
+      </Reveal>
     </div>
   </section>
 
   <!-- WHO WE WORK WITH -->
   <section class="py-section sm:py-section-lg bg-base-100">
     <div class="section-wrapper">
-      <FadeIn>
+      <Reveal>
         <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-8">
           WHO WE WORK WITH
         </p>
@@ -204,14 +204,14 @@ const whyKcp = [
           We work with a limited number of clients at any given time to ensure the quality of
           engagement is never diluted.
         </p>
-      </FadeIn>
+      </Reveal>
     </div>
   </section>
 
   <!-- HOW IT WORKS -->
   <section class="py-section sm:py-section-lg bg-base-50">
     <div class="section-wrapper">
-      <FadeIn>
+      <Reveal>
         <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-8">
           HOW IT WORKS
         </p>
@@ -241,19 +241,19 @@ const whyKcp = [
           Engagements are structured as monthly retainers. Performance fees apply separately for
           deals closed through our introductions.
         </p>
-      </FadeIn>
+      </Reveal>
     </div>
   </section>
 
   <!-- WHY KCP -->
   <section class="py-section sm:py-section-lg bg-base-100">
     <div class="section-wrapper">
-      <FadeIn>
+      <Reveal>
         <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-8">WHY KCP</p>
-      </FadeIn>
+      </Reveal>
       <div class="flex flex-col">
         {whyKcp.map((item, i) => (
-          <FadeIn delay={i * 60}>
+          <Reveal delay={i * 60}>
             <div class="py-6 border-b border-border-subtle">
               <div class="flex gap-5 items-start">
                 <span class="font-mono font-black text-accent/40 text-sm w-6 shrink-0 pt-px">
@@ -265,7 +265,7 @@ const whyKcp = [
                 </div>
               </div>
             </div>
-          </FadeIn>
+          </Reveal>
         ))}
       </div>
     </div>
@@ -274,7 +274,7 @@ const whyKcp = [
   <!-- THE BIGGER PICTURE -->
   <section class="py-section sm:py-section-lg bg-base-50">
     <div class="section-wrapper">
-      <FadeIn>
+      <Reveal>
         <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-8">
           THE BIGGER PICTURE
         </p>
@@ -287,14 +287,14 @@ const whyKcp = [
           Japan operations that you don't need us to tell you what to do — you already know, because
           we've built it together.
         </p>
-      </FadeIn>
+      </Reveal>
     </div>
   </section>
 
   <!-- CTA -->
   <section class="py-section sm:py-section-lg bg-base">
     <div class="section-wrapper">
-      <FadeIn>
+      <Reveal>
         <div
           class="border-t-2 border-white pt-8 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6"
         >
@@ -319,7 +319,7 @@ const whyKcp = [
             </svg>
           </Button>
         </div>
-      </FadeIn>
+      </Reveal>
     </div>
   </section>
 </PageLayout>

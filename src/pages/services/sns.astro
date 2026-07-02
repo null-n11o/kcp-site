@@ -1,6 +1,6 @@
 ---
 import PageLayout from '@/layouts/PageLayout.astro';
-import FadeIn from '@/components/ui/FadeIn.astro';
+import Reveal from '@/components/ui/Reveal.astro';
 import Button from '@/components/ui/Button.astro';
 
 const FORM_URL =
@@ -61,7 +61,7 @@ const igReelsRows: TableRow[] = [
     <div class="section-wrapper">
 
       <!-- ヒーロー -->
-      <FadeIn>
+      <Reveal>
         <p class="font-mono text-xs font-medium text-accent tracking-[0.15em] uppercase mb-4">
           SERVICE
         </p>
@@ -71,10 +71,10 @@ const igReelsRows: TableRow[] = [
         <p class="text-text-secondary text-sm leading-relaxed max-w-xl">
           AIを活用したコンテンツ生成と、経験豊富な担当者による編集・品質管理を組み合わせた体制で、X・Threads・Instagramの企画・投稿・分析を一括代行します。
         </p>
-      </FadeIn>
+      </Reveal>
 
       <!-- タブボタン -->
-      <FadeIn delay={80}>
+      <Reveal delay={80}>
         <div class="mt-12 flex overflow-x-auto border-b border-border-subtle">
           <button data-tab-btn="x" class="tab-btn tab-active shrink-0 px-5 py-3 text-sm font-bold">
             X / Threads
@@ -86,7 +86,7 @@ const igReelsRows: TableRow[] = [
             Instagram リールズ
           </button>
         </div>
-      </FadeIn>
+      </Reveal>
 
       <!-- ===== X / Threads タブ ===== -->
       <div data-tab-panel="x" class="pt-10">
@@ -336,19 +336,19 @@ const igReelsRows: TableRow[] = [
   <!-- 運用体制 -->
   <section class="py-section sm:py-section-lg bg-base-100">
     <div class="section-wrapper">
-      <FadeIn>
+      <Reveal>
         <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-4">運用体制</p>
         <p class="text-text-secondary text-sm leading-relaxed max-w-2xl">
           AIによるコンテンツ生成と、経験豊富な運用担当者による編集・品質管理を組み合わせたハイブリッド体制で運用します。AIの効率性と人間の判断力を融合させることで、高品質なコンテンツを安定的に提供します。
         </p>
-      </FadeIn>
+      </Reveal>
     </div>
   </section>
 
   <!-- CTA -->
   <section class="py-section sm:py-section-lg bg-base">
     <div class="section-wrapper">
-      <FadeIn>
+      <Reveal>
         <div class="border-t-2 border-white pt-8 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6">
           <div>
             <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-2">Contact</p>
@@ -364,7 +364,7 @@ const igReelsRows: TableRow[] = [
             </svg>
           </Button>
         </div>
-      </FadeIn>
+      </Reveal>
     </div>
   </section>
 </PageLayout>

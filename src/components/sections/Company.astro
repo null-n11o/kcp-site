@@ -1,6 +1,6 @@
 ---
 import SectionHeading from '@/components/ui/SectionHeading.astro';
-import FadeIn from '@/components/ui/FadeIn.astro';
+import Reveal from '@/components/ui/Reveal.astro';
 import type { CompanyInfoRow } from '@/i18n/types';
 
 export interface Props {
@@ -14,11 +14,11 @@ const { heading, info } = Astro.props;
 
 <section id="company" class="py-section sm:py-section-lg bg-base-50">
   <div class="section-wrapper">
-    <FadeIn>
+    <Reveal>
       <SectionHeading sectionNumber="06" sectionLabel={heading} />
-    </FadeIn>
+    </Reveal>
 
-    <FadeIn delay={100}>
+    <Reveal delay={100}>
       <div class="border border-border overflow-hidden">
         <table class="w-full">
           <tbody>
@@ -35,6 +35,6 @@ const { heading, info } = Astro.props;
           </tbody>
         </table>
       </div>
-    </FadeIn>
+    </Reveal>
   </div>
 </section>

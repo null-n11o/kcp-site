@@ -1,6 +1,6 @@
 ---
 import SectionHeading from '@/components/ui/SectionHeading.astro';
-import FadeIn from '@/components/ui/FadeIn.astro';
+import Reveal from '@/components/ui/Reveal.astro';
 
 export interface Props {
   heading: string;
@@ -18,11 +18,11 @@ const { heading, title, tagline, description, capabilities, ctaLabel, ctaHref } 
 
 <section id="service" class="py-section sm:py-section-lg bg-base-50">
   <div class="section-wrapper">
-    <FadeIn>
+    <Reveal>
       <SectionHeading sectionNumber="02" sectionLabel={heading} />
-    </FadeIn>
+    </Reveal>
 
-    <FadeIn>
+    <Reveal>
       <h3 class="text-3xl sm:text-5xl font-black tracking-tight text-white mb-3">
         {title}
       </h3>
@@ -30,25 +30,25 @@ const { heading, title, tagline, description, capabilities, ctaLabel, ctaHref } 
       <p class="text-text-secondary text-sm leading-relaxed max-w-2xl mb-10">
         {description}
       </p>
-    </FadeIn>
+    </Reveal>
 
-    <FadeIn delay={80}>
+    <Reveal delay={80}>
       <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-6">
         Everything entering Japan requires, under one retainer
       </p>
-    </FadeIn>
+    </Reveal>
     <div class="flex flex-col mb-10">
       {capabilities.map((cap, i) => (
-        <FadeIn delay={120 + i * 60}>
+        <Reveal delay={120 + i * 60}>
           <div class="flex gap-4 items-start py-4 border-b border-border-subtle">
             <span class="text-accent shrink-0 font-bold text-sm pt-px">—</span>
             <p class="text-text-secondary text-sm leading-relaxed">{cap}</p>
           </div>
-        </FadeIn>
+        </Reveal>
       ))}
     </div>
 
-    <FadeIn delay={120 + capabilities.length * 60}>
+    <Reveal delay={120 + capabilities.length * 60}>
       <a
         href={ctaHref}
         class="inline-flex items-center gap-2 text-sm font-medium text-accent hover:underline"
@@ -56,6 +56,6 @@ const { heading, title, tagline, description, capabilities, ctaLabel, ctaHref } 
         {ctaLabel}
         <span aria-hidden="true">→</span>
       </a>
-    </FadeIn>
+    </Reveal>
   </div>
 </section>
