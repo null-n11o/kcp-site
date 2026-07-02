@@ -15,6 +15,7 @@ export const en: Translations = {
   footer: {
     companyName: 'KCP Inc.',
     rights: 'All Rights Reserved.',
+    backToTop: 'Back to top',
   },
   hero: {
     eyebrow: 'KCP Inc.',
