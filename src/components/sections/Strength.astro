@@ -9,14 +9,12 @@ export interface Props {
   items: StrengthItem[];
 }
 
-const { heading, items } = Astro.props;
+const { heading, subtitle, items } = Astro.props;
 ---
 
 <section id="strength" class="py-section sm:py-section-lg bg-base-50">
   <div class="section-wrapper">
-    <Reveal>
-      <SectionHeading sectionNumber="04" sectionLabel={heading} />
-    </Reveal>
+    <SectionHeading sectionNumber="04" sectionLabel={heading} title={heading} lede={subtitle} />
 
     <Reveal variant="stagger" class="flex flex-col">
       {items.map((item, i) => (

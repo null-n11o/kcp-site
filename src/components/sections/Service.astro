@@ -10,14 +10,12 @@ export interface Props {
   detailLabel?: string;
 }
 
-const { heading, items, detailLabel = '詳しく見る →' } = Astro.props;
+const { heading, subtitle, items, detailLabel = '詳しく見る →' } = Astro.props;
 ---
 
 <section id="service" class="py-section sm:py-section-lg bg-base-50">
   <div class="section-wrapper">
-    <Reveal>
-      <SectionHeading sectionNumber="02" sectionLabel={heading} />
-    </Reveal>
+    <SectionHeading sectionNumber="02" sectionLabel={heading} title={heading} lede={subtitle} />
 
     <Reveal variant="stagger" class="flex flex-col">
       {items.map((service, i) => (

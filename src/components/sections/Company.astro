@@ -9,14 +9,12 @@ export interface Props {
   info: CompanyInfoRow[];
 }
 
-const { heading, info } = Astro.props;
+const { heading, subtitle, info } = Astro.props;
 ---
 
 <section id="company" class="py-section sm:py-section-lg bg-base-50">
   <div class="section-wrapper">
-    <Reveal>
-      <SectionHeading sectionNumber="06" sectionLabel={heading} />
-    </Reveal>
+    <SectionHeading sectionNumber="06" sectionLabel={heading} title={heading} lede={subtitle} />
 
     <Reveal delay={100}>
       <div class="border border-border overflow-hidden">

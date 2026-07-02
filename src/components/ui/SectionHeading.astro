@@ -3,14 +3,34 @@ export interface Props {
   sectionNumber?: string;
   sectionLabel?: string;
   title?: string;
+  lede?: string;
 }
 
-const { sectionNumber, sectionLabel, title } = Astro.props;
+const { sectionNumber, sectionLabel, title, lede } = Astro.props;
 const label = sectionLabel || title || '';
 ---
 
-<div class="flex items-baseline border-b border-border pb-3 mb-10">
-  <p class="text-xs font-mono font-medium text-accent tracking-[0.15em] uppercase">
-    {sectionNumber ? `${sectionNumber} — ` : ''}{label}
-  </p>
+<div class="relative mb-12" data-reveal="fade-up">
+  {sectionNumber && title && (
+    <span
+      aria-hidden="true"
+      class="pointer-events-none select-none absolute -top-8 right-0 font-mono font-black leading-none text-[6rem] sm:text-[9rem] text-white/[0.04]"
+    >
+      {sectionNumber}
+    </span>
+  )}
+  <div class="flex items-baseline justify-between border-b border-border pb-3">
+    <p class="text-xs font-mono font-medium text-accent tracking-[0.15em] uppercase">
+      {sectionNumber ? `${sectionNumber} — ` : ''}{label}
+    </p>
+    <slot name="meta" />
+  </div>
+  {title && (
+    <h2 class="relative mt-8 text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white">
+      {title}
+    </h2>
+  )}
+  {lede && (
+    <p class="relative mt-4 max-w-lg text-sm leading-relaxed text-text-secondary">{lede}</p>
+  )}
 </div>
