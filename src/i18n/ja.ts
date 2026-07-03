@@ -146,6 +146,7 @@ export const ja: Translations = {
     subtext:
       'まずはお気軽にご相談ください。\nご要望をお聞きした上で、最適なプランをご提案します。',
     btnLabel: 'お問い合わせフォーム',
+    downloadBtnLabel: '会社案内ダウンロード',
   },
   breadcrumb: {
     home: 'ホーム',

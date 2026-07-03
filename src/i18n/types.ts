@@ -92,6 +92,7 @@ export interface Translations {
     heading: string;
     subtext: string;
     btnLabel: string;
+    downloadBtnLabel?: string;
   };
   breadcrumb: {
     home: string;
