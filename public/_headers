@@ -1,0 +1,4 @@
+/download/*
+  X-Robots-Tag: noindex, nofollow
+/documents/*
+  X-Robots-Tag: noindex, nofollow
