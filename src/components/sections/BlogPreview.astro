@@ -1,6 +1,7 @@
 ---
 import PostCard from '@/components/blog/PostCard.astro';
-import FadeIn from '@/components/ui/FadeIn.astro';
+import Reveal from '@/components/ui/Reveal.astro';
+import SectionHeading from '@/components/ui/SectionHeading.astro';
 import type { CollectionEntry } from 'astro:content';
 
 export interface Props {
@@ -12,33 +13,27 @@ export interface Props {
   locale?: 'ja' | 'en';
 }
 
-const { posts, heading, viewAllLabel, blogHref, locale = 'ja' } = Astro.props;
+const { posts, heading, subtitle, viewAllLabel, blogHref, locale = 'ja' } = Astro.props;
 ---
 
 {posts.length > 0 && (
-  <section id="blog" class="py-section" style="background-color: #0a0a0a;">
+  <section id="blog" class="py-section sm:py-section-lg bg-base">
     <div class="section-wrapper">
-      <FadeIn>
-        <div class="flex items-baseline justify-between border-b border-[#2a2a3e] pb-3 mb-10">
-          <p class="text-xs font-mono font-medium text-accent tracking-[0.15em] uppercase">
-            05 — {heading}
-          </p>
-          <a
-            href={blogHref}
-            class="text-xs font-mono text-accent tracking-[0.1em] uppercase hover:text-accent-light transition-colors"
-          >
-            {viewAllLabel} →
-          </a>
-        </div>
-      </FadeIn>
+      <SectionHeading sectionNumber="05" sectionLabel={heading} title={heading} lede={subtitle}>
+        <a
+          slot="meta"
+          href={blogHref}
+          class="text-xs font-mono text-accent tracking-[0.1em] uppercase hover:text-accent-light transition-colors"
+        >
+          {viewAllLabel} →
+        </a>
+      </SectionHeading>
 
-      <div class="flex flex-col">
+      <Reveal variant="stagger" class="flex flex-col">
         {posts.map((post, i) => (
-          <FadeIn delay={i * 80}>
-            <PostCard post={post} locale={locale} variant="row" />
-          </FadeIn>
+          <PostCard post={post} locale={locale} variant="row" />
         ))}
-      </div>
+      </Reveal>
     </div>
   </section>
 )}

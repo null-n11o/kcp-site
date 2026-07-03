@@ -1,6 +1,6 @@
 ---
 import Button from '@/components/ui/Button.astro';
-import FadeIn from '@/components/ui/FadeIn.astro';
+import SectionHeading from '@/components/ui/SectionHeading.astro';
 
 export interface Props {
   label: string;
@@ -14,20 +14,21 @@ const { label, heading, subtext, btnLabel, formUrl } = Astro.props;
 const subtextLines = subtext.split('\n');
 ---
 
-<section id="contact" class="py-section" style="background-color: #0a0a0a;">
+<section id="contact" class="py-section sm:py-section-lg bg-base">
   <div class="section-wrapper">
-    <FadeIn>
-      <div class="flex items-baseline border-b border-[#2a2a3e] pb-3 mb-8">
-        <p class="text-xs font-mono font-medium text-accent tracking-[0.15em] uppercase">
-          07 — {label}
-        </p>
-      </div>
+    <SectionHeading sectionNumber="07" sectionLabel={label} />
 
+    <div data-reveal="lines">
       <h2 class="text-4xl sm:text-6xl lg:text-7xl font-black leading-none tracking-tight text-white mb-8">
-        {heading}
+        <span class="block overflow-hidden pb-[0.08em]">
+          <span class="reveal-line" style="--i: 0">{heading}</span>
+        </span>
       </h2>
+    </div>
 
-      <div class="border-t-2 border-white pt-6 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6">
+    <div data-reveal="line">
+      <div class="reveal-rule h-0.5 bg-white"></div>
+      <div class="pt-6 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6">
         <p class="text-text-secondary text-sm leading-relaxed max-w-md">
           {subtextLines.map((line, i) => (
             <>
@@ -43,6 +44,6 @@ const subtextLines = subtext.split('\n');
           </svg>
         </Button>
       </div>
-    </FadeIn>
+    </div>
   </div>
 </section>

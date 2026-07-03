@@ -134,5 +134,30 @@ const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0
   </head>
   <body>
     <slot />
+
+    <script>
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const el = entry.target as HTMLElement;
+            const delay = Number(el.dataset.delay ?? 0);
+            if (el.dataset.reveal === 'stagger') {
+              Array.from(el.children).forEach((child, i) => {
+                const c = child as HTMLElement;
+                c.style.transitionDelay = `${delay + i * 70}ms`;
+                c.addEventListener('transitionend', () => { c.style.transitionDelay = ''; }, { once: true });
+              });
+              el.classList.add('is-visible');
+            } else {
+              setTimeout(() => el.classList.add('is-visible'), delay);
+            }
+            io.unobserve(el);
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+      );
+      document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
+    </script>
   </body>
 </html>

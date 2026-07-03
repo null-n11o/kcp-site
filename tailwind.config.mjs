@@ -9,6 +9,7 @@ export default {
       colors: {
         base: {
           DEFAULT: '#0a0a0a',
+          50: '#0e0e0e',
           100: '#141414',
           200: '#1a1a2e',
           300: '#16213e',
@@ -36,6 +37,7 @@ export default {
       },
       spacing: {
         section: '5rem',
+        'section-lg': '7.5rem',
       },
       animation: {
         'fade-in': 'fadeIn 0.7s ease-out forwards',

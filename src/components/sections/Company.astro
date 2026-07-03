@@ -1,6 +1,6 @@
 ---
 import SectionHeading from '@/components/ui/SectionHeading.astro';
-import FadeIn from '@/components/ui/FadeIn.astro';
+import Reveal from '@/components/ui/Reveal.astro';
 import type { CompanyInfoRow } from '@/i18n/types';
 
 export interface Props {
@@ -9,22 +9,20 @@ export interface Props {
   info: CompanyInfoRow[];
 }
 
-const { heading, info } = Astro.props;
+const { heading, subtitle, info } = Astro.props;
 ---
 
-<section id="company" class="py-section" style="background-color: #0e0e0e;">
+<section id="company" class="py-section sm:py-section-lg bg-base-50">
   <div class="section-wrapper">
-    <FadeIn>
-      <SectionHeading sectionNumber="06" sectionLabel={heading} />
-    </FadeIn>
+    <SectionHeading sectionNumber="06" sectionLabel={heading} title={heading} lede={subtitle} />
 
-    <FadeIn delay={100}>
-      <div class="border border-[#2a2a3e] overflow-hidden">
+    <Reveal delay={100}>
+      <div class="border border-border overflow-hidden">
         <table class="w-full">
           <tbody>
             {info.map((row, i) => (
-              <tr class={i % 2 === 0 ? 'bg-[#0e0e0e]' : 'bg-[#141414]'}>
-                <th class="px-6 py-4 text-left text-xs font-medium text-text-secondary w-40 shrink-0 border-r border-[#2a2a3e] uppercase tracking-wider">
+              <tr class={`transition-colors hover:bg-base-200/50 ${i % 2 === 0 ? 'bg-base-50' : 'bg-base-100'}`}>
+                <th class="px-6 py-4 text-left text-xs font-medium text-text-secondary w-40 shrink-0 border-r border-border uppercase tracking-wider">
                   {row.label}
                 </th>
                 <td class="px-6 py-4 text-sm text-text-primary">
@@ -35,6 +33,6 @@ const { heading, info } = Astro.props;
           </tbody>
         </table>
       </div>
-    </FadeIn>
+    </Reveal>
   </div>
 </section>

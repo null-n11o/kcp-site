@@ -24,31 +24,32 @@ const {
   contactHref = '#contact',
   serviceHref = '#service',
 } = Astro.props;
+
+const headlines = [headlinePre, headlineAccent, headlinePost].filter(Boolean);
 ---
 
-<section
-  id="hero"
-  class="min-h-screen flex items-center"
-  style="background-color: #0a0a0a;"
->
-  <div class="section-wrapper w-full pt-24">
+<section id="hero" class="relative min-h-screen flex items-center bg-base overflow-hidden">
+  <div class="section-wrapper w-full pt-24 pb-20">
     <!-- トップ行: セクションラベル + 年 -->
-    <div class="flex items-baseline justify-between mb-8">
+    <div class="hero-fade flex items-baseline justify-between mb-8">
       <p class="text-xs font-mono font-medium text-accent tracking-[0.15em] uppercase">
         01 — {eyebrow}
       </p>
       <p class="text-xs font-mono text-text-muted">2026 —</p>
     </div>
 
-    <!-- ビッグ見出し -->
+    <!-- ビッグ見出し: 行ごとにクリップリベール -->
     <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black leading-none tracking-tight text-white">
-      <span class="block">{headlinePre}</span>
-      <span class="block">{headlineAccent}</span>
-      {headlinePost && <span class="block">{headlinePost}</span>}
+      {headlines.map((line, i) => (
+        <span class="block overflow-hidden pb-[0.08em]">
+          <span class="hero-line block" style={`--i: ${i}`}>{line}</span>
+        </span>
+      ))}
     </h1>
 
-    <!-- ボールドルール + 下部ストリップ -->
-    <div class="border-t-2 border-white mt-8 pt-6 pb-8 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6">
+    <!-- ボールドルール（左から伸長） + 下部ストリップ -->
+    <div class="hero-rule mt-8 h-0.5 bg-white"></div>
+    <div class="hero-fade pt-6 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6">
       <p class="text-text-secondary text-sm sm:text-base leading-relaxed max-w-lg">
         {subtext}
       </p>
@@ -59,3 +60,47 @@ const {
     </div>
   </div>
 </section>
+
+<style>
+  .hero-line {
+    transform: translateY(110%);
+    animation: hero-line 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: calc(var(--i) * 120ms + 100ms);
+  }
+  @keyframes hero-line {
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  .hero-rule {
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: hero-rule 0.9s cubic-bezier(0.22, 1, 0.36, 1) 500ms forwards;
+  }
+  @keyframes hero-rule {
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  .hero-fade {
+    opacity: 0;
+    animation: hero-fade 0.8s ease-out 700ms forwards;
+  }
+  @keyframes hero-fade {
+    to {
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-line,
+    .hero-rule,
+    .hero-fade {
+      animation: none;
+      transform: none;
+      opacity: 1;
+    }
+  }
+</style>

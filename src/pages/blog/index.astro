@@ -19,16 +19,21 @@ const tags = getAllTags(posts);
     { name: 'ブログ', url: 'https://kcp.co.jp/blog/' },
   ]}
 >
-  <div class="section-wrapper pt-24 pb-16">
-    <h1 class="text-4xl font-bold text-text-primary mb-4">Blog</h1>
-    <p class="text-text-secondary mb-10">AI活用・業務効率化に関する記事を発信しています。</p>
+  <div class="section-wrapper pt-32 pb-16">
+    <div data-reveal="fade-up">
+      <p class="text-xs font-mono font-medium text-accent tracking-[0.15em] uppercase border-b border-border pb-3 mb-8">
+        Blog
+      </p>
+      <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white mb-4">Blog</h1>
+      <p class="text-text-secondary mb-10">AI活用・業務効率化に関する記事を発信しています。</p>
+    </div>
 
     <TagFilter tags={tags} />
 
     {posts.length === 0 ? (
       <p class="text-text-muted text-center py-16">記事がありません。</p>
     ) : (
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-reveal="stagger">
         {posts.map(post => (
           <PostCard post={post} />
         ))}

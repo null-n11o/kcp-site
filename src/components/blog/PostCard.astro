@@ -22,8 +22,8 @@ const dateStr = formatDate(pubDate, locale);
 ---
 
 {variant === 'row' ? (
-  <article class="relative grid grid-cols-[5rem_1fr_auto] gap-x-6 items-baseline py-4 border-b border-[#1e1e2e]">
-    <time class="font-mono text-xs text-text-muted" datetime={pubDate.toISOString()}>
+  <article class="group relative grid grid-cols-[5rem_1fr_auto] gap-x-6 items-baseline py-4 border-b border-border-subtle transition-colors duration-300 hover:bg-base-100 px-4 -mx-4">
+    <time class="font-mono text-xs text-text-muted transition-colors group-hover:text-accent" datetime={pubDate.toISOString()}>
       {dateStr}
     </time>
     <div class="min-w-0">
@@ -41,7 +41,7 @@ const dateStr = formatDate(pubDate, locale);
     </div>
   </article>
 ) : (
-  <article class={`relative group flex flex-col gap-4 p-6 border border-[#2a2a3e] bg-base-100 hover:border-accent/40 transition-all duration-300`}>
+  <article class={`relative group flex flex-col gap-4 p-6 border border-border bg-base-100 hover:border-accent/40 transition-all duration-300`}>
     <div class="flex flex-wrap gap-2">
       {tags.slice(0, 3).map(tag => (
         <TagBadge tag={tag} href={`${tagBase}/${tag}/`} />
@@ -59,6 +59,12 @@ const dateStr = formatDate(pubDate, locale);
       <time datetime={pubDate.toISOString()}>{dateStr}</time>
       <span>·</span>
       <span>{readingTimeLabel}</span>
+      <span
+        class="ml-auto text-accent opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0"
+        aria-hidden="true"
+      >
+        →
+      </span>
     </div>
   </article>
 )}

@@ -1,0 +1,13 @@
+---
+export interface Props {
+  variant?: 'fade-up' | 'lines' | 'stagger' | 'line';
+  delay?: number;
+  class?: string;
+}
+
+const { variant = 'fade-up', delay = 0, class: className = '' } = Astro.props;
+---
+
+<div data-reveal={variant} data-delay={delay} class={className}>
+  <slot />
+</div>

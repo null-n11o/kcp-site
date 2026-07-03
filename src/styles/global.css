@@ -12,6 +12,16 @@
     font-feature-settings: 'palt';
   }
 
+  ::selection {
+    background-color: #4a9eff;
+    color: #0a0a0a;
+  }
+
+  :focus-visible {
+    outline: 2px solid #4a9eff;
+    outline-offset: 2px;
+  }
+
   ::-webkit-scrollbar {
     width: 8px;
   }
@@ -23,26 +33,63 @@
     border-radius: 4px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #444;
+    background: #4a9eff;
   }
 }
 
 @layer components {
   .section-wrapper {
-    @apply px-4 sm:px-6 lg:px-8 py-section mx-auto;
+    @apply px-4 sm:px-6 lg:px-8 mx-auto;
     max-width: 1200px;
   }
 }
 
 @layer utilities {
-  [data-fade-in] {
+  /* ===== Reveal motion system (IO script は BaseLayout.astro) ===== */
+  [data-reveal='fade-up'] {
     opacity: 0;
     transform: translateY(24px);
-    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    transition:
+      opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  [data-fade-in].is-visible {
+  [data-reveal='fade-up'].is-visible {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  /* lines: .reveal-line は overflow-hidden の親で包むこと。--i で行インデックス指定 */
+  [data-reveal='lines'] .reveal-line {
+    display: block;
+    transform: translateY(110%);
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: calc(var(--i, 0) * 90ms);
+  }
+  [data-reveal='lines'].is-visible .reveal-line {
+    transform: translateY(0);
+  }
+
+  /* stagger: 子要素の transition-delay は IO スクリプトが設定する */
+  [data-reveal='stagger'] > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  [data-reveal='stagger'].is-visible > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* line: 水平ルールが左から伸びる */
+  [data-reveal='line'] .reveal-rule {
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  [data-reveal='line'].is-visible .reveal-rule {
+    transform: scaleX(1);
   }
 
   .stretched-link::after {
@@ -50,5 +97,16 @@
     inset: 0;
     z-index: 1;
     content: '';
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal],
+    [data-reveal] .reveal-line,
+    [data-reveal] .reveal-rule,
+    [data-reveal='stagger'] > * {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
   }
 }

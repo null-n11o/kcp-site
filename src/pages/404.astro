@@ -3,10 +3,19 @@ import PageLayout from '@/layouts/PageLayout.astro';
 ---
 
 <PageLayout title="404 - ページが見つかりません">
-  <div class="section-wrapper pt-32 pb-16 text-center">
-    <p class="text-8xl font-bold text-accent/20 mb-4">404</p>
-    <h1 class="text-2xl font-bold text-text-primary mb-4">ページが見つかりません</h1>
+  <div class="section-wrapper pt-40 pb-24 text-center">
+    <p
+      aria-hidden="true"
+      class="font-mono font-black leading-none text-[10rem] sm:text-[14rem] text-white/[0.05] select-none"
+    >
+      404
+    </p>
+    <h1 class="text-2xl sm:text-3xl font-black text-white -mt-10 sm:-mt-14 mb-4 relative">
+      ページが見つかりません
+    </h1>
     <p class="text-text-secondary mb-10">お探しのページは移動または削除された可能性があります。</p>
-    <a href="/" class="text-accent hover:text-accent-light transition-colors">← トップページへ戻る</a>
+    <a href="/" class="font-mono text-sm text-accent hover:text-accent-light transition-colors">
+      ← トップページへ戻る
+    </a>
   </div>
 </PageLayout>
