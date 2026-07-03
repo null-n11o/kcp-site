@@ -26,13 +26,6 @@ const {
 } = Astro.props;
 
 const headlines = [headlinePre, headlineAccent, headlinePost].filter(Boolean);
-const marqueeItems = [
-  'AI Consulting',
-  'SNS Marketing',
-  'IT Support',
-  'System Development',
-  'Japan Entry',
-];
 ---
 
 <section id="hero" class="relative min-h-screen flex items-center bg-base overflow-hidden">
@@ -64,21 +57,6 @@ const marqueeItems = [
         <Button href={contactHref} variant="primary">{primaryCta}</Button>
         <Button href={serviceHref} variant="outline">{secondaryCta}</Button>
       </div>
-    </div>
-  </div>
-
-  <!-- キーワードマーキー（装飾・純CSS） -->
-  <div class="hero-fade absolute bottom-0 left-0 right-0 border-t border-border py-4 overflow-hidden" aria-hidden="true">
-    <div class="marquee-track">
-      {[0, 1].map(() => (
-        <div class="flex shrink-0">
-          {marqueeItems.map((item) => (
-            <span class="font-mono text-xs uppercase tracking-[0.2em] text-text-muted whitespace-nowrap px-8">
-              {item}<span class="text-accent pl-16">—</span>
-            </span>
-          ))}
-        </div>
-      ))}
     </div>
   </div>
 </section>
@@ -116,20 +94,6 @@ const marqueeItems = [
     }
   }
 
-  .marquee-track {
-    display: flex;
-    width: max-content;
-    animation: marquee 40s linear infinite;
-  }
-  @keyframes marquee {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
-  }
-
   @media (prefers-reduced-motion: reduce) {
     .hero-line,
     .hero-rule,
@@ -137,9 +101,6 @@ const marqueeItems = [
       animation: none;
       transform: none;
       opacity: 1;
-    }
-    .marquee-track {
-      animation: none;
     }
   }
 </style>

@@ -15,7 +15,6 @@ export const ja: Translations = {
   footer: {
     companyName: '株式会社KCP',
     rights: 'All Rights Reserved.',
-    backToTop: 'トップへ戻る',
   },
   hero: {
     eyebrow: 'Corporation',

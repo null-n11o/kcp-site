@@ -45,7 +45,6 @@ export interface Translations {
   footer: {
     companyName: string;
     rights: string;
-    backToTop: string;
   };
   hero: {
     eyebrow: string;

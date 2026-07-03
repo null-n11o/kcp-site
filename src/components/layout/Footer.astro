@@ -7,55 +7,16 @@ export interface Props {
   t: Translations;
 }
 
-const { locale, t } = Astro.props;
+const { t } = Astro.props;
 const year = new Date().getFullYear();
-const base = locale === 'en' ? '/en' : '';
-
-const navLinks = [
-  { href: `${base}/#service`, label: t.nav.service },
-  { href: `${base}/#about`, label: t.nav.about },
-  { href: `${base}/#strength`, label: t.nav.strength },
-  { href: `${base}/blog/`, label: t.nav.blog },
-  { href: `${base}/#company`, label: t.nav.company },
-  { href: `${base}/#contact`, label: t.nav.contact },
-];
 ---
 
-<footer class="border-t-2 border-white">
-  <div class="section-wrapper py-16">
-    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-10">
-      <div>
-        <Logo class="h-10 w-auto mb-5" title="" />
-        <p class="text-2xl sm:text-3xl font-black tracking-tight text-white">
-          {t.footer.companyName}
-        </p>
-      </div>
-      <nav
-        class="grid grid-cols-2 gap-x-12 gap-y-3"
-        aria-label={locale === 'ja' ? 'フッターナビゲーション' : 'Footer navigation'}
-      >
-        {navLinks.map((link) => (
-          <a href={link.href} class="text-sm text-text-secondary hover:text-text-primary transition-colors">
-            {link.label}
-          </a>
-        ))}
-        <a href="/press/" class="text-sm text-text-secondary hover:text-text-primary transition-colors">
-          Press
-        </a>
-      </nav>
-    </div>
-    <div class="mt-12 pt-6 border-t border-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs font-mono text-text-muted">
-      <p>© {year} {t.footer.companyName}. {t.footer.rights}</p>
-      <a href="#top" class="hover:text-text-primary transition-colors" data-back-to-top>
-        {t.footer.backToTop} ↑
-      </a>
-    </div>
+<footer class="border-t border-border py-8">
+  <div class="section-wrapper flex flex-col items-center gap-4 text-sm text-text-muted">
+    <Logo class="h-8 w-auto" title="" />
+    <nav class="flex gap-6" aria-label="フッターナビゲーション">
+      <a href="/press/" class="hover:text-text-primary transition-colors">プレスリリース</a>
+    </nav>
+    <p>© {year} {t.footer.companyName}. {t.footer.rights}</p>
   </div>
 </footer>
-
-<script>
-  document.querySelector('[data-back-to-top]')?.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-</script>
