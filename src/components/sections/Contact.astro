@@ -8,9 +8,11 @@ export interface Props {
   subtext: string;
   btnLabel: string;
   formUrl: string;
+  downloadBtnLabel?: string;
+  downloadFormUrl?: string;
 }
 
-const { label, heading, subtext, btnLabel, formUrl } = Astro.props;
+const { label, heading, subtext, btnLabel, formUrl, downloadBtnLabel, downloadFormUrl } = Astro.props;
 const subtextLines = subtext.split('\n');
 ---
 
@@ -37,12 +39,22 @@ const subtextLines = subtext.split('\n');
             </>
           ))}
         </p>
-        <Button href={formUrl} variant="primary" target="_blank">
-          {btnLabel}
-          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-          </svg>
-        </Button>
+        <div class="flex flex-col sm:flex-row gap-3">
+          {downloadBtnLabel && downloadFormUrl && (
+            <Button href={downloadFormUrl} variant="outline" target="_blank">
+              {downloadBtnLabel}
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 4v12m0 0l-4-4m4 4l4-4" />
+              </svg>
+            </Button>
+          )}
+          <Button href={formUrl} variant="primary" target="_blank">
+            {btnLabel}
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </Button>
+        </div>
       </div>
     </div>
   </div>

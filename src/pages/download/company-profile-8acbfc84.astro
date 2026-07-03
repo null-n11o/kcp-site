@@ -1,0 +1,30 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import Button from '@/components/ui/Button.astro';
+
+const pdfUrl = '/documents/kcp-company-profile-8acbfc84.pdf';
+---
+
+<PageLayout title="会社案内資料ダウンロード" description="株式会社KCPの会社案内資料をダウンロードいただけます。" noIndex={true}>
+  <section class="py-section sm:py-section-lg bg-base min-h-[70vh]">
+    <div class="section-wrapper">
+      <h1 class="text-4xl sm:text-6xl font-black leading-none tracking-tight text-white mb-8">
+        会社案内資料
+      </h1>
+      <div class="h-0.5 bg-white mb-6"></div>
+      <p class="text-text-secondary text-sm leading-relaxed max-w-md mb-10">
+        この度は株式会社KCPの会社案内資料をご請求いただき、誠にありがとうございます。<br />
+        以下のボタンよりダウンロードいただけます。
+      </p>
+      <Button href={pdfUrl} variant="primary" target="_blank">
+        資料をダウンロード（PDF）
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 4v12m0 0l-4-4m4 4l4-4" />
+        </svg>
+      </Button>
+      <p class="text-text-secondary text-sm leading-relaxed max-w-md mt-10">
+        ご不明な点やご相談は<a href="/#contact" class="underline text-white hover:text-gray-300">お問い合わせ</a>よりお気軽にご連絡ください。
+      </p>
+    </div>
+  </section>
+</PageLayout>
