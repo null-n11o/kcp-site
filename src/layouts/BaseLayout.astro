@@ -144,7 +144,9 @@ const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0
             const delay = Number(el.dataset.delay ?? 0);
             if (el.dataset.reveal === 'stagger') {
               Array.from(el.children).forEach((child, i) => {
-                (child as HTMLElement).style.transitionDelay = `${delay + i * 70}ms`;
+                const c = child as HTMLElement;
+                c.style.transitionDelay = `${delay + i * 70}ms`;
+                c.addEventListener('transitionend', () => { c.style.transitionDelay = ''; }, { once: true });
               });
               el.classList.add('is-visible');
             } else {
