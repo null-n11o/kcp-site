@@ -61,20 +61,20 @@ describe('isStandaloneUrl', () => {
 });
 
 describe('isInternalBlogUrl', () => {
-  it('returns true for kcp.co.jp/blog/* URLs', () => {
-    expect(isInternalBlogUrl('https://kcp.co.jp/blog/my-article')).toBe(true);
+  it('returns true for kcp-8.com/blog/* URLs', () => {
+    expect(isInternalBlogUrl('https://kcp-8.com/blog/my-article')).toBe(true);
   });
 
-  it('returns true for kcp.co.jp/blog/* with trailing slash', () => {
-    expect(isInternalBlogUrl('https://kcp.co.jp/blog/my-article/')).toBe(true);
+  it('returns true for kcp-8.com/blog/* with trailing slash', () => {
+    expect(isInternalBlogUrl('https://kcp-8.com/blog/my-article/')).toBe(true);
   });
 
   it('returns false for external blog URLs', () => {
     expect(isInternalBlogUrl('https://example.com/blog/post')).toBe(false);
   });
 
-  it('returns false for kcp.co.jp non-blog URLs', () => {
-    expect(isInternalBlogUrl('https://kcp.co.jp/about')).toBe(false);
+  it('returns false for kcp-8.com non-blog URLs', () => {
+    expect(isInternalBlogUrl('https://kcp-8.com/about')).toBe(false);
   });
 
   it('returns false for invalid URLs', () => {
@@ -84,11 +84,11 @@ describe('isInternalBlogUrl', () => {
 
 describe('extractSlug', () => {
   it('extracts slug from /blog/slug/', () => {
-    expect(extractSlug('https://kcp.co.jp/blog/my-article/')).toBe('my-article');
+    expect(extractSlug('https://kcp-8.com/blog/my-article/')).toBe('my-article');
   });
 
   it('extracts slug from /blog/slug without trailing slash', () => {
-    expect(extractSlug('https://kcp.co.jp/blog/my-article')).toBe('my-article');
+    expect(extractSlug('https://kcp-8.com/blog/my-article')).toBe('my-article');
   });
 });
 
@@ -306,7 +306,7 @@ describe('remarkLinkCard plugin (integration)', () => {
     const plugin = remarkLinkCard();
     const tree: Root = {
       type: 'root',
-      children: [makeParagraphWithBareUrl('https://kcp.co.jp/blog/ai-jidai-no-gyomu-daiko') as any],
+      children: [makeParagraphWithBareUrl('https://kcp-8.com/blog/ai-jidai-no-gyomu-daiko') as any],
     } as Root;
 
     await plugin(tree);
@@ -323,7 +323,7 @@ describe('remarkLinkCard plugin (integration)', () => {
     const plugin = remarkLinkCard({ cachePath: tmpPath });
     const tree: Root = {
       type: 'root',
-      children: [makeParagraphWithBareUrl('https://kcp.co.jp/blog/does-not-exist') as any],
+      children: [makeParagraphWithBareUrl('https://kcp-8.com/blog/does-not-exist') as any],
     } as Root;
 
     await plugin(tree);

@@ -23,7 +23,7 @@
 
          ↓ 合流
 
-隠しページ https://kcp.co.jp/download/company-profile-{token}/
+隠しページ https://kcp-8.com/download/company-profile-{token}/
          → PDF ダウンロードボタン → /documents/{tokenized-filename}.pdf
 ```
 

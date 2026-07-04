@@ -15,7 +15,7 @@ describe('buildOrganizationSchema', () => {
     expect(schema['@context']).toBe('https://schema.org');
     expect(schema['@type']).toBe('Organization');
     expect(schema.name).toBe('株式会社KCP');
-    expect(schema.url).toBe('https://kcp.co.jp');
+    expect(schema.url).toBe('https://kcp-8.com');
   });
 });
 
@@ -23,7 +23,7 @@ describe('buildWebSiteSchema', () => {
   it('returns WebSite schema', () => {
     const schema = buildWebSiteSchema();
     expect(schema['@type']).toBe('WebSite');
-    expect(schema.url).toBe('https://kcp.co.jp');
+    expect(schema.url).toBe('https://kcp-8.com');
   });
 });
 
@@ -34,14 +34,14 @@ describe('buildArticleSchema', () => {
       description: 'テスト説明',
       datePublished: new Date('2026-03-23T00:00:00Z'),
       authorName: '中野 健太朗',
-      authorUrl: 'https://kcp.co.jp/author/nakanokentaro/',
-      pageUrl: 'https://kcp.co.jp/blog/test-post/',
+      authorUrl: 'https://kcp-8.com/author/nakanokentaro/',
+      pageUrl: 'https://kcp-8.com/blog/test-post/',
     });
     expect(schema['@type']).toBe('Article');
     expect(schema.headline).toBe('テスト記事');
     expect(schema.datePublished).toBe('2026-03-23T00:00:00.000Z');
     expect((schema.author as Record<string, string>).name).toBe('中野 健太朗');
-    expect((schema.author as Record<string, string>).url).toBe('https://kcp.co.jp/author/nakanokentaro/');
+    expect((schema.author as Record<string, string>).url).toBe('https://kcp-8.com/author/nakanokentaro/');
     expect((schema.publisher as Record<string, string>).name).toBe('株式会社KCP');
   });
 });
@@ -50,17 +50,17 @@ describe('buildPersonSchema', () => {
   it('returns Person schema with required fields', () => {
     const schema = buildPersonSchema({
       name: '中野 健太朗',
-      url: 'https://kcp.co.jp/author/nakanokentaro/',
+      url: 'https://kcp-8.com/author/nakanokentaro/',
     });
     expect(schema['@type']).toBe('Person');
     expect(schema.name).toBe('中野 健太朗');
-    expect(schema.url).toBe('https://kcp.co.jp/author/nakanokentaro/');
+    expect(schema.url).toBe('https://kcp-8.com/author/nakanokentaro/');
   });
 
   it('includes optional fields when provided', () => {
     const schema = buildPersonSchema({
       name: '中野 健太朗',
-      url: 'https://kcp.co.jp/author/nakanokentaro/',
+      url: 'https://kcp-8.com/author/nakanokentaro/',
       jobTitle: '代表取締役',
       description: 'KCP 代表',
       sameAs: ['https://x.com/test'],
@@ -81,9 +81,9 @@ describe('buildPersonSchema', () => {
 describe('buildBreadcrumbSchema', () => {
   it('returns BreadcrumbList schema with correct items', () => {
     const schema = buildBreadcrumbSchema([
-      { name: 'ホーム', url: 'https://kcp.co.jp/' },
-      { name: 'ブログ', url: 'https://kcp.co.jp/blog/' },
-      { name: 'テスト記事', url: 'https://kcp.co.jp/blog/test/' },
+      { name: 'ホーム', url: 'https://kcp-8.com/' },
+      { name: 'ブログ', url: 'https://kcp-8.com/blog/' },
+      { name: 'テスト記事', url: 'https://kcp-8.com/blog/test/' },
     ]);
     expect(schema['@type']).toBe('BreadcrumbList');
     const items = schema.itemListElement as Array<Record<string, unknown>>;

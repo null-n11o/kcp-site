@@ -41,7 +41,7 @@ export function isStandaloneUrl(node: Paragraph): boolean {
 export function isInternalBlogUrl(url: string): boolean {
   try {
     const parsed = new URL(url);
-    return parsed.hostname === 'kcp.co.jp' && parsed.pathname.startsWith('/blog/');
+    return parsed.hostname === 'kcp-8.com' && parsed.pathname.startsWith('/blog/');
   } catch {
     return false;
   }
