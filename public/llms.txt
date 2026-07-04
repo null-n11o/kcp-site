@@ -15,11 +15,11 @@
 - メディア運営（AI・業務効率化ブログ）
 
 ## サイト構成
-- [トップページ](https://kcp.co.jp/): 会社概要・サービス紹介・MVV
-- [ブログ](https://kcp.co.jp/blog/): AI活用・業務効率化に関する記事
-- [著者プロフィール](https://kcp.co.jp/author/nakanokentaro/): 中野 健太朗のプロフィール
-- [RSS](https://kcp.co.jp/rss.xml): 記事フィード
-- [サイトマップ](https://kcp.co.jp/sitemap-index.xml)
+- [トップページ](https://kcp-8.com/): 会社概要・サービス紹介・MVV
+- [ブログ](https://kcp-8.com/blog/): AI活用・業務効率化に関する記事
+- [著者プロフィール](https://kcp-8.com/author/nakanokentaro/): 中野 健太朗のプロフィール
+- [RSS](https://kcp-8.com/rss.xml): 記事フィード
+- [サイトマップ](https://kcp-8.com/sitemap-index.xml)
 
 ## Optional
-- [全記事テキスト](https://kcp.co.jp/llms-full.txt)
+- [全記事テキスト](https://kcp-8.com/llms-full.txt)
