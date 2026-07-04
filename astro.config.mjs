@@ -8,7 +8,7 @@ import remarkLinkCard from './src/plugins/remark-link-card.ts';
 import cloudflare from "@astrojs/cloudflare";
 
 export default defineConfig({
-  site: 'https://kcp.co.jp',
+  site: 'https://kcp-8.com',
   output: "hybrid",
 
   i18n: {

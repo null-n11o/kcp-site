@@ -12,8 +12,8 @@
 
 - スペック: `docs/superpowers/specs/2026-07-03-company-profile-download-design.md`
 - URLトークンは `8acbfc84` で確定（ページスラッグ・PDFファイル名の両方に使用）
-- 隠しページURL: `https://kcp.co.jp/download/company-profile-8acbfc84/`
-- PDF配信URL: `https://kcp.co.jp/documents/kcp-company-profile-8acbfc84.pdf`
+- 隠しページURL: `https://kcp-8.com/download/company-profile-8acbfc84/`
+- PDF配信URL: `https://kcp-8.com/documents/kcp-company-profile-8acbfc84.pdf`
 - `robots.txt` と `public/llms.txt` には隠しページを**記載しない**（Disallow 記載はURL露出になるため）
 - `.astro` コンポーネントはユニットテスト対象外（CLAUDE.md）。検証は `npm run build` + dist 検査で行う
 - `/en/` 配下には一切変更を加えない（Contact.astro の新 props はオプショナルにする）
@@ -175,7 +175,7 @@ Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
 - Create: `docs/operations/download-form-setup.md`
 
 **Interfaces:**
-- Consumes: Task 1 のURL `https://kcp.co.jp/download/company-profile-8acbfc84/`
+- Consumes: Task 1 のURL `https://kcp-8.com/download/company-profile-8acbfc84/`
 - Produces: 運用者が作成する Google Form の公開URL（Task 4 が CTA リンク先として使用）
 
 - [x] **Step 1: 設置手順ドキュメントを作成**
@@ -204,7 +204,7 @@ Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
 2. 以下のスクリプトを貼り付けて保存:
 
 ```js
-const DOWNLOAD_URL = 'https://kcp.co.jp/download/company-profile-8acbfc84/';
+const DOWNLOAD_URL = 'https://kcp-8.com/download/company-profile-8acbfc84/';
 
 function onFormSubmit(e) {
   const email = e.response.getRespondentEmail();
@@ -218,11 +218,11 @@ function onFormSubmit(e) {
     DOWNLOAD_URL,
     '',
     'ご不明な点がございましたら、お気軽にお問い合わせください。',
-    'https://kcp.co.jp/#contact',
+    'https://kcp-8.com/#contact',
     '',
     '――――――――――――――――',
     '株式会社KCP',
-    'https://kcp.co.jp',
+    'https://kcp-8.com',
   ].join('\n');
 
   MailApp.sendEmail(email, subject, body, { name: '株式会社KCP' });

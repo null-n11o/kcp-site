@@ -21,7 +21,7 @@
 2. 以下のスクリプトを貼り付けて保存:
 
 ```js
-const DOWNLOAD_URL = 'https://kcp.co.jp/download/company-profile-8acbfc84/';
+const DOWNLOAD_URL = 'https://kcp-8.com/download/company-profile-8acbfc84/';
 
 function onFormSubmit(e) {
   const email = e.response.getRespondentEmail();
@@ -35,11 +35,11 @@ function onFormSubmit(e) {
     DOWNLOAD_URL,
     '',
     'ご不明な点がございましたら、お気軽にお問い合わせください。',
-    'https://kcp.co.jp/#contact',
+    'https://kcp-8.com/#contact',
     '',
     '――――――――――――――――',
     '株式会社KCP',
-    'https://kcp.co.jp',
+    'https://kcp-8.com',
   ].join('\n');
 
   MailApp.sendEmail(email, subject, body, { name: '株式会社KCP' });

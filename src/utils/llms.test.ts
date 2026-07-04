@@ -17,7 +17,7 @@ describe('generateLlmsFullContent', () => {
     const posts = [makeMockPost('my-post', 'テスト記事タイトル', 'テスト説明', ['AI'], new Date('2026-01-15'))];
     const content = generateLlmsFullContent(posts as any);
     expect(content).toContain('## テスト記事タイトル');
-    expect(content).toContain('https://kcp.co.jp/blog/my-post/');
+    expect(content).toContain('https://kcp-8.com/blog/my-post/');
   });
 
   it('includes post description', () => {

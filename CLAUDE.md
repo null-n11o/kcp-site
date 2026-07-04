@@ -60,7 +60,7 @@ featured: false
 
 - ホスティング: Cloudflare Pages（`npm run build`、出力ディレクトリ `dist/`）
 - `output: 'static'`（ランタイムサーバーなし）
-- サイト URL: `https://kcp.co.jp`（`astro.config.mjs` の `site` に設定済み）
+- サイト URL: `https://kcp-8.com`（`astro.config.mjs` の `site` に設定済み）
 
 ## Testing
 

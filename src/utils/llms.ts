@@ -1,4 +1,4 @@
-const SITE_URL = 'https://kcp.co.jp';
+const SITE_URL = 'https://kcp-8.com';
 
 interface LlmsPost {
   slug: string;
@@ -14,7 +14,7 @@ export function generateLlmsFullContent(posts: LlmsPost[]): string {
   const lines: string[] = [
     '# 株式会社KCP - 全記事テキスト',
     '',
-    '> このファイルはLLM向けに自動生成されています。最新情報は https://kcp.co.jp/blog/ を参照してください。',
+    '> このファイルはLLM向けに自動生成されています。最新情報は https://kcp-8.com/blog/ を参照してください。',
     '',
   ];
 

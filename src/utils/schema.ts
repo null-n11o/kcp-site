@@ -1,4 +1,4 @@
-const SITE_URL = 'https://kcp.co.jp';
+const SITE_URL = 'https://kcp-8.com';
 const ORG_NAME = '株式会社KCP';
 
 export function buildOrganizationSchema(): Record<string, unknown> {
