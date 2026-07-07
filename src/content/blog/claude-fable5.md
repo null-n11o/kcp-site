@@ -3,7 +3,7 @@ title: "Claude Fable 5とは？“Mythos級”の実力と1週間だけの再開
 description: "Anthropic史上最高性能のモデル「Claude Fable 5」の実力と、提供停止となった「3週間の空白」の経緯を整理。無料枠の活用法から、プロンプトを超えた「ループ設計」といった使いこなし方、KCPの実例までを解説します。"
 pubDate: 2026-07-03
 author: "中野 健太朗"
-tags: ["Claude Fable 5", "AI活用", "経営"]
+tags: ["Claude Code", "Claude Fable 5", "AI活用", "経営"]
 public: true
 featured: false
 ---
