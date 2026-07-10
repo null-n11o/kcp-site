@@ -18,9 +18,9 @@ export const en: Translations = {
   },
   hero: {
     eyebrow: 'KCP Inc.',
-    headlinePre: 'We Make',
-    headlineAccent: 'Business',
-    headlinePost: 'Simple.',
+    headlinePre: 'We Create',
+    headlineAccent: 'Space',
+    headlinePost: 'to Focus.',
     subtext:
       "We're your dedicated local representative in Japan — handling business development, company setup, communications, and AI-powered operations under a single monthly retainer, so you can enter the Japanese market without building a team here.",
     primaryCta: 'Contact Us',

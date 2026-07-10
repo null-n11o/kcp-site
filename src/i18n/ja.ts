@@ -18,9 +18,9 @@ export const ja: Translations = {
   },
   hero: {
     eyebrow: 'Corporation',
-    headlinePre: 'We Make',
-    headlineAccent: 'Business',
-    headlinePost: 'Simple.',
+    headlinePre: 'We Create',
+    headlineAccent: 'Space',
+    headlinePost: 'to Focus.',
     subtext:
       '中小企業のIT・AI担当として、月額固定で実作業まで引き受けます。SNS運用・システム改修・AI導入——何でも気軽に頼める「社内のIT担当者」が、今日から持てます。',
     primaryCta: 'お問い合わせ',
