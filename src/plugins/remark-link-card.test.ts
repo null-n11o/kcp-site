@@ -11,6 +11,7 @@ import remarkLinkCard, {
   extractSlug,
   buildInternalCard,
   buildExternalCard,
+  buildTweetCard,
   readInternalPostData,
   readOgpCache,
   writeOgpCache,
@@ -215,6 +216,26 @@ describe('buildExternalCard', () => {
     const html = buildExternalCard('https://example.com', { ...ogp, title: '<b>bold</b>' });
     expect(html).not.toContain('<b>');
     expect(html).toContain('&lt;b&gt;');
+  });
+});
+
+describe('buildTweetCard', () => {
+  const oembed: import('./remark-link-card.ts').TweetOembedData = {
+    html: '<blockquote class="twitter-tweet"><p>just setting up my twttr</p>&mdash; jack (@jack) <a href="https://x.com/jack/status/20">March 21, 2006</a></blockquote>',
+    authorName: 'jack',
+    authorUrl: 'https://x.com/jack',
+    fetchedAt: '2026-07-11T00:00:00.000Z',
+  };
+
+  it('wraps the blockquote in a not-prose container', () => {
+    const html = buildTweetCard(oembed);
+    expect(html).toContain('not-prose');
+    expect(html).toContain('my-6');
+  });
+
+  it('embeds the oembed blockquote html verbatim', () => {
+    const html = buildTweetCard(oembed);
+    expect(html).toContain(oembed.html);
   });
 });
 

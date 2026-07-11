@@ -132,6 +132,10 @@ export function buildExternalCard(url: string, ogp: OgpData): string {
 </a>`;
 }
 
+export function buildTweetCard(oembed: TweetOembedData): string {
+  return `<div class="not-prose tweet-embed my-6">${oembed.html}</div>`;
+}
+
 export function readInternalPostData(slug: string, contentDir?: string): InternalPostData | null {
   const dir = contentDir ?? path.join(process.cwd(), 'src/content/blog');
   const filePath = path.join(dir, `${slug}.md`);
