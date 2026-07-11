@@ -1,6 +1,6 @@
 # X（Twitter）ポスト引用カード埋め込み Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** ブログ本文に X の投稿 URL を1行で貼ると、ビルド時に oembed から取得した引用ポスト風の静的カードに変換する（外部JSゼロ）。
 
@@ -40,7 +40,7 @@
 - Consumes: なし
 - Produces: `export function isTwitterStatusUrl(url: string): boolean`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 `src/plugins/remark-link-card.test.ts` の import に `isTwitterStatusUrl` を追加:
 
@@ -103,12 +103,12 @@ describe('isTwitterStatusUrl', () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run src/plugins/remark-link-card.test.ts -t isTwitterStatusUrl`
 Expected: FAIL（`isTwitterStatusUrl is not a function` / import エラー）
 
-- [ ] **Step 3: Write minimal implementation**
+- [x] **Step 3: Write minimal implementation**
 
 `src/plugins/remark-link-card.ts` の `isInternalBlogUrl` 関数の直後に追加:
 
@@ -125,12 +125,12 @@ export function isTwitterStatusUrl(url: string): boolean {
 }
 ```
 
-- [ ] **Step 4: Run test to verify it passes**
+- [x] **Step 4: Run test to verify it passes**
 
 Run: `npx vitest run src/plugins/remark-link-card.test.ts -t isTwitterStatusUrl`
 Expected: PASS（9 tests）
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/plugins/remark-link-card.ts src/plugins/remark-link-card.test.ts
@@ -157,7 +157,7 @@ EOF
   - `export function readTweetCache(cachePath: string): Record<string, TweetOembedData>`
   - `export function writeTweetCache(cachePath: string, cache: Record<string, TweetOembedData>): void`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 import に `readTweetCache`, `writeTweetCache` を追加（Task 1 の import ブロックに並べる）。`describe('readOgpCache / writeOgpCache', …)` の直後に追加:
 
@@ -184,12 +184,12 @@ describe('readTweetCache / writeTweetCache', () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run src/plugins/remark-link-card.test.ts -t "readTweetCache"`
 Expected: FAIL（import エラー）
 
-- [ ] **Step 3: Write minimal implementation**
+- [x] **Step 3: Write minimal implementation**
 
 `src/plugins/remark-link-card.ts` の `OgpData` インターフェース定義の直後に型を追加:
 
@@ -219,12 +219,12 @@ export function writeTweetCache(cachePath: string, cache: Record<string, TweetOe
 }
 ```
 
-- [ ] **Step 4: Run test to verify it passes**
+- [x] **Step 4: Run test to verify it passes**
 
 Run: `npx vitest run src/plugins/remark-link-card.test.ts -t "readTweetCache"`
 Expected: PASS（2 tests）
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/plugins/remark-link-card.ts src/plugins/remark-link-card.test.ts
@@ -250,7 +250,7 @@ EOF
 
 oembed レスポンス例: `{ url, author_name, author_url, html }`。失敗時（非200・例外・JSON不正・`html` 欠落）は `null`。
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 import に `fetchTweetOembed` を追加。ファイル末尾付近（`getOgp` の describe の後）に追加:
 
@@ -299,12 +299,12 @@ describe('fetchTweetOembed', () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run src/plugins/remark-link-card.test.ts -t fetchTweetOembed`
 Expected: FAIL（import エラー）
 
-- [ ] **Step 3: Write minimal implementation**
+- [x] **Step 3: Write minimal implementation**
 
 `src/plugins/remark-link-card.ts` の `fetchOgpData` 関数の直後に追加:
 
@@ -336,12 +336,12 @@ export async function fetchTweetOembed(url: string): Promise<TweetOembedData | n
 }
 ```
 
-- [ ] **Step 4: Run test to verify it passes**
+- [x] **Step 4: Run test to verify it passes**
 
 Run: `npx vitest run src/plugins/remark-link-card.test.ts -t fetchTweetOembed`
 Expected: PASS（4 tests）
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/plugins/remark-link-card.ts src/plugins/remark-link-card.test.ts
@@ -365,7 +365,7 @@ EOF
 - Consumes: `TweetOembedData`, `readTweetCache`, `writeTweetCache`, `fetchTweetOembed`
 - Produces: `export async function getTweet(url: string, cachePath?: string): Promise<TweetOembedData | null>`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 import に `getTweet` を追加。`describe('fetchTweetOembed', …)` の直後に追加:
 
@@ -421,12 +421,12 @@ describe('getTweet', () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run src/plugins/remark-link-card.test.ts -t getTweet`
 Expected: FAIL（import エラー）
 
-- [ ] **Step 3: Write minimal implementation**
+- [x] **Step 3: Write minimal implementation**
 
 `src/plugins/remark-link-card.ts` の `getOgp` 関数の直後に追加:
 
@@ -446,12 +446,12 @@ export async function getTweet(
 }
 ```
 
-- [ ] **Step 4: Run test to verify it passes**
+- [x] **Step 4: Run test to verify it passes**
 
 Run: `npx vitest run src/plugins/remark-link-card.test.ts -t getTweet`
 Expected: PASS（3 tests）
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/plugins/remark-link-card.ts src/plugins/remark-link-card.test.ts
@@ -475,7 +475,7 @@ EOF
 - Consumes: `TweetOembedData`
 - Produces: `export function buildTweetCard(oembed: TweetOembedData): string`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 import に `buildTweetCard` を追加。`describe('buildExternalCard', …)` の直後に追加:
 
@@ -501,12 +501,12 @@ describe('buildTweetCard', () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run src/plugins/remark-link-card.test.ts -t buildTweetCard`
 Expected: FAIL（import エラー）
 
-- [ ] **Step 3: Write minimal implementation**
+- [x] **Step 3: Write minimal implementation**
 
 `src/plugins/remark-link-card.ts` の `buildExternalCard` 関数の直後に追加:
 
@@ -516,12 +516,12 @@ export function buildTweetCard(oembed: TweetOembedData): string {
 }
 ```
 
-- [ ] **Step 4: Run test to verify it passes**
+- [x] **Step 4: Run test to verify it passes**
 
 Run: `npx vitest run src/plugins/remark-link-card.test.ts -t buildTweetCard`
 Expected: PASS（2 tests）
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/plugins/remark-link-card.ts src/plugins/remark-link-card.test.ts
@@ -546,7 +546,7 @@ EOF
 - Consumes: `isTwitterStatusUrl`, `getTweet`, `buildTweetCard`, `getOgp`, `buildExternalCard`
 - Produces: `RemarkLinkCardOptions` に `tweetCachePath?: string` を追加
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 `describe('remarkLinkCard plugin (integration)', …)` ブロック内に追加。既存の統合テストと同じスタイル（`fetch` をモック）。X URL 段落が tweet カードに置換されることを確認:
 
@@ -596,12 +596,12 @@ it('falls back to external card when tweet fetch fails', async () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run src/plugins/remark-link-card.test.ts -t "X status URL"`
 Expected: FAIL（X 分岐が未実装のため OGP カードになる／`tweet-embed` を含まない）
 
-- [ ] **Step 3: Write minimal implementation**
+- [x] **Step 3: Write minimal implementation**
 
 `RemarkLinkCardOptions` に `tweetCachePath` を追加:
 
@@ -654,12 +654,12 @@ export default function remarkLinkCard(options: RemarkLinkCardOptions = {}) {
 printf '{}\n' > src/data/tweet-cache.json
 ```
 
-- [ ] **Step 4: Run test to verify it passes**
+- [x] **Step 4: Run test to verify it passes**
 
 Run: `npx vitest run src/plugins/remark-link-card.test.ts`
 Expected: PASS（全テスト。X 統合2件含む）
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/plugins/remark-link-card.ts src/plugins/remark-link-card.test.ts src/data/tweet-cache.json
@@ -684,7 +684,7 @@ EOF
 
 このタスクはピュア関数を含まないため手動確認で代替（CLAUDE.md: `.astro`/CSS はテスト対象外）。
 
-- [ ] **Step 1: スタイルを追加**
+- [x] **Step 1: スタイルを追加**
 
 `src/styles/global.css` の `@layer components { … }` ブロック内（`.section-wrapper` の後）に追加:
 
@@ -719,7 +719,7 @@ EOF
   }
 ```
 
-- [ ] **Step 2: 手動確認**
+- [x] **Step 2: 手動確認**
 
 任意のブログ記事に公開ツイート URL を1行で貼り、開発サーバーで表示を確認:
 
@@ -729,7 +729,7 @@ npm run dev
 
 Expected: URL がボーダー付きのダークな引用ボックスになり、本文・`— 名前 (@handle) 日付` リンクがアクセントカラーで表示される。外部スクリプト（widgets.js）は読み込まれない（ネットワークタブで確認）。
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add src/styles/global.css
@@ -747,17 +747,17 @@ EOF
 
 **Files:** なし（検証のみ）
 
-- [ ] **Step 1: 全テスト実行**
+- [x] **Step 1: 全テスト実行**
 
 Run: `npm run test`
 Expected: PASS（全スイート）
 
-- [ ] **Step 2: 本番ビルド**
+- [x] **Step 2: 本番ビルド**
 
 Run: `npm run build`
 Expected: エラーなく完了。実ツイート URL を記事に含めた場合、`src/data/tweet-cache.json` にエントリが追加される。
 
-- [ ] **Step 3: フォールバック確認**
+- [x] **Step 3: フォールバック確認**
 
 存在しない／削除済みツイート URL（例: `https://x.com/i/status/1`）を記事に貼って `npm run build` → ビルドが通り、外部リンクカードにフォールバックすることを確認。
 
