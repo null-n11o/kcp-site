@@ -511,4 +511,48 @@ describe('remarkLinkCard plugin (integration)', () => {
     expect((tree.children[0] as any).value).toContain('参考資料');
     if (fs.existsSync(tmpPath)) fs.unlinkSync(tmpPath);
   });
+
+  it('replaces standalone X status URL with a tweet card', async () => {
+    const tmpTweetCache = path.join(os.tmpdir(), `tweet-cache-int-${Date.now()}.json`);
+    vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({
+        author_name: 'jack',
+        author_url: 'https://x.com/jack',
+        html: '<blockquote class="twitter-tweet"><p>just setting up my twttr</p></blockquote>',
+      }),
+    } as Response);
+
+    const plugin = remarkLinkCard({ tweetCachePath: tmpTweetCache });
+    const tree: Root = {
+      type: 'root',
+      children: [makeParagraphWithBareUrl('https://x.com/jack/status/20')],
+    };
+    await plugin(tree);
+
+    expect(tree.children[0].type).toBe('html');
+    expect((tree.children[0] as any).value).toContain('tweet-embed');
+    expect((tree.children[0] as any).value).toContain('twitter-tweet');
+    if (fs.existsSync(tmpTweetCache)) fs.unlinkSync(tmpTweetCache);
+  });
+
+  it('falls back to external card when tweet fetch fails', async () => {
+    const tmpTweetCache = path.join(os.tmpdir(), `tweet-cache-int-${Date.now()}.json`);
+    const tmpOgpCache = path.join(os.tmpdir(), `ogp-cache-int-${Date.now()}.json`);
+    // 1回目: oembed 失敗 / 2回目: OGP フォールバックの fetch
+    vi.spyOn(globalThis, 'fetch')
+      .mockResolvedValueOnce({ ok: false } as Response)
+      .mockResolvedValueOnce({ text: async () => '<meta property="og:title" content="T">' } as Response);
+
+    const plugin = remarkLinkCard({ tweetCachePath: tmpTweetCache, cachePath: tmpOgpCache });
+    const tree: Root = {
+      type: 'root',
+      children: [makeParagraphWithBareUrl('https://x.com/jack/status/404')],
+    };
+    await plugin(tree);
+
+    expect(tree.children[0].type).toBe('html');
+    expect((tree.children[0] as any).value).toContain('参考資料'); // buildExternalCard のラベル
+    for (const p of [tmpTweetCache, tmpOgpCache]) if (fs.existsSync(p)) fs.unlinkSync(p);
+  });
 });

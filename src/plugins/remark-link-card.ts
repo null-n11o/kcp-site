@@ -30,6 +30,7 @@ export interface TweetOembedData {
 export interface RemarkLinkCardOptions {
   cachePath?: string;
   contentDir?: string;
+  tweetCachePath?: string;
 }
 
 // --- Exports (implemented in later tasks) ---
@@ -249,6 +250,7 @@ export async function getTweet(
 export default function remarkLinkCard(options: RemarkLinkCardOptions = {}) {
   const cachePath = options.cachePath ?? path.join(process.cwd(), 'src/data/ogp-cache.json');
   const contentDir = options.contentDir ?? path.join(process.cwd(), 'src/content/blog');
+  const tweetCachePath = options.tweetCachePath ?? path.join(process.cwd(), 'src/data/tweet-cache.json');
 
   return async function (tree: Root): Promise<void> {
     const targets: Array<{ node: Paragraph; index: number; parent: any }> = [];
@@ -265,7 +267,15 @@ export default function remarkLinkCard(options: RemarkLinkCardOptions = {}) {
       const url = link.url;
       let html: string;
 
-      if (isInternalBlogUrl(url)) {
+      if (isTwitterStatusUrl(url)) {
+        const tweet = await getTweet(url, tweetCachePath);
+        if (tweet) {
+          html = buildTweetCard(tweet);
+        } else {
+          const ogp = await getOgp(url, cachePath);
+          html = buildExternalCard(url, ogp);
+        }
+      } else if (isInternalBlogUrl(url)) {
         const slug = extractSlug(url);
         const data = readInternalPostData(slug, contentDir);
         if (data) {
