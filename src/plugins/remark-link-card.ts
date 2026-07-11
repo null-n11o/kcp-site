@@ -47,6 +47,17 @@ export function isInternalBlogUrl(url: string): boolean {
   }
 }
 
+export function isTwitterStatusUrl(url: string): boolean {
+  try {
+    const parsed = new URL(url);
+    const host = parsed.hostname.replace(/^(www\.|mobile\.)/, '');
+    if (host !== 'twitter.com' && host !== 'x.com') return false;
+    return /^\/[^/]+\/status\/\d+\/?$/.test(parsed.pathname);
+  } catch {
+    return false;
+  }
+}
+
 export function extractSlug(url: string): string {
   const parts = new URL(url).pathname.split('/').filter(Boolean);
   return parts[1] ?? '';

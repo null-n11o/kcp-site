@@ -7,6 +7,7 @@ import path from 'node:path';
 import remarkLinkCard, {
   isStandaloneUrl,
   isInternalBlogUrl,
+  isTwitterStatusUrl,
   extractSlug,
   buildInternalCard,
   buildExternalCard,
@@ -79,6 +80,46 @@ describe('isInternalBlogUrl', () => {
 
   it('returns false for invalid URLs', () => {
     expect(isInternalBlogUrl('not-a-url')).toBe(false);
+  });
+});
+
+describe('isTwitterStatusUrl', () => {
+  it('returns true for twitter.com status URLs', () => {
+    expect(isTwitterStatusUrl('https://twitter.com/jack/status/20')).toBe(true);
+  });
+
+  it('returns true for x.com status URLs', () => {
+    expect(isTwitterStatusUrl('https://x.com/jack/status/20')).toBe(true);
+  });
+
+  it('returns true for mobile and www subdomains', () => {
+    expect(isTwitterStatusUrl('https://mobile.twitter.com/jack/status/20')).toBe(true);
+    expect(isTwitterStatusUrl('https://www.x.com/jack/status/20')).toBe(true);
+  });
+
+  it('returns true with query string and trailing slash', () => {
+    expect(isTwitterStatusUrl('https://x.com/jack/status/20?s=20')).toBe(true);
+    expect(isTwitterStatusUrl('https://x.com/jack/status/20/')).toBe(true);
+  });
+
+  it('returns false for profile URLs', () => {
+    expect(isTwitterStatusUrl('https://x.com/jack')).toBe(false);
+  });
+
+  it('returns false for search and non-status paths', () => {
+    expect(isTwitterStatusUrl('https://x.com/search?q=a')).toBe(false);
+  });
+
+  it('returns false for non-X hosts', () => {
+    expect(isTwitterStatusUrl('https://example.com/jack/status/20')).toBe(false);
+  });
+
+  it('returns false when status id is not numeric', () => {
+    expect(isTwitterStatusUrl('https://x.com/jack/status/abc')).toBe(false);
+  });
+
+  it('returns false for unparseable strings', () => {
+    expect(isTwitterStatusUrl('not-a-url')).toBe(false);
   });
 });
 
