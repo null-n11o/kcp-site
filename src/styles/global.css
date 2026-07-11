@@ -42,6 +42,34 @@
     @apply px-4 sm:px-6 lg:px-8 mx-auto;
     max-width: 1200px;
   }
+  /* X（Twitter）引用ツイートカード（widgets.js 非使用の静的表示・ダークテーマ） */
+  .tweet-embed {
+    max-width: 550px;
+  }
+  .tweet-embed .twitter-tweet:not(.twitter-tweet-rendered) {
+    display: block;
+    margin: 0;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid #2a2a3e;
+    border-radius: 0.75rem;
+    background: #141414;
+    color: #f0f0f0;
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+  .tweet-embed .twitter-tweet:not(.twitter-tweet-rendered) > :first-child {
+    margin-top: 0;
+  }
+  .tweet-embed .twitter-tweet:not(.twitter-tweet-rendered) > :last-child {
+    margin-bottom: 0;
+  }
+  .tweet-embed .twitter-tweet:not(.twitter-tweet-rendered) a {
+    color: #4a9eff;
+    text-decoration: none;
+  }
+  .tweet-embed .twitter-tweet:not(.twitter-tweet-rendered) a:hover {
+    text-decoration: underline;
+  }
 }
 
 @layer utilities {
