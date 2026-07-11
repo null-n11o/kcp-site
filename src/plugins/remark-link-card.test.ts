@@ -18,9 +18,53 @@ import remarkLinkCard, {
   readTweetCache,
   writeTweetCache,
   getOgp,
-  fetchTweetOembed,
+  fetchTweetSyndication,
   getTweet,
+  tweetToken,
+  extractTweetId,
+  renderTweetText,
+  parseSyndicationTweet,
 } from './remark-link-card.ts';
+
+import type { TweetData } from './remark-link-card.ts';
+
+// テスト用の TweetData サンプル
+function sampleTweet(overrides: Partial<TweetData> = {}): TweetData {
+  return {
+    url: 'https://x.com/jack/status/20',
+    name: 'jack',
+    handle: 'jack',
+    avatar: 'https://pbs.twimg.com/profile_images/1/avatar_bigger.jpg',
+    verified: true,
+    bodyHtml: 'just setting up my twttr',
+    createdAt: '2006-03-21T00:00:00.000Z',
+    likes: 100,
+    photos: [],
+    article: null,
+    quote: null,
+    fetchedAt: '2026-07-12T00:00:00.000Z',
+    ...overrides,
+  };
+}
+
+// syndication API のレスポンス風オブジェクトを作る
+function syndicationJson(overrides: Record<string, any> = {}): any {
+  return {
+    __typename: 'Tweet',
+    id_str: '20',
+    text: 'just setting up my twttr',
+    display_text_range: [0, 24],
+    created_at: '2006-03-21T00:00:00.000Z',
+    favorite_count: 100,
+    user: {
+      name: 'jack',
+      screen_name: 'jack',
+      is_blue_verified: true,
+      profile_image_url_https: 'https://pbs.twimg.com/profile_images/1/avatar_normal.jpg',
+    },
+    ...overrides,
+  };
+}
 
 // Helper: bare URL paragraph ノードを生成する
 function makeParagraphWithBareUrl(url: string): Paragraph {
@@ -220,22 +264,51 @@ describe('buildExternalCard', () => {
 });
 
 describe('buildTweetCard', () => {
-  const oembed: import('./remark-link-card.ts').TweetOembedData = {
-    html: '<blockquote class="twitter-tweet"><p>just setting up my twttr</p>&mdash; jack (@jack) <a href="https://x.com/jack/status/20">March 21, 2006</a></blockquote>',
-    authorName: 'jack',
-    authorUrl: 'https://x.com/jack',
-    fetchedAt: '2026-07-11T00:00:00.000Z',
-  };
-
-  it('wraps the blockquote in a not-prose container', () => {
-    const html = buildTweetCard(oembed);
-    expect(html).toContain('not-prose');
-    expect(html).toContain('my-6');
+  it('renders a tweet-card anchor to the tweet URL with author info', () => {
+    const html = buildTweetCard(sampleTweet());
+    expect(html).toContain('not-prose tweet-card');
+    expect(html).toContain('href="https://x.com/jack/status/20"');
+    expect(html).toContain('jack');
+    expect(html).toContain('@jack');
+    expect(html).toContain('just setting up my twttr');
   });
 
-  it('embeds the oembed blockquote html verbatim', () => {
-    const html = buildTweetCard(oembed);
-    expect(html).toContain(oembed.html);
+  it('shows the verified badge only when verified', () => {
+    expect(buildTweetCard(sampleTweet({ verified: true }))).toContain('tweet-card__badge');
+    expect(buildTweetCard(sampleTweet({ verified: false }))).not.toContain('tweet-card__badge');
+  });
+
+  it('renders photos when present', () => {
+    const html = buildTweetCard(
+      sampleTweet({ photos: [{ url: 'https://pbs.twimg.com/media/x.jpg', width: 600, height: 400 }] })
+    );
+    expect(html).toContain('tweet-card__media');
+    expect(html).toContain('https://pbs.twimg.com/media/x.jpg');
+  });
+
+  it('renders an article card with title and cover', () => {
+    const html = buildTweetCard(
+      sampleTweet({ bodyHtml: '', article: { title: 'My Article', cover: 'https://pbs.twimg.com/media/cover.jpg' } })
+    );
+    expect(html).toContain('tweet-card__article');
+    expect(html).toContain('My Article');
+    expect(html).toContain('cover.jpg');
+  });
+
+  it('renders a nested quote', () => {
+    const html = buildTweetCard(
+      sampleTweet({ quote: { name: 'Machina', handle: 'EXM7777', bodyHtml: 'quoted body' } })
+    );
+    expect(html).toContain('tweet-card__quote');
+    expect(html).toContain('Machina');
+    expect(html).toContain('@EXM7777');
+    expect(html).toContain('quoted body');
+  });
+
+  it('escapes author name to prevent HTML injection', () => {
+    const html = buildTweetCard(sampleTweet({ name: '<script>evil</script>' }));
+    expect(html).not.toContain('<script>evil</script>');
+    expect(html).toContain('&lt;script&gt;');
   });
 });
 
@@ -243,7 +316,7 @@ describe('readInternalPostData', () => {
   const contentDir = path.join(process.cwd(), 'src/content/blog');
 
   it('returns post data for existing slug', () => {
-    const data = readInternalPostData('ai-jidai-no-gyomu-daiko', contentDir);
+    const data = readInternalPostData('harness-engineering', contentDir);
     expect(data).not.toBeNull();
     expect(typeof data!.title).toBe('string');
     expect(data!.title.length).toBeGreaterThan(0);
@@ -282,13 +355,8 @@ describe('readTweetCache / writeTweetCache', () => {
 
   it('round-trips tweet data correctly', () => {
     const tmpPath = path.join(os.tmpdir(), `tweet-cache-test-${Date.now()}.json`);
-    const data: Record<string, import('./remark-link-card.ts').TweetOembedData> = {
-      'https://x.com/jack/status/20': {
-        html: '<blockquote class="twitter-tweet">…</blockquote>',
-        authorName: 'jack',
-        authorUrl: 'https://x.com/jack',
-        fetchedAt: '2026-07-11T00:00:00.000Z',
-      },
+    const data: Record<string, TweetData> = {
+      'https://x.com/jack/status/20': sampleTweet(),
     };
     writeTweetCache(tmpPath, data);
     expect(readTweetCache(tmpPath)).toEqual(data);
@@ -348,7 +416,90 @@ describe('getOgp', () => {
   });
 });
 
-describe('fetchTweetOembed', () => {
+describe('tweetToken / extractTweetId', () => {
+  it('extracts the numeric id from a status URL', () => {
+    expect(extractTweetId('https://x.com/jack/status/20?s=20')).toBe('20');
+    expect(extractTweetId('https://twitter.com/a/status/12345/')).toBe('12345');
+    expect(extractTweetId('https://x.com/jack')).toBe('');
+  });
+
+  it('produces a deterministic non-empty token for an id', () => {
+    const t = tweetToken('2075394620536578128');
+    expect(typeof t).toBe('string');
+    expect(t.length).toBeGreaterThan(0);
+    expect(t).not.toMatch(/[.0]/); // 0 と . は除去される
+    expect(tweetToken('2075394620536578128')).toBe(t); // 決定的
+  });
+});
+
+describe('renderTweetText', () => {
+  it('slices to display_text_range and escapes/keeps newlines', () => {
+    const html = renderTweetText('hello\nworld TAIL', [0, 11]);
+    expect(html).toBe('hello<br>world');
+  });
+
+  it('expands t.co links to their display_url', () => {
+    const html = renderTweetText('see https://t.co/abc now', undefined, [
+      { url: 'https://t.co/abc', display_url: 'example.com/x' },
+    ]);
+    expect(html).toContain('example.com/x');
+    expect(html).not.toContain('t.co/abc');
+  });
+
+  it('escapes HTML in the text', () => {
+    expect(renderTweetText('<b>hi</b>')).toBe('&lt;b&gt;hi&lt;/b&gt;');
+  });
+});
+
+describe('parseSyndicationTweet', () => {
+  it('maps user, verified, likes and upgrades avatar size', () => {
+    const t = parseSyndicationTweet(syndicationJson(), 'https://x.com/jack/status/20');
+    expect(t.name).toBe('jack');
+    expect(t.handle).toBe('jack');
+    expect(t.verified).toBe(true);
+    expect(t.likes).toBe(100);
+    expect(t.avatar).toContain('_bigger');
+    expect(t.url).toBe('https://x.com/jack/status/20');
+    expect(t.bodyHtml).toBe('just setting up my twttr');
+  });
+
+  it('hides body and captures article for article-share tweets', () => {
+    const t = parseSyndicationTweet(
+      syndicationJson({
+        text: 'https://t.co/x',
+        article: { title: 'My Article', cover_media: { media_info: { original_img_url: 'https://pbs.twimg.com/cover.jpg' } } },
+      }),
+      'https://x.com/jack/status/20'
+    );
+    expect(t.bodyHtml).toBe('');
+    expect(t.article).toEqual({ title: 'My Article', cover: 'https://pbs.twimg.com/cover.jpg' });
+  });
+
+  it('captures photos from mediaDetails', () => {
+    const t = parseSyndicationTweet(
+      syndicationJson({
+        mediaDetails: [
+          { type: 'photo', media_url_https: 'https://pbs.twimg.com/media/a.jpg', original_info: { width: 600, height: 400 } },
+          { type: 'video', media_url_https: 'https://pbs.twimg.com/media/v.jpg' },
+        ],
+      }),
+      'https://x.com/jack/status/20'
+    );
+    expect(t.photos).toEqual([{ url: 'https://pbs.twimg.com/media/a.jpg', width: 600, height: 400 }]);
+  });
+
+  it('captures a nested quote', () => {
+    const t = parseSyndicationTweet(
+      syndicationJson({
+        quoted_tweet: { user: { name: 'Machina', screen_name: 'EXM7777' }, text: 'quoted' },
+      }),
+      'https://x.com/jack/status/20'
+    );
+    expect(t.quote).toEqual({ name: 'Machina', handle: 'EXM7777', bodyHtml: 'quoted' });
+  });
+});
+
+describe('fetchTweetSyndication', () => {
   afterEach(() => {
     vi.restoreAllMocks();
   });
@@ -356,38 +507,32 @@ describe('fetchTweetOembed', () => {
   it('returns parsed tweet data on success', async () => {
     vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce({
       ok: true,
-      json: async () => ({
-        url: 'https://x.com/jack/status/20',
-        author_name: 'jack',
-        author_url: 'https://x.com/jack',
-        html: '<blockquote class="twitter-tweet"><p>just setting up my twttr</p></blockquote>',
-      }),
+      json: async () => syndicationJson(),
     } as Response);
 
-    const result = await fetchTweetOembed('https://x.com/jack/status/20');
+    const result = await fetchTweetSyndication('https://x.com/jack/status/20');
     expect(result).not.toBeNull();
-    expect(result!.authorName).toBe('jack');
-    expect(result!.authorUrl).toBe('https://x.com/jack');
-    expect(result!.html).toContain('twitter-tweet');
+    expect(result!.name).toBe('jack');
+    expect(result!.handle).toBe('jack');
     expect(typeof result!.fetchedAt).toBe('string');
   });
 
   it('returns null on non-ok response', async () => {
     vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce({ ok: false } as Response);
-    expect(await fetchTweetOembed('https://x.com/jack/status/404')).toBeNull();
+    expect(await fetchTweetSyndication('https://x.com/jack/status/404')).toBeNull();
   });
 
   it('returns null on fetch rejection', async () => {
     vi.spyOn(globalThis, 'fetch').mockRejectedValueOnce(new Error('Network error'));
-    expect(await fetchTweetOembed('https://x.com/jack/status/20')).toBeNull();
+    expect(await fetchTweetSyndication('https://x.com/jack/status/20')).toBeNull();
   });
 
-  it('returns null when html is missing', async () => {
+  it('returns null when the payload is not a Tweet (deleted/tombstone)', async () => {
     vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce({
       ok: true,
-      json: async () => ({ author_name: 'jack', author_url: 'https://x.com/jack' }),
+      json: async () => ({ __typename: 'TweetTombstone' }),
     } as Response);
-    expect(await fetchTweetOembed('https://x.com/jack/status/20')).toBeNull();
+    expect(await fetchTweetSyndication('https://x.com/jack/status/20')).toBeNull();
   });
 });
 
@@ -398,12 +543,7 @@ describe('getTweet', () => {
 
   it('returns cached data without calling fetch', async () => {
     const tmpPath = path.join(os.tmpdir(), `tweet-cache-test-${Date.now()}.json`);
-    const cached: import('./remark-link-card.ts').TweetOembedData = {
-      html: '<blockquote class="twitter-tweet">cached</blockquote>',
-      authorName: 'jack',
-      authorUrl: 'https://x.com/jack',
-      fetchedAt: '2026-07-11T00:00:00.000Z',
-    };
+    const cached = sampleTweet();
     writeTweetCache(tmpPath, { 'https://x.com/jack/status/20': cached });
 
     const fetchSpy = vi.spyOn(globalThis, 'fetch');
@@ -417,15 +557,11 @@ describe('getTweet', () => {
     const tmpPath = path.join(os.tmpdir(), `tweet-cache-test-${Date.now()}.json`);
     vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce({
       ok: true,
-      json: async () => ({
-        author_name: 'jack',
-        author_url: 'https://x.com/jack',
-        html: '<blockquote class="twitter-tweet">fetched</blockquote>',
-      }),
+      json: async () => syndicationJson({ id_str: '99' }),
     } as Response);
 
     const result = await getTweet('https://x.com/jack/status/99', tmpPath);
-    expect(result!.html).toContain('fetched');
+    expect(result!.name).toBe('jack');
     expect(readTweetCache(tmpPath)['https://x.com/jack/status/99']).toBeDefined();
     fs.unlinkSync(tmpPath);
   });
@@ -486,7 +622,7 @@ describe('remarkLinkCard plugin (integration)', () => {
     const plugin = remarkLinkCard();
     const tree: Root = {
       type: 'root',
-      children: [makeParagraphWithBareUrl('https://kcp-8.com/blog/ai-jidai-no-gyomu-daiko') as any],
+      children: [makeParagraphWithBareUrl('https://kcp-8.com/blog/harness-engineering') as any],
     } as Root;
 
     await plugin(tree);
@@ -516,11 +652,7 @@ describe('remarkLinkCard plugin (integration)', () => {
     const tmpTweetCache = path.join(os.tmpdir(), `tweet-cache-int-${Date.now()}.json`);
     vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce({
       ok: true,
-      json: async () => ({
-        author_name: 'jack',
-        author_url: 'https://x.com/jack',
-        html: '<blockquote class="twitter-tweet"><p>just setting up my twttr</p></blockquote>',
-      }),
+      json: async () => syndicationJson(),
     } as Response);
 
     const plugin = remarkLinkCard({ tweetCachePath: tmpTweetCache });
@@ -531,15 +663,15 @@ describe('remarkLinkCard plugin (integration)', () => {
     await plugin(tree);
 
     expect(tree.children[0].type).toBe('html');
-    expect((tree.children[0] as any).value).toContain('tweet-embed');
-    expect((tree.children[0] as any).value).toContain('twitter-tweet');
+    expect((tree.children[0] as any).value).toContain('tweet-card');
+    expect((tree.children[0] as any).value).toContain('@jack');
     if (fs.existsSync(tmpTweetCache)) fs.unlinkSync(tmpTweetCache);
   });
 
   it('falls back to external card when tweet fetch fails', async () => {
     const tmpTweetCache = path.join(os.tmpdir(), `tweet-cache-int-${Date.now()}.json`);
     const tmpOgpCache = path.join(os.tmpdir(), `ogp-cache-int-${Date.now()}.json`);
-    // 1回目: oembed 失敗 / 2回目: OGP フォールバックの fetch
+    // 1回目: syndication 失敗 / 2回目: OGP フォールバックの fetch
     vi.spyOn(globalThis, 'fetch')
       .mockResolvedValueOnce({ ok: false } as Response)
       .mockResolvedValueOnce({ text: async () => '<meta property="og:title" content="T">' } as Response);
