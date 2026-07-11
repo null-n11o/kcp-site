@@ -18,6 +18,7 @@ import remarkLinkCard, {
   writeTweetCache,
   getOgp,
   fetchTweetOembed,
+  getTweet,
 } from './remark-link-card.ts';
 
 // Helper: bare URL paragraph ノードを生成する
@@ -366,6 +367,56 @@ describe('fetchTweetOembed', () => {
       json: async () => ({ author_name: 'jack', author_url: 'https://x.com/jack' }),
     } as Response);
     expect(await fetchTweetOembed('https://x.com/jack/status/20')).toBeNull();
+  });
+});
+
+describe('getTweet', () => {
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it('returns cached data without calling fetch', async () => {
+    const tmpPath = path.join(os.tmpdir(), `tweet-cache-test-${Date.now()}.json`);
+    const cached: import('./remark-link-card.ts').TweetOembedData = {
+      html: '<blockquote class="twitter-tweet">cached</blockquote>',
+      authorName: 'jack',
+      authorUrl: 'https://x.com/jack',
+      fetchedAt: '2026-07-11T00:00:00.000Z',
+    };
+    writeTweetCache(tmpPath, { 'https://x.com/jack/status/20': cached });
+
+    const fetchSpy = vi.spyOn(globalThis, 'fetch');
+    const result = await getTweet('https://x.com/jack/status/20', tmpPath);
+    expect(result).toEqual(cached);
+    expect(fetchSpy).not.toHaveBeenCalled();
+    fs.unlinkSync(tmpPath);
+  });
+
+  it('fetches and writes to cache on cache miss', async () => {
+    const tmpPath = path.join(os.tmpdir(), `tweet-cache-test-${Date.now()}.json`);
+    vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({
+        author_name: 'jack',
+        author_url: 'https://x.com/jack',
+        html: '<blockquote class="twitter-tweet">fetched</blockquote>',
+      }),
+    } as Response);
+
+    const result = await getTweet('https://x.com/jack/status/99', tmpPath);
+    expect(result!.html).toContain('fetched');
+    expect(readTweetCache(tmpPath)['https://x.com/jack/status/99']).toBeDefined();
+    fs.unlinkSync(tmpPath);
+  });
+
+  it('does not cache when fetch returns null', async () => {
+    const tmpPath = path.join(os.tmpdir(), `tweet-cache-test-${Date.now()}.json`);
+    vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce({ ok: false } as Response);
+
+    const result = await getTweet('https://x.com/jack/status/404', tmpPath);
+    expect(result).toBeNull();
+    expect(readTweetCache(tmpPath)['https://x.com/jack/status/404']).toBeUndefined();
+    if (fs.existsSync(tmpPath)) fs.unlinkSync(tmpPath);
   });
 });
 

@@ -228,6 +228,20 @@ export async function getOgp(
   return data;
 }
 
+export async function getTweet(
+  url: string,
+  cachePath: string = path.join(process.cwd(), 'src/data/tweet-cache.json')
+): Promise<TweetOembedData | null> {
+  const cache = readTweetCache(cachePath);
+  if (cache[url]) return cache[url];
+  const data = await fetchTweetOembed(url);
+  if (data) {
+    cache[url] = data;
+    writeTweetCache(cachePath, cache);
+  }
+  return data;
+}
+
 export default function remarkLinkCard(options: RemarkLinkCardOptions = {}) {
   const cachePath = options.cachePath ?? path.join(process.cwd(), 'src/data/ogp-cache.json');
   const contentDir = options.contentDir ?? path.join(process.cwd(), 'src/content/blog');
