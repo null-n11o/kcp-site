@@ -190,6 +190,32 @@ export async function fetchOgpData(url: string): Promise<OgpData> {
   }
 }
 
+export async function fetchTweetOembed(url: string): Promise<TweetOembedData | null> {
+  try {
+    const oembedUrl = new URL('https://publish.twitter.com/oembed');
+    oembedUrl.searchParams.set('url', url);
+    oembedUrl.searchParams.set('omit_script', 'true');
+    oembedUrl.searchParams.set('dnt', 'true');
+
+    const res = await fetch(oembedUrl.href, { signal: AbortSignal.timeout(5000) });
+    if (!res.ok) return null;
+    const data = (await res.json()) as {
+      author_name?: string;
+      author_url?: string;
+      html?: string;
+    };
+    if (!data.html) return null;
+    return {
+      html: data.html,
+      authorName: data.author_name ?? '',
+      authorUrl: data.author_url ?? '',
+      fetchedAt: new Date().toISOString(),
+    };
+  } catch {
+    return null;
+  }
+}
+
 export async function getOgp(
   url: string,
   cachePath: string = path.join(process.cwd(), 'src/data/ogp-cache.json')

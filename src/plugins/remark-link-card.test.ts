@@ -17,6 +17,7 @@ import remarkLinkCard, {
   readTweetCache,
   writeTweetCache,
   getOgp,
+  fetchTweetOembed,
 } from './remark-link-card.ts';
 
 // Helper: bare URL paragraph ノードを生成する
@@ -322,6 +323,49 @@ describe('getOgp', () => {
     const cache = readOgpCache(tmpPath);
     expect(cache['https://failing.example.com']).toBeDefined();
     fs.unlinkSync(tmpPath);
+  });
+});
+
+describe('fetchTweetOembed', () => {
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it('returns parsed tweet data on success', async () => {
+    vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({
+        url: 'https://x.com/jack/status/20',
+        author_name: 'jack',
+        author_url: 'https://x.com/jack',
+        html: '<blockquote class="twitter-tweet"><p>just setting up my twttr</p></blockquote>',
+      }),
+    } as Response);
+
+    const result = await fetchTweetOembed('https://x.com/jack/status/20');
+    expect(result).not.toBeNull();
+    expect(result!.authorName).toBe('jack');
+    expect(result!.authorUrl).toBe('https://x.com/jack');
+    expect(result!.html).toContain('twitter-tweet');
+    expect(typeof result!.fetchedAt).toBe('string');
+  });
+
+  it('returns null on non-ok response', async () => {
+    vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce({ ok: false } as Response);
+    expect(await fetchTweetOembed('https://x.com/jack/status/404')).toBeNull();
+  });
+
+  it('returns null on fetch rejection', async () => {
+    vi.spyOn(globalThis, 'fetch').mockRejectedValueOnce(new Error('Network error'));
+    expect(await fetchTweetOembed('https://x.com/jack/status/20')).toBeNull();
+  });
+
+  it('returns null when html is missing', async () => {
+    vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({ author_name: 'jack', author_url: 'https://x.com/jack' }),
+    } as Response);
+    expect(await fetchTweetOembed('https://x.com/jack/status/20')).toBeNull();
   });
 });
 
