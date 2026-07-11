@@ -103,5 +103,40 @@
     "title": "404 - ページが見つかりません | 株式会社KCP",
     "description": "AI時代に必要な業務を引き受け、お客様が本業に集中できる環境を提供する。株式会社KCPのコーポレートサイト。",
     "fetchedAt": "2026-07-04T08:41:03.161Z"
+  },
+  "https://x.com/sairahul1/status/2072608877242118351": {
+    "title": "Rahul (@sairahul1) on X",
+    "description": "https://t.co/ernwW7noek",
+    "fetchedAt": "2026-07-10T01:58:43.286Z"
+  },
+  "https://x.com/AlexFinn/status/2072837836999627155": {
+    "title": "Alex Finn (@AlexFinn) on X",
+    "description": "https://t.co/wfEBtUztkj",
+    "fetchedAt": "2026-07-10T01:58:43.772Z"
+  },
+  "https://x.com/RLanceMartin/status/2064397389189071163": {
+    "title": "Lance Martin (@RLanceMartin) on X",
+    "description": "https://t.co/es0JQM4MS9",
+    "fetchedAt": "2026-07-10T01:58:44.389Z"
+  },
+  "https://x.com/masa_okamura108/status/2064841547624145269": {
+    "title": "オカムラ | 株式会社ライトアップ フラクショナルCTO (@masa_okamura108) on X",
+    "description": "Fable 5とCodexを協業させたらかなりいい感じ。\nFable 5がサブスク外になって従量課金になってもこの方法なら効率的にFable 5を利用できて継続できるかも。\n\nやり方は以下の3ステップ。CLAUDE .mdに実際に記載した内容はリプに貼っておきます👇\n\n概要としてはFable",
+    "fetchedAt": "2026-07-10T01:58:45.033Z"
+  },
+  "https://x.com/milesdeutscher/status/2072383064031023497": {
+    "title": "Miles Deutscher (@milesdeutscher) on X",
+    "description": "https://t.co/iEhIiQWCPB",
+    "fetchedAt": "2026-07-10T01:58:45.407Z"
+  },
+  "https://www.anthropic.com/news/redeploying-fable-5": {
+    "title": "Redeploying Claude Fable 5",
+    "description": "Anthropic is redeploying Claude Fable 5 starting July 1 following the lifting of export controls, with updated cybersecurity safeguards and a new industry jailbreak framework.",
+    "fetchedAt": "2026-07-10T01:58:48.006Z"
+  },
+  "https://www.anthropic.com/news/claude-fable-5-mythos-5": {
+    "title": "Claude Fable 5 and Claude Mythos 5",
+    "description": "Today we’re launching Claude Fable 5: a Mythos-class model that we’ve made safe for general use.",
+    "fetchedAt": "2026-07-10T01:58:52.013Z"
   }
 }
