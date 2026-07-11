@@ -20,6 +20,13 @@ export interface OgpData {
   fetchedAt: string;
 }
 
+export interface TweetOembedData {
+  html: string;
+  authorName: string;
+  authorUrl: string;
+  fetchedAt: string;
+}
+
 export interface RemarkLinkCardOptions {
   cachePath?: string;
   contentDir?: string;
@@ -149,6 +156,19 @@ export function readOgpCache(cachePath: string): Record<string, OgpData> {
 }
 
 export function writeOgpCache(cachePath: string, cache: Record<string, OgpData>): void {
+  fs.writeFileSync(cachePath, JSON.stringify(cache, null, 2) + '\n');
+}
+
+export function readTweetCache(cachePath: string): Record<string, TweetOembedData> {
+  if (!fs.existsSync(cachePath)) return {};
+  try {
+    return JSON.parse(fs.readFileSync(cachePath, 'utf-8'));
+  } catch {
+    return {};
+  }
+}
+
+export function writeTweetCache(cachePath: string, cache: Record<string, TweetOembedData>): void {
   fs.writeFileSync(cachePath, JSON.stringify(cache, null, 2) + '\n');
 }
 

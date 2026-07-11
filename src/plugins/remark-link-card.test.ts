@@ -14,6 +14,8 @@ import remarkLinkCard, {
   readInternalPostData,
   readOgpCache,
   writeOgpCache,
+  readTweetCache,
+  writeTweetCache,
   getOgp,
 } from './remark-link-card.ts';
 
@@ -246,6 +248,27 @@ describe('readOgpCache / writeOgpCache', () => {
     };
     writeOgpCache(tmpPath, data);
     expect(readOgpCache(tmpPath)).toEqual(data);
+    fs.unlinkSync(tmpPath);
+  });
+});
+
+describe('readTweetCache / writeTweetCache', () => {
+  it('returns empty object when file does not exist', () => {
+    expect(readTweetCache('/nonexistent/path/tweet-cache.json')).toEqual({});
+  });
+
+  it('round-trips tweet data correctly', () => {
+    const tmpPath = path.join(os.tmpdir(), `tweet-cache-test-${Date.now()}.json`);
+    const data: Record<string, import('./remark-link-card.ts').TweetOembedData> = {
+      'https://x.com/jack/status/20': {
+        html: '<blockquote class="twitter-tweet">…</blockquote>',
+        authorName: 'jack',
+        authorUrl: 'https://x.com/jack',
+        fetchedAt: '2026-07-11T00:00:00.000Z',
+      },
+    };
+    writeTweetCache(tmpPath, data);
+    expect(readTweetCache(tmpPath)).toEqual(data);
     fs.unlinkSync(tmpPath);
   });
 });
