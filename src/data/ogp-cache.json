@@ -138,5 +138,10 @@
     "title": "Claude Fable 5 and Claude Mythos 5",
     "description": "Today we’re launching Claude Fable 5: a Mythos-class model that we’ve made safe for general use.",
     "fetchedAt": "2026-07-10T01:58:52.013Z"
+  },
+  "https://developers.openai.com/api/docs/guides/latest-model": {
+    "title": "Model guidance | OpenAI API",
+    "description": "Compare model features, migration guidance, and prompting best practices across OpenAI models.",
+    "fetchedAt": "2026-07-11T22:51:29.873Z"
   }
 }
