@@ -159,5 +159,203 @@
       "bodyHtml": "x.com/i/article/2074…"
     },
     "fetchedAt": "2026-07-11T22:51:59.384Z"
+  },
+  "https://x.com/sairahul1/status/2072608877242118351": {
+    "url": "https://x.com/sairahul1/status/2072608877242118351",
+    "name": "Rahul",
+    "handle": "sairahul1",
+    "avatar": "https://pbs.twimg.com/profile_images/1999441729800536065/6-3Y5xyR_bigger.jpg",
+    "verified": true,
+    "bodyHtml": "",
+    "createdAt": "2026-07-02T09:10:38.000Z",
+    "likes": 292,
+    "photos": [],
+    "article": {
+      "title": "How To Build a One-Person Company With Claude Fable 5",
+      "cover": "https://pbs.twimg.com/media/HMNRIvDb0AEWmmu.jpg"
+    },
+    "quote": null,
+    "fetchedAt": "2026-07-14T06:51:21.080Z"
+  },
+  "https://x.com/AlexFinn/status/2072837836999627155": {
+    "url": "https://x.com/AlexFinn/status/2072837836999627155",
+    "name": "Alex Finn",
+    "handle": "AlexFinn",
+    "avatar": "https://pbs.twimg.com/profile_images/1745232634278461440/7gQcr_R__bigger.jpg",
+    "verified": true,
+    "bodyHtml": "",
+    "createdAt": "2026-07-03T00:20:26.000Z",
+    "likes": 1132,
+    "photos": [],
+    "article": {
+      "title": "THE MOST VALUABLE THING YOU CAN DO WITH FABLE 5 IN THE NEXT 24 HOURS",
+      "cover": "https://pbs.twimg.com/media/HMQyVYvbIAAJ8Nt.jpg"
+    },
+    "quote": null,
+    "fetchedAt": "2026-07-14T06:51:21.237Z"
+  },
+  "https://x.com/RLanceMartin/status/2064397389189071163": {
+    "url": "https://x.com/RLanceMartin/status/2064397389189071163",
+    "name": "Lance Martin",
+    "handle": "RLanceMartin",
+    "avatar": "https://pbs.twimg.com/profile_images/1999948423018221568/s2XL2-On_bigger.jpg",
+    "verified": true,
+    "bodyHtml": "",
+    "createdAt": "2026-06-09T17:21:06.000Z",
+    "likes": 6072,
+    "photos": [],
+    "article": {
+      "title": "Designing loops with Fable 5",
+      "cover": "https://pbs.twimg.com/media/HKYnS0Za8AA_BoV.jpg"
+    },
+    "quote": null,
+    "fetchedAt": "2026-07-14T06:51:21.474Z"
+  },
+  "https://x.com/masa_okamura108/status/2064841547624145269": {
+    "url": "https://x.com/masa_okamura108/status/2064841547624145269",
+    "name": "オカムラ | 株式会社ライトアップ フラクショナルCTO",
+    "handle": "masa_okamura108",
+    "avatar": "https://pbs.twimg.com/profile_images/2057044324387528704/EqayUaux_bigger.jpg",
+    "verified": true,
+    "bodyHtml": "Fable 5とCodexを協業させたらかなりいい感じ。<br>Fable 5がサブスク外になって従量課金になってもこの方法なら効率的にFable 5を利用できて継続できるかも。<br><br>やり方は以下の3ステップ。CLAUDE .mdに実際に記載した内容はリプに貼っておきます👇<br><br>概要としてはFable ",
+    "createdAt": "2026-06-10T22:46:02.000Z",
+    "likes": 499,
+    "photos": [
+      {
+        "url": "https://pbs.twimg.com/media/HKfKcTraMAAd8uy.jpg",
+        "width": 1648,
+        "height": 1290
+      },
+      {
+        "url": "https://pbs.twimg.com/media/HKfKcgJaUAAz964.png",
+        "width": 882,
+        "height": 330
+      }
+    ],
+    "article": null,
+    "quote": null,
+    "fetchedAt": "2026-07-14T06:51:21.930Z"
+  },
+  "https://x.com/milesdeutscher/status/2072383064031023497": {
+    "url": "https://x.com/milesdeutscher/status/2072383064031023497",
+    "name": "Miles Deutscher",
+    "handle": "milesdeutscher",
+    "avatar": "https://pbs.twimg.com/profile_images/2043255869513601025/wFHeLjZX_bigger.jpg",
+    "verified": true,
+    "bodyHtml": "",
+    "createdAt": "2026-07-01T18:13:20.000Z",
+    "likes": 847,
+    "photos": [],
+    "article": {
+      "title": "How To Master Fable (Fundamentals Guide)",
+      "cover": "https://pbs.twimg.com/media/HMKH0tQacAA4mwA.jpg"
+    },
+    "quote": null,
+    "fetchedAt": "2026-07-14T06:51:22.181Z"
+  },
+  "https://x.com/trq212/status/2061907337154367865": {
+    "url": "https://x.com/trq212/status/2061907337154367865",
+    "name": "Thariq",
+    "handle": "trq212",
+    "avatar": "https://pbs.twimg.com/profile_images/1976939058741039104/r3GgzqRh_bigger.jpg",
+    "verified": true,
+    "bodyHtml": "",
+    "createdAt": "2026-06-02T20:26:32.000Z",
+    "likes": 10818,
+    "photos": [],
+    "article": {
+      "title": "A harness for every task: dynamic workflows in Claude Code ",
+      "cover": "https://pbs.twimg.com/media/HJ0q6o6aYAEM_ej.jpg"
+    },
+    "quote": null,
+    "fetchedAt": "2026-07-14T06:53:24.971Z"
+  },
+  "https://x.com/masahirochaen/status/2045730009701400844": {
+    "url": "https://x.com/masahirochaen/status/2045730009701400844",
+    "name": "チャエン | デジライズ CEO《重要AIニュースを毎日最速で発信⚡️》",
+    "handle": "masahirochaen",
+    "avatar": "https://pbs.twimg.com/profile_images/1689665533929725953/fClFlzLd_bigger.jpg",
+    "verified": true,
+    "bodyHtml": "",
+    "createdAt": "2026-04-19T05:03:36.000Z",
+    "likes": 1113,
+    "photos": [],
+    "article": {
+      "title": "Claude Codeの検索はなぜ正確なのか？ ベクトル検索を捨てた本当の理由",
+      "cover": "https://pbs.twimg.com/media/HGPklj6bkAAZwH1.jpg"
+    },
+    "quote": null,
+    "fetchedAt": "2026-07-14T06:53:25.177Z"
+  },
+  "https://x.com/gura105/status/2030589680778129429": {
+    "url": "https://x.com/gura105/status/2030589680778129429",
+    "name": "gura",
+    "handle": "gura105",
+    "avatar": "https://pbs.twimg.com/profile_images/1480989632183828480/85moKlB5_bigger.jpg",
+    "verified": true,
+    "bodyHtml": "",
+    "createdAt": "2026-03-08T10:21:21.000Z",
+    "likes": 806,
+    "photos": [],
+    "article": {
+      "title": "Claude Codeの業務自動化で半年間成果ゼロだった話と、そこから全てが動き始めた話",
+      "cover": "https://pbs.twimg.com/media/HC4ZBsEbcAAi49z.jpg"
+    },
+    "quote": null,
+    "fetchedAt": "2026-07-14T06:53:25.630Z"
+  },
+  "https://x.com/itsolelehmann/status/2031308486815133905": {
+    "url": "https://x.com/itsolelehmann/status/2031308486815133905",
+    "name": "Ole Lehmann",
+    "handle": "itsolelehmann",
+    "avatar": "https://pbs.twimg.com/profile_images/1633697720291704832/GBmxTCa6_bigger.jpg",
+    "verified": true,
+    "bodyHtml": "i can't believe nobody caught this.<br><br>Anthropic's entire growth marketing team was just ONE PERSON<br><br>(for 10 months, confirmed)<br><br>a single non-technical person ran paid search, paid social, app stores, email marketing, and SEO for the $380B company behind claude<br><br>here's exactly how",
+    "createdAt": "2026-03-10T09:57:37.000Z",
+    "likes": 9101,
+    "photos": [
+      {
+        "url": "https://pbs.twimg.com/media/HDCoTeCaMAEG0Z1.png",
+        "width": 644,
+        "height": 716
+      }
+    ],
+    "article": null,
+    "quote": null,
+    "fetchedAt": "2026-07-14T07:04:32.395Z"
+  },
+  "https://x.com/0xfene/status/2031563899200483482": {
+    "url": "https://x.com/0xfene/status/2031563899200483482",
+    "name": "ふぇね | 山中裕貴",
+    "handle": "0xfene",
+    "avatar": "https://pbs.twimg.com/profile_images/2005206546423357441/tz1sm5cl_bigger.jpg",
+    "verified": true,
+    "bodyHtml": "",
+    "createdAt": "2026-03-11T02:52:32.000Z",
+    "likes": 561,
+    "photos": [],
+    "article": {
+      "title": "実はClaude Codeは経営者向き！？人を動かす人ほど、Claude codeを触ってほしい",
+      "cover": "https://pbs.twimg.com/media/HC-NmqMaQAA_iS7.jpg"
+    },
+    "quote": null,
+    "fetchedAt": "2026-07-14T07:04:32.864Z"
+  },
+  "https://x.com/irabukht/status/2025846968245948795": {
+    "url": "https://x.com/irabukht/status/2025846968245948795",
+    "name": "Ira Bodnar",
+    "handle": "irabukht",
+    "avatar": "https://pbs.twimg.com/profile_images/2071383117546573824/Bi9TazUA_bigger.jpg",
+    "verified": true,
+    "bodyHtml": "",
+    "createdAt": "2026-02-23T08:15:30.000Z",
+    "likes": 8298,
+    "photos": [],
+    "article": {
+      "title": "Claude just killed our startup",
+      "cover": "https://pbs.twimg.com/media/HB1AYuKaYAArGJL.jpg"
+    },
+    "quote": null,
+    "fetchedAt": "2026-07-14T07:04:33.357Z"
   }
 }
