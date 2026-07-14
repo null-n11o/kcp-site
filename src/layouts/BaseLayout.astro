@@ -44,6 +44,7 @@ const {
 const locale = (Astro.currentLocale ?? 'ja') as 'ja' | 'en';
 const ogLocale = locale === 'en' ? 'en_US' : 'ja_JP';
 const siteName = locale === 'en' ? 'KCP Co., Ltd.' : '株式会社KCP';
+const gaMeasurementId = 'G-PVZ05MKNHL';
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const isHomepage = Astro.url.pathname === '/' || Astro.url.pathname === '/en/';
@@ -124,12 +125,56 @@ const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0
     {breadcrumbSchema && <JsonLd schema={breadcrumbSchema} />}
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PVZ05MKNHL"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-PVZ05MKNHL');
+    <script define:vars={{ gaMeasurementId }}>
+      const gaOptOutStorageKey = 'kcp:ga-opt-out';
+      const gaOptOutParams = new URLSearchParams(window.location.search);
+      const gaOptOutValue = gaOptOutParams.get('ga_opt_out');
+
+      const getGaOptOut = () => {
+        try {
+          return window.localStorage.getItem(gaOptOutStorageKey) === 'true';
+        } catch {
+          return false;
+        }
+      };
+
+      if (gaOptOutValue === '1') {
+        try {
+          window.localStorage.setItem(gaOptOutStorageKey, 'true');
+        } catch {
+          // If storage is unavailable, fall back to a one-page opt-out below.
+        }
+      } else if (gaOptOutValue === '0') {
+        try {
+          window.localStorage.removeItem(gaOptOutStorageKey);
+        } catch {
+          // No persisted opt-out to clear.
+        }
+      }
+
+      if (gaOptOutValue === '1' || gaOptOutValue === '0') {
+        gaOptOutParams.delete('ga_opt_out');
+        const cleanUrl = `${window.location.pathname}${gaOptOutParams.toString() ? `?${gaOptOutParams}` : ''}${window.location.hash}`;
+        window.history.replaceState(null, '', cleanUrl);
+      }
+
+      const isGaOptedOut = gaOptOutValue === '1' || getGaOptOut();
+      window[`ga-disable-${gaMeasurementId}`] = isGaOptedOut;
+
+      if (!isGaOptedOut) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          window.dataLayer.push(arguments);
+        }
+
+        const gaScript = document.createElement('script');
+        gaScript.async = true;
+        gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`;
+        document.head.appendChild(gaScript);
+
+        gtag('js', new Date());
+        gtag('config', gaMeasurementId);
+      }
     </script>
   </head>
   <body>
