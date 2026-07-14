@@ -51,8 +51,20 @@ tags: ["AI", "業務効率化"]
 author: "中野 健太朗"
 draft: false
 featured: false
+heroImage: ../thumbnail/記事スラッグ.webp  # 任意。一覧カード・記事先頭のサムネイル
+heroImageAlt: "サムネイルの説明"            # 任意。未指定時は title を alt に使用
 ---
 ```
+
+**画像ディレクトリの使い分け:**
+
+| ディレクトリ | 用途 | Markdown からの参照 |
+| --- | --- | --- |
+| `src/content/thumbnail/` | 記事のサムネイル（`heroImage`）専用 | `../thumbnail/xxx.webp` |
+| `src/content/image/` | 記事本文中の画像 | `../image/xxx.webp` |
+| `src/assets/blog-placeholder.png` | 全記事共通のプレースホルダー（`heroImage` 未指定時に自動表示） | `.astro` から `@/assets/...` で import |
+
+**サムネイル（`heroImage`）:** フロントマターで `image()` により型安全・自動 WebP/srcset 最適化。推奨アスペクト比 16:9（例 1200×675）。未指定の記事は共通プレースホルダーを表示。日本語ブログの一覧カード（`card` バリアント）と記事先頭ヒーローに表示（英語ブログは対象外）。
 
 記事更新フロー: Obsidian で執筆 → `src/content/blog/` に保存 → `git push` → Cloudflare Pages が自動ビルド（約1〜2分）
 

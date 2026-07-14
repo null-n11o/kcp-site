@@ -1,8 +1,10 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
 import TagBadge from './TagBadge.astro';
 import { formatDate } from '@/utils/date';
 import { getReadingTimeMin } from '@/utils/blog';
+import placeholder from '@/assets/blog-placeholder.png';
 
 export interface Props {
   post: CollectionEntry<'blog'> | CollectionEntry<'blog_en'>;
@@ -19,6 +21,13 @@ const blogBase = locale === 'en' ? '/en/blog' : '/blog';
 const tagBase = locale === 'en' ? '/en/blog/tags' : '/blog/tags';
 const readingTimeLabel = locale === 'en' ? `${readMin} min read` : `約${readMin}分`;
 const dateStr = formatDate(pubDate, locale);
+
+// サムネイルは日本語ブログの card バリアントのみ表示（英語ブログはスコープ外）
+const showThumbnail = variant === 'card' && locale === 'ja';
+const heroImage = 'heroImage' in post.data ? post.data.heroImage : undefined;
+const thumbnail = heroImage ?? placeholder;
+const thumbnailAlt =
+  ('heroImageAlt' in post.data ? post.data.heroImageAlt : undefined) ?? title;
 ---
 
 {variant === 'row' ? (
@@ -42,6 +51,17 @@ const dateStr = formatDate(pubDate, locale);
   </article>
 ) : (
   <article class={`relative group flex flex-col gap-4 p-6 border border-border bg-base-100 hover:border-accent/40 transition-all duration-300`}>
+    {showThumbnail && (
+      <div class="-mx-6 -mt-6 mb-0 aspect-[16/9] overflow-hidden bg-base-200">
+        <Image
+          src={thumbnail}
+          alt={thumbnailAlt}
+          width={640}
+          height={360}
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+      </div>
+    )}
     <div class="flex flex-wrap gap-2">
       {tags.slice(0, 3).map(tag => (
         <TagBadge tag={tag} href={`${tagBase}/${tag}/`} />

@@ -1,19 +1,35 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
 import TagBadge from './TagBadge.astro';
 import { formatDateJa } from '@/utils/date';
 import { getReadingTimeMin } from '@/utils/blog';
+import placeholder from '@/assets/blog-placeholder.png';
 
 export interface Props {
   post: CollectionEntry<'blog'>;
 }
 
 const { post } = Astro.props;
-const { title, pubDate, updatedDate, tags, author } = post.data;
+const { title, pubDate, updatedDate, tags, author, heroImage, heroImageAlt } = post.data;
 const readMin = getReadingTimeMin(post.body);
+
+const hero = heroImage ?? placeholder;
+const heroAlt = heroImageAlt ?? title;
 ---
 
 <div class="mb-10" data-reveal="fade-up">
+  <div class="aspect-[16/9] overflow-hidden bg-base-200 border border-border mb-8">
+    <Image
+      src={hero}
+      alt={heroAlt}
+      width={1200}
+      height={675}
+      loading="eager"
+      fetchpriority="high"
+      class="w-full h-full object-cover"
+    />
+  </div>
   <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-white leading-tight mb-5">{title}</h1>
   <div class="flex flex-wrap items-center gap-3 text-sm font-mono text-text-muted mb-4">
     <span>by {author}</span>

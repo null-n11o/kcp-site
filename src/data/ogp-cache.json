@@ -143,5 +143,45 @@
     "title": "Model guidance | OpenAI API",
     "description": "Compare model features, migration guidance, and prompting best practices across OpenAI models.",
     "fetchedAt": "2026-07-11T22:51:29.873Z"
+  },
+  "https://github.com/jarrodwatts/claude-delegator": {
+    "title": "GitHub - jarrodwatts/claude-delegator: Delegate tasks to Codex and Gemini directly from within Claude Code.",
+    "description": "Delegate tasks to Codex and Gemini directly from within Claude Code. - jarrodwatts/claude-delegator",
+    "fetchedAt": "2026-07-14T06:45:34.706Z"
+  },
+  "https://note.com/masa_wunder/n/n5ddb3219f76f": {
+    "title": "Claude Delegatorを徹底解説！ Claude CodeからCodexにタスクを委譲するプラグイン｜まさお@未経験からプロまでAI活用",
+    "description": "AIコーディングアシスタントの世界で、「適材適所」 という考え方が新たな形で実現されました。Claude Delegatorは、Claude Code内から複雑なタスクをGPTの専門家エージェントに委譲できる革新的なプラグインです。  「Claudeを使っているのに、なぜCodexに委譲するの？」  この疑問は自然なものです。しかし、異なるAIモデルにはそれぞれ得意分野があります。Claude Delegatorは、各AIの強みを最大限に活かすためのブリッジとして機能します。    いつも通り動画で解説しているので、 興味のある方はぜひ動画もみてください  実際、僕が作った 個人的にも",
+    "fetchedAt": "2026-07-14T06:45:35.592Z"
+  },
+  "https://openai.com/index/introducing-codex/": {
+    "title": "",
+    "description": "",
+    "fetchedAt": "2026-07-14T06:51:21.111Z"
+  },
+  "https://developers.openai.com/codex/concepts/customization/#agents-guidance": {
+    "title": "Customization | ChatGPT Learn",
+    "description": "How to customize Codex with project guidance, skills, MCP, and subagents",
+    "fetchedAt": "2026-07-14T06:51:21.277Z"
+  },
+  "https://lin.ee/zMtNjZg": {
+    "title": "Add LINE friend",
+    "description": "",
+    "fetchedAt": "2026-07-14T06:51:21.469Z"
+  },
+  "https://qiita.com/Sicut_study/items/0318cc136c189b179b7f": {
+    "title": "【図解解説】これ1本でGitをマスターできるチュートリアル！【完全版】 - Qiita",
+    "description": "はじめに こんにちは、Watanabe Jin(@Sicut_study)です。 今回は記事1本で初心者が必要な知識を全て学べるGitチュートリアルを紹介していきます。 世の中にはたくさんのGitに関する教材があります。しかし、真に良いと思える教材はありません。 もちろ...",
+    "fetchedAt": "2026-07-14T06:51:21.715Z"
+  },
+  "https://www.anthropic.com/claude-code": {
+    "title": "Claude Code by Anthropic | AI Coding Agent, Terminal, IDE",
+    "description": "Anthropic's agentic coding tool for developers. Claude Code understands your codebase, edits files, runs commands, and helps you ship faster.",
+    "fetchedAt": "2026-07-14T06:53:25.501Z"
+  },
+  "https://prtimes.jp/main/html/rd/p/000000086.000029909.html": {
+    "title": "\"AI社員\"サービス提供開始。月額5万円でAI x 6体（人）を採用可能",
+    "description": "WHITE株式会社のプレスリリース（2026年3月19日 10時00分）\"AI社員\"サービス提供開始。月額5万円でAI x 6体（人）を採用可能",
+    "fetchedAt": "2026-07-14T06:53:25.547Z"
   }
 }
