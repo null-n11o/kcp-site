@@ -1,8 +1,8 @@
 ---
 title: "AI時代に価値が増す3つのこと"
-description: "AIエージェントを活用した新しい業務代行のあり方について解説します。"
-pubDate: 2026-04-10
-heroImage: ../thumbnail/three-things-thumbnail.png
+description: "AI時代に価値が増すブランド・人とのつながり・分野横断の視野と知識"
+pubDate: 2026-07-01
+heroImage: src/content/thumbnail/three-things.png
 heroImageAlt: "AI時代に価値が増すブランド・人とのつながり・分野横断の視野と知識の3要素を表すサムネイル"
 tags: ["AGI・ASI", "Elon Musk"]
 featured: true

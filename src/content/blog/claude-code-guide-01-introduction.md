@@ -1,11 +1,13 @@
 ---
-title: "Claude Codeとは？「エンジニア専用ツール」という誤解を解く ― 経営者が今知るべき理由"
+title: "Claude Codeとは？「エンジニア用ツール」は誤解？ | 経営者が今知るべき理由"
 description: "Claude Codeはエンジニア向けと思われがちですが、実は経営者こそ最も使いこなせるAIエージェントです。シリーズ第1回・導入編として、Claude Codeとは何か、なぜ今経営者が知るべきかを整理します。"
-pubDate: 2026-06-22
+pubDate: 2026-07-02
 author: "中野 健太朗"
 tags: ["Claude Code", "AI活用", "経営"]
 public: true
 featured: false
+heroImage: ../thumbnail/claude-code-guide-01-introduction-thumbnail.png
+heroImageAlt: "Claude Codeが経営者向けのAIエージェントとして業務委任やレビューを支援することを表すサムネイル"
 ---
 
 「Claude Codeって聞いたことはあるけど、結局エンジニア向けのツールでしょう？」
