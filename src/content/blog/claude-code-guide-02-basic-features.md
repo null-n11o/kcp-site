@@ -1,11 +1,13 @@
 ---
-title: "Claude Codeで結局何ができる？ ― 経営者が知っておきたい7つの基本機能"
+title: "Claude Codeで結局何ができる？ | 経営者が知っておきたい7つの基本機能"
 description: "CLAUDE.md・MCP・Skills・サブエージェントなど、Claude Codeの7つの基本機能を経営者向けに整理。KCPの秘書AI運用の実例も交えて解説するシリーズ第2回・基本機能編です。"
-pubDate: 2026-06-25
+pubDate: 2026-07-03
 author: "中野 健太朗"
 tags: ["Claude Code", "AI活用", "業務効率化"]
 public: true
 featured: false
+heroImage: ../thumbnail/claude-code-guide-02-basic-features-thumbnail.png
+heroImageAlt: "Claude Codeの7つの基本機能を経営者向けの機能マップとして整理することを表すサムネイル"
 ---
 
 前回の記事では、「Claude Codeはエンジニア専用ツールではない」「むしろ経営者の方が使いこなせる」という話をしました。

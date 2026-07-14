@@ -1,12 +1,12 @@
 ---
-title: "CodexとClaude Codeの違いを徹底比較｜どっちを使うべきか、実務での使い分け"
+title: "CodexとClaude Codeの違いを徹底比較｜どっちを使うべきか役割分担を徹底解説"
 description: "CodexとClaude Codeはどちらを選ぶべきか。文章・壁打ち・企画/計画が得意なClaude Code、実装・レビュー・画像生成が得意なCodexの違いを、経営者向けに整理します。"
-pubDate: 2026-07-12
+pubDate: 2026-07-14
 author: "中野 健太朗"
 tags: ["OpenAI Codex", "Claude Code", "AI活用", "AIエージェント", "業務効率化"]
 heroImage: /src/content/thumbnail/openai-codex-guide-2026-raw-inbox-thumbnail.png
-heroImageAlt: "3つのことを表すサムネイル"
-public: true
+heroImageAlt: "CodexとClaude Codeの違いを徹底比較"
+public: false
 featured: false
 ---
 

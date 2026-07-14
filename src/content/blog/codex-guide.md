@@ -1,11 +1,13 @@
 ---
 title: "【2026年版】OpenAI Codex使い方ガイド｜非エンジニア向けにできること・導入手順を解説"
 description: "OpenAI Codexとは何か、CLI・IDE拡張・アプリ・クラウドで何ができるのかを経営者・非エンジニア向けに解説。AGENTS.md、Skills、MCP、Hooksを使った実務導入の基本も紹介します。"
-pubDate: 2026-07-12
+pubDate: 2026-07-13
 author: "中野 健太朗"
 tags: ["OpenAI Codex", "Claude Code", "AI活用", "AIエージェント", "業務効率化"]
 public: true
 featured: false
+heroImage: src/content/thumbnail/codex-guide-thumbnail.png
+heroImageAlt: "OpenAI Codexの非エンジニア向け使い方ガイドを表す、業務導入と開発自動化を組み合わせたサムネイル"
 ---
 
 「Codexって、ChatGPTでコードを書かせる機能のことですか？」

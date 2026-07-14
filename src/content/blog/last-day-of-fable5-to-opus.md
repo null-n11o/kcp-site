@@ -1,9 +1,11 @@
 ---
 title: "Claude Fable 5をOpusに「転移」する | 最上位AIの最後の1日を自社資産に変える方法"
 description: "最上位モデル「Claude Fable 5」の高度な判断基準や思考プロセスを「マニュアル」として抽出し、後継のOpusへ移植・再現する具体手順を解説。一時的なモデル利用で終わらせず、自社の永続的な知的資産へ変えるためのAI運用ノウハウを整理します。"
-pubDate: 2026-07-07
+pubDate: 2026-07-06
 author: "中野 健太朗"
 tags: ["Claude Code", "Claude Fable 5", "Claude Opus", "AI活用"]
+heroImage: src/content/thumbnail/fable-to-opus-for-x.png
+heroImageAlt: "Claude Fable 5をOpusに「転移」する"
 public: true
 featured: false
 ---
