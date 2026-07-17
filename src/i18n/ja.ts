@@ -22,7 +22,7 @@ export const ja: Translations = {
     headlineAccent: 'Space',
     headlinePost: 'to Focus.',
     subtext:
-      '中小企業のIT・AI担当として、月額固定で実作業まで引き受けます。SNS運用・システム改修・AI導入——何でも気軽に頼める「社内のIT担当者」が、今日から持てます。',
+      '中小企業のIT・AI担当として、月額固定で実作業まで引き受けます。SNS運用・システム改修・AI導入。何でも気軽に頼める「社内のIT担当者」を即日割り当てます。',
     primaryCta: 'お問い合わせ',
     secondaryCta: 'サービスを見る',
   },

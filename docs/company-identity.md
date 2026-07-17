@@ -94,7 +94,7 @@ Every failure becomes feed for next challenges. We think bad times as opportunit
 
 ## KCPという社名について
 
-公式には Kinesis Cross Partners の頭文字です。Kinesis は「動き」、Cross は「越境」、Partners は「共創」。AI時代に変化し続け、境界を越えて、クライアントと共に価値を生む——そういう意味を込めています。
+公式には Kinesis Cross Partners の頭文字です。Kinesis は「動き」、Cross は「越境」、Partners は「共創」。AI時代に変化し続け、境界を越えて、クライアントと共に価値を生む。そういう意味を込めています。
 
 でも本当の由来は、創業者・中野健太朗の高校時代のあだ名です。元々「健ちゃん」から KC と呼ばれていた時期に、2013年のNBAドラフトで Kentavious Caldwell-Pope という選手が8位指名されました。中野の背番号も偶然8番でした。それ以来、KCPと呼ばれるようになりました。
 
