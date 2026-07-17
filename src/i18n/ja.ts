@@ -56,7 +56,7 @@ export const ja: Translations = {
       {
         icon: '🤖',
         title: 'AI導入支援',
-        description: '現場に合ったAI導入で業務効率を向上します。',
+        description: '「AIの相談相手」と「AI実務担当」を社外に。相談から業務の設計・構築・運用まで担います。',
         href: '/services/ai-training/',
       },
     ],
