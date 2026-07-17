@@ -6,72 +6,120 @@ import Button from '@/components/ui/Button.astro';
 const FORM_URL =
   'https://docs.google.com/forms/d/e/1FAIpQLSd2ycZEAgr4DpONjfTUOgKXUJ7cZTN5rNKaXy5WdyitG4Wqqg/viewform?usp=dialog';
 
-const steps = [
+const problems = [
+  '社内にAIの専任担当がいない、または兼任で手が回っていない',
+  'AIを使いたいが、何から始めればいいか判断できない',
+  '議事録・日報・SNS・経理補助など、定型業務に人手を取られている',
+  'ツールを導入したものの、現場で定着せず使われていない',
+  '相談できる相手はほしいが、実務まで手を動かしてくれる人がいない',
+];
+
+const products = [
   {
-    number: '01',
-    title: 'AI研修（助成金活用）',
-    description:
-      '助成金を活用することで、格安で実践的なAI研修を実施します。社内のAI人材育成はもちろん、業務改善を一緒に考えるきっかけになればと思います。',
+    tag: 'ADVISORY',
+    title: '外部AI顧問',
+    lead: 'AI活用について、いつでも相談できる専門家を社外に持つ。',
+    provides: [
+      '週1回・60分のオンラインMTG',
+      'チャット相談 回数無制限',
+      'AI活用方針と優先順位の整理',
+      'AIツール・SaaSの調査・比較・導入判断の支援',
+      '社内企画・ベンダー提案・業務改善案のレビュー',
+      'AI化に適した業務の選定',
+    ],
+    excludes: 'システム構築・設定作業、成果物の制作、日常業務の代行は対象外です。実作業が必要な場合は「外部AI担当」をご案内します。',
   },
   {
-    number: '02',
-    title: 'AI顧問＋導入支援',
-    description:
-      '研修後は「AI担当」として参画。人月単価でのAI顧問契約に加え、具体的な業務のAI化まで手を動かして実行します。',
-    deliverable: '実務のAI化・実行体制の構築',
-  },
-  {
-    number: '03',
-    title: '周辺業務代行（オプション）',
-    description:
-      'AI化と並行して、リソースが不足しがちなSNS運用やカスタマーサポート（CS）などの周辺業務についても、丸ごと代行することが可能です。',
-    deliverable: 'SNS代行・CS代行など',
+    tag: 'OPERATION',
+    title: '外部AI担当',
+    lead: '考えるだけでなく、対象業務の設計・構築・運用まで実行する。',
+    provides: [
+      'AI化する業務のヒアリング・診断',
+      '現行フロー・入力情報・成果物・処理頻度の整理',
+      'AIと人間の役割、人間承認ポイント、例外処理の設計',
+      'AI社員・自動化フローの構築と試験運用',
+      '顧客ツール・データとの連携',
+      'チケット範囲内での日常運用と品質確認、月次の成果報告',
+    ],
+    excludes: 'AIだけに任せきりにせず、送信・公開・送金などの操作には人間の確認・承認を組み込んだ業務フローとして提供します。',
   },
 ];
 
-const curriculum = [
+const aiStaff = [
   {
-    category: '基礎編',
-    topics: [
-      'AIとは何か・ビジネスへの影響',
-      'ChatGPT / Claudeの基本的な使い方',
-      'Claude Code入門'
+    category: 'バックオフィス系',
+    items: [
+      { name: '議事録係', desc: '会議データから議事録とToDoを作成' },
+      { name: '秘書・日報係', desc: 'TODO整理・日次レポート・作業ログ管理' },
+      { name: '経理補助係', desc: '請求書・領収書から経費情報を構造化' },
+      { name: 'メール一次対応係', desc: 'メールの仕分け・要点整理・返信下書き' },
     ],
   },
   {
-    category: '業務活用編',
-    topics: [
-      '文書作成・要約・翻訳へのAI活用',
-      '営業・マーケティングへのAI活用',
-      'カスタマーサポートへのAI活用',
-      '社内ナレッジ管理へのAI活用',
+    category: 'マーケティング・営業系',
+    items: [
+      { name: 'SNS運用係', desc: '投稿企画・下書き・媒体変換・承認後の投稿' },
+      { name: 'ブログ執筆係', desc: '構成・執筆・別AIレビュー・人間の最終確認' },
+      { name: '営業リサーチ係', desc: 'リスト調査・企業情報整理・営業文の作成' },
     ],
+  },
+];
+
+const ticketGuide = [
+  { task: 'チャット相談（15分以内）', tickets: '0（無料）' },
+  { task: 'Web会議（60分）', tickets: '1' },
+  { task: 'AIツール・SaaSの調査・比較', tickets: '1〜2' },
+  { task: 'プロンプト・テンプレート作成', tickets: '1〜2' },
+  { task: '既存ツールの設定・軽微な連携', tickets: '1〜3' },
+  { task: '1業務のAI活用診断', tickets: '2〜3' },
+  { task: 'AI業務フロー設計', tickets: '2〜4' },
+  { task: '簡易的な自動化構築', tickets: '3〜5' },
+  { task: 'SNS・ブログ等の定期運用', tickets: '月間本数に応じて事前固定' },
+  { task: '複雑なAPI・システム連携／大規模開発', tickets: '要件に合わせて事前にお見積り' },
+];
+
+const flowSteps = [
+  {
+    title: '無料相談（30分）',
+    description: '課題・対象業務を伺い、外部AI顧問と外部AI担当のどちらが適しているかを一緒に確認します。',
   },
   {
-    category: '実装・自動化編',
-    topics: [
-      'n8nを使った業務自動化入門',
-      'APIの基本と活用方法',
-      'AIエージェントの設計・運用',
-      'Claude Codeを使った簡易ツール開発',
-    ],
+    title: 'トライアル（1か月）',
+    description: '顧問は相談体制を、担当は1業務の簡易診断・試作・試験運用を行い、相性と実現可能性を確かめます。',
   },
   {
-    category: 'AI経営編',
-    topics: [
-      'AIネイティブな組織・業務設計',
-      'AI導入のROI計測・評価方法',
-      '社内AI推進担当者の育て方',
-    ],
+    title: '本契約・初期設定',
+    description: '6か月契約を締結し、権限・連絡経路・対象業務・チケット配分を確定します。',
   },
+  {
+    title: '設計・構築',
+    description: '外部AI担当の場合、AI業務設計・AI社員の構築・テストを行います。',
+  },
+  {
+    title: '継続運用',
+    description: 'チケット範囲内で対象業務を実行。お客様は必要な素材提供と承認に集中いただきます。',
+  },
+  {
+    title: '月次報告・改善',
+    description: '処理件数・使用チケット・削減時間・課題を共有し、翌月の配分を決めます。',
+  },
+];
+
+const fitItems = [
+  'AI・ITの専任担当がいない、または兼任で手が回っていない会社',
+  'AI活用に興味はあるが、何から始めればいいかわからない会社',
+  '議事録・日報・SNS・経理補助など定型業務に追われている会社',
+  'ツールを導入したが現場で定着していない会社',
+  '相談だけでなく、実務まで任せられる相手がほしい会社',
+  'まず小さく試してから判断したい会社',
 ];
 ---
 
 <PageLayout
-  title="AI導入・研修支援 | KCP"
-  description="業務に合わせたカスタマイズ型AI研修で、御社の人材をAI人材に。現状診断から研修実施・定着支援まで一貫して支援します。"
+  title="AI導入支援 | KCP"
+  description="社内にいない「AIの相談相手」と「AI実務担当」を社外に。外部AI顧問が相談・意思決定を支援し、外部AI担当が業務の設計・構築・運用まで実行します。"
 >
-  <!-- ヒーロー -->
+  <!-- Hero -->
   <section class="py-section sm:py-section-lg bg-base-50">
     <div class="section-wrapper">
       <Reveal>
@@ -79,39 +127,190 @@ const curriculum = [
           SERVICE
         </p>
         <h1 class="text-5xl sm:text-7xl font-black leading-none tracking-tight text-white mb-6">
-          AI導入・研修支援
+          AI導入支援
         </h1>
         <p class="text-text-secondary text-sm leading-relaxed max-w-xl">
-          業務に合わせたカスタマイズ型AI研修で、御社の人材をAI人材に。現状診断から研修実施・定着支援まで一貫して支援します。
+          社内にAIの専任者がいなくても大丈夫です。「AIの相談相手」と「AI実務担当」を社外に持つ感覚で、相談・判断支援から業務の設計・構築・日常運用まで、KCPが継続的にお手伝いします。
         </p>
       </Reveal>
     </div>
   </section>
 
-  <!-- 進め方 -->
+  <!-- PROBLEM -->
   <section class="py-section sm:py-section-lg bg-base-100">
     <div class="section-wrapper">
       <Reveal>
-        <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-8">
-          HOW IT WORKS
-        </p>
+        <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-8">PROBLEM</p>
       </Reveal>
       <div class="flex flex-col">
-        {steps.map((step, i) => (
+        {problems.map((problem, i) => (
+          <Reveal delay={i * 60}>
+            <div class="flex gap-5 items-start py-5 border-b border-border-subtle">
+              <span class="font-mono font-black text-accent/40 text-sm w-6 shrink-0 pt-px">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <p class="text-text-secondary text-sm leading-relaxed">{problem}</p>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="py-section sm:py-section-lg bg-base-50">
+    <div class="section-wrapper">
+      <Reveal>
+        <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-4">SERVICE MENU</p>
+        <p class="text-text-secondary text-sm leading-relaxed max-w-xl mb-8">
+          「相談したい」と「実際に動かしてほしい」を、2つの商品で分けて提供します。相談から始めて、必要になったら実務まで巻き取ることができます。
+        </p>
+      </Reveal>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {products.map((product, i) => (
           <Reveal delay={i * 80}>
+            <div class="border border-border-subtle rounded-sm p-6 bg-base-100 h-full flex flex-col">
+              <p class="font-mono text-xs text-accent tracking-widest mb-3">{product.tag}</p>
+              <p class="text-white font-black text-xl mb-2">{product.title}</p>
+              <p class="text-text-secondary text-sm leading-relaxed mb-5">{product.lead}</p>
+              <ul class="space-y-2 mb-5 flex-1">
+                {product.provides.map((item) => (
+                  <li class="flex gap-2 text-xs text-text-secondary leading-relaxed">
+                    <span class="text-accent shrink-0">—</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <p class="text-xs text-text-muted leading-relaxed border-t border-border-subtle pt-4">
+                {product.excludes}
+              </p>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- AI STAFF CATALOG -->
+  <section class="py-section sm:py-section-lg bg-base-100">
+    <div class="section-wrapper">
+      <Reveal>
+        <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-4">AI STAFF</p>
+        <p class="text-text-secondary text-sm leading-relaxed max-w-xl mb-8">
+          「AI社員」は、定型業務ごとにAIと人間の役割を設計し、KCPが構築・運用する仕組みの呼び名です。以下はKCP自身が構築・運用または動作検証した業務の例です。
+        </p>
+      </Reveal>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {aiStaff.map((group) => (
+          <div class="border border-border-subtle rounded-sm p-6 bg-base-50">
+            <p class="font-bold text-text-primary text-sm mb-4">{group.category}</p>
+            <ul class="space-y-3">
+              {group.items.map((item) => (
+                <li class="flex gap-2 text-xs leading-relaxed">
+                  <span class="text-accent shrink-0">—</span>
+                  <span>
+                    <span class="text-text-primary font-medium">{item.name}</span>
+                    <span class="text-text-muted"> ／ {item.desc}</span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PLAN -->
+  <section class="py-section sm:py-section-lg bg-base-50">
+    <div class="section-wrapper">
+      <Reveal>
+        <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-8">PLAN</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+          <!-- 外部AI顧問 -->
+          <div class="border border-border-subtle rounded-sm p-6 bg-base-100">
+            <p class="font-mono text-xs text-accent tracking-widest mb-1">ADVISORY</p>
+            <p class="text-white font-bold text-sm mb-5">外部AI顧問</p>
+            <div class="space-y-4">
+              <div class="border-t border-border-subtle pt-4">
+                <p class="text-xs text-text-muted mb-1">トライアル（1か月）</p>
+                <p class="text-2xl font-black text-accent">¥10,000<span class="text-xs text-text-muted font-normal"> / 月</span></p>
+              </div>
+              <div class="border-t border-border-subtle pt-4">
+                <p class="text-xs text-text-muted mb-1">本契約（最低6か月）</p>
+                <p class="text-2xl font-black text-white">¥30,000<span class="text-xs text-text-muted font-normal"> / 月 〜</span></p>
+                <p class="text-xs text-text-muted mt-1">週1回60分MTG＋チャット相談</p>
+              </div>
+            </div>
+          </div>
+          <!-- 外部AI担当 -->
+          <div class="border border-accent/20 rounded-sm p-6 bg-base-100">
+            <p class="font-mono text-xs text-accent tracking-widest mb-1">OPERATION</p>
+            <p class="text-white font-bold text-sm mb-5">外部AI担当</p>
+            <div class="space-y-4">
+              <div class="border-t border-border-subtle pt-4">
+                <p class="text-xs text-text-muted mb-1">トライアル（1か月・1業務の試験運用）</p>
+                <p class="text-2xl font-black text-accent">¥50,000<span class="text-xs text-text-muted font-normal"> / 月</span></p>
+              </div>
+              <div class="border-t border-border-subtle pt-4">
+                <p class="text-xs text-text-muted mb-1">本契約（最低6か月）</p>
+                <p class="text-2xl font-black text-white">初期¥30,000＋¥100,000<span class="text-xs text-text-muted font-normal"> / 月 〜</span></p>
+                <p class="text-xs text-text-muted mt-1">設計・構築・運用（チケット制）</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="border border-border-subtle rounded-sm p-5 space-y-2 bg-base-100">
+          <p class="text-xs text-text-secondary">価格はすべて税別です。本契約の詳細な料金・チケット数は業務内容に合わせてご提案します。</p>
+          <p class="text-xs text-text-secondary">チャット相談：回数無制限・無料（15分以内の相談はチケット消費なし）</p>
+          <p class="text-xs text-text-secondary">契約条件：本契約は最低6か月／未使用チケットの翌月繰り越しなし</p>
+        </div>
+      </Reveal>
+    </div>
+  </section>
+
+  <!-- TICKET GUIDE -->
+  <section class="py-section sm:py-section-lg bg-base-100">
+    <div class="section-wrapper">
+      <Reveal>
+        <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-4">TICKET GUIDE</p>
+        <p class="text-xs text-text-muted mb-6">1チケット ＝ 1時間相当の標準作業単位</p>
+        <div class="border border-border-subtle rounded-sm overflow-hidden">
+          <div class="grid grid-cols-[1fr_9rem] text-xs text-text-muted font-mono py-2 px-4 bg-base-50">
+            <span>作業内容</span>
+            <span class="text-right">チケット数</span>
+          </div>
+          {ticketGuide.map((row, i) => (
+            <div class={`grid grid-cols-[1fr_9rem] text-xs py-3 px-4 border-t border-border-subtle${i % 2 === 1 ? ' bg-base' : ''}`}>
+              <span class="text-text-secondary">{row.task}</span>
+              <span class="font-mono text-accent text-right">{row.tickets}</span>
+            </div>
+          ))}
+        </div>
+        <p class="text-xs text-text-muted mt-3">
+          ※ チケット数は目安です。データ量・連携ツール数・修正回数・納期・承認フロー・セキュリティ要件により変動し、着手前に必要数をご提示します。
+        </p>
+      </Reveal>
+    </div>
+  </section>
+
+  <!-- FLOW -->
+  <section class="py-section sm:py-section-lg bg-base-50">
+    <div class="section-wrapper">
+      <Reveal>
+        <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-8">FLOW</p>
+      </Reveal>
+      <div class="flex flex-col">
+        {flowSteps.map((step, i) => (
+          <Reveal delay={i * 60}>
             <div class="py-6 border-b border-border-subtle">
               <div class="flex gap-5 items-start">
                 <span class="font-mono font-black text-accent/40 text-sm w-6 shrink-0 pt-px">
-                  {step.number}
+                  {String(i + 1).padStart(2, '0')}
                 </span>
-                <div class="flex-1 min-w-0 sm:grid sm:grid-cols-[10rem_1fr] sm:gap-8">
+                <div class="flex-1 min-w-0 sm:grid sm:grid-cols-[12rem_1fr] sm:gap-8">
                   <p class="font-bold text-text-primary text-sm mb-2 sm:mb-0">{step.title}</p>
-                  <div>
-                    <p class="text-text-secondary text-sm leading-relaxed mb-2">
-                      {step.description}
-                    </p>
-                    <p class="font-mono text-xs text-text-muted">成果物: {step.deliverable}</p>
-                  </div>
+                  <p class="text-text-secondary text-sm leading-relaxed">{step.description}</p>
                 </div>
               </div>
             </div>
@@ -121,36 +320,24 @@ const curriculum = [
     </div>
   </section>
 
-  <!-- カリキュラム例 -->
-  <!-- <section class="bg-base-50">
+  <!-- FIT FOR -->
+  <section class="py-section sm:py-section-lg bg-base-100">
     <div class="section-wrapper">
       <Reveal>
-        <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-2">
-          CURRICULUM
-        </p>
-        <p class="text-text-secondary text-sm mb-8">
-          顧客ニーズに応じて組み合わせてカスタマイズします。
-        </p>
+        <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-8">FIT FOR</p>
       </Reveal>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {curriculum.map((cat, i) => (
+      <div class="flex flex-col">
+        {fitItems.map((item, i) => (
           <Reveal delay={i * 60}>
-            <div class="border border-border-subtle rounded-sm p-6 bg-base-100">
-              <p class="font-mono text-xs text-accent tracking-widest mb-4">{cat.category}</p>
-              <ul class="space-y-2">
-                {cat.topics.map((topic) => (
-                  <li class="text-xs text-text-secondary leading-relaxed flex gap-2">
-                    <span class="text-accent/40 shrink-0">—</span>
-                    {topic}
-                  </li>
-                ))}
-              </ul>
+            <div class="flex gap-4 items-start py-5 border-b border-border-subtle">
+              <span class="text-accent shrink-0 font-bold text-sm pt-px">✓</span>
+              <p class="text-text-secondary text-sm leading-relaxed">{item}</p>
             </div>
           </Reveal>
         ))}
       </div>
     </div>
-  </section> -->
+  </section>
 
   <!-- CTA -->
   <section class="py-section sm:py-section-lg bg-base">
@@ -158,16 +345,14 @@ const curriculum = [
       <Reveal>
         <div class="border-t-2 border-white pt-8 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6">
           <div>
-            <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-2">
-              Contact
-            </p>
+            <p class="font-mono text-xs text-text-muted tracking-[0.15em] uppercase mb-2">Contact</p>
             <p class="text-white text-sm leading-relaxed">
-              まずはお気軽にご相談ください。<br />
-              料金・スケジュール・カリキュラムの詳細はヒアリングの上ご提案します。
+              まずは30分の無料相談で、課題と対象業務、AI顧問・AI担当のどちらが合うかをご一緒に確認します。<br />
+              初回相談は無料です。
             </p>
           </div>
           <Button href={FORM_URL} variant="primary" target="_blank">
-            お問い合わせ
+            まずは無料相談
             <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
             </svg>
